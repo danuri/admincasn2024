@@ -74,6 +74,7 @@
                       <tr>
                         <th>Jabatan</th>
                         <th>Jenis Formasi</th>
+                        <th>Lokasi</th>
                         <th>Formasi</th>
                         <th>Pendaftar</th>
                         <th>Submit</th>
@@ -87,6 +88,7 @@
                       <tr>
                         <td><?= $row->jab_nm?></td>
                         <td><?= $row->jenis_formasi_nm?></td>
+                        <td><?= $row->lok_formasi_nm?></td>
                         <td><?= $row->jml_formasi?></td>
                         <td><?= $row->jml_pendaftar?></td>
                         <td><?= $row->jml_submit?></td>
