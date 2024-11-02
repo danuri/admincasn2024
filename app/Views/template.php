@@ -175,6 +175,12 @@
                                 <i class="ri-todo-line"></i> <span data-key="t-widgets">Pelamar</span>
                             </a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="<?= site_url('pelamar/pppkteknis')?>">
+                                <i class="ri-todo-line"></i> <span data-key="t-widgets">Pelamar PPPK Teknis</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <!-- Sidebar -->

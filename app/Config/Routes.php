@@ -5,6 +5,9 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
+$routes->get('supervise/index/(:num)', 'Supervise::index/$1');
+$routes->get('supervise/supervise/(:any)', 'Supervise::app/$1');
+
 $routes->get('auth', 'Auth::index');
 $routes->get('auth/login', 'Auth::login');
 $routes->get('auth/logout', 'Auth::logout');
@@ -16,6 +19,7 @@ $routes->get('/', 'Home::index',['filter' => 'auth']);
 $routes->get('formasi', 'Formasi::index',['filter' => 'auth']);
 $routes->get('regulasi', 'Regulasi::index',['filter' => 'auth']);
 $routes->get('pelamar', 'Pelamar::index',['filter' => 'auth']);
+$routes->get('pelamar/pppkteknis', 'Pelamar::pppkteknis',['filter' => 'auth']);
 $routes->get('formasi', 'Formasi::index',['filter' => 'auth']);
 
 $routes->group("api", function ($routes) {
