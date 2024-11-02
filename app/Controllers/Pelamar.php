@@ -26,6 +26,6 @@ class Pelamar extends BaseController
       $data['jsubmit'] = $model->getCount('statistik_pelamar_pppk_teknis','jml_submit',['verifikator'=>session('nip')]);
       $data['jms'] = $model->getCount('statistik_pelamar_pppk_teknis','jml_ms',['verifikator'=>session('nip')]);
       $data['jtms'] = $model->getCount('statistik_pelamar_pppk_teknis','jml_tms',['verifikator'=>session('nip')]);
-      return view('pelamar',$data);
+      return view('pelamar_pppk_teknis',$data);
     }
 }
