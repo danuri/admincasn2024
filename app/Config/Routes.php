@@ -31,6 +31,13 @@ $routes->group("siasn", function ($routes) {
     $routes->get('role', 'Siasn::role');
 });
 
+$routes->group("skb", ["filter" => "auth"], function ($routes) {
+    $routes->get('lokasi', 'Skb\Lokasi::index');
+    $routes->get('peserta', 'Skb\Peserta::index');
+    $routes->get('penguji', 'Skb\Penguji::index');
+    $routes->get('jadwal', 'Skb\Jadwal::index');
+});
+
 $routes->group("downloads", ["filter" => "auth"], function ($routes) {
     $routes->get('', 'Download::index');
     $routes->get('pelamar', 'Download::pelamar');

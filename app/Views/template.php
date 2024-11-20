@@ -181,6 +181,28 @@
                                 <i class="ri-todo-line"></i> <span data-key="t-widgets">Pelamar PPPK Teknis</span>
                             </a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="#sidebarSkb" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarTables">
+                                <i class="ri-layout-grid-line"></i> <span data-key="t-tables">SKB</span>
+                            </a>
+                            <div class="collapse menu-dropdown" id="sidebarSkb">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="<?= site_url('skb/lokasi')?>" class="nav-link" data-key="t-basic-tables">Lokasi Ujian</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="<?= site_url('skb/peserta')?>" class="nav-link" data-key="t-grid-js">Lokasi Peserta</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="<?= site_url('skb/penguji')?>" class="nav-link" data-key="t-list-js">Penguji</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="<?= site_url('skb/jadwal')?>" class="nav-link" data-key="t-datatables">Jadwal Daring</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
                     </ul>
                 </div>
                 <!-- Sidebar -->
