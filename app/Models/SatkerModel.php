@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class SatkerModel extends Model
 {
-    protected $table            = 'satkers';
+    protected $table            = 'satker';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';

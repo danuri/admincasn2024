@@ -10,13 +10,17 @@ use App\Models\LokasiModel;
 
 class Lokasi extends BaseController
 {
-    public function index()
+    public function index($lokasi=null)
     {
         $satker = session('lokasi');
         $model = new CrudModel;
         $data['lokasi'] = $model->getLokasiSatker($satker);
         $data['lokasiAll'] = $model->getLokasiBySatker($satker);
 
+        if ($lokasi !== null) {
+            $data['peserta'] = $model->getResult('peserta', ['lokasi_kode' => $lokasi]);
+            $data['lok'] = $model->getRow('lokasi', ['kode_tilok' => $lokasi]);
+        }
         return view('skb/lokasi', $data);
     }
 
@@ -179,5 +183,15 @@ class Lokasi extends BaseController
         return redirect()->to('skb/lokasi');
     }
 
+    public function setjadwal($lokasi)
+    {
+        $satker = session('lokasi');
+        $model = new CrudModel;
+        $data['lokasi'] = $model->getLokasiSatker($satker);
+        $data['lokasiAll'] = $model->getLokasiBySatker($satker);
+        $data['peserta'] = $model->getResult('peserta', ['lokasi_kode' => $lokasi]);
+        $data['lok'] = $model->getRow('lokasi', ['kode_tilok' => $lokasi]);
+        return view('skb/lokasi', $data);
+    }
 
 }

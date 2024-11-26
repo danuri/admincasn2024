@@ -192,7 +192,7 @@
                                         <a href="<?= site_url('skb/lokasi')?>" class="nav-link" data-key="t-basic-tables">Lokasi Ujian</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="<?= site_url('skb/peserta')?>" class="nav-link" data-key="t-grid-js">Lokasi Peserta</a>
+                                        <a href="<?= site_url('skb/peserta')?>" class="nav-link" data-key="t-grid-js">Peserta</a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="<?= site_url('skb/penguji')?>" class="nav-link" data-key="t-list-js">Penguji</a>

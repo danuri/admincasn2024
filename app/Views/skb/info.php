@@ -17,7 +17,7 @@
             <div class="col-12 col-lg-12 mt-3">
                 <div class="card">
                     <div class="card-body">
-                        <form class="" action="" method="post">
+                        <form class="" action="<?php echo site_url('skb/info/update');?>" method="post">
                             <div class="form-group row">
                                 <label for="kontak" class="col-sm-4 col-form-label">Kontak Satuan Kerja</label>
                                 <div class="col-sm-8">
@@ -27,28 +27,8 @@
                             <br>
                             <div class="form-group row">
                                 <label for="informasi" class="col-sm-4 col-form-label">Informasi Untuk Peserta</label>
-                                <!-- <div class="col-sm-8">
-                                    <textarea name="informasi" id="editor" cols="5"><?= $satker->informasi;?></textarea>
-                                </div> -->
                                 <div class="col-sm-8">
-                                    <div class="ckeditor-classic" id="editor" name="informasi" style="height: 300px;">
-                                        <h3><span class="ql-size-large">Hello World!</span></h3>
-                                        <p><br></p>
-                                        <h3>This is an simple editable area.</h3>
-                                        <p><br></p>
-                                        <ul>
-                                            <li>
-                                                Select a text to reveal the toolbar.
-                                            </li>
-                                            <li>
-                                                Edit rich document on-the-fly, so elastic!
-                                            </li>
-                                        </ul>
-                                        <p><br></p>
-                                        <p>
-                                            End of simple area
-                                        </p>
-                                    </div>
+                                    <textarea class="ckeditor-classic" name="informasi" id="informasi" cols="5"><?= $satker->informasi;?></textarea>
                                 </div>
                             </div>
                             <div class="form-group row mt-5">

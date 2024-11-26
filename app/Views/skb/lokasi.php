@@ -224,13 +224,13 @@
       $('#formbulk').submit();
     });
 
-    $('.datatable').DataTable({
-    dom: 'Bfrtip',
-                buttons: [
-                    'copy', 'csv', 'excel', 'pdf', 'print'
-                ],
-     responsive: true
-    });
+    // $('.datatable').DataTable({
+    // dom: 'Bfrtip',
+    //             buttons: [
+    //                 'copy', 'csv', 'excel', 'pdf', 'print'
+    //             ],
+    //  responsive: true
+    // });
   });
 
   function addtilok() {

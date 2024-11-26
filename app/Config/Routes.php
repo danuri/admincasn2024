@@ -33,6 +33,8 @@ $routes->group("siasn", function ($routes) {
 
 $routes->group("skb", ["filter" => "auth"], function ($routes) {
     $routes->get('lokasi', 'Skb\Lokasi::index');
+    $routes->get('lokasi/index/(:any)', 'Skb\Lokasi::index/$1');
+    $routes->get('lokasi/setjadwal/(:any)', 'Skb\Lokasi::setjadwal/$1');
     $routes->post('lokasi/add', 'Skb\Lokasi::add');
     $routes->get('lokasi/delete/(:num)', 'Skb\Lokasi::delete/$1');
     $routes->get('lokasi/get_detail/(:num)', 'Skb\Lokasi::get_detail/$1');
@@ -47,6 +49,7 @@ $routes->group("skb", ["filter" => "auth"], function ($routes) {
     $routes->get('penguji/delete/(:num)', 'Skb\Penguji::delete/$1');
     $routes->get('jadwal', 'Skb\Jadwal::index');
     $routes->get('info', 'Skb\Info::index');
+    $routes->post('info/update', 'Skb\Info::update');
 });
 
 $routes->group("downloads", ["filter" => "auth"], function ($routes) {

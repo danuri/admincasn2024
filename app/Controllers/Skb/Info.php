@@ -49,8 +49,7 @@ class Info extends BaseController
             // Jika validasi gagal, ambil error dan tampilkan di view
             $data['validation'] = $validation;
             $model = new CrudModel;
-            $data['lokasi'] = $model->getLokasiSatker($satker);
-            $data['lokasiAll'] = $model->getLokasiBySatker($satker);
+            $data['satker'] = $model->getRow('satker', ['kode_satker' => $satker]);
             return view('skb/info', $data);
         }
     }
