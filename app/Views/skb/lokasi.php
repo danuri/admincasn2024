@@ -21,13 +21,28 @@
         </div>
     <div class="row">
       <div class="col-12 col-lg-12  mt-3">
+        <?php if (session()->getFlashdata('message')): ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <?= session()->getFlashdata('message'); ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php endif; ?>
+
+        <?php if (isset($validation) && $validation->getErrors()): ?>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <?php foreach ($validation->getErrors() as $error): ?>
+                  <p><?= esc($error) ?></p>
+              <?php endforeach; ?>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <?php endif; ?>
         <div class="card">
           <div class="card-header">
               <h5>Lokasi Ujian</h5>
               <span class="text-muted">Panitia Lokasi Ujian diharuskan menyediakan ruangan sesuai dengan Jumlah Ruangan yang tertera di masing-masing titik lokasi.</span>
               <div class="card-header-right">
                   <ul class="list-unstyled card-option">
-                      <li><button type="button" class="btn btn-success float-right" onclick="addtilok()"><i class="zmdi zmdi-plus"></i>Tambah Titik Lokasi</button></li>
+                      <li><button type="button" class="btn btn-success float-right mt-2" onclick="addtilok()"><i class="zmdi zmdi-plus"></i>Tambah Titik Lokasi</button></li>
                   </ul>
               </div>
           </div>
@@ -125,13 +140,6 @@
 <div class="modal fade" id="addtilok" role="dialog" data-backdrop="static" data-keyboard="false">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
-    <?php if (isset($validation) && $validation->getErrors()): ?>
-        <div class="alert alert-danger">
-            <?php foreach ($validation->getErrors() as $error): ?>
-                <p><?= esc($error) ?></p>
-            <?php endforeach; ?>
-        </div>
-    <?php endif; ?>
       <div class="modal-header">
         <h4 class="title" id="defaultModalLabel">Tambah Titik Lokasi</h4>
         <div id="progress"></div>
@@ -177,7 +185,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary waves-effect" onclick="$('#tambahtilok').submit()">SIMPAN</button>
-        <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">BATAL</button>
+        <button type="button" class="btn btn-danger waves-effect" data-bs-dismiss="modal">BATAL</button>
       </div>
     </div>
   </div>
@@ -193,7 +201,7 @@
       <div class="modal-body" id="bodydetail"></div>
     <div class="modal-footer">
       <button type="button" class="btn btn-primary waves-effect" onclick="$('#edittilok').submit()">SIMPAN</button>
-      <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">TUTUP</button>
+      <button type="button" class="btn btn-danger waves-effect" data-bs-dismiss="modal">TUTUP</button>
     </div>
   </div>
 </div>
