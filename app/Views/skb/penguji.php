@@ -158,7 +158,7 @@
         </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary waves-effect" onclick="$('#tambahpenguji').submit()">SIMPAN</button>
-        <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">BATAL</button>
+        <button type="button" class="btn btn-danger waves-effect" data-bs-dismiss="modal">BATAL</button>
       </div>
     </div>
   </div>

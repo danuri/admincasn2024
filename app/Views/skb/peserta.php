@@ -124,7 +124,7 @@
       <div class="modal-footer">
           <input type="hidden" name="idprint" id="idprint" value="">
           <button type="button" class="btn btn-danger" onclick="printit()">Print DRH</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Tutup</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Tutup</button>
       </div>
     </div>
   </div>
