@@ -7,12 +7,12 @@ use CodeIgniter\Model;
 class TilokModel extends Model
 {
     protected $table            = 'lokasi_titik';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'id_tilok';
     protected $useAutoIncrement = true;
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['tilok', 'lokasi_kode', 'alamat', 'maps', 'kontak', 'kontak_panitia', 'kode_satker'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

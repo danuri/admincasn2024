@@ -50,6 +50,28 @@ class Database extends Config
         ],
     ];
 
+    public $simpeg = [
+        'DSN'      => '',
+        'hostname' => '10.1.7.82', // Change this to your database hostname
+        'username' => 'sa', // Change this to your database username
+        'password' => 'P@ssw0rd1', // Change this to your database password
+        'database' => 'simpeg_2024', // Change this to your database name
+        'DBDriver' => 'SQLSRV', // or 'Postgre', 'SQLite3', etc.
+        'DBPrefix' => '',
+        'pConnect' => false,
+        'DBDebug'  => (ENVIRONMENT !== 'production'), // Set to false in production
+        'cacheOn'  => false,
+        'cachedir' => '',
+        'charset'  => 'utf8',
+        'DBCollat' => 'utf8_general_ci',
+        'swap_pre' => '',
+        'encrypt'  => false,
+        'compress' => false,
+        'strictOn' => false,
+        'Failover' => [],
+        'saveQueries' => true,
+    ];
+
     //    /**
     //     * Sample database connection for SQLite3.
     //     *

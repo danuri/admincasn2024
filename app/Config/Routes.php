@@ -33,9 +33,20 @@ $routes->group("siasn", function ($routes) {
 
 $routes->group("skb", ["filter" => "auth"], function ($routes) {
     $routes->get('lokasi', 'Skb\Lokasi::index');
+    $routes->post('lokasi/add', 'Skb\Lokasi::add');
+    $routes->get('lokasi/delete/(:num)', 'Skb\Lokasi::delete/$1');
+    $routes->get('lokasi/get_detail/(:num)', 'Skb\Lokasi::get_detail/$1');
+    $routes->post('lokasi/update', 'Skb\Lokasi::update');
     $routes->get('peserta', 'Skb\Peserta::index');
     $routes->get('penguji', 'Skb\Penguji::index');
+    $routes->post('penguji/add', 'Skb\Penguji::add');
+    $routes->get('penguji/getpegawai/(:any)', 'Skb\Penguji::getpegawai/$1');
+    $routes->get('penguji/get_detail/(:num)', 'Skb\Penguji::get_detail/$1');
+    $routes->post('penguji/addfile', 'Skb\Penguji::addfile');
+    $routes->post('penguji/update', 'Skb\Penguji::update');
+    $routes->get('penguji/delete/(:num)', 'Skb\Penguji::delete/$1');
     $routes->get('jadwal', 'Skb\Jadwal::index');
+    $routes->get('info', 'Skb\Info::index');
 });
 
 $routes->group("downloads", ["filter" => "auth"], function ($routes) {
@@ -98,34 +109,34 @@ $routes->group("skb", ["filter" => "auth"], function ($routes) {
     $routes->get('aksespenguji', 'Skb::aksespenguji');
 });
 
-$routes->group("admin", ["filter" => "admin"], function ($routes) {
+// $routes->group("admin", ["filter" => "admin"], function ($routes) {
 
-  $routes->group("users", function ($routes) {
-      $routes->get('', 'Admin\Users::index');
-  });
+//   $routes->group("users", function ($routes) {
+//       $routes->get('', 'Admin\Users::index');
+//   });
 
-  $routes->group("dokumen", function ($routes) {
-      $routes->get('', 'Admin\Dokumen::index');
-      $routes->get('unggahan/(:num)', 'Admin\Dokumen::unggahan/$1');
-      $routes->get('deleteunggahan/(:num)', 'Admin\Dokumen::deleteunggahan/$1');
-  });
+//   $routes->group("dokumen", function ($routes) {
+//       $routes->get('', 'Admin\Dokumen::index');
+//       $routes->get('unggahan/(:num)', 'Admin\Dokumen::unggahan/$1');
+//       $routes->get('deleteunggahan/(:num)', 'Admin\Dokumen::deleteunggahan/$1');
+//   });
 
-  $routes->group("download", function ($routes) {
-      $routes->get('', 'Admin\Download::index');
-  });
+//   $routes->group("download", function ($routes) {
+//       $routes->get('', 'Admin\Download::index');
+//   });
 
-  $routes->group("penempatan", function ($routes) {
-      $routes->get('', 'Admin\Penempatan::index');
-  });
+//   $routes->group("penempatan", function ($routes) {
+//       $routes->get('', 'Admin\Penempatan::index');
+//   });
 
-  $routes->group("faq", function ($routes) {
-      $routes->get('', 'Admin\Faq::index');
-      $routes->get('add', 'Admin\Faq::add');
-      $routes->post('add', 'Admin\Faq::save');
-      $routes->get('edit/(:num)', 'Admin\Faq::edit/$1');
-      $routes->post('edit/(:num)', 'Admin\Faq::saveedit/$1');
-  });
+//   $routes->group("faq", function ($routes) {
+//       $routes->get('', 'Admin\Faq::index');
+//       $routes->get('add', 'Admin\Faq::add');
+//       $routes->post('add', 'Admin\Faq::save');
+//       $routes->get('edit/(:num)', 'Admin\Faq::edit/$1');
+//       $routes->post('edit/(:num)', 'Admin\Faq::saveedit/$1');
+//   });
 
-  $routes->get('pelamar/(:any)', 'Admin\Pelamar::index/$1');
+//   $routes->get('pelamar/(:any)', 'Admin\Pelamar::index/$1');
 
-});
+// });
