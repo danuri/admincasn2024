@@ -40,6 +40,7 @@ $routes->group("skb", ["filter" => "auth"], function ($routes) {
     $routes->get('lokasi/get_detail/(:num)', 'Skb\Lokasi::get_detail/$1');
     $routes->post('lokasi/update', 'Skb\Lokasi::update');
     $routes->get('peserta', 'Skb\Peserta::index');
+    $routes->get('peserta/detail/(:any)', 'Skb\Peserta::detail/$1');
     $routes->get('penguji', 'Skb\Penguji::index');
     $routes->post('penguji/add', 'Skb\Penguji::add');
     $routes->get('penguji/getpegawai/(:any)', 'Skb\Penguji::getpegawai/$1');
@@ -48,6 +49,7 @@ $routes->group("skb", ["filter" => "auth"], function ($routes) {
     $routes->post('penguji/update', 'Skb\Penguji::update');
     $routes->get('penguji/delete/(:num)', 'Skb\Penguji::delete/$1');
     $routes->get('jadwal', 'Skb\Jadwal::index');
+    $routes->post('jadwal/importjadwal', 'Skb\Jadwal::importjadwal');
     $routes->get('info', 'Skb\Info::index');
     $routes->post('info/update', 'Skb\Info::update');
 });

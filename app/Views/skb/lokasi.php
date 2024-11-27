@@ -9,11 +9,22 @@
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                     <h4 class="mb-sm-0">Lokasi Pelaksanaan SKB</h4>
 
-                    <div class="page-title-right">
+                    <!-- <div class="page-title-right">
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Pages</a></li>
                             <li class="breadcrumb-item active">Starter</li>
                         </ol>
+                    </div> -->
+                    <div class="breadcrumb bg-transparent align-self-center m-0 p-0">
+                      <div class="card bg-primary text-white h-100">
+                                        <div class="card-body text-center p-3 d-flex">
+                                            <div class="align-self-center text-center w-100">
+                                                <h2 class="card-title font-weight-bold text-white"><?= $jumlah->jumlah;?></h2>
+                                                <span class="h4 text-white">Peserta</span>
+                                            </div>
+
+                                        </div>
+                                    </div>
                     </div>
 
                 </div>

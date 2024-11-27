@@ -32,7 +32,21 @@ function colors($i)
   </div>
   <div class="row">
     <div class="col-12 col-lg-12 mt-3">
-    <?php echo session('message'); ?>
+        <?php if (session()->getFlashdata('message')): ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <?= session()->getFlashdata('message'); ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php endif; ?>
+
+        <?php if (isset($validation) && $validation->getErrors()): ?>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <?php foreach ($validation->getErrors() as $error): ?>
+                  <p><?= esc($error) ?></p>
+              <?php endforeach; ?>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <?php endif; ?>
     <div class="card">
       <div class="card-body">
         <ul>
@@ -41,19 +55,25 @@ function colors($i)
           <li>Jika ingin merubah, diupload ulang</li>
           <li>Pengisian Jadwal maksimal H-1 Jadwal Ujian</li>
         </ul>
+        <ul class="list-unstyled card-option">
+          <li><button type="button" class="btn btn-success float-right" onclick="$('#filejadwal').click()"><i class="zmdi zmdi-plus"></i>Import Jadwal</button></li>
+        </ul>
+          <form class="" action="<?php echo site_url('skb/jadwal/importjadwal');?>" method="post" enctype="multipart/form-data" id="importjadwal" style="display:none;">
+            <input type="file" name="lampiran" id="filejadwal" class="form-control" onchange="$('#importjadwal').submit()" />
+          </form>
       </div>
     </div>
     <div class="card mt-3">
       <div class="card-header  justify-content-between align-items-center">
         <h6 class="card-title">Jadwal Praktik Kerja</h6>
-        <div class="card-header-right">
+        <!-- <div class="card-header-right">
             <ul class="list-unstyled card-option">
                 <li><button type="button" class="btn btn-success float-right" onclick="$('#filejadwal').click()"><i class="zmdi zmdi-plus"></i>Import Jadwal</button></li>
             </ul>
             <form class="" action="<?php echo site_url('skb/jadwal/importjadwal');?>" method="post" enctype="multipart/form-data" id="importjadwal" style="display:none;">
             <input type="file" name="lampiran" id="filejadwal" class="form-control" onchange="$('#importjadwal').submit()" />
             </form>
-        </div>
+        </div> -->
       </div>
       <div class="card-body table-responsive">
         <table class="table table-bordered table-striped table-hover datatable">
@@ -87,14 +107,14 @@ function colors($i)
         </table>
         <hr>
         <h6 class="card-title">Jadwal Wawancara</h6>
-        <div class="card-header-right">
+        <!-- <div class="card-header-right">
             <ul class="list-unstyled card-option">
                 <li><button type="button" class="btn btn-success float-right" onclick="$('#filejadwal').click()"><i class="zmdi zmdi-plus"></i>Import Jadwal</button></li>
             </ul>
             <form class="" action="<?php echo site_url('skb/jadwal/importjadwal');?>" method="post" enctype="multipart/form-data" id="importjadwal" style="display:none;">
-            <input type="file" name="lampiran" id="filejadwal" class="form-control" onchange="$('#importjadwal').submit()" />
+              <input type="file" name="lampiran" id="filejadwal" class="form-control" onchange="$('#importjadwal').submit()" />
             </form>
-        </div>
+        </div> -->
           <table class="table table-bordered table-striped table-hover datatable">
             <thead class="text-center">
               <tr>

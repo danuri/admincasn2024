@@ -16,6 +16,21 @@
   </div>
   <div class="row">
     <div class="col-12 col-lg-12  mt-3">
+        <?php if (session()->getFlashdata('message')): ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <?= session()->getFlashdata('message'); ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php endif; ?>
+
+        <?php if (isset($validation) && $validation->getErrors()): ?>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <?php foreach ($validation->getErrors() as $error): ?>
+                  <p><?= esc($error) ?></p>
+              <?php endforeach; ?>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <?php endif; ?>
       <div class="card">
         <div class="card-header  justify-content-between align-items-center">
           <h6 class="card-title">Sebaran Peserta per Lokasi</h6>

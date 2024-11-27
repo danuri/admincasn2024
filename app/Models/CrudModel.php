@@ -45,6 +45,13 @@ class CrudModel extends Model
         return $query->getRow();
       }
 
+      public function getCountv2($table, $column, $value)
+      {
+          return $this->db->table($table)
+              ->where($column, $value)
+              ->countAllResults(); // This should return an integer
+      }
+
       public function updateValidasi($nik,$data)
       {
         $builder = $this->db->table('nonasn');
@@ -416,6 +423,23 @@ class CrudModel extends Model
       public function getLokasiBySatker($kodesatker)
       {
         $query = $this->db->query("SELECT * FROM lokasi WHERE kode_satker='$kodesatker'")->getResult();
+        return $query;
+      }
+
+      public function getJumlahLokasi($kodesatker)
+      {
+        $query = $this->db->query("SELECT sum(lok.jumlah) AS jumlah FROM (SELECT
+                                    lokasi.lokasi_ujian,
+                                    lokasi.kode_tilok,
+                                    COUNT(peserta.nik) AS jumlah
+                                  FROM
+                                    lokasi
+                                  RIGHT JOIN
+                                    peserta
+                                  ON
+                                    lokasi.kode_tilok = peserta.lokasi_kode
+                                  WHERE
+                                    lokasi.kode_satker = '$kodesatker') lok")->getRow();
         return $query;
       }
 

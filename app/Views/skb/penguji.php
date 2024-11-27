@@ -26,6 +26,21 @@
             </div>
         </div>
         <div class="card mt-3">
+            <?php if (session()->getFlashdata('message')): ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <?= session()->getFlashdata('message'); ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <?php endif; ?>
+
+            <?php if (isset($validation) && $validation->getErrors()): ?>
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  <?php foreach ($validation->getErrors() as $error): ?>
+                      <p><?= esc($error) ?></p>
+                  <?php endforeach; ?>
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            <?php endif; ?>
             <div class="card-body">
             <ul>
                 <li>Download Template Pakta Integritas: <a href="<?php echo base_url();?>downloads/template-pakta-integritas.docx" class="text-danger">Download</a> (Bermaterai)</li>

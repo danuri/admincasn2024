@@ -16,6 +16,7 @@ class Lokasi extends BaseController
         $model = new CrudModel;
         $data['lokasi'] = $model->getLokasiSatker($satker);
         $data['lokasiAll'] = $model->getLokasiBySatker($satker);
+        $data['jumlah'] = $model->getJumlahLokasi($satker);
 
         if ($lokasi !== null) {
             $data['peserta'] = $model->getResult('peserta', ['lokasi_kode' => $lokasi]);
@@ -67,6 +68,7 @@ class Lokasi extends BaseController
             $model = new CrudModel;
             $data['lokasi'] = $model->getLokasiSatker($satker);
             $data['lokasiAll'] = $model->getLokasiBySatker($satker);
+            $data['jumlah'] = $model->getJumlahLokasi($satker);
             return view('skb/lokasi', $data);
         }
     }
@@ -167,6 +169,7 @@ class Lokasi extends BaseController
             $model = new CrudModel;
             $data['lokasi'] = $model->getLokasiSatker($satker);
             $data['lokasiAll'] = $model->getLokasiBySatker($satker);
+            $data['jumlah'] = $model->getJumlahLokasi($satker);
             return view('skb/lokasi', $data);
         }
     }
@@ -191,6 +194,7 @@ class Lokasi extends BaseController
         $data['lokasiAll'] = $model->getLokasiBySatker($satker);
         $data['peserta'] = $model->getResult('peserta', ['lokasi_kode' => $lokasi]);
         $data['lok'] = $model->getRow('lokasi', ['kode_tilok' => $lokasi]);
+        $data['jumlah'] = $model->getJumlahLokasi($satker);
         return view('skb/lokasi', $data);
     }
 
