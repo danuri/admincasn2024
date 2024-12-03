@@ -24,6 +24,10 @@ class Peserta extends BaseController
         return view('skb/peserta', $data);
     }
 
+    public function drh($nik) {
+        return redirect()->to('http://localhost:8001/drh/peserta/'+$nik);
+    }
+
     public function detail($id)
     {
         $satker = session('lokasi');
@@ -35,9 +39,14 @@ class Peserta extends BaseController
             echo 'Data peserta tidak ditemukan!';
             exit;
         }
-        $pendidikan = $model->getResult('pendidikan',array('nik'=>$id),array('field'=>'tahun','by'=>'ASC'));
-        $pekerjaan = $model->getResult('pekerjaan',array('nik'=>$id),array('field'=>'mulai_tahun','by'=>'ASC'));
-        $organisasi = $model->getResult('organisasi',array('nik'=>$id),array('field'=>'mulai_tahun','by'=>'ASC'));
+        // $pendidikan = $model->getResult('pendidikan',array('nik'=>$id),array('field'=>'tahun','by'=>'ASC'));
+        // $pekerjaan = $model->getResult('pekerjaan',array('nik'=>$id),array('field'=>'mulai_tahun','by'=>'ASC'));
+        // $organisasi = $model->getResult('organisasi',array('nik'=>$id),array('field'=>'mulai_tahun','by'=>'ASC'));
+        $db = \Config\Database::connect('default', false);
+        $pendidikan = $db->query("SELECT * FROM pendidikan WHERE nik='$id' ORDER BY tahun DESC")->getResult();
+        // dd($pendidikan);
+        $pekerjaan = $db->query("SELECT * FROM pekerjaan WHERE nik='$id' ORDER BY mulai_tahun DESC")->getResult();
+        $organisasi = $db->query("SELECT * FROM organisasi WHERE nik='$id' ORDER BY mulai_tahun DESC")->getResult();
         $dokumen = $model->getResult('dokumen_peserta',array('nik'=>$id));
         ?>
             <table class="table table-striped">

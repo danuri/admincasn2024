@@ -13,7 +13,6 @@
                         <a href="javascript:;" class="btn btn-primary" onclick="addpenguji()">Tambah Penguji <i class="fas fa-plus"></i></a>
                         <?php } ?>
                     </div>
-
                 </div>
             </div>
             <div class="col-12 col-sm-6 col-xl-4 mt-3">
