@@ -35,6 +35,8 @@ $routes->group("skb", ["filter" => "auth"], function ($routes) {
     $routes->get('lokasi', 'Skb\Lokasi::index');
     $routes->get('lokasi/index/(:any)', 'Skb\Lokasi::index/$1');
     $routes->get('lokasi/setjadwal/(:any)', 'Skb\Lokasi::setjadwal/$1');
+    $routes->post('lokasi/updatejadwal/(:any)', 'Skb\Lokasi::updatejadwal/$1');
+    $routes->get('lokasi/setlokasi/(:any)', 'Skb\Lokasi::setlokasi/$1');
     $routes->post('lokasi/add', 'Skb\Lokasi::add');
     $routes->get('lokasi/delete/(:num)', 'Skb\Lokasi::delete/$1');
     $routes->get('lokasi/get_detail/(:num)', 'Skb\Lokasi::get_detail/$1');

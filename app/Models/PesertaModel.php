@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class ZoomsModel extends Model
+class PesertaModel extends Model
 {
-    protected $table            = 'zooms';
+    protected $table            = 'peserta';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['email_praktik','id_praktik','password_praktik','email_wawancara','id_wawancara','password_wawancara','penguji1','nama_penguji1','penguji2','nama_penguji2','pewawancara1','nama_pewawancara1','pewawancara2','nama_pewawancara2','kode_satker','nopeserta','penguji3','nama_penguji3','pewawancara3','nama_pewawancara3'];
+    protected $allowedFields    = ['id_tilok','tilok','jadwal_praktik','ruangan_praktik','jadwal_wawancara','ruangan_wawancara'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

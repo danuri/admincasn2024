@@ -89,7 +89,8 @@
                   if(count($tiloks) > 1){
                     ?>
                     <tr>
-                      <td class="text-green"><a href="<?php echo site_url('skb/lokasi/setjadwal/'.$row->lokasi_kode);?>" class="btn btn-danger">Tentukan Lokasi Peserta</a></td>
+                      <td class="text-green"><a href="<?php echo site_url('skb/lokasi/setlokasi/'.$row->lokasi_kode);?>" class="btn btn-danger">Tentukan Lokasi Peserta</a></td>
+                      <!-- <td class="text-green"><a href="javascript:;" onclick="setjadwal('<?php echo $row->lokasi_kode;?>')" class="btn btn-danger">Tentukan Lokasi Peserta</a></td> -->
                       <td colspan="4"></td>
                     </tr>
                     <?php
@@ -100,23 +101,30 @@
           </div>
         </div>
         <?php if(isset($peserta)){ ?>
+          <form class="" action="<?php echo site_url('skb/lokasi/updatejadwal/'.$lokasikode);?>" method="post" id="updatejadwal">
           <div class="card mt-3">
-            <div class="card-header  justify-content-between align-items-center">
+            <div class="card-header justify-content-between align-items-center">
               <h6 class="card-title">Data Peserta Lokasi</h6>
             </div>
-            <div class="card-body table-responsive">
+            <div class="card-body table-responsive">              
                 <table class="table table-bordered table-striped table-hover datatable">
                   <thead class="text-center">
                     <tr>
+                      <?php if($issetlokasi) { ?>                        
+                      <th>Pilih</th>
+                      <?php } ?>
                       <th>Nomor Peserta</th>
                       <th>Nama</th>
                       <th>Formasi</th>
                       <th>No HP</th>
                       <th>Satuan Kerja</th>
                       <th>Praktik Kerja (WIB)</th>
-                      <th>Ruangan</th>
+                      <!-- <th>Ruangan</th> -->
                       <th>Wawancara (WIB)</th>
-                      <th>Ruangan</th>
+                      <!-- <th>Ruangan</th> -->
+                      <?php if($issetlokasi) { ?>  
+                      <th>Titik Lokasi</th>
+                      <?php } ?>
                     </tr>
                   </thead>
                   <tbody>
@@ -124,15 +132,21 @@
                     foreach ($peserta as $row) {
                       ?>
                       <tr>
+                        <?php if($issetlokasi) { ?> 
+                        <td><input type="checkbox" name="nik[]" value="<?php echo $row->nik;?>"></td>
+                        <?php } ?>
                         <td>'<?php echo $row->nopeserta;?></td>
                         <td><?php echo $row->nama;?></td>
                         <td><?php echo $row->formasi;?></td>
                         <td><?php echo $row->no_hp;?></td>
                         <td><?php echo $row->satker;?></td>
                         <td><?php echo $row->jadwal_praktik;?></td>
-                        <td><?php echo $row->ruangan_praktik;?></td>
+                        <!-- <td><?php echo $row->ruangan_praktik;?></td> -->
                         <td><?php echo $row->jadwal_wawancara;?></td>
-                        <td><?php echo $row->ruangan_wawancara;?></td>
+                        <!-- <td><?php echo $row->ruangan_wawancara;?></td> -->
+                        <?php if($issetlokasi) { ?>  
+                        <td><?php echo $row->tilok;?></td>
+                        <?php } ?>
                       </tr>
                       <?php
                       }
@@ -140,7 +154,30 @@
                     </tbody>
                   </table>
               </div>
+            <?php if($issetlokasi) { ?>  
+            <?php if(isset($tilok)){ ?>
+            <div class="card-body ">
+              <div class="row mb-3">
+                <div class="col-lg-1">
+                  <label for="">Titik Lokasi</label>
+                </div>
+                <div class="col-lg-5">
+                  <select class="form-control" name="id_tilok">
+                    <?php foreach ($lokasititik as $raw) { 
+                      if (isset($raw->id_tilok) && isset($raw->tilok)) {
+                      echo '<option value="'.$raw->id_tilok.'">'.$raw->tilok.'</option>';
+                      }
+                    } ?>
+                  </select>  
+                </div>
+                <div class="col-lg-5"> 
+                  <input type="submit" name="submit" value="submit" class="btn btn-primary">
+                </div>
+              </div>
             </div>
+            <?php } } ?>
+          </div>
+          </form>
         <?php } ?>
       </div>
     </div>
@@ -149,7 +186,7 @@
 </div>
 
 <div class="modal fade" id="addtilok" role="dialog" data-backdrop="static" data-keyboard="false">
-  <div class="modal-dialog modal-lg" role="document">
+  <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="title" id="defaultModalLabel">Tambah Titik Lokasi</h4>
@@ -217,6 +254,22 @@
   </div>
 </div>
 </div>
+
+<div class="modal fade" id="setjadwal" role="dialog" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="title" id="defaultModalLabel">Peserta Titik Lokasi</h4>
+        <div id="progress"></div>
+      </div>
+      <div class="modal-body" id="bodysetjadwal"></div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary waves-effect" onclick="$('#updatejadwal').submit()">SIMPAN</button>
+      <button type="button" class="btn btn-danger waves-effect" data-bs-dismiss="modal">TUTUP</button>
+    </div>
+  </div>
+</div>
+</div>
 <?= $this->endSection() ?>
 <?= $this->section('script') ?>
 <script src="<?= base_url();?>assets/vendors/datatable/js/jquery.dataTables.min.js"></script>
@@ -243,13 +296,13 @@
       $('#formbulk').submit();
     });
 
-    // $('.datatable').DataTable({
-    // dom: 'Bfrtip',
-    //             buttons: [
-    //                 'copy', 'csv', 'excel', 'pdf', 'print'
-    //             ],
-    //  responsive: true
-    // });
+    $('.datatablex').DataTable({
+    dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ],
+     responsive: true
+    });
   });
 
   function addtilok() {
@@ -260,6 +313,11 @@
   function detail(nik) {
     $('#bodydetail').load('<?= site_url('skb/lokasi/get_detail');?>/'+nik);
     $('#detaillokasi').modal('show');
+  }
+
+  function setjadwal(lokasi) {
+    $('#bodysetjadwal').load('<?= site_url('skb/lokasi/setjadwal');?>/'+lokasi);
+    $('#setjadwal').modal('show');
   }
 </script>
 <?= $this->endSection() ?>

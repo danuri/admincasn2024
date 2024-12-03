@@ -7,6 +7,8 @@ use CodeIgniter\HTTP\ResponseInterface;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use App\Models\CrudModel;
 use App\Models\ZoomsModel;
+use App\Models\PesertaModel;
+use DateTime;
 
 class Jadwal extends BaseController
 {
@@ -51,24 +53,28 @@ class Jadwal extends BaseController
                 if ($i > 0) {
                     $nopeserta = preg_replace('/[\x{200B}-\x{200D}]/u', '', $row['A']);
                     $nopeserta = str_replace("'", "", $nopeserta);
-                    $emailprak = $row['B'];
-                    $zoompraktik = $row['C'];
-                    $passpraktik = $row['D'];
-                    $emailwaw = $row['E'];
-                    $zoomwawancara = $row['F'];
-                    $passwawancara = $row['G'];
-                    $pengujiprak1 = $row['H'];
-                    $pengujiprak2 = $row['I'];
-                    $pengujiwaw1 = $row['J'];
-                    $pengujiwaw2 = $row['K'];
+                    $idsesiprak = $row['B'];
+                    $emailprak = $row['C'];
+                    $zoompraktik = $row['D'];
+                    $passpraktik = $row['E'];
+                    $idsesiwaw = $row['F'];
+                    $emailwaw = $row['G'];
+                    $zoomwawancara = $row['H'];
+                    $passwawancara = $row['I'];
+                    $pengujiprak1 = $row['J'];
+                    $pengujiprak2 = $row['K'];
+                    $pengujiprak3 = $row['L'];
+                    $pengujiwaw1 = $row['M'];
+                    $pengujiwaw2 = $row['N'];
+                    $pengujiwaw3 = $row['O'];
 
                     // Fetch names of the interviewers
                     $namaw1 = $model->getRow('penguji', ['nip' => preg_replace('/[\x{200B}-\x{200D}]/u', '', $pengujiwaw1), 'type' => 'Wawancara']);
                     $namaw2 = $model->getRow('penguji', ['nip' => preg_replace('/[\x{200B}-\x{200D}]/u', '', $pengujiwaw2), 'type' => 'Wawancara']);
-
+                    $namaw3 = $model->getRow('penguji', ['nip' => preg_replace('/[\x{200B}-\x{200D}]/u', '', $pengujiwaw3), 'type' => 'Wawancara']);
                     $namaprak1 = $model->getRow('penguji', ['nip' => preg_replace('/[\x{200B}-\x{200D}]/u', '', $pengujiprak1), 'type' => 'Praktik Kerja']);
                     $namaprak2 = $model->getRow('penguji', ['nip' => preg_replace('/[\x{200B}-\x{200D}]/u', '', $pengujiprak2), 'type' => 'Praktik Kerja']);
-                    
+                    $namaprak3 = $model->getRow('penguji', ['nip' => preg_replace('/[\x{200B}-\x{200D}]/u', '', $pengujiprak3), 'type' => 'Praktik Kerja']);
                     //$countpeserta = $model->getCountv2('zooms','nopeserta',$nopeserta);
 
                     // Safely access nama property for namaprak1
@@ -77,11 +83,17 @@ class Jadwal extends BaseController
                     // Safely access nama property for namaprak2
                     $nama_penguji2 = isset($namaprak2) ? $namaprak2->nama : null; // or set a default value
 
+                    // Safely access nama property for namaprak3
+                    $nama_penguji3 = isset($namaprak3) ? $namaprak3->nama : null; // or set a default value
+
                     // Safely access nama property for namaw1
                     $nama_pewawancara1 = isset($namaw1) ? $namaw1->nama : null; // or set a default value
 
                     // Safely access nama property for namaw1
                     $nama_pewawancara2 = isset($namaw2) ? $namaw2->nama : null; // or set a default value
+
+                    // Safely access nama property for namaw1
+                    $nama_pewawancara3 = isset($namaw3) ? $namaw3->nama : null; // or set a default value
                                        
                     $zooms = new ZoomsModel();
                     $data = [
@@ -92,6 +104,8 @@ class Jadwal extends BaseController
                         'nama_penguji1' => $nama_penguji1,
                         'penguji2' => $pengujiprak2,
                         'nama_penguji2' => $nama_penguji2,
+                        'penguji3' => $pengujiprak3,
+                        'nama_penguji3' => $nama_penguji3,
                         'email_wawancara' => $emailwaw,
                         'id_wawancara' => $zoomwawancara,
                         'password_wawancara' => $passwawancara,
@@ -99,12 +113,26 @@ class Jadwal extends BaseController
                         'nama_pewawancara1' => $nama_pewawancara1,
                         'pewawancara2' => $pengujiwaw2,
                         'nama_pewawancara2' => $nama_pewawancara2,
+                        'pewawancara3' => $pengujiwaw3,
+                        'nama_pewawancara3' => $nama_pewawancara3,
                         'kode_satker' => $satker
                     ];
                     $where = array(
                         'nopeserta' => $nopeserta,
                     );
                     $zooms->set($data)->where($where)->update();
+
+                    $sesipraktik = $model->getRow('sesi', ['sesi' => $idsesiprak]);
+                    $sesiwawancara = $model->getRow('sesi', ['sesi ' => $idsesiwaw]);
+
+                    $data = [
+                        'jadwal_praktik' => date('Y-m-d H:i:s', strtotime($sesipraktik->tanggal . ' ' . $sesipraktik->pukul .':00')),
+                        'jadwal_wawancara' => date('Y-m-d H:i:s', strtotime( $sesiwawancara->tanggal . ' ' . $sesiwawancara->pukul .':00'))
+                    ];
+                    
+                    $peserta = new PesertaModel();  
+                    $peserta ->set($data)->where($where)->update();
+
                     // if ($countpeserta > 0) {
                     //     $data = [
                     //         'email_praktik' => $emailprak,

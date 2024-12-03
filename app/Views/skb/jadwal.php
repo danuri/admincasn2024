@@ -51,6 +51,7 @@ function colors($i)
       <div class="card-body">
         <ul>
           <li>Download Template File: <a href="<?php echo base_url();?>downloads/template-zooms.xlsx" class="text-danger">Download</a></li>
+          <li>Data list sesi mengacu pada file berikut: <a href="<?php echo base_url();?>downloads/list-sesi.xlsx" class="text-danger">Download</a></li>
           <li>Data yang dilampirkan bisa sebagaian (Dicicil) atau seluruhnya</li>
           <li>Jika ingin merubah, diupload ulang</li>
           <li>Pengisian Jadwal maksimal H-1 Jadwal Ujian</li>
@@ -100,7 +101,7 @@ function colors($i)
                   ID: <?php echo $row->id_praktik;?><br>
                   Passcode: <?php echo $row->password_praktik;?><br>
                 </td>
-                <td><?php echo $row->nama_penguji1;?><br><?php echo $row->nama_penguji2;?></td>
+                <td><?php echo $row->nama_penguji1;?><br><?php echo $row->nama_penguji2;?><br><?php echo $row->nama_penguji3;?></td>
               </tr>
             <?php } ?>
           </tbody>
@@ -141,7 +142,7 @@ function colors($i)
                     ID: <?php echo $row->id_wawancara;?><br>
                     Passcode: <?php echo $row->password_wawancara;?><br>
                   </td>
-                  <td><?php echo $row->nama_pewawancara1;?><br><?php echo $row->nama_pewawancara2;?></td>
+                  <td><?php echo $row->nama_pewawancara1;?><br><?php echo $row->nama_pewawancara2;?><br><?php echo $row->nama_pewawancara3;?></td>
                   <!-- <td><?php //echo $row->pewawancara1;?><br><?php echo $row->pewawancara2;?></td> -->
                 </tr>
               <?php } ?>

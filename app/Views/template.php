@@ -170,7 +170,7 @@
                             </a>
                         </li>
 
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link menu-link" href="<?= site_url('pelamar')?>">
                                 <i class="ri-todo-line"></i> <span data-key="t-widgets">Pelamar</span>
                             </a>
@@ -180,9 +180,9 @@
                             <a class="nav-link menu-link" href="<?= site_url('pelamar/pppkteknis')?>">
                                 <i class="ri-todo-line"></i> <span data-key="t-widgets">Pelamar PPPK Teknis</span>
                             </a>
-                        </li>
+                        </li> -->
 
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link menu-link" href="#sidebarSkb" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarTables">
                                 <i class="ri-layout-grid-line"></i> <span data-key="t-tables">SKB</span>
                             </a>
@@ -205,6 +205,32 @@
                                     </li>
                                 </ul>
                             </div>
+                        </li> -->
+
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="<?= site_url('skb/lokasi')?>">
+                                <i class="ri-user-location-line"></i> <span data-key="t-tables">Lokasi Ujian</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="<?= site_url('skb/peserta')?>">
+                                <i class="ri-file-user-line"></i> <span data-key="t-tables">Peserta</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="<?= site_url('skb/penguji')?>">
+                                <i class="ri-team-line"></i> <span data-key="t-tables">Penguji</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="<?= site_url('skb/jadwal')?>">
+                                <i class="ri-time-line"></i> <span data-key="t-tables">Jadwal Ujian</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="<?= site_url('skb/info')?>">
+                                <i class=" ri-information-line"></i> <span data-key="t-tables">Info Satker</span>
+                            </a>
                         </li>
                     </ul>
                 </div>

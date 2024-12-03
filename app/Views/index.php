@@ -44,6 +44,10 @@
                   <li>Login ke <a href="https://skbcpns.kemenag.go.id" target="_blank">https://skbcpns.kemenag.go.id</a></li>
                   <li>Username: tilok_<?= session('lokasi')?>, Password: <?= session('lokasi')?></li>
                 </ul>
+                <!-- <h4>Selamat datang Admin CASN</h4>
+                <li>Nip: <?= session('nip')?></li>
+                <li>Nama: <?= session('nama')?></li>
+                <li>Satuan Kerja: <?= session('lokasi_nama')?></li> -->
               </div>
             </div>
             <?php } ?>
