@@ -102,7 +102,7 @@ class Lokasi extends BaseController
         <input type="hidden" name="id_tilok" value="<?php echo $kode;?>">
         <div class="form-group">
             <label for="">Lokasi Ujian</label>
-            <select class="form-control" name="lokasi_kode">
+            <select class="form-control" name="lokasi_kode" disabled>
             <?php
             foreach ($lokasis as $row) {
                 $select = ($row->kode_tilok === $kode)?'selected':'';
