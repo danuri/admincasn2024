@@ -51,9 +51,9 @@
               <th>LOKASI PROVINSI</th>
               <th>LOKASI TITIK</th>
               <th>PRAKTIK KERJA (WIB)</th>
-              <th>RUANGAN</th>
+              <!-- <th>RUANGAN</th> -->
               <th>WAWANCARA (WIB)</th>
-              <th>RUANGAN</th>
+              <!-- <th>RUANGAN</th> -->
             </tr>
           </thead>
           <tbody>
@@ -71,9 +71,9 @@
                 <td><?= $row->lokasi_provinsi;?></td>
                 <td><?= $row->lokasi_titik;?></td>
                 <td><?= $row->jadwal_praktik;?></td>
-                <td><?= $row->ruangan_praktik;?></td>
+                <!-- <td><?= $row->ruangan_praktik;?></td> -->
                 <td><?= $row->jadwal_wawancara;?></td>
-                <td><?= $row->ruangan_wawancara;?></td>
+                <!-- <td><?= $row->ruangan_wawancara;?></td> -->
               </tr>
             <?php } ?>
           </tbody>
