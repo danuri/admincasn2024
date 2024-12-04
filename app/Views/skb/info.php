@@ -84,7 +84,7 @@
     <!-- <script src="<?= base_url();?>assets/js/plugins.js"></script> -->
 
     <!-- ckeditor -->
-    <script src="<?= base_url();?>xassets/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
+    <script src="<?= base_url();?>xassets/libs/ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
 
     <!-- quill js -->
     <script src="<?= base_url();?>xassets/libs/quill/quill.min.js"></script>
