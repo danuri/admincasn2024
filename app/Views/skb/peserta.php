@@ -33,7 +33,7 @@
         <?php endif; ?>
       <div class="card">
         <div class="card-header  justify-content-between align-items-center">
-          <h6 class="card-title">Sebaran Peserta per Lokasi</h6>
+          <h6 class="card-title">List Peserta per Lokasi</h6>
         </div>
         <div class="card-body table-responsive">
         <table class="table table-bordered table-striped datatable" id="datatable">
