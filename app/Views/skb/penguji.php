@@ -87,7 +87,7 @@
                             <input type="file" name="lampiran" id="lampiran<?php echo $row->id;?>" class="form-control" onchange="$('#form<?php echo $row->id;?>').submit()" />
                         </form>
                         </td>
-                        <?php if(strtotime('2024-12-05 00:00:00') > strtotime(date('Y-m-d H:i:s'))){ ?>
+                        <?php if(strtotime('2025-01-05 00:00:00') > strtotime(date('Y-m-d H:i:s'))){ ?>
                         <td><a href="javascript:;" onclick="detail(<?php echo $row->id;?>)">Edit</a> | <a href="<?php echo site_url('skb/penguji/delete/'.$row->id); ?>">Delete</a></td>
                     <?php }else{ ?>
                         <td></td>
