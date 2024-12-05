@@ -206,12 +206,13 @@
                                 </ul>
                             </div>
                         </li> -->
-
+                        <?php if(session()->get('is_kanwil') == '1'): ?>
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="<?= site_url('skb/lokasi')?>">
                                 <i class="ri-user-location-line"></i> <span data-key="t-tables">Lokasi Ujian</span>
                             </a>
                         </li>
+                        <?php endif; ?>
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="<?= site_url('skb/peserta')?>">
                                 <i class="ri-file-user-line"></i> <span data-key="t-tables">Peserta</span>
