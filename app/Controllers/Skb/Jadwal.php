@@ -187,4 +187,17 @@ class Jadwal extends BaseController
 
         return redirect()->to('skb/jadwal');        
     }
+
+    public function delete($id, $idpeserta) {
+        $zooms = new ZoomsModel();
+        $peserta = new PesertaModel();
+        $zooms->where('id', $id)->delete();
+        $data = [
+            'jadwal_praktik' => null,            
+            'jadwal_wawancara' => null
+        ];
+        $peserta->set($data)->where('nopeserta', $idpeserta)->update();
+        session()->setFlashdata('message', 'Jadwal telah dihapus');
+        return redirect()->to('skb/jadwal');
+    }
 }

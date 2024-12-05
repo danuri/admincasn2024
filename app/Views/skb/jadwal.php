@@ -87,6 +87,7 @@ function colors($i)
               <th>Akun Praktik</th>
               <th>Praktik Kerja</th>
               <th>Penguji</th>
+              <th>Opsi</th>
             </tr>
           </thead>
           <tbody>
@@ -102,6 +103,7 @@ function colors($i)
                   Passcode: <?php echo $row->password_praktik;?><br>
                 </td>
                 <td><?php echo $row->nama_penguji1;?><br><?php echo $row->nama_penguji2;?><br><?php echo $row->nama_penguji3;?></td>
+                <td><a href="<?php echo site_url('skb/jadwal/delete/'.$row->id.'/'.$row->nopeserta); ?>">Delete</a></td>
               </tr>
             <?php } ?>
           </tbody>
@@ -127,6 +129,7 @@ function colors($i)
                 <th>Akun Wawancara</th>
                 <th>Wawancara</th>
                 <th>Penguji</th>
+                <th>Opsi</th>
               </tr>
             </thead>
             <tbody>
@@ -144,6 +147,7 @@ function colors($i)
                   </td>
                   <td><?php echo $row->nama_pewawancara1;?><br><?php echo $row->nama_pewawancara2;?><br><?php echo $row->nama_pewawancara3;?></td>
                   <!-- <td><?php //echo $row->pewawancara1;?><br><?php echo $row->pewawancara2;?></td> -->
+                  <td><a href="<?php echo site_url('skb/jadwal/delete/'.$row->id.'/'.$row->nopeserta); ?>">Delete</a></td>
                 </tr>
               <?php } ?>
             </tbody>
