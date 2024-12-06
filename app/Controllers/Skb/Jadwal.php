@@ -163,10 +163,14 @@ class Jadwal extends BaseController
 
                         $sesipraktik = $model->getRow('sesi', ['sesi' => $idsesiprak]);
                         $sesiwawancara = $model->getRow('sesi', ['sesi ' => $idsesiwaw]);
-
+                        
+                        $tglpraktik = isset($sesipraktik->tanggal) ? $sesipraktik->tanggal : null;
+                        $tglwawancara = isset($sesiwawancara->tanggal) ? $sesiwawancara->tanggal : null;
+                        $pukulpraktik = isset($sesipraktik->pukul) ? $sesipraktik->pukul : null;
+                        $pukulwawancara = isset($sesiwawancara->pukul) ? $sesiwawancara->pukul : null;
                         $data = [
-                            'jadwal_praktik' => date('Y-m-d H:i:s', strtotime($sesipraktik->tanggal . ' ' . $sesipraktik->pukul .':00')),
-                            'jadwal_wawancara' => date('Y-m-d H:i:s', strtotime( $sesiwawancara->tanggal . ' ' . $sesiwawancara->pukul .':00'))
+                            'jadwal_praktik' => date('Y-m-d H:i:s', strtotime($tglpraktik . ' ' . $pukulpraktik .':00')),
+                            'jadwal_wawancara' => date('Y-m-d H:i:s', strtotime($tglwawancara . ' ' . $pukulwawancara .':00'))
                         ];
                         
                         $peserta = new PesertaModel();  
@@ -198,9 +202,13 @@ class Jadwal extends BaseController
 
                         $sesipraktik = $model->getRow('sesi', ['sesi' => $idsesiprak]);
                         $sesiwawancara = $model->getRow('sesi', ['sesi ' => $idsesiwaw]);
+                        $tglpraktik = isset($sesipraktik->tanggal) ? $sesipraktik->tanggal : null;
+                        $tglwawancara = isset($sesiwawancara->tanggal) ? $sesiwawancara->tanggal : null;
+                        $pukulpraktik = isset($sesipraktik->pukul) ? $sesipraktik->pukul : null;
+                        $pukulwawancara = isset($sesiwawancara->pukul) ? $sesiwawancara->pukul : null;
                         $data = [
-                            'jadwal_praktik' => date('Y-m-d H:i:s', strtotime($sesipraktik->tanggal . ' ' . $sesipraktik->pukul .':00')),
-                            'jadwal_wawancara' => date('Y-m-d H:i:s', strtotime( $sesiwawancara->tanggal . ' ' . $sesiwawancara->pukul .':00'))
+                            'jadwal_praktik' => date('Y-m-d H:i:s', strtotime($tglpraktik . ' ' . $pukulpraktik .':00')),
+                            'jadwal_wawancara' => date('Y-m-d H:i:s', strtotime( $tglwawancara . ' ' . $pukulwawancara .':00'))
                         ];
                         $where = array(
                             'nopeserta' => $nopeserta,
