@@ -195,6 +195,18 @@ class Jadwal extends BaseController
                             'nopeserta' => $nopeserta
                         ];
                         $zooms->insert($param);
+
+                        $sesipraktik = $model->getRow('sesi', ['sesi' => $idsesiprak]);
+                        $sesiwawancara = $model->getRow('sesi', ['sesi ' => $idsesiwaw]);
+                        $data = [
+                            'jadwal_praktik' => date('Y-m-d H:i:s', strtotime($sesipraktik->tanggal . ' ' . $sesipraktik->pukul .':00')),
+                            'jadwal_wawancara' => date('Y-m-d H:i:s', strtotime( $sesiwawancara->tanggal . ' ' . $sesiwawancara->pukul .':00'))
+                        ];
+                        $where = array(
+                            'nopeserta' => $nopeserta,
+                        );
+                        $peserta = new PesertaModel();  
+                        $peserta ->set($data)->where($where)->update();
                     }
                 }
                 $i++;
