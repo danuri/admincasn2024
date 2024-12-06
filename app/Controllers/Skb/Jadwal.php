@@ -75,7 +75,7 @@ class Jadwal extends BaseController
                     $namaprak1 = $model->getRow('penguji', ['nip' => preg_replace('/[\x{200B}-\x{200D}]/u', '', $pengujiprak1), 'type' => 'Praktik Kerja']);
                     $namaprak2 = $model->getRow('penguji', ['nip' => preg_replace('/[\x{200B}-\x{200D}]/u', '', $pengujiprak2), 'type' => 'Praktik Kerja']);
                     $namaprak3 = $model->getRow('penguji', ['nip' => preg_replace('/[\x{200B}-\x{200D}]/u', '', $pengujiprak3), 'type' => 'Praktik Kerja']);
-                    //$countpeserta = $model->getCountv2('zooms','nopeserta',$nopeserta);
+                    $countpeserta = $model->getCountv2('zooms','nopeserta',$nopeserta);
 
                     // Safely access nama property for namaprak1
                     $nama_penguji1 = isset($namaprak1) ? $namaprak1->nama : null; // or set a default value
@@ -96,86 +96,106 @@ class Jadwal extends BaseController
                     $nama_pewawancara3 = isset($namaw3) ? $namaw3->nama : null; // or set a default value
                                        
                     $zooms = new ZoomsModel();
-                    $data = [
-                        'email_praktik' => $emailprak,
-                        'id_praktik' => $zoompraktik,
-                        'password_praktik' => $passpraktik,
-                        'penguji1' => $pengujiprak1,
-                        'nama_penguji1' => $nama_penguji1,
-                        'penguji2' => $pengujiprak2,
-                        'nama_penguji2' => $nama_penguji2,
-                        'penguji3' => $pengujiprak3,
-                        'nama_penguji3' => $nama_penguji3,
-                        'email_wawancara' => $emailwaw,
-                        'id_wawancara' => $zoomwawancara,
-                        'password_wawancara' => $passwawancara,
-                        'pewawancara1' => $pengujiwaw1,
-                        'nama_pewawancara1' => $nama_pewawancara1,
-                        'pewawancara2' => $pengujiwaw2,
-                        'nama_pewawancara2' => $nama_pewawancara2,
-                        'pewawancara3' => $pengujiwaw3,
-                        'nama_pewawancara3' => $nama_pewawancara3,
-                        'kode_satker' => $satker
-                    ];
-                    $where = array(
-                        'nopeserta' => $nopeserta,
-                    );
-                    $zooms->set($data)->where($where)->update();
+                    // $data = [
+                    //     'email_praktik' => $emailprak,
+                    //     'id_praktik' => $zoompraktik,
+                    //     'password_praktik' => $passpraktik,
+                    //     'penguji1' => $pengujiprak1,
+                    //     'nama_penguji1' => $nama_penguji1,
+                    //     'penguji2' => $pengujiprak2,
+                    //     'nama_penguji2' => $nama_penguji2,
+                    //     'penguji3' => $pengujiprak3,
+                    //     'nama_penguji3' => $nama_penguji3,
+                    //     'email_wawancara' => $emailwaw,
+                    //     'id_wawancara' => $zoomwawancara,
+                    //     'password_wawancara' => $passwawancara,
+                    //     'pewawancara1' => $pengujiwaw1,
+                    //     'nama_pewawancara1' => $nama_pewawancara1,
+                    //     'pewawancara2' => $pengujiwaw2,
+                    //     'nama_pewawancara2' => $nama_pewawancara2,
+                    //     'pewawancara3' => $pengujiwaw3,
+                    //     'nama_pewawancara3' => $nama_pewawancara3,
+                    //     'kode_satker' => $satker
+                    // ];
+                    // $where = array(
+                    //     'nopeserta' => $nopeserta,
+                    // );
+                    // $zooms->set($data)->where($where)->update();
 
-                    $sesipraktik = $model->getRow('sesi', ['sesi' => $idsesiprak]);
-                    $sesiwawancara = $model->getRow('sesi', ['sesi ' => $idsesiwaw]);
+                    // $sesipraktik = $model->getRow('sesi', ['sesi' => $idsesiprak]);
+                    // $sesiwawancara = $model->getRow('sesi', ['sesi ' => $idsesiwaw]);
 
-                    $data = [
-                        'jadwal_praktik' => date('Y-m-d H:i:s', strtotime($sesipraktik->tanggal . ' ' . $sesipraktik->pukul .':00')),
-                        'jadwal_wawancara' => date('Y-m-d H:i:s', strtotime( $sesiwawancara->tanggal . ' ' . $sesiwawancara->pukul .':00'))
-                    ];
+                    // $data = [
+                    //     'jadwal_praktik' => date('Y-m-d H:i:s', strtotime($sesipraktik->tanggal . ' ' . $sesipraktik->pukul .':00')),
+                    //     'jadwal_wawancara' => date('Y-m-d H:i:s', strtotime( $sesiwawancara->tanggal . ' ' . $sesiwawancara->pukul .':00'))
+                    // ];
                     
-                    $peserta = new PesertaModel();  
-                    $peserta ->set($data)->where($where)->update();
+                    // $peserta = new PesertaModel();  
+                    // $peserta ->set($data)->where($where)->update();
 
-                    // if ($countpeserta > 0) {
-                    //     $data = [
-                    //         'email_praktik' => $emailprak,
-                    //         'id_praktik' => $zoompraktik,
-                    //         'password_praktik' => $passpraktik,
-                    //         'penguji1' => $pengujiprak1,
-                    //         'nama_penguji1' => $nama_penguji1,
-                    //         'penguji2' => $pengujiprak2,
-                    //         'nama_penguji2' => $nama_penguji2,
-                    //         'email_wawancara' => $emailwaw,
-                    //         'id_wawancara' => $zoomwawancara,
-                    //         'password_wawancara' => $passwawancara,
-                    //         'pewawancara1' => $pengujiwaw1,
-                    //         'nama_pewawancara1' => $nama_pewawancara1,
-                    //         'pewawancara2' => $pengujiwaw2,
-                    //         'nama_pewawancara2' => $nama_pewawancara2,
-                    //         'kode_satker' => $satker
-                    //     ];
-                    //     $where = array(
-                    //         'nopeserta' => $nopeserta,
-                    //     );
-                    //     $zooms->set($data)->where($where)->update();
-                    // } else {
-                    //     $param = [
-                    //         'email_praktik' => $emailprak,
-                    //         'id_praktik' => $zoompraktik,
-                    //         'password_praktik' => $passpraktik,
-                    //         'penguji1' => $pengujiprak1,
-                    //         'nama_penguji1' => $nama_penguji1,
-                    //         'penguji2' => $pengujiprak2,
-                    //         'nama_penguji2' => $nama_penguji2,
-                    //         'email_wawancara' => $emailwaw,
-                    //         'id_wawancara' => $zoomwawancara,
-                    //         'password_wawancara' => $passwawancara,
-                    //         'pewawancara1' => $pengujiwaw1,
-                    //         'nama_pewawancara1' => $nama_pewawancara1,
-                    //         'pewawancara2' => $pengujiwaw2,
-                    //         'nama_pewawancara2' => $nama_pewawancara2,
-                    //         'kode_satker' => $satker,
-                    //         'nopeserta' => $nopeserta
-                    //     ];
-                    //     $zooms->insert($param);
-                    // }
+                    if ($countpeserta > 0) {
+                        //$zooms = new ZoomsModel();
+                        $data = [
+                            'email_praktik' => $emailprak,
+                            'id_praktik' => $zoompraktik,
+                            'password_praktik' => $passpraktik,
+                            'penguji1' => $pengujiprak1,
+                            'nama_penguji1' => $nama_penguji1,
+                            'penguji2' => $pengujiprak2,
+                            'nama_penguji2' => $nama_penguji2,
+                            'penguji3' => $pengujiprak3,
+                            'nama_penguji3' => $nama_penguji3,
+                            'email_wawancara' => $emailwaw,
+                            'id_wawancara' => $zoomwawancara,
+                            'password_wawancara' => $passwawancara,
+                            'pewawancara1' => $pengujiwaw1,
+                            'nama_pewawancara1' => $nama_pewawancara1,
+                            'pewawancara2' => $pengujiwaw2,
+                            'nama_pewawancara2' => $nama_pewawancara2,
+                            'pewawancara3' => $pengujiwaw3,
+                            'nama_pewawancara3' => $nama_pewawancara3,
+                            'kode_satker' => $satker
+                        ];
+                        $where = array(
+                            'nopeserta' => $nopeserta,
+                        );
+                        $zooms->set($data)->where($where)->update();
+
+                        $sesipraktik = $model->getRow('sesi', ['sesi' => $idsesiprak]);
+                        $sesiwawancara = $model->getRow('sesi', ['sesi ' => $idsesiwaw]);
+
+                        $data = [
+                            'jadwal_praktik' => date('Y-m-d H:i:s', strtotime($sesipraktik->tanggal . ' ' . $sesipraktik->pukul .':00')),
+                            'jadwal_wawancara' => date('Y-m-d H:i:s', strtotime( $sesiwawancara->tanggal . ' ' . $sesiwawancara->pukul .':00'))
+                        ];
+                        
+                        $peserta = new PesertaModel();  
+                        $peserta ->set($data)->where($where)->update();
+                    } else {
+                        $param = [
+                            'email_praktik' => $emailprak,
+                            'id_praktik' => $zoompraktik,
+                            'password_praktik' => $passpraktik,
+                            'penguji1' => $pengujiprak1,
+                            'nama_penguji1' => $nama_penguji1,
+                            'penguji2' => $pengujiprak2,
+                            'nama_penguji2' => $nama_penguji2,
+                            'penguji3' => $pengujiprak3,
+                            'nama_penguji3' => $nama_penguji3,
+                            'email_wawancara' => $emailwaw,
+                            'id_wawancara' => $zoomwawancara,
+                            'password_wawancara' => $passwawancara,
+                            'pewawancara1' => $pengujiwaw1,
+                            'nama_pewawancara1' => $nama_pewawancara1,
+                            'pewawancara2' => $pengujiwaw2,
+                            'nama_pewawancara2' => $nama_pewawancara2,
+                            'pewawancara3' => $pengujiwaw3,
+                            'nama_pewawancara3' => $nama_pewawancara3,
+                            'kode_satker' => $satker,
+                            'nopeserta' => $nopeserta
+                        ];
+                        $zooms->insert($param);
+                    }
                 }
                 $i++;
             }
