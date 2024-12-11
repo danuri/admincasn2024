@@ -173,7 +173,7 @@
     //$('#detail').load('http://localhost:8001/drh/peserta/7602011011960006');
     //$('#idprint').val(nik);
     //$('#detailmodal').modal('show');
-    window.open("https://casn.kemenag.go.id/drh/peserta/"+nik.replace(/'/g, ""), "myWindow", 'width=800,height=600');
+    window.open("https://casn.kemenag.go.id/drh/peserta/"+nik, "myWindow", 'width=800,height=600');
   }
 
   function printit()

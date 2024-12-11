@@ -32,12 +32,13 @@ class Peserta extends BaseController
     {
       $db = \Config\Database::connect('default', false);
       $kodesatker = session('lokasi');
-      $builder = $db->table('peserta')->select('nik,nopeserta,nama,agama,no_hp,formasi,jenis,kelompok,skb_jadwal_hari,skb_jadwal_tanggal,lokasi_provinsi,lokasi_kabupaten,jadwal_praktik,jadwal_wawancara')
+      $builder = $db->table('peserta')
+                    ->select('nik,nopeserta,nama,agama,no_hp,formasi,jenis,kelompok,skb_jadwal_hari,skb_jadwal_tanggal,lokasi_provinsi,lokasi_kabupaten,jadwal_praktik,jadwal_wawancara')
                     ->where('kode_satker',$kodesatker);
 
       return DataTable::of($builder)
       ->edit('nik', function($row, $meta){
-        return '<a href="javascript:;" onclick="detail(\\'.$row->nik.'\')" class="text-danger">'.$row->nik.'</a>';
+        return '<a href="javascript:;" onclick="detail(\''.(string) $row->nik.'\')" class="text-danger">'.$row->nik.'</a>';
         })
       ->toJson(true);
     }
