@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bb69d02b2491ca72a3b765a4bc265a7f",
+    "content-hash": "1c5cdb2f90986c25170f468462f6ebb8",
     "packages": [
         {
             "name": "codeigniter4/framework",
@@ -142,6 +142,66 @@
                 "source": "https://github.com/firebase/php-jwt/tree/v6.10.2"
             },
             "time": "2024-11-24T11:22:49+00:00"
+        },
+        {
+            "name": "greenlion/php-sql-parser",
+            "version": "v4.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/greenlion/PHP-SQL-Parser.git",
+                "reference": "0cd49149efc5868db9c32d1a09558ea516892586"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/greenlion/PHP-SQL-Parser/zipball/0cd49149efc5868db9c32d1a09558ea516892586",
+                "reference": "0cd49149efc5868db9c32d1a09558ea516892586",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "analog/analog": "^1.0.6",
+                "phpunit/phpunit": "^9.5.13",
+                "squizlabs/php_codesniffer": "^2.8.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "PHPSQLParser\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Justin Swanhart",
+                    "email": "greenlion@gmail.com",
+                    "homepage": "http://code.google.com/u/greenlion@gmail.com/",
+                    "role": "Owner"
+                },
+                {
+                    "name": "André Rothe",
+                    "email": "phosco@gmx.de",
+                    "homepage": "https://www.phosco.info",
+                    "role": "Committer"
+                }
+            ],
+            "description": "A pure PHP SQL (non validating) parser w/ focus on MySQL dialect of SQL",
+            "homepage": "https://github.com/greenlion/PHP-SQL-Parser",
+            "keywords": [
+                "creator",
+                "mysql",
+                "parser",
+                "sql"
+            ],
+            "support": {
+                "issues": "https://github.com/greenlion/PHP-SQL-Parser/issues",
+                "source": "https://github.com/greenlion/PHP-SQL-Parser"
+            },
+            "time": "2024-12-02T12:14:07+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -467,6 +527,48 @@
                 }
             ],
             "time": "2024-07-18T11:15:46+00:00"
+        },
+        {
+            "name": "hermawan/codeigniter4-datatables",
+            "version": "v0.7.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hermawanramadhan/CodeIgniter4-DataTables.git",
+                "reference": "54057bf0facc171f4be0c490a257dfa46eb7e0d9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hermawanramadhan/CodeIgniter4-DataTables/zipball/54057bf0facc171f4be0c490a257dfa46eb7e0d9",
+                "reference": "54057bf0facc171f4be0c490a257dfa46eb7e0d9",
+                "shasum": ""
+            },
+            "require": {
+                "codeigniter4/framework": "^4",
+                "greenlion/php-sql-parser": ">=4.5",
+                "php": ">=7.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Hermawan\\DataTables\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Hermawan Ramadhan",
+                    "email": "hermawanramadhan@gmail.com"
+                }
+            ],
+            "description": "Serverside Datatables library for CodeIgniter4",
+            "support": {
+                "issues": "https://github.com/hermawanramadhan/CodeIgniter4-DataTables/issues",
+                "source": "https://github.com/hermawanramadhan/CodeIgniter4-DataTables/tree/v0.7.2"
+            },
+            "time": "2024-04-27T07:44:11+00:00"
         },
         {
             "name": "ilovepdf/ilovepdf-php",
@@ -3203,5 +3305,5 @@
         "php": "^8.1"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.3.0"
 }

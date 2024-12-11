@@ -42,6 +42,8 @@ $routes->group("skb", ["filter" => "auth"], function ($routes) {
     $routes->get('lokasi/get_detail/(:num)', 'Skb\Lokasi::get_detail/$1');
     $routes->post('lokasi/update', 'Skb\Lokasi::update');
     $routes->get('peserta', 'Skb\Peserta::index');
+    $routes->get('peserta/getdata', 'Skb\Peserta::getdata');
+    $routes->get('peserta/export', 'Skb\Peserta::export');
     $routes->get('peserta/detail/(:any)', 'Skb\Peserta::detail/$1');
     $routes->get('peserta/detail/(:any)', 'Skb\Peserta::detail/$1');
     $routes->get('penguji', 'Skb\Penguji::index');

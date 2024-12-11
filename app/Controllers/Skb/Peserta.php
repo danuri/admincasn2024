@@ -5,6 +5,10 @@ namespace App\Controllers\Skb;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\CrudModel;
+use App\Models\PesertaModel;
+use \Hermawan\DataTables\DataTable;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class Peserta extends BaseController
 {
@@ -13,7 +17,7 @@ class Peserta extends BaseController
         $kodesatker = session('lokasi');
         $crud = new CrudModel();
         $db = \Config\Database::connect('default', false);
-        $data['peserta'] = $crud->getResult('peserta', array('kode_satker'=>$kodesatker));
+        // $data['peserta'] = $crud->getResult('peserta', array('kode_satker'=>$kodesatker));
         $data['lokasi'] = $db->query("SELECT a.lokasi_titik, a.lokasi_kabupaten, a.lokasi_provinsi, b.tilok, b.alamat, b.maps, b.kontak_panitia, COUNT(a.nik) AS jumlah FROM peserta a
                                             LEFT JOIN lokasi_titik b ON b.lokasi_kode=a.lokasi_kode
                                             WHERE a.kode_satker='$kodesatker'
@@ -22,6 +26,20 @@ class Peserta extends BaseController
         // $data['jabatans'] = $this->crud->preport_jabatan($satker->kode_satker_bkn_new);
         //$this->load->tpl('skb/peserta', $data);
         return view('skb/peserta', $data);
+    }
+
+    public function getdata()
+    {
+      $db = \Config\Database::connect('default', false);
+      $kodesatker = session('lokasi');
+      $builder = $db->table('peserta')->select('nik,nopeserta,nama,agama,no_hp,formasi,jenis,kelompok,skb_jadwal,lokasi_provinsi,lokasi_kabupaten,jadwal_praktik,jadwal_wawancara')
+                    ->where('kode_satker',$kodesatker);
+
+      return DataTable::of($builder)
+      ->edit('nik', function($row, $meta){
+        return '<a href="javascript:;" onclick="detail(\\'.$row->nik.'\')" class="text-danger">'.$row->nik.'</a>';
+        })
+      ->toJson(true);
     }
 
     public function drh($nik) {
@@ -201,5 +219,34 @@ class Peserta extends BaseController
             </tbody>
             </table>
         <?php
+    }
+
+    public function export()
+    {
+      $kodesatker = session('lokasi');
+      $crud = new CrudModel();
+      $data = $crud->getResult('peserta', array('kode_satker'=>$kodesatker));
+
+      $spreadsheet = new Spreadsheet();
+      $sheet = $spreadsheet->getActiveSheet();
+
+      $sheet->setCellValue('A1', 'NIK');
+      $sheet->setCellValue('B1', 'NO PESERTA');
+      $sheet->setCellValue('C1', 'NAMA');
+
+      $i = 2;
+      foreach ($data as $row) {
+        $sheet->getCell('A'.$i)->setValueExplicit($row->nik,\PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+        $sheet->getCell('B'.$i)->setValueExplicit($row->nopeserta,\PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+        $sheet->setCellValue('C'.$i, $row->nama);
+
+        $i++;
+      }
+
+      $tanggal = date('YmdHis');
+      $writer = new Xlsx($spreadsheet);
+      header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+      header('Content-Disposition: attachment; filename="Data Peserta'.$tanggal.'.xlsx"');
+      $writer->save('php://output');
     }
 }

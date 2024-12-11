@@ -3,16 +3,19 @@
 <?= $this->section('content') ?>
 <div class="page-content">
 <div class="container-fluid">
-  <div class="row ">
-    <div class="col-12  align-self-center">
-      <div class="sub-header mt-3 py-3 align-self-center d-sm-flex w-100 rounded">
-        <div class="w-sm-100 mr-auto"><h4 class="mb-0">Peserta CPNS</h4></div>
+  <div class="row">
+      <div class="col-12">
+          <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+              <h4 class="mb-sm-0">Data Peserta</h4>
 
-        <div class="breadcrumb bg-transparent align-self-center m-0 p-0">
-          <!-- <a href="<?= site_url('admin/peserta/export/cpns');?>" target="_blank" class="btn btn-info"><i class="icon-arrow-left-circle"></i> Download XLS</a> -->
-        </div>
+              <div class="page-title-right">
+                  <ol class="breadcrumb m-0">
+                      <li class="breadcrumb-item"><a href="<?= site_url('skb/peserta/export');?>" target="_blank" class="btn btn-success"><i class="icon-arrow-left-circle"></i> Download</a></li>
+                  </ol>
+              </div>
+
+          </div>
       </div>
-    </div>
   </div>
   <div class="row">
     <div class="col-12 col-lg-12  mt-3">
@@ -36,7 +39,7 @@
           <h6 class="card-title">List Peserta per Lokasi</h6>
         </div>
         <div class="card-body table-responsive">
-        <table class="table table-bordered table-striped datatable" id="datatable">
+        <table class="table table-bordered table-striped" id="peserta">
           <thead>
             <tr>
               <th>NIK</th>
@@ -47,35 +50,14 @@
               <th>FORMASI</th>
               <th>JENIS</th>
               <th>KELOMPOK</th>
-              <th>BIDANG PELAKSANA</th>
+              <th>SKB CAT</th>
               <th>LOKASI PROVINSI</th>
               <th>LOKASI TITIK</th>
               <th>PRAKTIK KERJA (WIB)</th>
-              <!-- <th>RUANGAN</th> -->
               <th>WAWANCARA (WIB)</th>
-              <!-- <th>RUANGAN</th> -->
             </tr>
           </thead>
           <tbody>
-            <?php foreach ($peserta as $row) {?>
-              <tr>
-                <td><a href="javascript:;" onclick="detail('<?= $row->nik?>')" class="text-danger">'<?= $row->nik;?></a></td>
-                <td>'<?= $row->nopeserta;?></td>
-                <td><?= $row->nama;?></td>
-                <td><?= $row->agama;?></td>
-                <td><?= $row->no_hp.'/'.$row->no_hp2;?><br><br><a href=""></a></td>
-                <td><?= $row->formasi;?></td>
-                <td><?= $row->jenis;?></td>
-                <td><?= $row->kelompok;?></td>
-                <td><?= ($row->bidang)?$row->bidang:'-';?></td>
-                <td><?= $row->lokasi_provinsi;?></td>
-                <td><?= $row->lokasi_titik;?></td>
-                <td><?= $row->jadwal_praktik;?></td>
-                <!-- <td><?= $row->ruangan_praktik;?></td> -->
-                <td><?= $row->jadwal_wawancara;?></td>
-                <!-- <td><?= $row->ruangan_wawancara;?></td> -->
-              </tr>
-            <?php } ?>
           </tbody>
         </table>
 
@@ -161,15 +143,30 @@
 <script src="<?= base_url();?>assets/vendors/datatable/buttons/js/buttons.html5.min.js"></script>
 <script src="<?= base_url();?>assets/vendors/datatable/buttons/js/buttons.print.min.js"></script>
 <script type="text/javascript">
-//   $(document).ready(function() {
-//     $('.datatable').DataTable({
-//     dom: 'Bfrtip',
-//                 buttons: [
-//                     'copy', 'csv', 'excel', 'pdf', 'print'
-//                 ],
-//      responsive: true
-//  });
-//   });
+  $(document).ready(function() {
+    var table = $('#peserta').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: {
+          url: '<?= site_url('skb/peserta/getdata')?>'
+        },
+        columns: [
+            {data: 'nik'},
+            {data: 'nopeserta'},
+            {data: 'nama'},
+            {data: 'agama'},
+            {data: 'no_hp'},
+            {data: 'formasi'},
+            {data: 'jenis'},
+            {data: 'kelompok'},
+            {data: 'skb_jadwal'},
+            {data: 'lokasi_provinsi'},
+            {data: 'lokasi_kabupaten'},
+            {data: 'jadwal_praktik'},
+            {data: 'jadwal_wawancara'}
+        ]
+    });
+  });
 
   function detail(nik) {
     //$('#detail').load('<?= site_url('https://casn.kemenag.go.id/drh/peserta');?>/'+nik.replace(/'/g, ""));
