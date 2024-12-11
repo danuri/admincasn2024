@@ -32,7 +32,7 @@ class Peserta extends BaseController
     {
       $db = \Config\Database::connect('default', false);
       $kodesatker = session('lokasi');
-      $builder = $db->table('peserta')->select('nik,nopeserta,nama,agama,no_hp,formasi,jenis,kelompok,skb_jadwal,lokasi_provinsi,lokasi_kabupaten,jadwal_praktik,jadwal_wawancara')
+      $builder = $db->table('peserta')->select('nik,nopeserta,nama,agama,no_hp,formasi,jenis,kelompok,skb_jadwal_hari,skb_jadwal_tanggal,lokasi_provinsi,lokasi_kabupaten,jadwal_praktik,jadwal_wawancara')
                     ->where('kode_satker',$kodesatker);
 
       return DataTable::of($builder)
@@ -244,12 +244,13 @@ class Peserta extends BaseController
       $sheet->setCellValue('L1', 'LOKASI PROVINSI');
       $sheet->setCellValue('M1', 'LOKASI KOTA/KABUPATEN');
       $sheet->setCellValue('N1', 'SKB LOKASI');
-      $sheet->setCellValue('N1', 'SKB JADWAL');
-      $sheet->setCellValue('O1', 'PRAKTIK KERJA (WIB)');
-      $sheet->setCellValue('P1', 'WAWANCARA (WIB)');
-      $sheet->setCellValue('Q1', 'INSTAGRAM');
-      $sheet->setCellValue('R1', 'FACEBOOK');
-      $sheet->setCellValue('S1', 'TWITTER');
+      $sheet->setCellValue('O1', 'SKB JADWAL TANGGAL');
+      $sheet->setCellValue('P1', 'SKB JADWAL HARI');
+      $sheet->setCellValue('Q1', 'PRAKTIK KERJA (WIB)');
+      $sheet->setCellValue('R1', 'WAWANCARA (WIB)');
+      $sheet->setCellValue('S1', 'INSTAGRAM');
+      $sheet->setCellValue('T1', 'FACEBOOK');
+      $sheet->setCellValue('U1', 'TWITTER');
 
       $i = 2;
       foreach ($data as $row) {
@@ -267,12 +268,13 @@ class Peserta extends BaseController
         $sheet->setCellValue('L'.$i, $row->lokasi_provinsi);
         $sheet->setCellValue('M'.$i, $row->lokasi_kabupaten);
         $sheet->setCellValue('N'.$i, $row->skb_lokasi);
-        $sheet->setCellValue('N'.$i, $row->skb_jadwal);
-        $sheet->setCellValue('O'.$i, $row->jadwal_praktik);
-        $sheet->setCellValue('P'.$i, $row->jadwal_wawancara);
-        $sheet->setCellValue('Q'.$i, $row->instagram);
-        $sheet->setCellValue('R'.$i, $row->facebook);
-        $sheet->setCellValue('S'.$i, $row->twitter);
+        $sheet->setCellValue('O'.$i, $row->skb_jadwal_tanggal);
+        $sheet->setCellValue('P'.$i, $row->skb_jadwal_hari);
+        $sheet->setCellValue('Q'.$i, $row->jadwal_praktik);
+        $sheet->setCellValue('R'.$i, $row->jadwal_wawancara);
+        $sheet->setCellValue('S'.$i, $row->instagram);
+        $sheet->setCellValue('T'.$i, $row->facebook);
+        $sheet->setCellValue('U'.$i, $row->twitter);
         $i++;
       }
 

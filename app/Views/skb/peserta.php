@@ -159,7 +159,7 @@
             {data: 'formasi'},
             {data: 'jenis'},
             {data: 'kelompok'},
-            {data: 'skb_jadwal'},
+            {data: 'skb_jadwal_tanggal'},
             {data: 'lokasi_provinsi'},
             {data: 'lokasi_kabupaten'},
             {data: 'jadwal_praktik'},
