@@ -52,7 +52,7 @@
         </div>
         <div class="card mt-3">
             <div class="card-body">
-                <table class="table table-bordered table-striped table-hover datacpns">
+                <table class="table table-bordered table-striped table-hover datacpns dt-responsive">
                 <thead class="text-center">
                     <tr>
                     <th>NIP/NIK</th>

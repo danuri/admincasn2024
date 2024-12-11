@@ -233,13 +233,46 @@ class Peserta extends BaseController
       $sheet->setCellValue('A1', 'NIK');
       $sheet->setCellValue('B1', 'NO PESERTA');
       $sheet->setCellValue('C1', 'NAMA');
+      $sheet->setCellValue('D1', 'AGAMA');
+      $sheet->setCellValue('E1', 'TANGGAL LAHIR');
+      $sheet->setCellValue('F1', 'EMAIL');
+      $sheet->setCellValue('G1', 'NO. HP');
+      $sheet->setCellValue('H1', 'FORMASI');
+      $sheet->setCellValue('I1', 'PENDIDIKAN');
+      $sheet->setCellValue('J1', 'JENIS');
+      $sheet->setCellValue('K1', 'KELOMPOK');
+      $sheet->setCellValue('L1', 'LOKASI PROVINSI');
+      $sheet->setCellValue('M1', 'LOKASI KOTA/KABUPATEN');
+      $sheet->setCellValue('N1', 'SKB LOKASI');
+      $sheet->setCellValue('N1', 'SKB JADWAL');
+      $sheet->setCellValue('O1', 'PRAKTIK KERJA (WIB)');
+      $sheet->setCellValue('P1', 'WAWANCARA (WIB)');
+      $sheet->setCellValue('Q1', 'INSTAGRAM');
+      $sheet->setCellValue('R1', 'FACEBOOK');
+      $sheet->setCellValue('S1', 'TWITTER');
 
       $i = 2;
       foreach ($data as $row) {
         $sheet->getCell('A'.$i)->setValueExplicit($row->nik,\PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
         $sheet->getCell('B'.$i)->setValueExplicit($row->nopeserta,\PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
         $sheet->setCellValue('C'.$i, $row->nama);
-
+        $sheet->setCellValue('D'.$i, $row->agama);
+        $sheet->setCellValue('E'.$i, $row->tanggal_lahir);
+        $sheet->setCellValue('F'.$i, $row->email);
+        $sheet->setCellValue('G'.$i, $row->no_hp);
+        $sheet->setCellValue('H'.$i, $row->formasi);
+        $sheet->setCellValue('I'.$i, $row->pendidikan);
+        $sheet->setCellValue('J'.$i, $row->jenis);
+        $sheet->setCellValue('K'.$i, $row->kelompok);
+        $sheet->setCellValue('L'.$i, $row->lokasi_provinsi);
+        $sheet->setCellValue('M'.$i, $row->lokasi_kabupaten);
+        $sheet->setCellValue('N'.$i, $row->skb_lokasi);
+        $sheet->setCellValue('N'.$i, $row->skb_jadwal);
+        $sheet->setCellValue('O'.$i, $row->jadwal_praktik);
+        $sheet->setCellValue('P'.$i, $row->jadwal_wawancara);
+        $sheet->setCellValue('Q'.$i, $row->instagram);
+        $sheet->setCellValue('R'.$i, $row->facebook);
+        $sheet->setCellValue('S'.$i, $row->twitter);
         $i++;
       }
 
