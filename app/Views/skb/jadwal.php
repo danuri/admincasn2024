@@ -50,7 +50,7 @@ function colors($i)
     <div class="card">
       <div class="card-body">
         <ul>
-          <li>Download Template File: <a href="<?php echo base_url();?>downloads/template-zooms.xlsx" class="text-danger">Download</a></li>
+          <li>Download Template File: <a href="<?php echo base_url();?>downloads/template-jadwal-zooms.xlsx" class="text-danger">Download</a></li>
           <li>Data list sesi mengacu pada file berikut: <a href="<?php echo base_url();?>downloads/list-sesi.xlsx" class="text-danger">Download</a></li>
           <li>Data yang dilampirkan bisa sebagaian (Dicicil) atau seluruhnya</li>
           <li>Jika ingin merubah, diupload ulang</li>
