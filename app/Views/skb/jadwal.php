@@ -2,13 +2,13 @@
 
 <?= $this->section('content') ?>
 <style media="screen">
-<?php $i=0; foreach ($accounts as $acc) {?>
-  <?php echo '.'.strstr($acc->email_praktik, '@', true);?>{
-    background-color: <?php echo colors($i);?> !important;
+<?php //$i=0; foreach ($accounts as $acc) {?>
+  <?php //echo '.'.strstr($acc->email_praktik, '@', true);?>{
+    background-color: <?php //echo colors($i);?> !important;
   }
 <?php
-$i++;
-}
+//$i++;
+//}
 
 function colors($i)
 {
