@@ -51,6 +51,7 @@ function colors($i)
       <div class="card-body">
         <ul>
           <li>Download Template File: <a href="<?php echo base_url();?>downloads/template-jadwal-zooms.xlsx" class="text-danger">Download</a></li>
+          <li>Jika ingin mengubah salah satu sesi saja (Praktik Kerja atau Wawancara), bisa dikosongkan salah satunya, misal jika ingin update sesi Praktik Kerja, maka sesi Wawancara nya dikosongkan, begitupun sebaliknya</li>
           <li>Data list sesi mengacu pada file berikut: <a href="<?php echo base_url();?>downloads/list-sesi.xlsx" class="text-danger">Download</a></li>
           <li>Data yang dilampirkan bisa sebagaian (Dicicil) atau seluruhnya</li>
           <li>Jika ingin merubah, diupload ulang</li>
