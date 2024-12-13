@@ -46,6 +46,10 @@ class Jadwal extends BaseController
             $spreadsheet = $reader->load($inputFileName);
             $sheetData = (object) $spreadsheet->getActiveSheet()->toArray(null, true, true, true);
 
+            if(count($sheetData) < 15){
+                return redirect()->back()->with('message', 'Template tidak sesuai. Gunakan template terbaru.');
+            }
+
             $satker = session()->get('lokasi');
 
             $i = 0;
