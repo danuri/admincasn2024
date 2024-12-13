@@ -44,9 +44,10 @@ class Jadwal extends BaseController
 
             $reader = IOFactory::createReader($inputFileType);
             $spreadsheet = $reader->load($inputFileName);
-            $sheetData = (object) $spreadsheet->getActiveSheet()->toArray(null, true, true, true);
+            $sheetCol = $spreadsheet->getActiveSheet()->toArray(null, true, true, true);
+            $sheetData = (object) $sheetCol;
 
-            if(count($sheetData) < 15){
+            if(count($sheetCol) < 15){
                 return redirect()->back()->with('message', 'Template tidak sesuai. Gunakan template terbaru.');
             }
 
