@@ -48,7 +48,7 @@ class Jadwal extends BaseController
             $sheetData = (object) $sheetCol;
 
             if(count($sheetCol) < 15){
-                return redirect()->back()->with('message', 'Template tidak sesuai. Gunakan template terbaru.');
+                return redirect()->back()->with('message', 'Template tidak sesuai. Gunakan template terbaru. '.count($sheetCol));
             }
 
             $satker = session()->get('lokasi');
