@@ -110,8 +110,10 @@ class Jadwal extends BaseController
                     
                     // $peserta = new PesertaModel();  
                     // $peserta ->set($data)->where($where)->update();
-
-                    if ($countpeserta > 0) {
+                    
+                    if ($countpeserta > 0 && $nopeserta <> '' && $nopeserta <> null) {                        
+                                           
+                        //dd($countpeserta);
                         //$zooms = new ZoomsModel();
                         // $data = [
                         //     'email_praktik' => $emailprak,
@@ -136,7 +138,7 @@ class Jadwal extends BaseController
                         // ];
 
                         $data = [];
-                        $peserta = [];
+                        $datapeserta = [];
 
                         if($idsesiprak){
                             $namaprak1 = $model->getRow('penguji', ['nip' => preg_replace('/[\x{200B}-\x{200D}]/u', '', $pengujiprak1), 'type' => 'Praktik Kerja']);
@@ -144,17 +146,18 @@ class Jadwal extends BaseController
                             $namaprak3 = $model->getRow('penguji', ['nip' => preg_replace('/[\x{200B}-\x{200D}]/u', '', $pengujiprak3), 'type' => 'Praktik Kerja']);
 
                             // Safely access nama property for namaprak1
-                            $nama_penguji1 = isset($namaprak1) ? $namaprak1->nama : null; // or set a default value
+                            $nama_penguji1 = isset($namaprak1) ? $namaprak1->nama : ''; // or set a default value
 
                             // Safely access nama property for namaprak2
-                            $nama_penguji2 = isset($namaprak2) ? $namaprak2->nama : null; // or set a default value
+                            $nama_penguji2 = isset($namaprak2) ? $namaprak2->nama : ''; // or set a default value
 
                             // Safely access nama property for namaprak3
-                            $nama_penguji3 = isset($namaprak3) ? $namaprak3->nama : null; // or set a default value
+                            $nama_penguji3 = isset($namaprak3) ? $namaprak3->nama : ''; // or set a default value
 
                             $data['email_praktik'] = $emailprak;
                             $data['id_praktik'] = $zoompraktik;
                             $data['password_praktik'] = $passpraktik;
+                            $data['penguji1'] = $pengujiprak1;
                             $data['nama_penguji1'] = $nama_penguji1;
                             $data['penguji2'] = $pengujiprak2;
                             $data['nama_penguji2'] = $nama_penguji2;
@@ -165,7 +168,7 @@ class Jadwal extends BaseController
                             $sesipraktik = $model->getRow('sesi', ['sesi' => $idsesiprak]);
                             $tglpraktik = isset($sesipraktik->tanggal) ? $sesipraktik->tanggal : null;
                             $pukulpraktik = isset($sesipraktik->pukul) ? $sesipraktik->pukul : null;
-                            $peserta['jadwal_praktik'] = date('Y-m-d H:i:s', strtotime($tglpraktik . ' ' . $pukulpraktik .':00'));
+                            $datapeserta['jadwal_praktik'] = date('Y-m-d H:i:s', strtotime($tglpraktik . ' ' . $pukulpraktik .':00'));
                         }
 
                         if($idsesiwaw){
@@ -174,13 +177,13 @@ class Jadwal extends BaseController
                             $namaw3 = $model->getRow('penguji', ['nip' => preg_replace('/[\x{200B}-\x{200D}]/u', '', $pengujiwaw3), 'type' => 'Wawancara']);
 
                             // Safely access nama property for namaw1
-                            $nama_pewawancara1 = isset($namaw1) ? $namaw1->nama : null; // or set a default value
+                            $nama_pewawancara1 = isset($namaw1) ? $namaw1->nama : ''; // or set a default value
 
                             // Safely access nama property for namaw1
-                            $nama_pewawancara2 = isset($namaw2) ? $namaw2->nama : null; // or set a default value
+                            $nama_pewawancara2 = isset($namaw2) ? $namaw2->nama : ''; // or set a default value
 
                             // Safely access nama property for namaw1
-                            $nama_pewawancara3 = isset($namaw3) ? $namaw3->nama : null; // or set a default value
+                            $nama_pewawancara3 = isset($namaw3) ? $namaw3->nama : ''; // or set a default value
 
                             $data['email_wawancara'] = $emailwaw;
                             $data['id_wawancara'] = $zoomwawancara;
@@ -196,8 +199,9 @@ class Jadwal extends BaseController
                             $sesiwawancara = $model->getRow('sesi', ['sesi ' => $idsesiwaw]);
                             $tglwawancara = isset($sesiwawancara->tanggal) ? $sesiwawancara->tanggal : null;
                             $pukulwawancara = isset($sesiwawancara->pukul) ? $sesiwawancara->pukul : null;
-                            $peserta['jadwal_wawancara'] = date('Y-m-d H:i:s', strtotime($tglwawancara . ' ' . $pukulwawancara .':00'));
+                            $datapeserta['jadwal_wawancara'] = date('Y-m-d H:i:s', strtotime($tglwawancara . ' ' . $pukulwawancara .':00'));
                         }
+                        //dd($data);
 
                         $where = array(
                             'nopeserta' => $nopeserta,
@@ -219,8 +223,8 @@ class Jadwal extends BaseController
                         // ];
                         
                         $peserta = new PesertaModel();  
-                        $peserta ->set($peserta)->where($where)->update();
-                    } else {
+                        $peserta ->set($datapeserta)->where($where)->update();
+                    } elseif ($countpeserta == 0 && $nopeserta <> '' && $nopeserta <> null) {
                         // $param = [
                         //     'email_praktik' => $emailprak,
                         //     'id_praktik' => $zoompraktik,
@@ -243,6 +247,8 @@ class Jadwal extends BaseController
                         //     'kode_satker' => $satker,
                         //     'nopeserta' => $nopeserta
                         // ];
+                        $data = [];
+                        $datapeserta = [];
                         $data = [
                             'kode_satker' => $satker,
                             'nopeserta' => $nopeserta
@@ -254,17 +260,18 @@ class Jadwal extends BaseController
                             $namaprak3 = $model->getRow('penguji', ['nip' => preg_replace('/[\x{200B}-\x{200D}]/u', '', $pengujiprak3), 'type' => 'Praktik Kerja']);
 
                             // Safely access nama property for namaprak1
-                            $nama_penguji1 = isset($namaprak1) ? $namaprak1->nama : null; // or set a default value
+                            $nama_penguji1 = isset($namaprak1) ? $namaprak1->nama : ''; // or set a default value
 
                             // Safely access nama property for namaprak2
-                            $nama_penguji2 = isset($namaprak2) ? $namaprak2->nama : null; // or set a default value
+                            $nama_penguji2 = isset($namaprak2) ? $namaprak2->nama : ''; // or set a default value
 
                             // Safely access nama property for namaprak3
-                            $nama_penguji3 = isset($namaprak3) ? $namaprak3->nama : null; // or set a default value
+                            $nama_penguji3 = isset($namaprak3) ? $namaprak3->nama : ''; // or set a default value
 
                             $data['email_praktik'] = $emailprak;
                             $data['id_praktik'] = $zoompraktik;
                             $data['password_praktik'] = $passpraktik;
+                            $data['penguji1'] = $pengujiprak1;
                             $data['nama_penguji1'] = $nama_penguji1;
                             $data['penguji2'] = $pengujiprak2;
                             $data['nama_penguji2'] = $nama_penguji2;
@@ -275,7 +282,7 @@ class Jadwal extends BaseController
                             $sesipraktik = $model->getRow('sesi', ['sesi' => $idsesiprak]);
                             $tglpraktik = isset($sesipraktik->tanggal) ? $sesipraktik->tanggal : null;
                             $pukulpraktik = isset($sesipraktik->pukul) ? $sesipraktik->pukul : null;
-                            $peserta['jadwal_praktik'] = date('Y-m-d H:i:s', strtotime($tglpraktik . ' ' . $pukulpraktik .':00'));
+                            $datapeserta['jadwal_praktik'] = date('Y-m-d H:i:s', strtotime($tglpraktik . ' ' . $pukulpraktik .':00'));
                         }
 
                         if($idsesiwaw){
@@ -284,13 +291,13 @@ class Jadwal extends BaseController
                             $namaw3 = $model->getRow('penguji', ['nip' => preg_replace('/[\x{200B}-\x{200D}]/u', '', $pengujiwaw3), 'type' => 'Wawancara']);
 
                             // Safely access nama property for namaw1
-                            $nama_pewawancara1 = isset($namaw1) ? $namaw1->nama : null; // or set a default value
+                            $nama_pewawancara1 = isset($namaw1) ? $namaw1->nama : ''; // or set a default value
 
                             // Safely access nama property for namaw1
-                            $nama_pewawancara2 = isset($namaw2) ? $namaw2->nama : null; // or set a default value
+                            $nama_pewawancara2 = isset($namaw2) ? $namaw2->nama : ''; // or set a default value
 
                             // Safely access nama property for namaw1
-                            $nama_pewawancara3 = isset($namaw3) ? $namaw3->nama : null; // or set a default value
+                            $nama_pewawancara3 = isset($namaw3) ? $namaw3->nama : ''; // or set a default value
 
                             $data['email_wawancara'] = $emailwaw;
                             $data['id_wawancara'] = $zoomwawancara;
@@ -306,9 +313,9 @@ class Jadwal extends BaseController
                             $sesiwawancara = $model->getRow('sesi', ['sesi ' => $idsesiwaw]);
                             $tglwawancara = isset($sesiwawancara->tanggal) ? $sesiwawancara->tanggal : null;
                             $pukulwawancara = isset($sesiwawancara->pukul) ? $sesiwawancara->pukul : null;
-                            $peserta['jadwal_wawancara'] = date('Y-m-d H:i:s', strtotime($tglwawancara . ' ' . $pukulwawancara .':00'));
+                            $datapeserta['jadwal_wawancara'] = date('Y-m-d H:i:s', strtotime($tglwawancara . ' ' . $pukulwawancara .':00'));
                         }
-
+                        //dd($peserta);
                         $zooms->insert($data);
 
                         // $sesipraktik = $model->getRow('sesi', ['sesi' => $idsesiprak]);
@@ -325,7 +332,7 @@ class Jadwal extends BaseController
                             'nopeserta' => $nopeserta,
                         );
                         $peserta = new PesertaModel();  
-                        $peserta ->set($peserta)->where($where)->update();
+                        $peserta ->set($datapeserta)->where($where)->update();
                     }
                 }
                 $i++;
