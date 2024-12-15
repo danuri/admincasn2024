@@ -227,8 +227,8 @@ class Jadwal extends BaseController
                         //     'jadwal_wawancara' => date('Y-m-d H:i:s', strtotime($tglwawancara . ' ' . $pukulwawancara .':00'))
                         // ];
                         
-                        $peserta = new PesertaModel();  
-                        $peserta ->set($datapeserta)->where($where)->update();
+                        // $peserta = new PesertaModel();  
+                        // $peserta ->set($datapeserta)->where($where)->update();
                     } elseif ($countpeserta == 0 && $nopeserta <> '' && $nopeserta <> null) {
                         // $param = [
                         //     'email_praktik' => $emailprak,
