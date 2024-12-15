@@ -435,8 +435,7 @@ class CrudModel extends Model
       {
         $query = $this->db->query("SELECT
                                     peserta.lokasi_kode, 
-                                    peserta.lokasi_kabupaten, 
-                                    peserta.lokasi_provinsi, 
+                                    lokasi.lokasi_ujian, 
                                     COUNT(peserta.nik) AS jumlah, 
                                     lokasi.kode_satker
                                   FROM
