@@ -73,7 +73,7 @@
                     <td><?= $row->lokasi_ujian;?></td>
                     <td></td>
                     <td><a href="<?= site_url('skb/lokasi/index/'.$row->lokasi_kode);?>" class="text-danger"><?= $row->jumlah;?></a></td>
-                    <td><?= $row->jumlah_ruangan;?></td>
+                    <td></td>
                   </tr>
                   <?php
                   $db = \Config\Database::connect('default', false);
