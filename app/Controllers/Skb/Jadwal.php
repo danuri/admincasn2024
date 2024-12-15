@@ -173,7 +173,7 @@ class Jadwal extends BaseController
                             $sesipraktik = $model->getRow('sesi', ['sesi' => $idsesiprak]);
                             $tglpraktik = isset($sesipraktik->tanggal) ? $sesipraktik->tanggal : null;
                             $pukulpraktik = isset($sesipraktik->pukul) ? $sesipraktik->pukul : null;
-                            $datapeserta['jadwal_praktik'] = date('Y-m-d H:i:s', strtotime($tglpraktik . ' ' . $pukulpraktik .':00'));
+                            //  Close > $datapeserta['jadwal_praktik'] = date('Y-m-d H:i:s', strtotime($tglpraktik . ' ' . $pukulpraktik .':00'));
                         }
 
                         if($idsesiwaw){
@@ -204,7 +204,7 @@ class Jadwal extends BaseController
                             $sesiwawancara = $model->getRow('sesi', ['sesi ' => $idsesiwaw]);
                             $tglwawancara = isset($sesiwawancara->tanggal) ? $sesiwawancara->tanggal : null;
                             $pukulwawancara = isset($sesiwawancara->pukul) ? $sesiwawancara->pukul : null;
-                            $datapeserta['jadwal_wawancara'] = date('Y-m-d H:i:s', strtotime($tglwawancara . ' ' . $pukulwawancara .':00'));
+                            // Close > $datapeserta['jadwal_wawancara'] = date('Y-m-d H:i:s', strtotime($tglwawancara . ' ' . $pukulwawancara .':00'));
                         }
                         //dd($data);
 
