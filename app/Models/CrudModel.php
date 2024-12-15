@@ -410,7 +410,7 @@ class CrudModel extends Model
         return $query;
       }
 
-      public function getLokasiSatker($kodesatker)
+      public function getLokasiSatkerx($kodesatker)
       {
         // $query = $this->db->query("SELECT c.id_tilok, a.lokasi_kode,lokasi.lokasi_ujian, a.lokasi_titik, a.lokasi_kabupaten, a.lokasi_provinsi,lokasi.jumlah_ruangan,c.tilok,c.alamat,c.maps,c.kontak,c.kontak_panitia, COUNT(a.nik) AS jumlah FROM peserta a
         //                               INNER JOIN lokasi ON lokasi.kode_tilok=a.lokasi_kode
@@ -428,6 +428,28 @@ class CrudModel extends Model
                                       LEFT JOIN lokasi_titik c ON c.lokasi_kode=a.lokasi_kode
                                       WHERE lokasi.kode_satker='$kodesatker'
                                       GROUP BY a.lokasi_kode")->getResult();
+        return $query;
+      }
+
+      public function getLokasiSatker($kodesatker)
+      {
+        $query = $this->db->query("SELECT
+                                    peserta.lokasi_kode, 
+                                    peserta.lokasi_kabupaten, 
+                                    peserta.lokasi_provinsi, 
+                                    COUNT(peserta.nik) AS jumlah, 
+                                    lokasi.kode_satker
+                                  FROM
+                                    peserta
+                                    INNER JOIN
+                                    lokasi
+                                    ON 
+                                      peserta.lokasi_kode = lokasi.kode_tilok
+                                  WHERE lokasi.kode_satker='$kodesatker'
+                                  GROUP BY
+                                    peserta.lokasi_kode, 
+                                    peserta.lokasi_kabupaten, 
+                                    peserta.lokasi_provinsi")->getResult();
         return $query;
       }
 
