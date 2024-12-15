@@ -162,12 +162,12 @@ class Jadwal extends BaseController
                             $data['email_praktik'] = $emailprak;
                             $data['id_praktik'] = $zoompraktik;
                             $data['password_praktik'] = $passpraktik;
-                            $data['penguji1'] = $pengujiprak1;
-                            $data['nama_penguji1'] = $nama_penguji1;
-                            $data['penguji2'] = $pengujiprak2;
-                            $data['nama_penguji2'] = $nama_penguji2;
-                            $data['penguji3'] = $pengujiprak3;
-                            $data['nama_penguji3'] = $nama_penguji3;
+                            // $data['penguji1'] = $pengujiprak1;
+                            // $data['nama_penguji1'] = $nama_penguji1;
+                            // $data['penguji2'] = $pengujiprak2;
+                            // $data['nama_penguji2'] = $nama_penguji2;
+                            // $data['penguji3'] = $pengujiprak3;
+                            // $data['nama_penguji3'] = $nama_penguji3;
 
                             // Update Peserta
                             $sesipraktik = $model->getRow('sesi', ['sesi' => $idsesiprak]);
@@ -193,12 +193,12 @@ class Jadwal extends BaseController
                             $data['email_wawancara'] = $emailwaw;
                             $data['id_wawancara'] = $zoomwawancara;
                             $data['password_wawancara'] = $passwawancara;
-                            $data['pewawancara1'] = $pengujiwaw1;
-                            $data['nama_pewawancara1'] = $nama_pewawancara1;
-                            $data['pewawancara2'] = $pengujiwaw2;
-                            $data['nama_pewawancara2'] = $nama_pewawancara2;
-                            $data['pewawancara3'] = $pengujiwaw3;
-                            $data['nama_pewawancara3'] = $nama_pewawancara3;
+                            // $data['pewawancara1'] = $pengujiwaw1;
+                            // $data['nama_pewawancara1'] = $nama_pewawancara1;
+                            // $data['pewawancara2'] = $pengujiwaw2;
+                            // $data['nama_pewawancara2'] = $nama_pewawancara2;
+                            // $data['pewawancara3'] = $pengujiwaw3;
+                            // $data['nama_pewawancara3'] = $nama_pewawancara3;
 
                             // Update Peserta
                             $sesiwawancara = $model->getRow('sesi', ['sesi ' => $idsesiwaw]);
