@@ -46,7 +46,12 @@
                 <li>Untuk Penguji yang tidak Memiliki NIP, Gunakan NIK.</li>
                 <li>Untuk 1 Penguji yang menguji praktik kerja sekaligus wawancara diinput 2 kali.</li>
                 <li>Akses aplikasi Penguji <a href="http://skbcpns.kemenag.go.id/" target="_blank">http://skbcpns.kemenag.go.id/</a></li>
-                <li>Username lihat di tabel. Untuk password menggunakan NIP/NIK</li>
+                <!-- <li>Username lihat di tabel. Untuk password menggunakan NIP/NIK</li> -->
+                <li>Username lihat di tabel. Untuk password sebagai berikut:</li>
+                <ul>
+                    <li>Password untuk Praktik Kerja : <strong>praker.skbcpns@2024</strong></li>
+                    <li>Password untuk Wawancara : <strong>interview.skbcpns@2024</strong></li>
+                </ul>
             </ul>
             </div>
         </div>
