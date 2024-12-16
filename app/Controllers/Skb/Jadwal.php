@@ -162,12 +162,12 @@ class Jadwal extends BaseController
                             $data['email_praktik'] = $emailprak;
                             $data['id_praktik'] = $zoompraktik;
                             $data['password_praktik'] = $passpraktik;
-                            // $data['penguji1'] = $pengujiprak1;
-                            // $data['nama_penguji1'] = $nama_penguji1;
-                            // $data['penguji2'] = $pengujiprak2;
-                            // $data['nama_penguji2'] = $nama_penguji2;
-                            // $data['penguji3'] = $pengujiprak3;
-                            // $data['nama_penguji3'] = $nama_penguji3;
+                            $data['penguji1'] = $pengujiprak1;
+                            $data['nama_penguji1'] = $nama_penguji1;
+                            $data['penguji2'] = $pengujiprak2;
+                            $data['nama_penguji2'] = $nama_penguji2;
+                            $data['penguji3'] = $pengujiprak3;
+                            $data['nama_penguji3'] = $nama_penguji3;
 
                             // Update Peserta
                             $sesipraktik = $model->getRow('sesi', ['sesi' => $idsesiprak]);
