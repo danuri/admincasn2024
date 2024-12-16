@@ -58,7 +58,10 @@ function colors($i)
           <li>Pengisian Jadwal maksimal H-1 Jadwal Ujian</li>
         </ul>
         <ul class="list-unstyled card-option">
-          <li><button type="button" class="btn btn-success float-right" onclick="$('#filejadwal').click()"><i class="zmdi zmdi-plus"></i>Import Jadwal</button></li>
+          <li>
+            <button type="button" class="btn btn-success float-right" onclick="$('#filejadwal').click()"><i class="zmdi zmdi-plus"></i>Import Jadwal</button>
+            <a href="<?= site_url('skb/jadwal/export');?>" target="_blank" class="btn btn-success"><i class="icon-arrow-left-circle"></i> Download</a>
+          </li>
         </ul>
           <form class="" action="<?php echo site_url('skb/jadwal/importjadwal');?>" method="post" enctype="multipart/form-data" id="importjadwal" style="display:none;">
             <input type="file" name="lampiran" id="filejadwal" class="form-control" onchange="$('#importjadwal').submit()" />

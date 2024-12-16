@@ -56,6 +56,7 @@ $routes->group("skb", ["filter" => "auth"], function ($routes) {
     $routes->get('jadwal', 'Skb\Jadwal::index');
     $routes->post('jadwal/importjadwal', 'Skb\Jadwal::importjadwal');
     $routes->get('jadwal/delete/(:any)/(:any)', 'Skb\Jadwal::delete/$1/$2');
+    $routes->get('jadwal/export', 'Skb\Jadwal::export');
     $routes->get('info', 'Skb\Info::index');
     $routes->post('info/update', 'Skb\Info::update');
 });

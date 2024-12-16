@@ -9,6 +9,8 @@ use App\Models\CrudModel;
 use App\Models\ZoomsModel;
 use App\Models\PesertaModel;
 use DateTime;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class Jadwal extends BaseController
 {
@@ -362,5 +364,65 @@ class Jadwal extends BaseController
         $peserta->set($data)->where('nopeserta', $idpeserta)->update();
         session()->setFlashdata('message', 'Jadwal telah dihapus');
         return redirect()->to('skb/jadwal');
+    }
+
+    public function export()
+    {
+      $kodesatker = session('lokasi');
+      $crud = new CrudModel();
+      $data = $crud->getResult('zooms', array('kode_satker'=>$kodesatker));
+
+      $spreadsheet = new Spreadsheet();
+      $sheet = $spreadsheet->getActiveSheet();
+
+      $sheet->setCellValue('A1', 'NO PESERTA');
+      $sheet->setCellValue('B1', 'EMAIL ZOOM PRAKTIK KERJA');
+      $sheet->setCellValue('C1', 'ID ZOOM PRAKTIK KERJA');
+      $sheet->setCellValue('D1', 'PASSWORD ZOOM PRAKTIK KERJA');
+      $sheet->setCellValue('E1', 'EMAIL ZOOM WAWANCARA');
+      $sheet->setCellValue('F1', 'ID ZOOM WAWANCARA');
+      $sheet->setCellValue('G1', 'PASSWORD ZOOM WAWANCARA');
+      $sheet->setCellValue('H1', 'NIP PENGUJI PRAKTIK KERJA 1');
+      $sheet->setCellValue('I1', 'NAMA PENGUJI PRAKTIK KERJA 1');
+      $sheet->setCellValue('J1', 'NIP PENGUJI PRAKTIK KERJA 2');
+      $sheet->setCellValue('K1', 'NAMA PENGUJI PRAKTIK KERJA 2');
+      $sheet->setCellValue('L1', 'NIP PENGUJI PRAKTIK KERJA 3');
+      $sheet->setCellValue('M1', 'NAMA PENGUJI PRAKTIK KERJA 3');
+      $sheet->setCellValue('N1', 'NIP PENGUJI WAWANCARA 1');
+      $sheet->setCellValue('O1', 'NAMA PENGUJI WAWANCARA 1');
+      $sheet->setCellValue('P1', 'NIP PENGUJI WAWANCARA 2');
+      $sheet->setCellValue('Q1', 'NAMA PENGUJI WAWANCARA 2');
+      $sheet->setCellValue('R1', 'NIP PENGUJI WAWANCARA 3');
+      $sheet->setCellValue('S1', 'NAMA PENGUJI WAWANCARA 3');
+
+      $i = 2;
+      foreach ($data as $row) {
+        $sheet->getCell('A'.$i)->setValueExplicit($row->nopeserta,\PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+        $sheet->setCellValue('B'.$i, $row->email_praktik);
+        $sheet->getCell('C'.$i)->setValueExplicit($row->id_praktik,\PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+        $sheet->setCellValue('D'.$i, $row->password_praktik);
+        $sheet->setCellValue('E'.$i, $row->email_wawancara);
+        $sheet->getCell('F'.$i)->setValueExplicit($row->id_wawancara,\PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+        $sheet->setCellValue('G'.$i, $row->password_wawancara);
+        $sheet->getCell('H'.$i)->setValueExplicit($row->penguji1,\PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+        $sheet->setCellValue('I'.$i, $row->nama_penguji1);
+        $sheet->getCell('J'.$i)->setValueExplicit($row->penguji2,\PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+        $sheet->setCellValue('K'.$i, $row->nama_penguji2);
+        $sheet->getCell('L'.$i)->setValueExplicit($row->penguji3,\PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+        $sheet->setCellValue('M'.$i, $row->nama_penguji3);
+        $sheet->getCell('N'.$i)->setValueExplicit($row->pewawancara1,\PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+        $sheet->setCellValue('O'.$i, $row->nama_pewawancara1);
+        $sheet->getCell('P'.$i)->setValueExplicit($row->pewawancara2,\PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+        $sheet->setCellValue('Q'.$i, $row->nama_pewawancara2);
+        $sheet->getCell('R'.$i)->setValueExplicit($row->pewawancara3,\PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+        $sheet->setCellValue('S'.$i, $row->nama_pewawancara3);
+        $i++;
+      }
+
+      $tanggal = date('YmdHis');
+      $writer = new Xlsx($spreadsheet);
+      header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+      header('Content-Disposition: attachment; filename="Data Jadwal'.$tanggal.'.xlsx"');
+      $writer->save('php://output');
     }
 }
