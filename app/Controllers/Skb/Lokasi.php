@@ -8,6 +8,8 @@ use App\Models\CrudModel;
 use App\Models\TilokModel;
 use App\Models\LokasiModel;
 use App\Models\PesertaModel;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class Lokasi extends BaseController
 {
@@ -337,6 +339,42 @@ class Lokasi extends BaseController
         }
         //dd($data);  
         return view('skb/lokasi', $data);
+    }
+
+    public function export()
+    {
+      $kodesatker = session('lokasi');
+      $crud = new CrudModel();
+      $data = $crud->getResult('lokasi_titik', array('kode_satker'=>$kodesatker));
+
+      $spreadsheet = new Spreadsheet();
+      $sheet = $spreadsheet->getActiveSheet();
+
+      $sheet->setCellValue('A1', 'TITIK LOKASI');
+      $sheet->setCellValue('B1', 'ALAMAT');
+      $sheet->setCellValue('C1', 'MAPS');
+      $sheet->setCellValue('D1', 'KONTAK UNTUK PESERTA');
+      $sheet->setCellValue('E1', 'KONTAK UNTUK PANITIA');
+      $sheet->setCellValue('F1', 'USERNAME SKBCPNS');
+      $sheet->setCellValue('G1', 'PASSWORD SKBCPNS');
+
+      $i = 2;
+      foreach ($data as $row) {
+        $sheet->setCellValue('A'.$i, $row->tilok);
+        $sheet->setCellValue('B'.$i, $row->alamat);
+        $sheet->setCellValue('C'.$i, $row->maps);
+        $sheet->getCell('D'.$i)->setValueExplicit($row->kontak,\PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+        $sheet->getCell('E'.$i)->setValueExplicit($row->kontak_panitia,\PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+        $sheet->setCellValue('F'.$i, 'tilok_0'.$row->id_tilok);
+        $sheet->setCellValue('G'.$i, 'tilok.skbcpns@2024');
+        $i++;
+      }
+
+      $tanggal = date('YmdHis');
+      $writer = new Xlsx($spreadsheet);
+      header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+      header('Content-Disposition: attachment; filename="Data_Tilok_'.$tanggal.'.xlsx"');
+      $writer->save('php://output');
     }
 
 }

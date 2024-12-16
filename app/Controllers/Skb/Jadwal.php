@@ -422,7 +422,7 @@ class Jadwal extends BaseController
       $tanggal = date('YmdHis');
       $writer = new Xlsx($spreadsheet);
       header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-      header('Content-Disposition: attachment; filename="Data Jadwal'.$tanggal.'.xlsx"');
+      header('Content-Disposition: attachment; filename="Data_Jadwal_'.$tanggal.'.xlsx"');
       $writer->save('php://output');
     }
 }

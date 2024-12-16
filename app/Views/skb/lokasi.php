@@ -51,9 +51,14 @@
           <div class="card-header">
               <h5>Lokasi Ujian</h5>
               <span class="text-muted">Panitia Lokasi Ujian diharuskan menyediakan ruangan sesuai dengan Jumlah Ruangan yang tertera di masing-masing titik lokasi.</span>
+              <br>
+              <span class="text-muted">Untuk akses <strong>https://skbcpns.kemenag.go.id</strong> menggunakan password <strong>tilok.skbcpns@2024</strong>, untuk Username silahkan dilihat yang tertera di masing-masing titik lokasi.</span>
               <div class="card-header-right">
                   <ul class="list-unstyled card-option">
-                      <li><button type="button" class="btn btn-success float-right mt-2" onclick="addtilok()"><i class="zmdi zmdi-plus"></i>Tambah Titik Lokasi</button></li>
+                      <li>
+                        <button type="button" class="btn btn-success float-right mt-2" onclick="addtilok()"><i class="zmdi zmdi-plus"></i>Tambah Titik Lokasi</button>
+                        <a href="<?= site_url('skb/lokasi/export');?>" target="_blank" class="btn btn-success float-right mt-2"><i class="icon-arrow-left-circle"></i>Download</a>
+                      </li>
                   </ul>
               </div>
           </div>
@@ -81,7 +86,7 @@
                   foreach ($tiloks as $tilok) {?>
                     <tr>
                       <td colspan="4">
-                        <b><?php echo $tilok->tilok;?></b><br><br><b><?php echo $tilok->alamat;?></b><br><a href="<?php echo $tilok->maps;?>" target="_blank"><?php echo $tilok->maps;?></a><br><?php echo $tilok->kontak;?> | <?php echo $tilok->kontak_panitia;?>
+                        <b><?php echo $tilok->tilok;?></b><br><br><b><?php echo $tilok->alamat;?></b><br><a href="<?php echo $tilok->maps;?>" target="_blank"><?php echo $tilok->maps;?></a><br><?php echo $tilok->kontak;?> | <?php echo $tilok->kontak_panitia;?><br><?php echo "Username : tilok_0".$tilok->id_tilok;?>
                         <br><br><a href="javascript:;" onclick="detail('<?php echo $tilok->id_tilok;?>')">Edit</a> | <a href="<?php echo site_url('skb/lokasi/delete/'.$tilok->id_tilok);?>" onclick="return confirm('Titik Lokasi akan dihapus?')" class="text-red">Delete</a>
                         </td>
                     </tr>

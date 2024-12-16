@@ -42,7 +42,8 @@
                 <h4>Informasi Pelaksanaan SKB</h4>
                 <ul>
                   <li>Login ke <a href="https://skbcpns.kemenag.go.id" target="_blank">https://skbcpns.kemenag.go.id</a></li>
-                  <li>Username: tilok_<?= session('lokasi')?>, Password: <?= session('lokasi')?></li>
+                  <!-- <li>Username: tilok_<?= session('lokasi')?>, Password: <?= session('lokasi')?></li> -->
+                  <li>Username: NIP Admin Satker, Password: <strong>satker.skbcpns@2024</strong></li>
                 </ul>
                 <!-- <h4>Selamat datang Admin CASN</h4>
                 <li>Nip: <?= session('nip')?></li>

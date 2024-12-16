@@ -40,6 +40,7 @@ $routes->group("skb", ["filter" => "auth"], function ($routes) {
     $routes->post('lokasi/add', 'Skb\Lokasi::add');
     $routes->get('lokasi/delete/(:num)', 'Skb\Lokasi::delete/$1');
     $routes->get('lokasi/get_detail/(:num)', 'Skb\Lokasi::get_detail/$1');
+    $routes->get('lokasi/export', 'Skb\Lokasi::export');
     $routes->post('lokasi/update', 'Skb\Lokasi::update');
     $routes->get('peserta', 'Skb\Peserta::index');
     $routes->get('peserta/getdata', 'Skb\Peserta::getdata');

@@ -282,7 +282,7 @@ class Peserta extends BaseController
       $tanggal = date('YmdHis');
       $writer = new Xlsx($spreadsheet);
       header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-      header('Content-Disposition: attachment; filename="Data Peserta'.$tanggal.'.xlsx"');
+      header('Content-Disposition: attachment; filename="Data_Peserta_'.$tanggal.'.xlsx"');
       $writer->save('php://output');
     }
 }
