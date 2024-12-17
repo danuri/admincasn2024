@@ -86,7 +86,7 @@
                   foreach ($tiloks as $tilok) {?>
                     <tr>
                       <td colspan="4">
-                        <b><?php echo $tilok->tilok;?></b><br><br><b><?php echo $tilok->alamat;?></b><br><a href="<?php echo $tilok->maps;?>" target="_blank"><?php echo $tilok->maps;?></a><br><?php echo $tilok->kontak;?> | <?php echo $tilok->kontak_panitia;?><br><?php echo "Username : tilok_0".$tilok->id_tilok;?>
+                        <b><?php echo $tilok->tilok;?></b><br><br><b><?php echo $tilok->alamat;?></b><br><a href="<?php echo $tilok->maps;?>" target="_blank"><?php echo $tilok->maps;?></a><br><?php echo $tilok->kontak;?> | <?php echo $tilok->kontak_panitia;?><br><?php echo "Username : tilok_0".(strlen($tilok->id_tilok) == 2)?'0'.$tilok->id_tilok:$tilok->id_tilok;?>
                         <br><br><a href="javascript:;" onclick="detail('<?php echo $tilok->id_tilok;?>')">Edit</a> | <a href="<?php echo site_url('skb/lokasi/delete/'.$tilok->id_tilok);?>" onclick="return confirm('Titik Lokasi akan dihapus?')" class="text-red">Delete</a>
                         </td>
                     </tr>
