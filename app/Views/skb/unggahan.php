@@ -47,7 +47,7 @@
                         <td><?= $row->kode_satker?></td>
                         <td><?= $row->satker?></td>
                         <?php if($row->attachment){ ?>
-                        <td><a href="https://ropeg.kemenag.go.id:9000/casn2024/dokumen/<?= $row->attachment;?>" target="_blank" class="btn btn-sm btn-primary">Lihat</a></td>
+                        <td><a href="https://dokupak.kemenag.go.id:9000/casn2024/dokumen/<?= $row->attachment;?>" target="_blank" class="btn btn-sm btn-primary">Lihat</a></td>
                         <td><?= $row->created_at?></td>
                         <td><a href="<?= site_url('skb/dokumen/deleteunggahan/'.$row->idattachment)?>" class="btn btn-sm btn-danger" onclick="return confirm('Dokumen akan dihapus?')">Delete</a></td>
                       <?php }else{ ?>
