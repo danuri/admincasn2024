@@ -60,6 +60,12 @@ $routes->group("skb", ["filter" => "auth"], function ($routes) {
     $routes->get('jadwal/export', 'Skb\Jadwal::export');
     $routes->get('info', 'Skb\Info::index');
     $routes->post('info/update', 'Skb\Info::update');
+    $routes->get('dokumen', 'Skb\Dokumen::index');
+    $routes->get('dokumen/unggahan/(:num)', 'Skb\Dokumen::unggahan/$1');
+    $routes->post('dokumen/saveunggahan', 'Skb\Dokumen::saveunggahan');
+    $routes->get('dokumen/deleteunggahan/(:num)', 'Skb\Dokumen::deleteunggahan/$1');
+    $routes->post('dokumen/save', 'Skb\Dokumen::save');
+    $routes->get('dokumen/delete/(:num)', 'Skb\Dokumen::delete/$1');
 });
 
 $routes->group("downloads", ["filter" => "auth"], function ($routes) {

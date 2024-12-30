@@ -48,20 +48,22 @@ class DokumenModel extends Model
       $this->db = \Config\Database::connect('default', false);
     }
 
-    public function unggahan($id)
+    public function unggahan($id, $kode_satker)
     {
       $query = $this->db->query("SELECT
-                                	lokasi_formasi.kode_bkn,
-                                	lokasi_formasi.nama,
+                                	satker.kode_satker,
+                                	satker.satker,
                                 	tr_dokumen.attachment,
                                 	tr_dokumen.id AS idattachment,
                                 	tr_dokumen.created_at
                                 FROM
-                                	lokasi_formasi
+                                	satker
                                 	LEFT JOIN
                                 	tr_dokumen
                                 	ON
-                                		lokasi_formasi.kode_bkn = tr_dokumen.kode_lokasi AND tr_dokumen.id_dokumen = '$id'");
+                                		satker.kode_satker = tr_dokumen.kode_lokasi AND tr_dokumen.id_dokumen = '$id'
+                                WHERE satker.kode_satker = '$kode_satker'
+                                ");
       $result = $query->getResult();
 
       return $result;

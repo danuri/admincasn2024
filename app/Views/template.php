@@ -230,7 +230,12 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="<?= site_url('skb/info')?>">
-                                <i class=" ri-information-line"></i> <span data-key="t-tables">Info Satker</span>
+                                <i class="ri-information-line"></i> <span data-key="t-tables">Info Satker</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="<?= site_url('skb/dokumen')?>">
+                                <i class="ri-file-text-line"></i> <span data-key="t-tables">Upload Dokumen</span>
                             </a>
                         </li>
                     </ul>
