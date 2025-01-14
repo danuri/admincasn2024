@@ -21,7 +21,10 @@ class Peserta extends BaseController
         $data['lokasi'] = $db->query("SELECT a.lokasi_titik, a.lokasi_kabupaten, a.lokasi_provinsi, b.tilok, b.alamat, b.maps, b.kontak_panitia, COUNT(a.nik) AS jumlah FROM peserta a
                                             LEFT JOIN lokasi_titik b ON b.lokasi_kode=a.lokasi_kode
                                             WHERE a.kode_satker='$kodesatker'
-                                            GROUP BY a.lokasi_titik,a.lokasi_kabupaten, a.lokasi_provinsi")->getResult();
+                                            GROUP BY a.lokasi_titik,a.lokasi_kabupaten, a.lokasi_provinsi, b.tilok, 
+                                            b.alamat, 
+                                            b.maps, 
+                                            b.kontak_panitia")->getResult();
 
         // $data['jabatans'] = $this->crud->preport_jabatan($satker->kode_satker_bkn_new);
         //$this->load->tpl('skb/peserta', $data);
