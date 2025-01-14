@@ -255,6 +255,7 @@ class Peserta extends BaseController
       $sheet->setCellValue('S1', 'INSTAGRAM');
       $sheet->setCellValue('T1', 'FACEBOOK');
       $sheet->setCellValue('U1', 'TWITTER');
+      $sheet->setCellValue('V1', 'HASIL AKHIR');
 
       $i = 2;
       foreach ($data as $row) {
@@ -279,6 +280,7 @@ class Peserta extends BaseController
         $sheet->setCellValue('S'.$i, $row->instagram);
         $sheet->setCellValue('T'.$i, $row->facebook);
         $sheet->setCellValue('U'.$i, $row->twitter);
+        $sheet->setCellValue('V'.$i, $row->status_akhir);
         $i++;
       }
 
