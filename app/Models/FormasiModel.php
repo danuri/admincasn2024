@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class PesertaModel extends Model
+class FormasiModel extends Model
 {
-    protected $table            = 'peserta';
+    protected $table            = 'formasi';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_tilok','tilok','jadwal_praktik','ruangan_praktik','jadwal_wawancara','ruangan_wawancara'];
+    protected $allowedFields    = [];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

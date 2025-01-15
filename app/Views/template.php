@@ -47,7 +47,7 @@
                             <img src="<?= base_url()?>assets/images/logo-sm.png" alt="" height="22">
                         </span>
                         <span class="logo-lg">
-                            <img src="https://d2mj1s7x3czrue.cloudfront.net/hrms/assets/images/logo-hrms.png" alt="" height="40"> Admin CASN 2024
+                            <img src="<?= base_url()?>assets/images/rosdm.png" alt="" height="40"
                         </span>
                     </a>
 
@@ -56,7 +56,7 @@
                             <img src="<?= base_url()?>assets/images/logo-sm.png" alt="" height="22">
                         </span>
                         <span class="logo-lg">
-                            <img src="https://d2mj1s7x3czrue.cloudfront.net/hrms/assets/images/logo-hrms.png" alt="" height="22">
+                            <img src="<?= base_url()?>assets/images/rosdm.png" alt="" height="22">
                         </span>
                     </a>
                 </div>
@@ -139,7 +139,7 @@
                         <img src="<?= base_url()?>assets/images/logo-sm.png" alt="" height="22">
                     </span>
                     <span class="logo-lg">
-                        <img src="<?= base_url()?>assets/images/logo-dark.png" alt="" height="17">
+                        <img src="<?= base_url()?>assets/images/rosdm.png" alt="" height="17">
                     </span>
                 </a>
                 <!-- Light Logo-->
@@ -148,7 +148,7 @@
                         <img src="<?= base_url()?>assets/images/logo-sm.png" alt="" height="22">
                     </span>
                     <span class="logo-lg">
-                        <img src="<?= base_url()?>assets/images/logo-light.png" alt="" height="17">
+                        <img src="<?= base_url()?>assets/images/rosdm.png" alt="" height="17">
                     </span>
                 </a>
                 <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
@@ -206,7 +206,14 @@
                                 </ul>
                             </div>
                         </li> -->
-                        <?php if(session()->get('is_kanwil') == '1'): ?>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="#sidebarSkb" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarTables">
+                                <i class="ri-layout-grid-line"></i> <span data-key="t-tables">SKBT</span>
+                            </a>
+                            <div class="collapse menu-dropdown" id="sidebarSkb">
+                                <ul class="nav nav-sm flex-column">
+                                <?php if(session()->get('is_kanwil') == '1'): ?>
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="<?= site_url('skb/lokasi')?>">
                                 <i class="ri-user-location-line"></i> <span data-key="t-tables">Lokasi Ujian</span>
@@ -232,6 +239,35 @@
                             <a class="nav-link menu-link" href="<?= site_url('skb/info')?>">
                                 <i class="ri-information-line"></i> <span data-key="t-tables">Info Satker</span>
                             </a>
+                        </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="<?= site_url('sanggah/nilai')?>">
+                                <i class="ri-mail-star-fill"></i> <span data-key="t-tables">Sanggah Nilai</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="#sidebarSkb" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarTables">
+                                <i class="ri-layout-grid-line"></i> <span data-key="t-tables">Penetapan NIP</span>
+                            </a>
+                            <div class="collapse menu-dropdown" id="sidebarSkb">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="<?= site_url('penetapan/formasi/rekapitulasi')?>" class="nav-link" data-key="t-basic-tables">Data Rekapitulasi</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="<?= site_url('penetapan/formasi')?>" class="nav-link" data-key="t-basic-tables">Data Formasi</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="<?= site_url('penetapan/peserta')?>" class="nav-link" data-key="t-basic-tables">Peserta</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="<?= site_url('penetapan/sprp')?>" class="nav-link" data-key="t-basic-tables">Rencana Penetapan</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="<?= site_url('skb/dokumen')?>">

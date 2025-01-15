@@ -128,6 +128,13 @@ $routes->group("skb", ["filter" => "auth"], function ($routes) {
     $routes->get('aksespenguji', 'Skb::aksespenguji');
 });
 
+$routes->group("penetapan", ["filter" => "auth"], function ($routes) {
+    $routes->get('sprp', 'Penetapan\Sprp::index');
+    $routes->get('formasi', 'Penetapan\Formasi::index');
+    $routes->get('formasi/rekapitulasi', 'Penetapan\Formasi::rekapitulasi');
+    $routes->get('peserta', 'Penetapan\Peserta::index');
+});
+
 // $routes->group("admin", ["filter" => "admin"], function ($routes) {
 
 //   $routes->group("users", function ($routes) {
