@@ -135,6 +135,10 @@ $routes->group("penetapan", ["filter" => "auth"], function ($routes) {
     $routes->get('peserta', 'Penetapan\Peserta::index');
 });
 
+$routes->group("sanggah", ["filter" => "auth"], function ($routes) {
+    $routes->get('nilai', 'Sanggah::index');
+});
+
 // $routes->group("admin", ["filter" => "admin"], function ($routes) {
 
 //   $routes->group("users", function ($routes) {
