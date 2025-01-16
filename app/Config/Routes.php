@@ -133,6 +133,7 @@ $routes->group("penetapan", ["filter" => "auth"], function ($routes) {
     $routes->get('formasi', 'Penetapan\Formasi::index');
     $routes->get('formasi/rekapitulasi', 'Penetapan\Formasi::rekapitulasi');
     $routes->get('peserta', 'Penetapan\Peserta::index');
+    $routes->get('peserta/export', 'Penetapan\Peserta::export');
 });
 
 $routes->group("sanggah", ["filter" => "auth"], function ($routes) {
