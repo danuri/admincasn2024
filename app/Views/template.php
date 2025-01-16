@@ -263,9 +263,9 @@
                                     <li class="nav-item">
                                         <a href="<?= site_url('penetapan/peserta')?>" class="nav-link" data-key="t-basic-tables">Peserta</a>
                                     </li>
-                                    <li class="nav-item">
+                                    <!-- <li class="nav-item">
                                         <a href="<?= site_url('penetapan/sprp')?>" class="nav-link" data-key="t-basic-tables">Rencana Penetapan</a>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                         </li>
