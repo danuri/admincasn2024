@@ -16,6 +16,7 @@ $routes->get('auth/callback', 'Auth::callback');
 $routes->get('pub/document/(:any)', 'Publish::document/$1');
 
 $routes->get('/', 'Home::index',['filter' => 'auth']);
+$routes->get('generateformasi', 'Home::generateformasi',['filter' => 'auth']);
 $routes->get('formasi', 'Formasi::index',['filter' => 'auth']);
 $routes->get('regulasi', 'Regulasi::index',['filter' => 'auth']);
 $routes->get('pelamar', 'Pelamar::index',['filter' => 'auth']);
