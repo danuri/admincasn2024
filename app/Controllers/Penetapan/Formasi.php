@@ -45,14 +45,17 @@ class Formasi extends BaseController
         $lokasi = session('lokasi');
         if (session()->get('is_admin') == '1') {
             $builder = $db->table('formasi a')
-                        ->select('a.id, a.jabatan_sscasn, a.lokasi, a.jumlah, (SELECT COUNT(1) FROM peserta b WHERE b.penempatan_id = a.id) as terisi');
+                        ->select('a.id, a.jabatan_sscasn, a.lokasi, a.jumlah, (SELECT COUNT(1) FROM `peserta` `b` WHERE `b`.`penempatan_id` = `a`.`id`) as terisi');
         } else {
             $builder = $db->table('formasi a')
                         ->select('a.id, a.jabatan_sscasn, a.lokasi, a.jumlah, 
-                                    (SELECT COUNT(1) FROM peserta b 
-                                    WHERE b.kode_satker = '. $db->escape($lokasi) .' AND b.penempatan_id = a.id) as terisi')
+                                    (SELECT COUNT(1) FROM `peserta` `b` WHERE `b`.`penempatan_id` = `a`.`id`) AS terisi')
                         ->where('a.kode_satker', $lokasi);
         }
+        // Debugging: Log the last executed query
+        //dd($builder->getCompiledSelect());
+        //$query = $builder->get();
+        //log_message('debug', $db->getLastQuery());
         return DataTable::of($builder)->toJson(true);
     }
 
