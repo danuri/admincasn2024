@@ -16,6 +16,7 @@ $routes->get('auth/callback', 'Auth::callback');
 $routes->get('pub/document/(:any)', 'Publish::document/$1');
 
 $routes->get('/', 'Home::index',['filter' => 'auth']);
+$routes->get('generateformasi', 'Home::generateformasi',['filter' => 'auth']);
 $routes->get('formasi', 'Formasi::index',['filter' => 'auth']);
 $routes->get('regulasi', 'Regulasi::index',['filter' => 'auth']);
 $routes->get('pelamar', 'Pelamar::index',['filter' => 'auth']);
@@ -142,6 +143,7 @@ $routes->group("penetapan", ["filter" => "auth"], function ($routes) {
     $routes->post('peserta/save', 'Penetapan\Peserta::save');
     $routes->get('peserta/reset/(:any)', 'Penetapan\Peserta::reset/$1');
     $routes->get('peserta/sprp/(:any)', 'Penetapan\Peserta::cetak_sprp/$1');
+    $routes->get('peserta/export', 'Penetapan\Peserta::export');
 });
 
 $routes->group("sanggah", ["filter" => "auth"], function ($routes) {
