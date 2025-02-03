@@ -47,7 +47,7 @@
                             <img src="<?= base_url()?>assets/images/logo-sm.png" alt="" height="22">
                         </span>
                         <span class="logo-lg">
-                            <img src="<?= base_url()?>assets/images/rosdm.png" alt="" height="40"
+                            <img src="<?= base_url()?>assets/images/biro-sdm.png" alt="" height="40"
                         </span>
                     </a>
 
