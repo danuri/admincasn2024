@@ -24,7 +24,7 @@
           <div class="col-xl-12">
             <div class="card">
               <div class="card-body">
-                <table class="table table-bordered table-striped table-hover dataformasi dt-responsive">
+                <table class="table table-bordered table-striped" id="formasi">
                     <thead>
                         <tr>
                             <th>Jabatan</th>
@@ -34,14 +34,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($formasi as $row){?>
-                        <tr>
-                            <td><?= $row->jabatan_sscasn?></td>
-                            <td><?= $row->lokasi?></td>
-                            <td><?= $row->jumlah?></td>
-                            <td><?= $row->terisi?></td>
-                        </tr>
-                        <?php } ?>
                     </tbody>
                 </table>
               </div>
@@ -57,36 +49,30 @@
 <?= $this->section('script') ?>
 <script src="<?= base_url();?>assets/vendors/datatable/js/jquery.dataTables.min.js"></script>
 <script src="<?= base_url();?>assets/vendors/datatable/js/dataTables.bootstrap4.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.colVis.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
+<script src="<?= base_url();?>assets/vendors/datatable/jszip/jszip.min.js"></script>
+<script src="<?= base_url();?>assets/vendors/datatable/pdfmake/pdfmake.min.js"></script>
+<script src="<?= base_url();?>assets/vendors/datatable/pdfmake/vfs_fonts.js"></script>
+<script src="<?= base_url();?>assets/vendors/datatable/buttons/js/dataTables.buttons.min.js"></script>
+<script src="<?= base_url();?>assets/vendors/datatable/buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="<?= base_url();?>assets/vendors/datatable/buttons/js/buttons.colVis.min.js"></script>
+<script src="<?= base_url();?>assets/vendors/datatable/buttons/js/buttons.flash.min.js"></script>
+<script src="<?= base_url();?>assets/vendors/datatable/buttons/js/buttons.html5.min.js"></script>
+<script src="<?= base_url();?>assets/vendors/datatable/buttons/js/buttons.print.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
-        $('.dataformasi').DataTable({
-        dom: 'Bfrtip',
-        lengthMenu: [
-                [ 10, 25, 50, -1 ],
-                [ '10 rows', '25 rows', '50 rows', 'Show all' ]
-            ],
-        buttons: [
-            'pageLength','copy',
-            {
-                extend: 'excel',
-                exportOptions: {
-                    orthogonal: 'sort'
-                },
-                customizeData: function ( data ) {
-                    for (var i=0; i<data.body.length; i++){
-                        for (var j=0; j<data.body[i].length; j++ ){
-                            data.body[i][j] = '\u200C' + data.body[i][j];
-                        }
-                    }
-                }
-                }
+    var table = $('#formasi').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: {
+          url: '<?= site_url('penetapan/formasi/getdata')?>'
+        },
+        columns: [
+            {data: 'jabatan_sscasn'},
+            {data: 'lokasi'},
+            {data: 'jumlah'},
+            {data: 'terisi'}
         ]
-        });
     });
+  });
 </script>
 <?= $this->endSection() ?>

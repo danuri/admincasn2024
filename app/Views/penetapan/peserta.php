@@ -63,7 +63,8 @@
             <div class="card">
               <div class="card-body">              
               <?php if (session()->get('is_skb') == '1') { ?>  
-                <table class="table table-bordered table-striped" id="pesertaskb">
+                <!-- <table class="table table-bordered table-striped" id="pesertaskb"> -->
+                <table class="table table-bordered table-striped table-hover datacpns dt-responsive">
                     <thead>
                         <tr>
                             <th>Nomor Peserta</th>
@@ -75,6 +76,40 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php
+                        foreach ($peserta as $row) {
+                        ?>
+                        <tr>
+                            <td><?php echo $row->nopeserta; ?></td>
+                            <td><?php echo $row->nama; ?></td>
+                            <td><?php echo $row->formasi; ?></td>
+                            <td><?php echo $row->jenis; ?></td>
+                            <td>
+                                <?php if ($row->penempatan == null || $row->penempatan == '') { 
+                                    echo '-';
+                                } else {
+                                    echo $row->penempatan;
+                                } ?>
+                            </td>
+                            <td>
+                                <?php if ($row->penempatan_id != null && $row->penempatan_id != '') {
+                                        if ($row->doc_sprp != null && $row->doc_sprp != '') {
+                                            if ($tanggal >= $tanggal_download_sprp) { 
+                                ?>
+                                                <a href="javascript:;" onclick="download_sprp('<?php echo $row->doc_sprp; ?>')" class="btn btn-sm btn-success">Download-SPRP</a>
+                                <?php       } else { ?>
+                                                <label>Menunggu TTE</label> 
+                                <?php } 
+                                        } else { ?>
+                                            <a href="<?php echo site_url('penetapan/peserta/reset/'.$row->nopeserta); ?>" class="btn btn-sm btn-danger">Reset</a>
+                                            <a href="<?php echo site_url('penetapan/peserta/sprp/'.$row->nopeserta); ?>" class="btn btn-sm btn-success" onclick="return confirm('Apakah Anda yakin SPRP akan dikirimkan untuk TTE?')">Kirim TTE</a>
+                                <?php   } 
+                                      } else { ?>
+                                            <a href="javascript:;" onclick="penempatan('<?php echo $row->nopeserta; ?>')" class="btn btn-sm btn-success">Penempatan</a>
+                                <?php } ?>
+                            </td>
+                        </tr>
+                        <?php } ?>
                     </tbody>
                 </table>                
               <?php } else { ?>
@@ -119,22 +154,50 @@
 <?= $this->endSection() ?>
 <?= $this->section('script') ?>
 <script type="text/javascript">
+    // $(document).ready(function() {
+    //     var table = $('#pesertaskb').DataTable({
+    //         processing: true,
+    //         serverSide: true,
+    //         ajax: {
+    //         url: '<?= site_url('penetapan/peserta/getdataskb')?>'
+    //         },
+    //         columns: [
+    //             {data: 'nopeserta'},
+    //             {data: 'nama'},
+    //             {data: 'formasi'},
+    //             {data: 'jenis'},
+    //             {data: 'penempatan'},
+    //             {data: 'aksi'}
+    //         ]
+    //     });
+    // });
     $(document).ready(function() {
-        var table = $('#pesertaskb').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: {
-            url: '<?= site_url('penetapan/peserta/getdataskb')?>'
-            },
-            columns: [
-                {data: 'nopeserta'},
-                {data: 'nama'},
-                {data: 'formasi'},
-                {data: 'jenis'},
-                {data: 'penempatan'},
-                {data: 'aksi'}
-            ]
+    // $('#datatable').DataTable();
+        $('.datacpns').DataTable({
+        dom: 'Bfrtip',
+        lengthMenu: [
+                [ 10, 25, 50, -1 ],
+                [ '10 rows', '25 rows', '50 rows', 'Show all' ]
+            ],
+        buttons: [
+            'pageLength','copy',
+            {
+                extend: 'excel',
+                exportOptions: {
+                    orthogonal: 'sort'
+                },
+                customizeData: function ( data ) {
+                    for (var i=0; i<data.body.length; i++){
+                        for (var j=0; j<data.body[i].length; j++ ){
+                            data.body[i][j] = '\u200C' + data.body[i][j];
+                        }
+                    }
+                }
+                }
+        ]
         });
+
+    //$('.select2').select2();
     });
     $(document).ready(function() {
         var table = $('#pesertaadmin').DataTable({

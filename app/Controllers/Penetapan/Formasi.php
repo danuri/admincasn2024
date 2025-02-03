@@ -12,32 +12,33 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 class Formasi extends BaseController
 {
     public function index()
-    {
-        //$model = new FormasiModel;
-        //$data['formasi'] = $model->where(['kode_satker'=>session('lokasi')])->findAll();
-        // if (session()->get('is_admin') == '1') {
-        //     $lokasi = session('lokasi');
-        //     $db = db_connect();
-        //     $data['formasi'] = $db->query("SELECT a.id,
-        //                                     a.jabatan_sscasn,
-        //                                     a.lokasi,
-        //                                     a.jumlah,
-        //                                     (SELECT COUNT(1) FROM peserta b
-        //                                         WHERE b.penempatan_id = a.id) as terisi
-        //                                 FROM formasi a")->getResult();
-        // } else {
-        //     $lokasi = session('lokasi');
-        //     $db = db_connect();
-        //     $data['formasi'] = $db->query("SELECT a.id,
-        //                                     a.jabatan_sscasn,
-        //                                     a.lokasi,
-        //                                     a.jumlah,
-        //                                     (SELECT COUNT(1) FROM peserta b
-        //                                         WHERE b.kode_satker = '$lokasi' AND b.penempatan_id = a.id) as terisi
-        //                                 FROM formasi a
-        //                                 WHERE a.kode_satker = '$lokasi'")->getResult();
-        // }        
-        return view('penetapan/formasi');
+    {        
+        if (session()->get('is_admin') == '1') {
+            // $lokasi = session('lokasi');
+            // $db = db_connect();
+            // $data['formasi'] = $db->query("SELECT a.id,
+            //                                 a.jabatan_sscasn,
+            //                                 a.lokasi,
+            //                                 a.jumlah,
+            //                                 (SELECT COUNT(1) FROM peserta b
+            //                                     WHERE b.penempatan_id = a.id) as terisi
+            //                             FROM formasi a")->getResult();
+            return view('penetapan/formasiadmin');
+        } else {
+            $model = new FormasiModel;
+            $data['formasi'] = $model->where(['kode_satker'=>session('lokasi')])->findAll();
+            $lokasi = session('lokasi');
+            $db = db_connect();
+            $data['formasi'] = $db->query("SELECT a.id,
+                                            a.jabatan_sscasn,
+                                            a.lokasi,
+                                            a.jumlah,
+                                            (SELECT COUNT(1) FROM peserta b
+                                                WHERE b.kode_satker = '$lokasi' AND b.penempatan_id = a.id) as terisi
+                                        FROM formasi a
+                                        WHERE a.kode_satker = '$lokasi'")->getResult();
+            return view('penetapan/formasi', $data);
+        }        
     }
 
     public function getdata() {

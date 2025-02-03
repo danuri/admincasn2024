@@ -21,14 +21,18 @@ class Peserta extends BaseController
     public function index()
     {        
         // $db = db_connect();
-        // $lokasi = session('lokasi');
-        // if (session()->get('is_admin') == '1') {
-        //     $data['peserta'] = $db->query("SELECT * FROM peserta WHERE (`status_akhir` = 'P/L' OR `status_akhir` = 'P/L-E2' OR `status_akhir` = 'P/L-U1')")->getResult();
-        // } else {
-        //     $data['peserta'] = $db->query("SELECT * FROM peserta WHERE kode_satker = '$lokasi' AND (`status_akhir` = 'P/L' OR `status_akhir` = 'P/L-E2' OR `status_akhir` = 'P/L-U1')")->getResult();
-        // }        
-        // $data['tanggal'] = date('Ymd'); 
-        return view('penetapan/peserta');
+        $lokasi = session('lokasi');
+        if (session()->get('is_admin') == '1') {
+            // $data['peserta'] = $db->query("SELECT * FROM peserta WHERE (`status_akhir` = 'P/L' OR `status_akhir` = 'P/L-E2' OR `status_akhir` = 'P/L-U1')")->getResult();
+            return view('penetapan/peserta');
+        } else {
+            $db = db_connect();
+            $data['peserta'] = $db->query("SELECT * FROM peserta WHERE kode_satker = '$lokasi' AND (`status_akhir` = 'P/L' OR `status_akhir` = 'P/L-E2' OR `status_akhir` = 'P/L-U1')")->getResult();
+            $data['tanggal'] = date('Ymd'); 
+            $data['tanggal_download_sprp'] = getenv('TANGGAL_MULAI_DOWNLOAD_SPRP');
+            //dd($data);
+            return view('penetapan/peserta', $data);
+        }           
     }
 
     public function getdataskb() {
