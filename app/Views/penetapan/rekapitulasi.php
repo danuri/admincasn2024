@@ -11,10 +11,10 @@
                     <h4 class="mb-sm-0">Data Rekapitulasi</h4>
 
                     <div class="page-title-right">
-                        <ol class="breadcrumb m-0">
+                        <!-- <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Pages</a></li>
                             <li class="breadcrumb-item active">Starter</li>
-                        </ol>
+                        </ol> -->
                     </div>
 
                 </div>
@@ -40,7 +40,7 @@
                             <td><?= $row->formasi?></td>
                             <td><?= $row->jumlah_formasi?></td>
                             <td><?= $row->jumlah?></td>
-                            <td>0</td>
+                            <td><?= $row->penempatan?></td>
                         </tr>
                         <?php } ?>
                     </tbody>

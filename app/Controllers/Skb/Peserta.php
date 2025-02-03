@@ -286,8 +286,13 @@ class Peserta extends BaseController
 
       $tanggal = date('YmdHis');
       $writer = new Xlsx($spreadsheet);
+      ob_clean();
+      ob_start();
       header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
       header('Content-Disposition: attachment; filename="Data_Peserta_'.$tanggal.'.xlsx"');
+      header('Cache-Control: max-age=0');
       $writer->save('php://output');
+      ob_end_flush();
+      exit;
     }
 }

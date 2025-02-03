@@ -12,7 +12,7 @@ class PesertaModel extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_tilok','tilok','jadwal_praktik','ruangan_praktik','jadwal_wawancara','ruangan_wawancara'];
+    protected $allowedFields    = ['id_tilok','tilok','jadwal_praktik','ruangan_praktik','jadwal_wawancara','ruangan_wawancara','penempatan','penempatan_id','doc_sprp'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

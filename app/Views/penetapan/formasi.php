@@ -12,8 +12,7 @@
 
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Pages</a></li>
-                            <li class="breadcrumb-item active">Starter</li>
+                            <li class="breadcrumb-item"><a href="<?= site_url('penetapan/formasi/export');?>" target="_blank" class="btn btn-success"><i class="icon-arrow-left-circle"></i> Download</a></li>
                         </ol>
                     </div>
 
@@ -25,7 +24,7 @@
           <div class="col-xl-12">
             <div class="card">
               <div class="card-body">
-                <table class="table datatable">
+                <table class="table table-bordered table-striped" id="formasi">
                     <thead>
                         <tr>
                             <th>Jabatan</th>
@@ -35,14 +34,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($formasi as $row){?>
-                        <tr>
-                            <td><?= $row->jabatan_sscasn?></td>
-                            <td><?= $row->lokasi?></td>
-                            <td><?= $row->jumlah?></td>
-                            <td>0</td>
-                        </tr>
-                        <?php } ?>
                     </tbody>
                 </table>
               </div>
@@ -54,4 +45,34 @@
     </div>
     <!-- container-fluid -->
 </div>
+<?= $this->endSection() ?>
+<?= $this->section('script') ?>
+<script src="<?= base_url();?>assets/vendors/datatable/js/jquery.dataTables.min.js"></script>
+<script src="<?= base_url();?>assets/vendors/datatable/js/dataTables.bootstrap4.min.js"></script>
+<script src="<?= base_url();?>assets/vendors/datatable/jszip/jszip.min.js"></script>
+<script src="<?= base_url();?>assets/vendors/datatable/pdfmake/pdfmake.min.js"></script>
+<script src="<?= base_url();?>assets/vendors/datatable/pdfmake/vfs_fonts.js"></script>
+<script src="<?= base_url();?>assets/vendors/datatable/buttons/js/dataTables.buttons.min.js"></script>
+<script src="<?= base_url();?>assets/vendors/datatable/buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="<?= base_url();?>assets/vendors/datatable/buttons/js/buttons.colVis.min.js"></script>
+<script src="<?= base_url();?>assets/vendors/datatable/buttons/js/buttons.flash.min.js"></script>
+<script src="<?= base_url();?>assets/vendors/datatable/buttons/js/buttons.html5.min.js"></script>
+<script src="<?= base_url();?>assets/vendors/datatable/buttons/js/buttons.print.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+    var table = $('#formasi').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: {
+          url: '<?= site_url('penetapan/formasi/getdata')?>'
+        },
+        columns: [
+            {data: 'jabatan_sscasn'},
+            {data: 'lokasi'},
+            {data: 'jumlah'},
+            {data: 'terisi'}
+        ]
+    });
+  });
+</script>
 <?= $this->endSection() ?>

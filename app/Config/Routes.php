@@ -132,7 +132,16 @@ $routes->group("penetapan", ["filter" => "auth"], function ($routes) {
     $routes->get('sprp', 'Penetapan\Sprp::index');
     $routes->get('formasi', 'Penetapan\Formasi::index');
     $routes->get('formasi/rekapitulasi', 'Penetapan\Formasi::rekapitulasi');
+    $routes->get('formasi/getdata', 'Penetapan\Formasi::getdata');
+    $routes->get('formasi/export', 'Penetapan\Formasi::export');
     $routes->get('peserta', 'Penetapan\Peserta::index');
+    $routes->get('peserta/getdataskb', 'Penetapan\Peserta::getdataskb');
+    $routes->get('peserta/getdataadmin', 'Penetapan\Peserta::getdataadmin');
+    $routes->get('peserta/export', 'Penetapan\Peserta::export');
+    $routes->get('peserta/get_detail/(:any)', 'Penetapan\Peserta::get_detail/$1');
+    $routes->post('peserta/save', 'Penetapan\Peserta::save');
+    $routes->get('peserta/reset/(:any)', 'Penetapan\Peserta::reset/$1');
+    $routes->get('peserta/sprp/(:any)', 'Penetapan\Peserta::cetak_sprp/$1');
 });
 
 $routes->group("sanggah", ["filter" => "auth"], function ($routes) {

@@ -206,40 +206,40 @@
                                 </ul>
                             </div>
                         </li> -->
-                        
+                        <?php if(session()->get('is_skb') == '1') { ?>
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="#sidebarSkb" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarTables">
                                 <i class="ri-layout-grid-line"></i> <span data-key="t-tables">SKBT</span>
                             </a>
                             <div class="collapse menu-dropdown" id="sidebarSkb">
                                 <ul class="nav nav-sm flex-column">
-                                <?php if(session()->get('is_kanwil') == '1'): ?>
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="<?= site_url('skb/lokasi')?>">
-                                <i class="ri-user-location-line"></i> <span data-key="t-tables">Lokasi Ujian</span>
-                            </a>
-                        </li>
-                        <?php endif; ?>
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="<?= site_url('skb/peserta')?>">
-                                <i class="ri-file-user-line"></i> <span data-key="t-tables">Peserta</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="<?= site_url('skb/penguji')?>">
-                                <i class="ri-team-line"></i> <span data-key="t-tables">Penguji</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="<?= site_url('skb/jadwal')?>">
-                                <i class="ri-time-line"></i> <span data-key="t-tables">Jadwal Ujian</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="<?= site_url('skb/info')?>">
-                                <i class="ri-information-line"></i> <span data-key="t-tables">Info Satker</span>
-                            </a>
-                        </li>
+                                <?php if(session()->get('is_kanwil') == '1') { ?>
+                                <li class="nav-item">
+                                    <a class="nav-link menu-link" href="<?= site_url('skb/lokasi')?>">
+                                        <i class="ri-user-location-line"></i> <span data-key="t-tables">Lokasi Ujian</span>
+                                    </a>
+                                </li>
+                                <?php } ?>
+                                <li class="nav-item">
+                                    <a class="nav-link menu-link" href="<?= site_url('skb/peserta')?>">
+                                        <i class="ri-file-user-line"></i> <span data-key="t-tables">Peserta</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link menu-link" href="<?= site_url('skb/penguji')?>">
+                                        <i class="ri-team-line"></i> <span data-key="t-tables">Penguji</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link menu-link" href="<?= site_url('skb/jadwal')?>">
+                                        <i class="ri-time-line"></i> <span data-key="t-tables">Jadwal Ujian</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link menu-link" href="<?= site_url('skb/info')?>">
+                                        <i class="ri-information-line"></i> <span data-key="t-tables">Info Satker</span>
+                                    </a>
+                                </li>
                                 </ul>
                             </div>
                         </li>
@@ -248,6 +248,8 @@
                                 <i class="ri-mail-star-fill"></i> <span data-key="t-tables">Sanggah Nilai</span>
                             </a>
                         </li>
+                        <?php } 
+                            if((session()->get('is_skb') == '1') or (session()->get('is_admin') == '1')) { ?>
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="#sidebarSkb" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarTables">
                                 <i class="ri-layout-grid-line"></i> <span data-key="t-tables">Penetapan NIP</span>
@@ -255,25 +257,25 @@
                             <div class="collapse menu-dropdown" id="sidebarSkb">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a href="<?= site_url('penetapan/formasi/rekapitulasi')?>" class="nav-link" data-key="t-basic-tables">Data Rekapitulasi</a>
+                                        <a href="<?= site_url('penetapan/formasi/rekapitulasi')?>" class="nav-link" data-key="t-basic-tables"><i class="bx bx-table"></i> Data Rekapitulasi</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="<?= site_url('penetapan/formasi')?>" class="nav-link" data-key="t-basic-tables">Data Formasi</a>
+                                        <a href="<?= site_url('penetapan/formasi')?>" class="nav-link" data-key="t-basic-tables"><i class="bx bxs-detail"></i> Formasi</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="<?= site_url('penetapan/peserta')?>" class="nav-link" data-key="t-basic-tables">Peserta</a>
+                                        <a href="<?= site_url('penetapan/peserta')?>" class="nav-link" data-key="t-basic-tables"><i class="ri-file-user-fill"></i> Data Peserta</a>
                                     </li>
-                                    <!-- <li class="nav-item">
-                                        <a href="<?= site_url('penetapan/sprp')?>" class="nav-link" data-key="t-basic-tables">Rencana Penetapan</a>
-                                    </li> -->
                                 </ul>
                             </div>
                         </li>
+                        <?php }
+                             if(session()->get('is_skb') == '1') { ?>
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="<?= site_url('skb/dokumen')?>">
                                 <i class="ri-file-text-line"></i> <span data-key="t-tables">Upload Dokumen</span>
                             </a>
                         </li>
+                        <?php } ?>
                     </ul>
                 </div>
                 <!-- Sidebar -->
