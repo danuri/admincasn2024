@@ -69,6 +69,7 @@
                         <tr>
                             <th>Nomor Peserta</th>
                             <th>Nama</th>
+                            <th>Pendidikan</th>
                             <th>Jabatan</th>
                             <th>Jenis</th>
                             <th>Penempatan</th>
@@ -82,6 +83,7 @@
                         <tr>
                             <td><?php echo $row->nopeserta; ?></td>
                             <td><?php echo $row->nama; ?></td>
+                            <td><?php echo $row->pendidikan; ?></td>
                             <td><?php echo $row->formasi; ?></td>
                             <td><?php echo $row->jenis; ?></td>
                             <td>

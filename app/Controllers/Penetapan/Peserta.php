@@ -111,6 +111,10 @@ class Peserta extends BaseController
                 <input type="text" class="form-control" name="nama" id="namax" value="<?php echo $row->nama;?>" readonly>
             </div>
             <div class="form-group">
+                <label for="nama" style="margin-top:.5rem;margin-bottom:.0rem;">Pendidikan</label>
+                <input type="text" class="form-control" name="nama" id="namax" value="<?php echo $row->pendidikan;?>" readonly>
+            </div>
+            <div class="form-group">
                 <label for="jabatan" style="margin-top:.5rem;margin-bottom:.0rem;">Jabatan</label>
                 <input type="text" class="form-control" name="jabatan" id="jabatanx" value="<?php echo $row->formasi;?>" readonly>
             </div>
