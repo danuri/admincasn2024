@@ -104,7 +104,9 @@
                                 <?php } 
                                         } else { ?>
                                             <a href="<?php echo site_url('penetapan/peserta/reset/'.$row->nopeserta); ?>" class="btn btn-sm btn-danger">Reset</a>
-                                            <a href="<?php echo site_url('penetapan/peserta/sprp/'.$row->nopeserta); ?>" class="btn btn-sm btn-success" onclick="return confirm('Apakah Anda yakin SPRP akan dikirimkan untuk TTE?')">Kirim TTE</a>
+                                            <?php if ($row->no_sprp != null && $row->no_sprp != '')  {?>
+                                                <a href="<?php echo site_url('penetapan/peserta/sprp/'.$row->nopeserta); ?>" class="btn btn-sm btn-success" onclick="return confirm('Apakah Anda yakin SPRP akan dikirimkan untuk TTE?')">Kirim TTE</a>
+                                            <?php } ?>
                                 <?php   } 
                                       } else { ?>
                                             <a href="javascript:;" onclick="penempatan('<?php echo $row->nopeserta; ?>')" class="btn btn-sm btn-success">Penempatan</a>
