@@ -343,13 +343,13 @@ class Peserta extends BaseController
         $lokasi = session('lokasi');
         if (session()->get('is_admin') == '1') {
             $db = db_connect();
-            $data = $db->query("SELECT nopeserta, nama, formasi, jenis, penempatan 
+            $data = $db->query("SELECT nopeserta, nama, pendidikan, formasi, jenis, penempatan 
                                 FROM peserta 
                                 WHERE (`status_akhir` = 'P/L' OR `status_akhir` = 'P/L-E2' OR `status_akhir` = 'P/L-U1')")
                             ->getResult();
         } else {
             $db = db_connect();
-            $data = $db->query("SELECT nopeserta, nama, formasi, jenis, penempatan 
+            $data = $db->query("SELECT nopeserta, nama, pendidikan, formasi, jenis, penempatan 
                                 FROM peserta 
                                 WHERE kode_satker = '$lokasi' 
                                 AND (`status_akhir` = 'P/L' OR `status_akhir` = 'P/L-E2' OR `status_akhir` = 'P/L-U1')")
@@ -360,17 +360,19 @@ class Peserta extends BaseController
 
         $sheet->setCellValue('A1', 'NOMOR PESERTA');
         $sheet->setCellValue('B1', 'NAMA PESERTA');
-        $sheet->setCellValue('C1', 'JABATAN');
-        $sheet->setCellValue('D1', 'JENIS');
-        $sheet->setCellValue('E1', 'PENEMPATAN');
+        $sheet->setCellValue('C1', 'PENDIDIKAN');
+        $sheet->setCellValue('D1', 'JABATAN');
+        $sheet->setCellValue('E1', 'JENIS');
+        $sheet->setCellValue('F1', 'PENEMPATAN');
 
         $i = 2;
         foreach ($data as $row) {
             $sheet->getCell('A'.$i)->setValueExplicit($row->nopeserta,\PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
             $sheet->setCellValue('B'.$i, $row->nama);
-            $sheet->setCellValue('C'.$i, $row->formasi);
-            $sheet->setCellValue('D'.$i, $row->jenis);
-            $sheet->setCellValue('E'.$i, $row->penempatan);
+            $sheet->setCellValue('C'.$i, $row->pendidikan);
+            $sheet->setCellValue('D'.$i, $row->formasi);
+            $sheet->setCellValue('E'.$i, $row->jenis);
+            $sheet->setCellValue('F'.$i, $row->penempatan);
             $i++;
         }
 
