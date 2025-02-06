@@ -120,6 +120,7 @@
                         <tr>
                             <th>Nomor Peserta</th>
                             <th>Nama</th>
+                            <th>Pendidikan</th>
                             <th>Jabatan</th>
                             <th>Jenis</th>
                             <th>Penempatan</th>
@@ -211,6 +212,7 @@
             columns: [
                 {data: 'nopeserta'},
                 {data: 'nama'},
+                {data: 'pendidikan'},
                 {data: 'formasi'},
                 {data: 'jenis'},
                 {data: 'penempatan'}

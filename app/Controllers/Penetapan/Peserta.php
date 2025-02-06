@@ -77,7 +77,7 @@ class Peserta extends BaseController
         $db = \Config\Database::connect('default', false);
         if (session()->get('is_admin') == '1') {
             $builder = $db->table('peserta')
-                        ->select('nopeserta, nama, formasi, jenis, penempatan, doc_sprp')
+                        ->select('nopeserta, nama, pendidikan, formasi, jenis, penempatan, doc_sprp')
                         ->where("(`status_akhir` = 'P/L' OR `status_akhir` = 'P/L-E2' OR `status_akhir` = 'P/L-U1')");
             return DataTable::of($builder)->toJson(true);
         } else {            
