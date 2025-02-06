@@ -190,7 +190,8 @@ class Peserta extends BaseController
     public function cetak_sprp($nopeserta) {  
         $data['nama_satker'] = session('lokasi_nama');
         $model = new CrudModel;
-        $data['peserta'] = $model->getRow('peserta', ['nopeserta'=>$nopeserta]);    
+        $data['peserta'] = $model->getRow('peserta', ['nopeserta'=>$nopeserta]); 
+        
         $timestamp = strtotime($data['peserta']->tanggal_lahir);
         $formattedDate = date('d F Y', $timestamp);
         $indonesianMonths = [
@@ -213,8 +214,15 @@ class Peserta extends BaseController
             $length = count($penempatan);
             $data['penempatan'] = $penempatan[$length - 1];
         }
-        $sysdate = date('d F Y');
-        $data['sysdate'] = str_replace(array_keys($indonesianMonths), $indonesianMonths, $sysdate);
+
+        $dateRequest = date('Ymd');
+        if ($dateRequest < '20250222') {
+            $data['sysdate'] = '22 Februari 2025';
+            $dateRequest = '20250222';
+        } else {
+            $sysdate = date('d F Y');
+            $data['sysdate'] = str_replace(array_keys($indonesianMonths), $indonesianMonths, $sysdate);
+        }        
 
         //dd($data);
         $html = view('penetapan/sprp',$data);
@@ -237,7 +245,7 @@ class Peserta extends BaseController
         $output = $dompdf->output();
         $tempFilePath = tempnam(sys_get_temp_dir(), 'sprp_') . '.pdf';
         file_put_contents($tempFilePath, $output);
-        $result = $this->sendtte($tempFilePath, $data['peserta']);
+        $result = $this->sendtte($tempFilePath, $data['peserta'], $dateRequest);
 
         if ($result['status'] == 'error') {
             session()->setFlashdata('error', $result['response']);
@@ -268,7 +276,7 @@ class Peserta extends BaseController
         }
     }
 
-    private function sendtte($filepath, $peserta) {
+    private function sendtte($filepath, $peserta, $dateRequest) {
         $apiUrl = getenv('TTE_URL'); 
         $gateKey = getenv('TTE_KEY');
         $ch = curl_init();
@@ -280,7 +288,7 @@ class Peserta extends BaseController
         // Prepare file and parameters
         $postFields = [
             'nip' => '197706022005011005',
-            'title' => 'SPRP a.n '.$peserta->nama.' tgl '.date('Ymd'),
+            'title' => 'SPRP a.n '.$peserta->nama.' tgl '.$dateRequest,
             'jenis' => 'SPRP',
             'id_layanan' => '0',
             'lampiran' => new CURLFile($filepath, 'application/pdf', 'sprp.pdf'),
