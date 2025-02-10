@@ -75,7 +75,7 @@ class Formasi extends BaseController
                                         FROM peserta b 
                                         WHERE a.formasi = b.formasi
                                         AND (b.status_akhir = 'P/L' OR b.status_akhir = 'P/L-E2' OR b.status_akhir = 'P/L-U1')
-                                        AND b.penempatan_id IS NOT NULL) AS penempatan
+                                        AND b.penempatan_id IS NOT NULL AND b.kode_satker = '$lokasi') AS penempatan
                                     FROM peserta a 
                                     WHERE (a.status_akhir = 'P/L' OR a.status_akhir = 'P/L-E2' OR a.status_akhir = 'P/L-U1') 
                                     GROUP BY a.formasi")->getResult();
@@ -91,7 +91,7 @@ class Formasi extends BaseController
                                         FROM peserta b 
                                         WHERE a.formasi = b.formasi
                                         AND (b.status_akhir = 'P/L' OR b.status_akhir = 'P/L-E2' OR b.status_akhir = 'P/L-U1')
-                                        AND b.penempatan_id IS NOT NULL) AS penempatan
+                                        AND b.penempatan_id IS NOT NULL AND b.kode_satker = '$lokasi') AS penempatan
                                     FROM peserta a 
                                     WHERE a.kode_satker = '$lokasi' 
                                     AND (a.status_akhir = 'P/L' OR a.status_akhir = 'P/L-E2' OR a.status_akhir = 'P/L-U1') 
