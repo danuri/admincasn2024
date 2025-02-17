@@ -343,13 +343,13 @@ class Peserta extends BaseController
         $lokasi = session('lokasi');
         if (session()->get('is_admin') == '1') {
             $db = db_connect();
-            $data = $db->query("SELECT nopeserta, nama, pendidikan, formasi, jenis, penempatan 
+            $data = $db->query("SELECT * 
                                 FROM peserta 
                                 WHERE (`status_akhir` = 'P/L' OR `status_akhir` = 'P/L-E2' OR `status_akhir` = 'P/L-U1')")
                             ->getResult();
         } else {
             $db = db_connect();
-            $data = $db->query("SELECT nopeserta, nama, pendidikan, formasi, jenis, penempatan 
+            $data = $db->query("SELECT * 
                                 FROM peserta 
                                 WHERE kode_satker = '$lokasi' 
                                 AND (`status_akhir` = 'P/L' OR `status_akhir` = 'P/L-E2' OR `status_akhir` = 'P/L-U1')")
