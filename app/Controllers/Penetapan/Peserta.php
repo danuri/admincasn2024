@@ -369,7 +369,7 @@ class Peserta extends BaseController
         $sheet->setCellValue('I1', 'KAB_DOMISILI');
         $sheet->setCellValue('J1', 'PROV_DOMISILI');
         $sheet->setCellValue('K1', 'STATUS_KAWIN');
-        $sheet->setCellValue('L1', 'MENGUNDURKAN_DIRI');
+        $sheet->setCellValue('L1', 'STATUS_DRH');
         $sheet->setCellValue('M1', 'PENDIDIKAN');
         $sheet->setCellValue('N1', 'JABATAN');
         $sheet->setCellValue('O1', 'JENIS');
@@ -388,7 +388,7 @@ class Peserta extends BaseController
             $sheet->setCellValue('I'.$i, $row->kabkota_domisili);
             $sheet->setCellValue('J'.$i, $row->provinsi_domisili);
             $sheet->setCellValue('K'.$i, $row->status_kawin);
-            $sheet->setCellValue('L'.$i, $row->mengundurkan_diri);
+            $sheet->setCellValue('L'.$i, $row->status_drh);
             $sheet->setCellValue('M'.$i, $row->pendidikan);
             $sheet->setCellValue('N'.$i, $row->formasi);
             $sheet->setCellValue('O'.$i, $row->kelompok);
