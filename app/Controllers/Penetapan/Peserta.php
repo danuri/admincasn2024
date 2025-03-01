@@ -344,13 +344,13 @@ class Peserta extends BaseController
         $lokasi = session('lokasi');
         if (session()->get('is_admin') == '1') {
             $db = db_connect();
-            $data = $db->query("SELECT nopeserta, nama, pendidikan, formasi, jenis, penempatan 
+            $data = $db->query("SELECT * 
                                 FROM peserta 
                                 WHERE (`status_akhir` = 'P/L' OR `status_akhir` = 'P/L-E2' OR `status_akhir` = 'P/L-U1')")
                             ->getResult();
         } else {
             $db = db_connect();
-            $data = $db->query("SELECT nopeserta, nama, pendidikan, formasi, jenis, penempatan 
+            $data = $db->query("SELECT * 
                                 FROM peserta 
                                 WHERE kode_satker = '$lokasi' 
                                 AND (`status_akhir` = 'P/L' OR `status_akhir` = 'P/L-E2' OR `status_akhir` = 'P/L-U1')")
@@ -359,21 +359,41 @@ class Peserta extends BaseController
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
 
-        $sheet->setCellValue('A1', 'NOMOR PESERTA');
-        $sheet->setCellValue('B1', 'NAMA PESERTA');
-        $sheet->setCellValue('C1', 'PENDIDIKAN');
-        $sheet->setCellValue('D1', 'JABATAN');
-        $sheet->setCellValue('E1', 'JENIS');
-        $sheet->setCellValue('F1', 'PENEMPATAN');
+        $sheet->setCellValue('A1', 'NIK');
+        $sheet->setCellValue('B1', 'NOMOR PESERTA');
+        $sheet->setCellValue('C1', 'NAMA PESERTA');
+        $sheet->setCellValue('D1', 'JENIS_KELAMIN');
+        $sheet->setCellValue('E1', 'NO_HP');
+        $sheet->setCellValue('F1', 'AGAMA');
+        $sheet->setCellValue('G1', 'DISABILITAS');
+        $sheet->setCellValue('H1', 'ALAMAT_DOMISILI');
+        $sheet->setCellValue('I1', 'KAB_DOMISILI');
+        $sheet->setCellValue('J1', 'PROV_DOMISILI');
+        $sheet->setCellValue('K1', 'STATUS_KAWIN');
+        $sheet->setCellValue('L1', 'STATUS_DRH');
+        $sheet->setCellValue('M1', 'PENDIDIKAN');
+        $sheet->setCellValue('N1', 'JABATAN');
+        $sheet->setCellValue('O1', 'JENIS');
+        $sheet->setCellValue('P1', 'PENEMPATAN');
 
         $i = 2;
         foreach ($data as $row) {
-            $sheet->getCell('A'.$i)->setValueExplicit($row->nopeserta,\PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
-            $sheet->setCellValue('B'.$i, $row->nama);
-            $sheet->setCellValue('C'.$i, $row->pendidikan);
-            $sheet->setCellValue('D'.$i, $row->formasi);
-            $sheet->setCellValue('E'.$i, $row->jenis);
-            $sheet->setCellValue('F'.$i, $row->penempatan);
+            $sheet->getCell('A'.$i)->setValueExplicit($row->nik,\PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+            $sheet->getCell('B'.$i)->setValueExplicit($row->nopeserta,\PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+            $sheet->setCellValue('C'.$i, $row->nama);
+            $sheet->setCellValue('D'.$i, $row->jenis_kelamin);
+            $sheet->setCellValue('E'.$i, $row->no_hp);
+            $sheet->setCellValue('F'.$i, $row->agama);
+            $sheet->setCellValue('G'.$i, $row->jenis_disabilitas);
+            $sheet->setCellValue('H'.$i, $row->alamat_domisili);
+            $sheet->setCellValue('I'.$i, $row->kabkota_domisili);
+            $sheet->setCellValue('J'.$i, $row->provinsi_domisili);
+            $sheet->setCellValue('K'.$i, $row->status_kawin);
+            $sheet->setCellValue('L'.$i, $row->status_drh);
+            $sheet->setCellValue('M'.$i, $row->pendidikan);
+            $sheet->setCellValue('N'.$i, $row->formasi);
+            $sheet->setCellValue('O'.$i, $row->kelompok);
+            $sheet->setCellValue('P'.$i, $row->penempatan);
             $i++;
         }
 
