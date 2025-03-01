@@ -98,6 +98,7 @@ class Peserta extends BaseController
                                     WHERE b.kode_satker = '. $db->escape($satker) .' AND b.penempatan_id = a.id) as terisi')
                         ->where('a.kode_satker', $satker)
                         ->where('a.jabatan_sscasn', $row->formasi)
+                        ->orderBy('a.lokasi', 'ASC')
                         ->get()
                         ->getResult();
         ?>
