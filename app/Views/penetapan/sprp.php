@@ -62,11 +62,11 @@
             </tr>
             <tr>
                 <td style="width: 170px;">Jabatan</td>
-                <td>: Kepala Biro Kepegawaian</td>
+                <td>: Kepala Biro Sumber Daya Manusia</td>
             </tr>
             <tr>
                 <td style="width: 170px;">Unit Kerja</td>
-                <td>: Biro Kepegawaian Sekretariat Jenderal</td>
+                <td>: Biro Sumber Daya Manusia Sekretariat Jenderal</td>
             </tr>
             <tr>
                 <td style="width: 170px;">Instansi</td>
