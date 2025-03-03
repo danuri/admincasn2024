@@ -101,7 +101,7 @@
 
     <div class="signature">
         <p>Jakarta, <?php echo $sysdate; ?></p>
-        <p style="margin-top: -10px;">Kepala Biro Kepegawaian,</p>
+        <p style="margin-top: -10px;">Kepala Biro Sumber Daya Manusia,</p>
         <br>
         <p style="margin-right: 100px;">^</p>
         <br>
