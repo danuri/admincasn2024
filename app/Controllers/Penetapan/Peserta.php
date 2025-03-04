@@ -218,6 +218,14 @@ class Peserta extends BaseController
             $penempatan = array_map('trim', explode('|', $data['peserta']->penempatan));
             $length = count($penempatan);
             $data['penempatan'] = $penempatan[$length - 1];
+            
+            if($length == 4){
+                $data['penempatan'] = $penempatan[$length - 1].' '.$penempatan[$length - 2];
+            }
+            
+            if($length == 5){
+                $data['penempatan'] = $penempatan[$length - 1].' '.$penempatan[$length - 2].' '.$penempatan[$length - 3];
+            }
         }
 
         $dateRequest = date('Ymd');
