@@ -337,7 +337,7 @@
     <script src="<?= base_url()?>assets/libs/node-waves/waves.min.js?v=2"></script>
     <script src="<?= base_url()?>assets/libs/feather-icons/feather.min.js?v=2"></script>
     <script src="<?= base_url()?>assets/js/pages/plugins/lord-icon-2.1.0.js?v=2"></script>
-    <!-- <script src="<?= base_url()?>assets/js/plugins.js?v=2"></script> -->
+    <script src="<?= base_url()?>assets/js/plugins.js?v=2"></script>
 
     <!-- App js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -374,9 +374,6 @@
           gravity: "top", // `top` or `bottom`
           position: "center", // `left`, `center` or `right`
           stopOnFocus: true, // Prevents dismissing of toast on hover
-          style: {
-            background: "linear-gradient(to right, #00b09b, #96c93d)",
-          },
           onClick: function(){} // Callback after click
         }).showToast();
       }

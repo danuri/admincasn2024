@@ -40,7 +40,7 @@
                             <td><?= $row->jabatan_sscasn?></td>
                             <td><?= $row->lokasi?></td>
                             <td>
-                                <?= $row->lokasi_siasn_nama?>
+                                <?= ($row->lokasi_siasn_nama)?$row->lokasi_siasn_nama.' <a href="javascript:;" onclick="copyToClipboard(\''.$row->lokasi_siasn_nama.'\');" class="text-success"><i class="ri-survey-line"></i></a>':'';?>
                                 <a href="javascript:;" onclick="updateunor('<?= $row->lokasi?>')">Update</a>
                             </td>
                             <td><?= $row->jumlah?></td>
@@ -163,6 +163,12 @@
     function updateunor(sscasn) {
         $('#sscasn').html(sscasn);
         $('#editunor').modal('show');
+    }
+
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text)
+            .then(() => alert("Text copied to clipboard!"))
+            .catch(err => console.error("Failed to copy: ", err));
     }
     
 </script>
