@@ -27,7 +27,18 @@ class Peserta extends BaseController
             return view('penetapan/peserta');
         } else {
             $db = db_connect();
-            $data['peserta'] = $db->query("SELECT * FROM peserta WHERE kode_satker = '$lokasi' AND (`status_akhir` = 'P/L' OR `status_akhir` = 'P/L-E2' OR `status_akhir` = 'P/L-U1')")->getResult();
+            $data['peserta'] = $db->query("SELECT
+                                                peserta.*, 
+                                                formasi.lokasi_siasn_nama
+                                            FROM
+                                                peserta
+                                                INNER JOIN
+                                                formasi
+                                                ON 
+                                                    peserta.penempatan_id = formasi.id
+                                            WHERE
+                                                peserta.kode_satker = '$lokasi' AND
+                                                peserta.status_akhir IN ('P/L','P/L-E2','P/L-U1')")->getResult();
             $data['tanggal'] = date('Ymd'); 
             $data['tanggal_download_sprp'] = getenv('TANGGAL_MULAI_DOWNLOAD_SPRP');
             //dd($data);

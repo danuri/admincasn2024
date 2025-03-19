@@ -73,6 +73,7 @@
                             <th>Jabatan</th>
                             <th>Jenis</th>
                             <th>Penempatan</th>
+                            <th>Penempatan SIASN</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -92,6 +93,9 @@
                                 } else {
                                     echo $row->penempatan;
                                 } ?>
+                            </td>
+                            <td>
+                            <?= ($row->lokasi_siasn_nama)?$row->lokasi_siasn_nama.' <a href="javascript:;" onclick="copyToClipboard(\''.$row->lokasi_siasn_nama.'\');" class="text-success"><i class="ri-survey-line"></i></a>':'-';?>
                             </td>
                             <td>
                                 <?php if ($row->penempatan_id != null && $row->penempatan_id != '') {
@@ -228,6 +232,12 @@
 
     function download_sprp(doc_sprp) {
         window.open(doc_sprp);
+    }
+
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text)
+            .then(() => alert("Text copied to clipboard!"))
+            .catch(err => console.error("Failed to copy: ", err));
     }
 </script>
 <?= $this->endSection() ?>
