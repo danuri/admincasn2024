@@ -24,7 +24,9 @@
                     <ul>
                         <li>Penempatan hanya bisa dilakukan sesuai jumlah formasi (Jabatan dan Lokasi)</li>
                         <li>Penempatan dapat diubah selama belum dikirimkan dokumen SPRP untuk TTE</li>
-                        <li>Dokumen SPRP yang telah di-TTE, tidak lagi dapat diubah penempatannya</li>        
+                        <li>Dokumen SPRP yang telah di-TTE, tidak lagi dapat diubah penempatannya</li> 
+                        <li>Pastikan kolom Penempatan SIASN sudah terisi</li>      
+                        <li>Pengisian Penempatan SIASN pada menu Penetapan NIP > Formasi (Segera update)</li>      
                     </ul>
                     <h5>Jadwal Penetapan NIP CPNS</h5>
                     <ul>
