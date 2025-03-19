@@ -32,6 +32,7 @@ class Formasi extends BaseController
             $data['formasi'] = $db->query("SELECT a.id,
                                             a.jabatan_sscasn,
                                             a.lokasi,
+                                            a.lokasi_siasn_nama,
                                             a.jumlah,
                                             (SELECT COUNT(1) FROM peserta b
                                                 WHERE b.kode_satker = '$lokasi' AND b.penempatan_id = a.id) as terisi
@@ -46,7 +47,7 @@ class Formasi extends BaseController
         $lokasi = session('lokasi');
         if (session()->get('is_admin') == '1') {
             $builder = $db->table('formasi a')
-                        ->select('a.id, a.jabatan_sscasn, a.lokasi, a.jumlah, (SELECT COUNT(1) FROM `peserta` `b` WHERE `b`.`penempatan_id` = `a`.`id`) as terisi');
+                        ->select('a.id, a.jabatan_sscasn, a.lokasi, a.lokasi_siasn_nama, a.jumlah, (SELECT COUNT(1) FROM `peserta` `b` WHERE `b`.`penempatan_id` = `a`.`id`) as terisi');
         } else {
             $builder = $db->table('formasi a')
                         ->select('a.id, a.jabatan_sscasn, a.lokasi, a.jumlah, 
@@ -149,5 +150,32 @@ class Formasi extends BaseController
         $writer->save('php://output');
         ob_end_flush();
         exit;
+    }
+
+    function updateunor() {
+        // Load validasi service
+        $validation = \Config\Services::validation();
+
+        // Define validation rules
+        $rules = [
+            'sscasn' => 'required',
+            'unor' => 'required',
+            'siasnname' => 'required'
+        ];
+
+        if ($this->validate($rules))
+        {
+            $model = new FormasiModel;
+            $id = $this->request->getVar('sscasn');
+            $data = [
+                'lokasi_siasn_id' => $this->request->getVar('unor'),
+                'lokasi_siasn_nama' => $this->request->getVar('siasnname')
+            ];
+            $model->set($data)->where(['lokasi'=>$id,'kode_satker'=>session('lokasi')])->update();
+            return redirect()->to('/penetapan/formasi');
+        }else{
+            session()->setFlashdata('message', 'Pilih Unor terlebih dahulu');
+            return redirect()->to('/penetapan/formasi');
+        }
     }
 }

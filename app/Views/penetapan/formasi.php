@@ -28,7 +28,8 @@
                     <thead>
                         <tr>
                             <th>Jabatan</th>
-                            <th>Lokasi</th>
+                            <th>Lokasi SSCASN</th>
+                            <th>Lokasi SIASN</th>
                             <th>Jumlah</th>
                             <th>Terisi</th>
                         </tr>
@@ -38,6 +39,10 @@
                         <tr>
                             <td><?= $row->jabatan_sscasn?></td>
                             <td><?= $row->lokasi?></td>
+                            <td>
+                                <?= $row->lokasi_siasn_nama?>
+                                <a href="javascript:;" onclick="updateunor('<?= $row->lokasi?>')">Update</a>
+                            </td>
                             <td><?= $row->jumlah?></td>
                             <td><?= $row->terisi?></td>
                         </tr>
@@ -53,6 +58,33 @@
     </div>
     <!-- container-fluid -->
 </div>
+
+<div class="modal fade" id="editunor" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="title" id="defaultModalLabel">Pemetaan Unor</h4>
+          <div id="progress"></div>
+        </div>
+        <div class="modal-body">
+        <form action="" method="POST" class="row g-3" id="saveunor">
+            <div class="col-md-12">
+                <label for="fullnameInput" class="form-label">Unor SSCASN</label>
+                <textarea class="form-control" rows="3" name="sscasn" id="sscasn" readonly></textarea>
+            </div>
+            <div class="col-md-12">
+                <label for="inputEmail4" class="form-label">Unor SIASN</label>
+                <select class="form-select" id="searchunor" name="unor"></select>
+                <input type="hidden" name="siasnname" id="siasnname">
+            </div>
+        </form>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary waves-effect" onclick="$('#saveunor').submit()">SIMPAN</button>
+        <button type="button" class="btn btn-danger waves-effect" data-bs-dismiss="modal">BATAL</button>
+      </div>
+    </div>
+</div>
 <?= $this->endSection() ?>
 <?= $this->section('script') ?>
 <script src="<?= base_url();?>assets/vendors/datatable/js/jquery.dataTables.min.js"></script>
@@ -62,6 +94,7 @@
 <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.colVis.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
         $('.dataformasi').DataTable({
@@ -87,6 +120,50 @@
                 }
         ]
         });
+
+        $('#searchunor').select2({
+        dropdownParent: $('#editunor'),
+        ajax: {
+            url: '<?= site_url() ?>ajax/searchunor',
+            data: function (params) {
+            var query = {
+                search: params.term,
+                type: 'public'
+            }
+
+            return query;
+            },
+            processResults: function (data) {
+            return {
+                results: data
+            };
+            },
+            processResults: (data, params) => {
+                const results = data.map(item => {
+                return {
+                    id: item.id,
+                    text: item.unor,
+                };
+                });
+                return {
+                results: results,
+                }
+            },
+        },
+        placeholder: 'Cari Unor',
+        minimumInputLength: 5,
+        });
+
+        $('#searchunor').on('change', function() {
+            var data = $('#searchunor').select2('data');
+            $('#siasnname').val(data[0].text);
+        });
     });
+    
+    function updateunor(sscasn) {
+        $('#sscasn').html(sscasn);
+        $('#editunor').modal('show');
+    }
+    
 </script>
 <?= $this->endSection() ?>

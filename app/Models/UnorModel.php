@@ -4,14 +4,14 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class FormasiModel extends Model
+class UnorModel extends Model
 {
-    protected $table            = 'formasi';
+    protected $table            = 'unor_siasn';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
-    protected $protectFields    = false;
+    protected $protectFields    = true;
     protected $allowedFields    = [];
 
     protected bool $allowEmptyInserts = false;

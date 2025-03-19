@@ -132,6 +132,7 @@ $routes->group("skb", ["filter" => "auth"], function ($routes) {
 $routes->group("penetapan", ["filter" => "auth"], function ($routes) {
     $routes->get('sprp', 'Penetapan\Sprp::index');
     $routes->get('formasi', 'Penetapan\Formasi::index');
+    $routes->post('formasi', 'Penetapan\Formasi::updateunor');
     $routes->get('formasi/rekapitulasi', 'Penetapan\Formasi::rekapitulasi');
     $routes->get('formasi/getdata', 'Penetapan\Formasi::getdata');
     $routes->get('formasi/export', 'Penetapan\Formasi::export');
@@ -148,6 +149,10 @@ $routes->group("penetapan", ["filter" => "auth"], function ($routes) {
 
 $routes->group("sanggah", ["filter" => "auth"], function ($routes) {
     $routes->get('nilai', 'Sanggah::index');
+});
+
+$routes->group("ajax", ["filter" => "auth"], function ($routes) {
+    $routes->get('searchunor', 'Ajax::searchunor');
 });
 
 // $routes->group("admin", ["filter" => "admin"], function ($routes) {
