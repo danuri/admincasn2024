@@ -142,7 +142,7 @@
                 const results = data.map(item => {
                 return {
                     id: item.id,
-                    text: item.unor,
+                    text: item.unor_nama+' - '+item.unor_induk_nama,
                 };
                 });
                 return {
