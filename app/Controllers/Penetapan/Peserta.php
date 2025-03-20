@@ -32,7 +32,7 @@ class Peserta extends BaseController
                                                 formasi.lokasi_siasn_nama
                                             FROM
                                                 peserta
-                                                INNER JOIN
+                                                LEFT JOIN
                                                 formasi
                                                 ON 
                                                     peserta.penempatan_id = formasi.id
