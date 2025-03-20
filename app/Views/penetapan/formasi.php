@@ -154,7 +154,7 @@
                 const results = data.map(item => {
                 return {
                     id: item.id,
-                    text: item.unor_nama+' - '+item.unor_induk_nama,
+                    text: item.unor_lengkap,
                 };
                 });
                 return {
