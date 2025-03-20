@@ -167,15 +167,21 @@ class Formasi extends BaseController
         {
             $model = new FormasiModel;
             $id = $this->request->getVar('sscasn');
+            $formasiid = $this->request->getVar('formasiid');
+            $updatebulk = $this->request->getVar('updatebulk');
             $data = [
                 'lokasi_siasn_id' => $this->request->getVar('unor'),
                 'lokasi_siasn_nama' => $this->request->getVar('siasnname')
             ];
-            $model->set($data)->where(['lokasi'=>$id,'kode_satker'=>session('lokasi')])->update();
-            return redirect()->to('/penetapan/formasi');
+
+            if($updatebulk == 1){
+                $model->set($data)->where(['lokasi'=>$id,'kode_satker'=>session('lokasi')])->update();
+            }else{
+                $model->set($data)->where(['id'=>$formasiid])->update();
+            }
         }else{
             session()->setFlashdata('message', 'Pilih Unor terlebih dahulu');
-            return redirect()->to('/penetapan/formasi');
         }
+        return redirect()->to('/penetapan/formasi');
     }
 }

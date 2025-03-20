@@ -41,7 +41,7 @@
                             <td><?= $row->lokasi?></td>
                             <td>
                                 <?= ($row->lokasi_siasn_nama)?$row->lokasi_siasn_nama.' <a href="javascript:;" onclick="copyToClipboard(\''.$row->lokasi_siasn_nama.'\');" class="text-success"><i class="ri-survey-line"></i></a>':'';?>
-                                <a href="javascript:;" onclick="updateunor('<?= $row->lokasi?>')">Update</a>
+                                <a href="javascript:;" onclick="updateunor('<?= $row->id?>','<?= $row->lokasi?>')">Update</a>
                             </td>
                             <td><?= $row->jumlah?></td>
                             <td><?= $row->terisi?></td>
@@ -70,12 +70,24 @@
         <form action="" method="POST" class="row g-3" id="saveunor">
             <div class="col-md-12">
                 <label for="fullnameInput" class="form-label">Unor SSCASN</label>
+                <input type="hidden" name="formasiid" id="formasiid">
                 <textarea class="form-control" rows="3" name="sscasn" id="sscasn" readonly></textarea>
             </div>
             <div class="col-md-12">
                 <label for="inputEmail4" class="form-label">Unor SIASN</label>
                 <select class="form-select" id="searchunor" name="unor"></select>
                 <input type="hidden" name="siasnname" id="siasnname">
+                <input type="hidden" name="updatebulk" id="updatebulk" value="0">
+            </div>
+            <div class="col-md-12">
+              <div class="mb-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="bulk" value="0">
+                    <label class="form-check-label" for="formCheck2">
+                        Update semua lokasi dengan nama yang sama
+                    </label>
+                </div>
+              </div>
             </div>
         </form>
         </div>
@@ -158,9 +170,18 @@
             var data = $('#searchunor').select2('data');
             $('#siasnname').val(data[0].text);
         });
+
+        $('#bulk').change(function(event) {
+        if(this.checked) {
+        $('#updatebulk').val('1');
+        }else{
+        $('#updatebulk').val('0');
+        }
+    });
     });
     
-    function updateunor(sscasn) {
+    function updateunor(id,sscasn) {
+        $('#formasiid').val(id);
         $('#sscasn').html(sscasn);
         $('#editunor').modal('show');
     }
