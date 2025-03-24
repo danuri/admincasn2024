@@ -35,13 +35,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($formasi as $row){?>
+                        <?php
+                        foreach($formasi as $row){
+                        $clokasi = str_replace("'","",$row->lokasi); 
+                        ?>
                         <tr>
                             <td><?= $row->jabatan_sscasn?></td>
                             <td><?= $row->lokasi?></td>
                             <td>
                                 <?= ($row->lokasi_siasn_nama)?$row->lokasi_siasn_nama.' <a href="javascript:;" onclick="copyToClipboard(\''.$row->lokasi_siasn_nama.'\');" class="text-success"><i class="ri-survey-line"></i></a>':'';?>
-                                <a href='javascript:;' onclick='updateunor("<?= $row->id?>","<?= $row->lokasi?>")'>Update</a>
+                                <a href="javascript:;" onclick='updateunor('<?= $row->id?>','<?= $clokasi?>')'>Update</a>
                             </td>
                             <td><?= $row->jumlah?></td>
                             <td><?= $row->terisi?></td>
