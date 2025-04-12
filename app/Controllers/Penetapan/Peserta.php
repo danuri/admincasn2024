@@ -137,6 +137,7 @@ class Peserta extends BaseController
             <div class="form-group">
                 <label for="formasi" style="margin-top:.5rem;margin-bottom:.0rem;">Penempatan</label>
                 <select class="form-control" name="formasi" id="formasix">
+                    <option></option>
                     <?php for ($i = 0; $i < count($formasi); $i++) {?>
                         <option value="<?php echo $formasi[$i]->id;?>" ><?php echo $formasi[$i]->lokasi.' ('.$formasi[$i]->terisi.' dari '.$formasi[$i]->jumlah.')';?></option>
                     <?php } ?>
