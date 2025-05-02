@@ -43,6 +43,29 @@
               <table class="table table-bordered table-striped table-hover datacpns dt-responsive">
                     <thead>
                         <tr>
+                            <th>Status Usulan</th>
+                            <th>Jumlah</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        foreach ($rekap as $row) {
+                        ?>
+                        <tr>
+                            <td><?php echo $row->usul_status; ?></td>
+                            <td><?php echo $row->jumlah; ?></td>
+                        </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>  
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-body">              
+              <table class="table table-bordered table-striped table-hover datacpns dt-responsive">
+                    <thead>
+                        <tr>
                             <th>Nomor Peserta</th>
                             <th>Nama</th>
                             <th>Jabatan</th>
