@@ -145,6 +145,7 @@ $routes->group("penetapan", ["filter" => "auth"], function ($routes) {
     $routes->get('peserta/reset/(:any)', 'Penetapan\Peserta::reset/$1');
     $routes->get('peserta/sprp/(:any)', 'Penetapan\Peserta::cetak_sprp/$1');
     $routes->get('peserta/export', 'Penetapan\Peserta::export');
+    $routes->get('monitoring', 'Penetapan\Monitoring::index');
 });
 
 $routes->group("sanggah", ["filter" => "auth"], function ($routes) {
