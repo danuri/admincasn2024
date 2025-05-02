@@ -75,10 +75,10 @@ class Formasi extends BaseController
                                         (SELECT COUNT(1) 
                                         FROM peserta b 
                                         WHERE a.formasi = b.formasi
-                                        AND (b.status_akhir = 'P/L' OR b.status_akhir = 'P/L-E2' OR b.status_akhir = 'P/L-U1')
+                                        AND (b.status_akhir = 'P/L' OR b.status_akhir = 'P/L-E2' OR b.status_akhir = 'P/L-U1' OR b.status_akhir = 'PL-9')
                                         AND b.penempatan_id IS NOT NULL AND b.kode_satker = '$lokasi') AS penempatan
                                     FROM peserta a 
-                                    WHERE (a.status_akhir = 'P/L' OR a.status_akhir = 'P/L-E2' OR a.status_akhir = 'P/L-U1') 
+                                    WHERE (a.status_akhir = 'P/L' OR a.status_akhir = 'P/L-E2' OR a.status_akhir = 'P/L-U1' OR a.status_akhir = 'PL-9') 
                                     GROUP BY a.formasi")->getResult();
         } else {
             $data['rekapitulasi'] = $db->query("SELECT 
@@ -91,11 +91,11 @@ class Formasi extends BaseController
                                         (SELECT COUNT(1) 
                                         FROM peserta b 
                                         WHERE a.formasi = b.formasi
-                                        AND (b.status_akhir = 'P/L' OR b.status_akhir = 'P/L-E2' OR b.status_akhir = 'P/L-U1')
+                                        AND (b.status_akhir = 'P/L' OR b.status_akhir = 'P/L-E2' OR b.status_akhir = 'P/L-U1' OR b.status_akhir = 'PL-9')
                                         AND b.penempatan_id IS NOT NULL AND b.kode_satker = '$lokasi') AS penempatan
                                     FROM peserta a 
                                     WHERE a.kode_satker = '$lokasi' 
-                                    AND (a.status_akhir = 'P/L' OR a.status_akhir = 'P/L-E2' OR a.status_akhir = 'P/L-U1') 
+                                    AND (a.status_akhir = 'P/L' OR a.status_akhir = 'P/L-E2' OR a.status_akhir = 'P/L-U1' OR a.status_akhir = 'PL-9') 
                                     GROUP BY a.formasi")->getResult();
         }        
         return view('penetapan/rekapitulasi', $data);

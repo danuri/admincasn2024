@@ -38,7 +38,7 @@ class Peserta extends BaseController
                                                     peserta.penempatan_id = formasi.id
                                             WHERE
                                                 peserta.kode_satker = '$lokasi' AND
-                                                peserta.status_akhir IN ('P/L','P/L-E2','P/L-U1')")->getResult();
+                                                peserta.status_akhir IN ('P/L','P/L-E2','P/L-U1','PL-9')")->getResult();
             $data['tanggal'] = date('Ymd'); 
             $data['tanggal_download_sprp'] = getenv('TANGGAL_MULAI_DOWNLOAD_SPRP');
             //dd($data);
@@ -54,7 +54,7 @@ class Peserta extends BaseController
         } else {           
             $builder = $db->table('peserta')
                         ->select('nopeserta, nama, formasi, jenis, penempatan, penempatan_id, doc_sprp')
-                        ->where("kode_satker = ". $db->escape($lokasi) ." AND (`status_akhir` = 'P/L' OR `status_akhir` = 'P/L-E2' OR `status_akhir` = 'P/L-U1')");
+                        ->where("kode_satker = ". $db->escape($lokasi) ." AND (`status_akhir` = 'P/L' OR `status_akhir` = 'P/L-E2' OR `status_akhir` = 'P/L-U1' OR `status_akhir` = 'PL-9')");
             return DataTable::of($builder)
             ->edit('penempatan', function ($row) {
                 return $row->penempatan != null ? $row->penempatan : "-";
@@ -89,7 +89,7 @@ class Peserta extends BaseController
         if (session()->get('is_admin') == '1') {
             $builder = $db->table('peserta')
                         ->select('nopeserta, nama, pendidikan, formasi, jenis, penempatan, doc_sprp')
-                        ->where("(`status_akhir` = 'P/L' OR `status_akhir` = 'P/L-E2' OR `status_akhir` = 'P/L-U1')");
+                        ->where("(`status_akhir` = 'P/L' OR `status_akhir` = 'P/L-E2' OR `status_akhir` = 'P/L-U1' OR `status_akhir` = 'PL-9')");
             return DataTable::of($builder)->toJson(true);
         } else {            
             return null;
@@ -137,6 +137,7 @@ class Peserta extends BaseController
             <div class="form-group">
                 <label for="formasi" style="margin-top:.5rem;margin-bottom:.0rem;">Penempatan</label>
                 <select class="form-control" name="formasi" id="formasix">
+                    <option></option>
                     <?php for ($i = 0; $i < count($formasi); $i++) {?>
                         <option value="<?php echo $formasi[$i]->id;?>" ><?php echo $formasi[$i]->lokasi.' ('.$formasi[$i]->terisi.' dari '.$formasi[$i]->jumlah.')';?></option>
                     <?php } ?>
@@ -183,7 +184,7 @@ class Peserta extends BaseController
             session()->setFlashdata('message', $validation->getErrors());
             $db = db_connect();
             $lokasi = session('lokasi');
-            $data['peserta'] = $db->query("SELECT * FROM peserta WHERE kode_satker = '$lokasi' AND (`status_akhir` = 'P/L' OR `status_akhir` = 'P/L-E2' OR `status_akhir` = 'P/L-U1')")->getResult();
+            $data['peserta'] = $db->query("SELECT * FROM peserta WHERE kode_satker = '$lokasi' AND (`status_akhir` = 'P/L' OR `status_akhir` = 'P/L-E2' OR `status_akhir` = 'P/L-U1' OR `status_akhir` = 'PL-9')")->getResult();
             $data['resume'] = $db->query("SELECT formasi, COUNT(*) as jumlah FROM peserta WHERE kode_satker = '30130000' AND (`status_akhir` = 'P/L' OR `status_akhir` = 'P/L-E2' OR `status_akhir` = 'P/L-U1') GROUP BY formasi")->getResult();
             return view('penetapan/peserta', $data);
         }
@@ -367,14 +368,14 @@ class Peserta extends BaseController
             $db = db_connect();
             $data = $db->query("SELECT * 
                                 FROM peserta 
-                                WHERE (`status_akhir` = 'P/L' OR `status_akhir` = 'P/L-E2' OR `status_akhir` = 'P/L-U1')")
+                                WHERE (`status_akhir` = 'P/L' OR `status_akhir` = 'P/L-E2' OR `status_akhir` = 'P/L-U1' OR `status_akhir` = 'PL-9')")
                             ->getResult();
         } else {
             $db = db_connect();
             $data = $db->query("SELECT * 
                                 FROM peserta 
                                 WHERE kode_satker = '$lokasi' 
-                                AND (`status_akhir` = 'P/L' OR `status_akhir` = 'P/L-E2' OR `status_akhir` = 'P/L-U1')")
+                                AND (`status_akhir` = 'P/L' OR `status_akhir` = 'P/L-E2' OR `status_akhir` = 'P/L-U1' OR `status_akhir` = 'PL-9')")
                             ->getResult();
         }    
         $spreadsheet = new Spreadsheet();

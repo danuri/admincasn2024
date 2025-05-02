@@ -164,6 +164,7 @@
 </div>
 <?= $this->endSection() ?>
 <?= $this->section('script') ?>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script type="text/javascript">
     // $(document).ready(function() {
     //     var table = $('#pesertaskb').DataTable({
@@ -208,7 +209,8 @@
         ]
         });
 
-    //$('.select2').select2();
+        //$('#formasix').select2();
+        //$('.select2').select2();
     });
     $(document).ready(function() {
         var table = $('#pesertaadmin').DataTable({
@@ -225,12 +227,27 @@
                 {data: 'jenis'},
                 {data: 'penempatan'}
             ]
-        });
+        });        
+        //$('#formasix').select2();
     });
     function penempatan(nopeserta) {
-        $('#bodypenembatan').load('<?php echo site_url('penetapan/peserta/get_detail');?>/'+nopeserta);
-	    $('#editpenempatan').modal('show');
+        // $('#bodypenembatan').load('<?php echo site_url('penetapan/peserta/get_detail');?>/'+nopeserta);
+	    // $('#editpenempatan').modal('show');
+        // $('#formasix').select2();
+        $('#bodypenembatan').load('<?php echo site_url('penetapan/peserta/get_detail');?>/' + nopeserta, function() {
+            $('#formasix').select2({
+                placeholder: 'Pilih lokasi penempatan',
+                dropdownParent: $('#editpenempatan'),
+                allowClear: true,
+            }); 
+        });        
+        //$.fn.modal.Constructor.prototype._enforceFocus = function() {};
+        $('#editpenempatan').modal('show');
     }
+
+    // $('#editpenempatan').on('shown.bs.modal', function () {
+    //     $('#formasix').select2('open');
+    // });
 
     function download_sprp(doc_sprp) {
         window.open(doc_sprp);
