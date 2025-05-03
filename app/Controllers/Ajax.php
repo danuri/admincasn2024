@@ -52,6 +52,7 @@ class Ajax extends BaseController
           $nip = $row->nip;
 
           $model = new PesertaModel;
+          $model->set('usul_id', $id);
           $model->set('usul_status', $status);
           $model->set('usul_alasan_tolak', $alasan);
           $model->set('usul_path_ttd_pertek', $pathpertek);
