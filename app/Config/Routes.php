@@ -155,6 +155,7 @@ $routes->group("sanggah", ["filter" => "auth"], function ($routes) {
 $routes->group("ajax", ["filter" => "auth"], function ($routes) {
     $routes->get('searchunor', 'Ajax::searchunor');
 });
+$routes->get('ajax/monitoringusulnip/(:num)/(:num)/(:num)/(:num)', 'Ajax::monitoringusulnip/$1/$2/$3/$4');
 
 // $routes->group("admin", ["filter" => "admin"], function ($routes) {
 

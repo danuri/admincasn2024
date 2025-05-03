@@ -434,6 +434,160 @@ function gets3url($file,$folder)
      return $presignedUrl;
    }
 
+   function siasn_usul_status($status)
+ {
+  
+   if($status == 1){
+     $result = 'Input Berkas';
+   }else if($status == 2){
+     $result = 'Berkas Disimpan (Terverifikasi)';
+   }else if($status == 3){
+     $result = 'Surat Usulan';
+   }else if($status == 4){
+     $result = 'Approval Surat Usulan';
+   }else if($status == 5){
+     $result = 'Perbaikan Dokumen';
+   }else if($status == 6){
+     $result = 'Tidak Memenuhi Syarat';
+   }else if($status == 7){
+     $result = 'Menunggu Cetak SK - Menyetujui';
+   }else if($status == 8){
+     $result = 'Menunggu Cetak SK - Perbaikan Pertek';
+   }else if($status == 9){
+     $result = 'Menunggu Cetak SK - Pembatalan Pertek';
+   }else if($status == 10){
+     $result = 'Cetak SK';
+   }else if($status == 11){
+     $result = 'Profil PNS telah diperbaharui';
+   }else if($status == 12){
+     $result = 'Terima Usulan';
+   }else if($status == 13){
+     $result = 'Validasi Usulan - Tidak Memenuhi Syarat';
+   }else if($status == 14){
+     $result = 'Validasi Usulan - Perbaikan Dokumen';
+   }else if($status == 15){
+     $result = 'Validasi Usulan - Disetujui';
+   }else if($status == 15){
+     $result = 'Validasi Usulan - Disetujui';
+    }else if($status == 16){
+      $result = 'Berkas Disetujui';
+    }else if($status == 17){
+      $result = 'Menunggu Paraf - Paraf Pertek';
+    }else if($status == 18){
+      $result = 'Menunggu Paraf - Gagal Paraf Pertek';
+    }else if($status == 19){
+      $result = 'Sudah di paraf - Pertek';
+    }else if($status == 20){
+      $result = 'Menunggu Tanda tangan- TTD Pertek';
+    }else if($status == 21){
+      $result = 'Berkas Ditolak - TTD Pertek';
+    }else if($status == 22){
+      $result = 'Sudah TTD - Pertek';
+    }else if($status == 23){
+      $result = 'Surat Keluar';
+    }else if($status == 24){
+      $result = 'Perbaikan Pertek (Menunggu Approval Instansi)';
+    }else if($status == 25){
+      $result = 'Terima Usulan Penetapan - Pembatalan';
+    }else if($status == 26){
+      $result = 'Pembatalan Pertek (Menunggu Approval Instansi)';
+    }else if($status == 27){
+      $result = 'Menunggu SK - Paraf / TTE';
+    }else if($status == 28){
+      $result = 'Setuju Paraf SK';
+    }else if($status == 29){
+      $result = 'Tolak TTD SK';
+    }else if($status == 30){
+      $result = 'Setuju TTD SK';
+    }else if($status == 31){
+      $result = 'Telah Update di Profile PNS';
+    }else if($status == 32){
+      $result = 'Pembuatan SK Berhasil';
+    }else if($status == 33){
+      $result = 'Menunggu Layanan';
+    }else if($status == 34){
+      $result = 'Perbaikan Dokumen - Menunggu Approval';
+    }else if($status == 35){
+      $result = 'Tolak Paraf SK';
+    }else if($status == 36){
+      $result = 'Menunggu TTD - SK';
+    }else if($status == 37){
+      $result = 'Approval Perbaikan Pertek';
+    }else if($status == 38){
+      $result = 'Approval Pembatalan Pertek';
+    }else if($status == 39){
+      $result = 'Perbaikan SK';
+    }else if($status == 40){
+      $result = 'Berkas Disimpan (Terverifikasi) - Perbaikan SK';
+    }else if($status == 41){
+      $result = 'Validasi Usulan - Perbaikan SK';
+    }else if($status == 42){
+      $result = 'Validasi Usulan - Perbaikan SK (Disetujui)';
+    }else if($status == 43){
+      $result = 'Menunggu Paraf - Perbaikan SK';
+    }else if($status == 44){
+      $result = 'Menunggu TTD - Perbaikan SK';
+    }else if($status == 45){
+      $result = 'Sudah TTD - Perbaikan SK';
+    }else if($status == 46){
+      $result = 'Menunggu TTD SK - Instansi';
+    }else if($status == 47){
+      $result = 'Tolak TTD SK - Instansi';
+    }else if($status == 48){
+      $result = 'Setuju TTD SK - Instansi';
+    }else if($status == 49){
+      $result = 'Sudah TTD - SK';
+    }else if($status == 50){
+     $result = 'Perbaikan Dokumen - MYSAPK';
+   }else if($status == 51){
+     $result = 'Input Berkas - Perbaikan MySAPK';
+   }else if($status == 52){
+     $result = 'Perbaikan Dokumen - Approval';
+   }else if($status == 53){
+     $result = 'Setuju TTD Pertek';
+   }else if($status == 55){
+     $result = 'Approval Tingkat Provinsi';
+   }else if($status == 56){
+     $result = 'Perbaikan Approval';
+   }else if($status == 57){
+     $result = 'Perbaikan Pertek';
+   }else if($status == 58){
+     $result = 'Validasi Usulan - Perbaikan Pertek';
+   }else if($status == 59){
+     $result = 'Menunggu Buat Sk';
+   }else if($status == 60){
+     $result = 'Proses Persidangan';
+   }else if($status == 61){
+     $result = 'Input Berkas - SK PNS';
+   }else if($status == 62){
+     $result = 'Menunggu TTD SK PNS - Instansi';
+   }else if($status == 63){
+     $result = 'Setuju TTD Digital SK PNS';
+   }else if($status == 64){
+     $result = 'Pembuatan SK Basah PNS Berhasil';
+   }else if($status == 65){
+     $result = 'Pembatalan NIP/Pertek';
+   }else if($status == 66){
+     $result = 'Perbaikan SK Provinsi';
+   }else if($status == 67){
+     $result = 'Perbaikan Dokumen - BTS';
+   }else if($status == 68){
+     $result = 'Perbaikan SK - Validasi Usulan';
+   }else if($status == 69){
+     $result = 'Tolak Perbaikan SK - BTS';
+   }else if($status == 70){
+     $result = 'Tolak Perbaikan SK - TMS';
+   }else if($status == 71){
+     $result = 'Perbaikan Dokumen SK - BTS';
+   }else if($status == 99){
+     $result = 'Usulan Dihapus';
+   }else{
+     $result = '';
+   }
+
+   return $result;
+ }
+
 define('ENCRYPTION_KEY', '4736d52f85bdb63e46bf7d6d41bbd551af36e1bfb7c68164bf81e2400d291319');
 function encrypt($string, $salt = null)
 {

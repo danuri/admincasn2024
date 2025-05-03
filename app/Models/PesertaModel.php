@@ -11,7 +11,7 @@ class PesertaModel extends Model
     protected $useAutoIncrement = true;
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
-    protected $protectFields    = true;
+    protected $protectFields    = false;
     protected $allowedFields    = ['id_tilok','tilok','jadwal_praktik','ruangan_praktik','jadwal_wawancara','ruangan_wawancara','penempatan','penempatan_id','doc_sprp'];
 
     protected bool $allowEmptyInserts = false;
