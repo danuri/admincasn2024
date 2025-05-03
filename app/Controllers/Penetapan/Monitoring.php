@@ -40,7 +40,7 @@ class Monitoring extends BaseController
                                                 peserta.kode_satker = '$lokasi' AND
                                                 peserta.status_akhir IN ('P/L','P/L-E2','P/L-U1')")->getResult();
             $data['rekap'] = $db->query("SELECT usul_status, COUNT(nopeserta) AS jumlah FROM peserta 
-                                        WHERE kode_satker='30130000' AND usul_status IS NOT NULL GROUP BY usul_status")->getResult();
+                                        WHERE kode_satker='$lokasi' AND usul_status IS NOT NULL GROUP BY usul_status")->getResult();
                                                 
             return view('penetapan/monitoring', $data);
         }           
