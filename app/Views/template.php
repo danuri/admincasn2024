@@ -265,6 +265,9 @@
                                     <li class="nav-item">
                                         <a href="<?= site_url('penetapan/peserta')?>" class="nav-link" data-key="t-basic-tables"><i class="ri-file-user-fill"></i> Data Peserta</a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a href="<?= site_url('penetapan/monitoring')?>" class="nav-link" data-key="t-basic-tables"><i class="ri-file-user-fill"></i> Monitoring Usul NIP</a>
+                                    </li>
                                 </ul>
                             </div>
                         </li>
