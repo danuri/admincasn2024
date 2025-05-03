@@ -71,6 +71,7 @@
                             <th>Jabatan</th>
                             <th>Jenis</th>
                             <th>Status Usulan</th>
+                            <th>NIP</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -82,7 +83,8 @@
                             <td><?php echo $row->nama; ?></td>
                             <td><?php echo $row->formasi; ?></td>
                             <td><?php echo $row->jenis; ?></td>
-                            <td><?php echo $row->usul_status; ?></td>
+                            <td><b><?php echo $row->usul_status; ?></b><br><?php echo $row->usul_alasan_tolak; ?></td>
+                            <td><?php echo $row->usul_nip; ?></td>
                         </tr>
                         <?php } ?>
                     </tbody>
