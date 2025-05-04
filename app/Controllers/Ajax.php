@@ -33,7 +33,7 @@ class Ajax extends BaseController
 
       $response = $client->request('GET', 'https://api-siasn.bkn.go.id/siasn-instansi/pengadaan/usulan/monitoring?jenis_pengadaan_id='.$jenis.'&status_usulan=&periode='.$tahun.'&limit='.$limit.'&offset='.$offset, [
           'headers' => [
-              'Authorization'     => 'Bearer '.$token,
+              'Authorization'     => 'Bearer '.getenv('TOKEN_STAT'),
           ],
           'verify' => false,
           'debug' => true,
