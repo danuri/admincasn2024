@@ -72,6 +72,8 @@
                             <th>Jenis</th>
                             <th>Status Usulan</th>
                             <th>NIP</th>
+                            <th>PERTEK</th>
+                            <th>SK</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -85,6 +87,12 @@
                             <td><?php echo $row->jenis; ?></td>
                             <td><b><?php echo $row->usul_status; ?></b><br><?php echo $row->usul_alasan_tolak; ?></td>
                             <td><?php echo $row->usul_nip; ?></td>
+                            <td>
+                                <?php if ($row->usul_path_ttd_pertek) { ?>
+                                    <a href="https://ropeg.kemenag.go.id/apimws/upload/download?fname=PERTEK_<?= $row->nopeserta.'_'.str_replace(' ',',',$row->nama)?>.pdf&path=<?= encrypt($row->usul_path_ttd_pertek)?>" target="_blank" class="btn btn-primary btn-sm"><i class="ri-download-2-line"></i></a>
+                                <?php } ?>
+                            </td>
+                            <td></td>
                         </tr>
                         <?php } ?>
                     </tbody>
