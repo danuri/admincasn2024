@@ -69,7 +69,7 @@
                             <th>Nomor Peserta</th>
                             <th>Nama</th>
                             <th>Jabatan</th>
-                            <th>Jenis</th>
+                            <th>No HP</th>
                             <th>Status Usulan</th>
                             <th>NIP</th>
                             <th>PERTEK</th>
@@ -84,7 +84,7 @@
                             <td><?php echo $row->nopeserta; ?></td>
                             <td><?php echo $row->nama; ?></td>
                             <td><?php echo $row->formasi; ?></td>
-                            <td><?php echo $row->jenis; ?></td>
+                            <td><a href="https://wa.me/<?= hp($row->no_hp); ?>"><?= $row->no_hp; ?></a></td>
                             <td><b><?php echo $row->usul_status; ?></b><br><?php echo $row->usul_alasan_tolak; ?></td>
                             <td><?php echo $row->usul_nip; ?></td>
                             <td>
