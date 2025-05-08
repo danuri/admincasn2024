@@ -61,7 +61,7 @@
               </div>
             </div>
             
-            <?php if (session()->get('is_admin') == '1') { ?>
+            <?php if (session()->get('is_admin') != 1) { ?>
             <div class="card">
               <div class="card-body">              
               <table class="table table-bordered table-striped table-hover datacpns dt-responsive">
