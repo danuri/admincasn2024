@@ -20,13 +20,14 @@ class Monitoring extends BaseController
 {
     public function index()
     {        
-        // $db = db_connect();
+        $db = db_connect();
         $lokasi = session('lokasi');
         if (session()->get('is_admin') == '1') {
             // $data['peserta'] = $db->query("SELECT * FROM peserta WHERE (`status_akhir` = 'P/L' OR `status_akhir` = 'P/L-E2' OR `status_akhir` = 'P/L-U1')")->getResult();
-            return view('penetapan/peserta');
+            $data['rekap'] = $db->query("SELECT usul_status, COUNT(nopeserta) AS jumlah FROM peserta 
+                                        WHERE usul_status IS NOT NULL GROUP BY usul_status")->getResult();
+            return view('penetapan/monitoring', $data);
         } else {
-            $db = db_connect();
             $data['peserta'] = $db->query("SELECT
                                                 peserta.*, 
                                                 formasi.lokasi_siasn_nama
