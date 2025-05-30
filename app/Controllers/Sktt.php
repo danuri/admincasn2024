@@ -15,7 +15,7 @@ class Sktt extends BaseController
 
     function tilok() {
         $model = new CrudModel;
-        $data['tilok'] = $model->getResult('tilok_pppkt2',['kelola'=>session('kelola')]);
+        $data['tilok'] = $model->getResult('tilok_pppkt2',['kelola'=>session('lokasi')]);
 
         return view('sktt/tilok', $data);
     }
