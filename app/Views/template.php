@@ -279,6 +279,21 @@
                             </a>
                         </li>
                         <?php } ?>
+                        
+                        <?php if(session()->get('is_kanwil') == '1') { ?>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="#sidebarSkb" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarTables">
+                                <i class="ri-layout-grid-line"></i> <span data-key="t-tables">SKTT PPPK Tahap2</span>
+                            </a>
+                            <div class="collapse menu-dropdown" id="sidebarSkb">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="<?= site_url('sktt/tilok')?>" class="nav-link" data-key="t-basic-tables"><i class="bx bx-table"></i> Titik Lokasi</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <?php } ?>
                     </ul>
                 </div>
                 <!-- Sidebar -->

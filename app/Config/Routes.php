@@ -152,6 +152,10 @@ $routes->group("sanggah", ["filter" => "auth"], function ($routes) {
     $routes->get('nilai', 'Sanggah::index');
 });
 
+$routes->group("sktt", ["filter" => "auth"], function ($routes) {
+    $routes->get('tilok', 'Sktt::tilok');
+});
+
 $routes->group("ajax", ["filter" => "auth"], function ($routes) {
     $routes->get('searchunor', 'Ajax::searchunor');
 });
