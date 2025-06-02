@@ -85,7 +85,7 @@
                             <td id="output<?= $row->id ?>"><?= ($row->doc_spmt) ? '<a href="javascript:;" onclick="download_spmt(\'' . $row->doc_spmt . '\')">Download SPMT</a>' : 'Belum Diunggah'; ?></td>
                             <td>
                               <button type="button" class="btn btn-soft-danger waves-effect waves-light btn-sm" onclick="$('#file<?= $row->id ?>').click()"><i class="bx bx-upload align-middle"></i></button>
-                              <form method="POST" action="<?= site_url('spmt/upload') ?>" style="display: none;" id="form<?= $row->id ?>" enctype="multipart/form-data">
+                              <form method="POST" action="<?= site_url('penetapan/spmt/upload') ?>" style="display: none;" id="form<?= $row->id ?>" enctype="multipart/form-data">
                                 <input type="hidden" name="nopeserta" value="<?= $row->nopeserta ?>">
                                 <input type="hidden" name="layanan" value="spmt">
                                 <input type="file" name="dokumen" id="file<?= $row->id ?>" onchange="uploadfile('<?= $row->id ?>')">
