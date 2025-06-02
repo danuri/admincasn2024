@@ -69,7 +69,7 @@ class Spmt extends BaseController
         $postFields = [
             'nip' => '197706022005011005',
             'title' => 'SPMT a.n '.$peserta,
-            'jenis' => 'SPMT',
+            'jenis' => 'SPRP',
             'id_layanan' => '0',
             'lampiran' => new \CURLFile($filepath, 'application/pdf', 'spmt.pdf'),
             'store_from' => 'admincasn'
