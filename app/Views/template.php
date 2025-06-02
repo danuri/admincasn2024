@@ -268,6 +268,11 @@
                                     <li class="nav-item">
                                         <a href="<?= site_url('penetapan/monitoring')?>" class="nav-link" data-key="t-basic-tables"><i class="ri-file-user-fill"></i> Monitoring Usul NIP</a>
                                     </li>
+                                    <?php if(session()->get('is_sdm') == '1') { ?>
+                                    <li class="nav-item">
+                                        <a href="<?= site_url('penetapan/spmt')?>" class="nav-link" data-key="t-basic-tables"><i class="ri-file-user-fill"></i> SPMT Kabiro SDM</a>
+                                    </li>
+                                    <?php } ?>
                                 </ul>
                             </div>
                         </li>

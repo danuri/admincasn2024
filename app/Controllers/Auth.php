@@ -66,6 +66,7 @@ class Auth extends BaseController
             'is_admin'     => $check->is_admin,
             'is_kanwil'     => $check->is_kanwil,
             'is_skb'     => $check->is_skb,
+            'is_sdm'     => $check->is_sdm,
             'lokasi'     => $check->kode_lokasi,
             'lokasi_nama' => $check->nama_satker,
             'isLoggedIn' => TRUE
