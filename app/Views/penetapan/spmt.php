@@ -84,6 +84,7 @@
                             <td><?php echo $row->nama; ?></td>
                             <td><?php echo $row->usul_nip; ?></td>
                             <td id="output<?= $row->id ?>"><?= ($row->doc_spmt) ? '<a href="javascript:;" onclick="download_spmt(\'' . $row->doc_spmt . '\')">Download SPMT</a>' : 'Belum Diunggah'; ?></td>
+                            <td id="outputba<?= $row->id ?>"><?= ($row->doc_ba) ? '<a href="javascript:;" onclick="download_spmt(\'' . $row->doc_ba . '\')">Download SPMT</a>' : 'Belum Diunggah'; ?></td>
                             <td>
                               <button type="button" class="btn btn-soft-danger waves-effect waves-light btn-sm" onclick="$('#file<?= $row->id ?>').click()"><i class="bx bx-upload align-middle"></i> SPMT</button>
                               <form method="POST" action="<?= site_url('penetapan/spmt/upload') ?>" style="display: none;" id="form<?= $row->id ?>" enctype="multipart/form-data">
@@ -205,9 +206,9 @@
             confirmButtonColor: "#5b73e8"
           });
         } else {
-          $('#output' + id).html(responseText.message);
+          $('#outputba' + id).html(responseText.message);
           Swal.fire({
-            html: "SPMT telah diunggah",
+            html: "BA telah diunggah",
             confirmButtonColor: "#5b73e8"
           });
         }
