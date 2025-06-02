@@ -49,7 +49,7 @@ class Spmt extends BaseController
             );
             $pesertaModel->set($data)->where($where)->update();
             
-            return $this->response->setJSON(['status'=>'success','message'=>'<a href="'.$doc_spmt.'" target="_blank">Lihat Dokumen</a>']);
+            return $this->response->setJSON(['status'=>'success','message'=>'<a href="'.$doc_spmt.'" target="_blank">Download SPMT</a>']);
         } else {
             session()->setFlashdata('error', 'File URL TTE tidak ada');
             return $this->response->setJSON(['status'=>'error','message'=>'Gagal mengirim dokumen ke TTE. Pastikan koneksi internet stabil dan coba lagi.']);
@@ -89,7 +89,7 @@ class Spmt extends BaseController
             );
             $pesertaModel->set($data)->where($where)->update();
             
-            return $this->response->setJSON(['status'=>'success','message'=>'<a href="'.$doc_ba.'" target="_blank">Lihat BA</a>']);
+            return $this->response->setJSON(['status'=>'success','message'=>'<a href="'.$doc_ba.'" target="_blank">Download BA</a>']);
         } else {
             session()->setFlashdata('error', 'File URL TTE tidak ada');
             return $this->response->setJSON(['status'=>'error','message'=>'Gagal mengirim dokumen ke TTE. Pastikan koneksi internet stabil dan coba lagi.']);
