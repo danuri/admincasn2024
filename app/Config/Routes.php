@@ -130,7 +130,7 @@ $routes->group("skb", ["filter" => "auth"], function ($routes) {
 });
 
 $routes->group("penetapan", ["filter" => "auth"], function ($routes) {
-    $routes->get('spmt', 'Penetapan\spmt::index');
+    $routes->get('spmt', 'Penetapan\Spmt::index');
     $routes->get('sprp', 'Penetapan\Sprp::index');
     $routes->get('formasi', 'Penetapan\Formasi::index');
     $routes->post('formasi', 'Penetapan\Formasi::updateunor');
