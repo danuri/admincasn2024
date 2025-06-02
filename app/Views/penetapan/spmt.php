@@ -71,6 +71,7 @@
                             <th>Nama</th>
                             <th>NIP</th>
                             <th>SPMT</th>
+                            <th>BA</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -84,11 +85,17 @@
                             <td><?php echo $row->usul_nip; ?></td>
                             <td id="output<?= $row->id ?>"><?= ($row->doc_spmt) ? '<a href="javascript:;" onclick="download_spmt(\'' . $row->doc_spmt . '\')">Download SPMT</a>' : 'Belum Diunggah'; ?></td>
                             <td>
-                              <button type="button" class="btn btn-soft-danger waves-effect waves-light btn-sm" onclick="$('#file<?= $row->id ?>').click()"><i class="bx bx-upload align-middle"></i></button>
+                              <button type="button" class="btn btn-soft-danger waves-effect waves-light btn-sm" onclick="$('#file<?= $row->id ?>').click()"><i class="bx bx-upload align-middle"></i> SPMT</button>
                               <form method="POST" action="<?= site_url('penetapan/spmt/upload') ?>" style="display: none;" id="form<?= $row->id ?>" enctype="multipart/form-data">
                                 <input type="hidden" name="nopeserta" value="<?= $row->nopeserta ?>">
                                 <input type="hidden" name="layanan" value="spmt">
                                 <input type="file" name="dokumen" id="file<?= $row->id ?>" onchange="uploadfile('<?= $row->id ?>')">
+                              </form>
+                              <button type="button" class="btn btn-soft-danger waves-effect waves-light btn-sm" onclick="$('#fileba<?= $row->id ?>').click()"><i class="bx bx-upload align-middle"></i> BA</button>
+                              <form method="POST" action="<?= site_url('penetapan/spmt/baupload') ?>" style="display: none;" id="formba<?= $row->id ?>" enctype="multipart/form-data">
+                                <input type="hidden" name="nopeserta" value="<?= $row->nopeserta ?>">
+                                <input type="hidden" name="layanan" value="spmt">
+                                <input type="file" name="dokumen" id="fileba<?= $row->id ?>" onchange="uploadfileba('<?= $row->id ?>')">
                               </form>
                             </td>
                         </tr>
@@ -157,6 +164,32 @@
     }
 
     function uploadfile(id) {
+    $('#form' + id).ajaxSubmit({
+      // target: '#output'+id,
+      beforeSubmit: function(a, f, o) {
+        alert('Mengunggah');
+      },
+      success: function(responseText, statusText, xhr, $form) {
+
+        if (responseText.status == 'error') {
+          Swal.fire({
+            title: "Ooppss...",
+            text: responseText.message,
+            icon: "error",
+            confirmButtonColor: "#5b73e8"
+          });
+        } else {
+          $('#output' + id).html(responseText.message);
+          Swal.fire({
+            html: "SPMT telah diunggah",
+            confirmButtonColor: "#5b73e8"
+          });
+        }
+      }
+    });
+  }
+
+    function uploadfileba(id) {
     $('#form' + id).ajaxSubmit({
       // target: '#output'+id,
       beforeSubmit: function(a, f, o) {

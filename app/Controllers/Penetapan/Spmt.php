@@ -56,6 +56,46 @@ class Spmt extends BaseController
         }
     }
 
+    function baupload() {
+        if (!$this->validate([
+			'dokumen' => [
+				'rules' => 'uploaded[dokumen]|ext_in[dokumen,pdf,PDF]|max_size[dokumen,2048]',
+				'errors' => [
+					'uploaded' => 'Harus Ada File yang diupload',
+					'mime_in' => 'File Extention Harus Berupa pdf',
+					'max_size' => 'Ukuran File Maksimal 2 MB'
+				]
+			]
+  		])) {
+        return $this->response->setJSON(['status'=>'error','message'=>$this->validator->getErrors()['dokumen']]);
+       }
+
+      $file_name = $_FILES['dokumen']['name'];
+      $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+    $nopeserta = $this->request->getVar('nopeserta');
+      $temp_file_location = $_FILES['dokumen']['tmp_name'];
+
+      $result = $this->sendtte($temp_file_location, $nopeserta);
+
+      $response = json_decode($result['response'], true);
+      if (isset($response['message']['file_url'])) {
+            $doc_ba = $response['message']['file_url'];
+            $pesertaModel = new PesertaModel();
+            $data = array (
+                'doc_ba' => $doc_ba
+            );
+            $where = array (
+                'nopeserta' => $nopeserta
+            );
+            $pesertaModel->set($data)->where($where)->update();
+            
+            return $this->response->setJSON(['status'=>'success','message'=>'<a href="'.$doc_ba.'" target="_blank">Lihat BA</a>']);
+        } else {
+            session()->setFlashdata('error', 'File URL TTE tidak ada');
+            return $this->response->setJSON(['status'=>'error','message'=>'Gagal mengirim dokumen ke TTE. Pastikan koneksi internet stabil dan coba lagi.']);
+        }
+    }
+
     private function sendtte($filepath, $peserta) {
         $apiUrl = getenv('TTE_URL'); 
         $gateKey = getenv('TTE_KEY');
