@@ -4,11 +4,14 @@ namespace App\Controllers\Penetapan;
 
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
-
+use App\Models\CrudModel;
 class Spmt extends BaseController
 {
     public function index()
     {
-        return view('penetapan/spmt');
+        
+        $model = new CrudModel;
+        $data['peserta'] = $model->getResult('peserta', ['kelola' => session('lokasi'),'usul_nip !=' => '']);
+        return view('penetapan/spmt', $data);
     }
 }
