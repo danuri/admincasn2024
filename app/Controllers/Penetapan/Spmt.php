@@ -11,7 +11,7 @@ class Spmt extends BaseController
     {
         
         $model = new CrudModel;
-        $data['peserta'] = $model->getResult('peserta', ['kelola' => session('lokasi'),'usul_nip !=' => '']);
+        $data['peserta'] = $model->getResult('peserta', ['kode_satker' => session('lokasi'),'usul_nip !=' => '']);
         return view('penetapan/spmt', $data);
     }
 }
