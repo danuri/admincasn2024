@@ -70,6 +70,7 @@
                             <th>Nomor Peserta</th>
                             <th>Nama</th>
                             <th>NIP</th>
+                            <th>SPMT</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
