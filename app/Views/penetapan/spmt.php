@@ -92,7 +92,7 @@
                                 <input type="hidden" name="layanan" value="spmt">
                                 <input type="file" name="dokumen" id="file<?= $row->id ?>" onchange="uploadfile('<?= $row->id ?>')">
                               </form>
-                              <button type="button" class="btn btn-soft-danger waves-effect waves-light btn-sm" onclick="$('#fileba<?= $row->id ?>').click()"><i class="bx bx-upload align-middle"></i> BA</button>
+                              <button type="button" class="btn btn-soft-success waves-effect waves-light btn-sm" onclick="$('#fileba<?= $row->id ?>').click()"><i class="bx bx-upload align-middle"></i> BA</button>
                               <form method="POST" action="<?= site_url('penetapan/spmt/baupload') ?>" style="display: none;" id="formba<?= $row->id ?>" enctype="multipart/form-data">
                                 <input type="hidden" name="nopeserta" value="<?= $row->nopeserta ?>">
                                 <input type="hidden" name="layanan" value="spmt">
@@ -173,25 +173,17 @@
       success: function(responseText, statusText, xhr, $form) {
 
         if (responseText.status == 'error') {
-          Swal.fire({
-            title: "Ooppss...",
-            text: responseText.message,
-            icon: "error",
-            confirmButtonColor: "#5b73e8"
-          });
+          alert(responseText.message);
         } else {
           $('#output' + id).html(responseText.message);
-          Swal.fire({
-            html: "SPMT telah diunggah",
-            confirmButtonColor: "#5b73e8"
-          });
+          alert("SPMT telah diunggah");
         }
       }
     });
   }
 
     function uploadfileba(id) {
-    $('#form' + id).ajaxSubmit({
+    $('#formba' + id).ajaxSubmit({
       // target: '#output'+id,
       beforeSubmit: function(a, f, o) {
         alert('Mengunggah');
@@ -199,18 +191,10 @@
       success: function(responseText, statusText, xhr, $form) {
 
         if (responseText.status == 'error') {
-          Swal.fire({
-            title: "Ooppss...",
-            text: responseText.message,
-            icon: "error",
-            confirmButtonColor: "#5b73e8"
-          });
+          alert(responseText.message);
         } else {
           $('#outputba' + id).html(responseText.message);
-          Swal.fire({
-            html: "BA telah diunggah",
-            confirmButtonColor: "#5b73e8"
-          });
+          alert("BA telah diunggah");
         }
       }
     });
