@@ -32,7 +32,7 @@ class Spmt extends BaseController
 
       $file_name = $_FILES['dokumen']['name'];
       $ext = pathinfo($file_name, PATHINFO_EXTENSION);
-        $nopeserta = $this->request->getPost('nopeserta');
+    $nopeserta = $this->request->getVar('nopeserta');
       $temp_file_location = $_FILES['dokumen']['tmp_name'];
 
       $result = $this->sendtte($temp_file_location, $nopeserta);
