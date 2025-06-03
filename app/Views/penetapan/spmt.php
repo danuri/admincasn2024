@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                    <h4 class="mb-sm-0">Data Peserta Lulus CPNS 2024</h4>
+                    <h4 class="mb-sm-0">TTE SPMT dan BA</h4>
 
                     <!-- <div class="page-title-right">
                         <ol class="breadcrumb m-0">
@@ -20,20 +20,11 @@
             </div>
             <div class="card mt-3">
                 <div class="card-body">
-                    <h5>Catatan!!!</h5>
+                    <h5>Info</h5>
                     <ul>
-                        <li>Penempatan hanya bisa dilakukan sesuai jumlah formasi (Jabatan dan Lokasi)</li>
-                        <li>Penempatan dapat diubah selama belum dikirimkan dokumen SPRP untuk TTE</li>
-                        <li>Dokumen SPRP yang telah di-TTE, tidak lagi dapat diubah penempatannya</li> 
-                        <li>Pastikan kolom Penempatan SIASN sudah terisi</li>      
-                        <li>Pengisian Penempatan SIASN pada menu Penetapan NIP > Formasi (Segera update)</li>      
+                        <li>Unggah Draft SPMT/BA dengan tanda ^ yang telah disisipkan untuk di TTE</li>
+                        <li>Gunakan jenis file PDF</li>  
                     </ul>
-                    <h5>Jadwal Penetapan NIP CPNS</h5>
-                    <ul>
-                        <li>Pemetaan penempatan: <strong>...</strong></li>
-                        <li>Input SIASN: <strong>...</strong></li>
-                    </ul>
-                    <a href="<?= site_url('penetapan/peserta/export');?>" target="_blank" class="btn btn-success"><i class="icon-arrow-left-circle"></i> Download Peserta</a></li>
                 </div>
             </div>
         </div>
