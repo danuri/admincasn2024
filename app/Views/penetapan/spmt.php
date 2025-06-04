@@ -62,7 +62,7 @@
                             <th>Nama</th>
                             <th>NIP</th>
                             <th>SPMT</th>
-                            <th>BA</th>
+                            <!-- <th>BA</th> -->
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -75,7 +75,7 @@
                             <td><?php echo $row->nama; ?></td>
                             <td><?php echo $row->usul_nip; ?></td>
                             <td id="output<?= $row->id ?>"><?= ($row->doc_spmt) ? '<a href="javascript:;" onclick="download_spmt(\'' . $row->doc_spmt . '\')">Download SPMT</a>' : 'Belum Diunggah'; ?></td>
-                            <td id="outputba<?= $row->id ?>"><?= ($row->doc_ba) ? '<a href="javascript:;" onclick="download_spmt(\'' . $row->doc_ba . '\')">Download BA</a>' : 'Belum Diunggah'; ?></td>
+                            <!-- <td id="outputba<?= $row->id ?>"><?= ($row->doc_ba) ? '<a href="javascript:;" onclick="download_spmt(\'' . $row->doc_ba . '\')">Download BA</a>' : 'Belum Diunggah'; ?></td> -->
                             <td>
                               <button type="button" class="btn btn-soft-danger waves-effect waves-light btn-sm" onclick="$('#file<?= $row->id ?>').click()"><i class="bx bx-upload align-middle"></i> SPMT</button>
                               <form method="POST" action="<?= site_url('penetapan/spmt/upload') ?>" style="display: none;" id="form<?= $row->id ?>" enctype="multipart/form-data">
@@ -83,12 +83,12 @@
                                 <input type="hidden" name="layanan" value="spmt">
                                 <input type="file" name="dokumen" id="file<?= $row->id ?>" onchange="uploadfile('<?= $row->id ?>')">
                               </form>
-                              <button type="button" class="btn btn-soft-success waves-effect waves-light btn-sm" onclick="$('#fileba<?= $row->id ?>').click()"><i class="bx bx-upload align-middle"></i> BA</button>
+                              <!-- <button type="button" class="btn btn-soft-success waves-effect waves-light btn-sm" onclick="$('#fileba<?= $row->id ?>').click()"><i class="bx bx-upload align-middle"></i> BA</button>
                               <form method="POST" action="<?= site_url('penetapan/spmt/baupload') ?>" style="display: none;" id="formba<?= $row->id ?>" enctype="multipart/form-data">
                                 <input type="hidden" name="nopeserta" value="<?= $row->nopeserta ?>">
                                 <input type="hidden" name="layanan" value="spmt">
                                 <input type="file" name="dokumen" id="fileba<?= $row->id ?>" onchange="uploadfileba('<?= $row->id ?>')">
-                              </form>
+                              </form> -->
                             </td>
                         </tr>
                         <?php } ?>
