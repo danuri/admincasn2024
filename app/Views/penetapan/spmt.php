@@ -74,7 +74,7 @@
                             <td><?php echo $row->nopeserta; ?></td>
                             <td><?php echo $row->nama; ?></td>
                             <td><?php echo $row->usul_nip; ?></td>
-                            <td id="output<?= $row->id ?>"><?= ($row->doc_spmt) ? '<a href="javascript:;" onclick="'.$row->doc_spmt.'">Download SPMT</a>' : 'Belum Diunggah'; ?></td>
+                            <td id="output<?= $row->id ?>"><?= ($row->doc_spmt) ? '<a href="'.$row->doc_spmt.'" target="_blank">Download SPMT</a>' : 'Belum Diunggah'; ?></td>
                             <!-- <td id="outputba<?= $row->id ?>"><?= ($row->doc_ba) ? '<a href="javascript:;" onclick="' . $row->doc_ba . '">Download BA</a>' : 'Belum Diunggah'; ?></td> -->
                             <td>
                               <button type="button" class="btn btn-soft-danger waves-effect waves-light btn-sm" onclick="$('#file<?= $row->id ?>').click()"><i class="bx bx-upload align-middle"></i> SPMT</button>
