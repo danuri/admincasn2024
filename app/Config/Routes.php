@@ -85,6 +85,13 @@ $routes->group("upload", ["filter" => "auth"], function ($routes) {
     $routes->post('save', 'Upload::save');
 });
 
+$routes->group("pppk", ["filter" => "auth"], function ($routes) {
+    $routes->get('peserta', 'Pppk::peserta');
+    $routes->get('pesertal2in', 'Pppk::pesertal2in');
+    $routes->get('pesertal2out', 'Pppk::pesertal2out');
+    $routes->get('usuloptimalisasi', 'Pppk::usuloptimalisasi');
+});
+
 $routes->group("pengaturan", ["filter" => "auth"], function ($routes) {
     $routes->get('formasi', 'Pengaturan\Formasi::index');
     $routes->post('formasi/saveporsi', 'Pengaturan\Formasi::saveporsi');

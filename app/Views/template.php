@@ -286,7 +286,7 @@
                         <?php } ?>
                         
                         <?php if(session()->get('is_kanwil') == '1') { ?>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link menu-link" href="#sidebarSkb" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarTables">
                                 <i class="ri-layout-grid-line"></i> <span data-key="t-tables">SKTT PPPK Tahap2</span>
                             </a>
@@ -294,6 +294,27 @@
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
                                         <a href="<?= site_url('sktt/tilok')?>" class="nav-link" data-key="t-basic-tables"><i class="bx bx-table"></i> Titik Lokasi</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="#sidebarSkb" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarTables">
+                                <i class="ri-layout-grid-line"></i> <span data-key="t-tables">PPPK Tahap 2</span>
+                            </a>
+                            <div class="collapse menu-dropdown" id="sidebarSkb">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="<?= site_url('pppk/peserta')?>" class="nav-link" data-key="t-basic-tables"><i class="bx bx-table"></i> Data Peserta</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="<?= site_url('pppk/pesertal2out')?>" class="nav-link" data-key="t-basic-tables"><i class="bx bx-table"></i> Peserta L-2 Out</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="<?= site_url('pppk/pesertal2in')?>" class="nav-link" data-key="t-basic-tables"><i class="bx bx-table"></i> Peserta L-2 In</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="<?= site_url('pppk/peserta')?>" class="nav-link" data-key="t-basic-tables"><i class="bx bx-table"></i> Usul</a>
                                     </li>
                                 </ul>
                             </div>
