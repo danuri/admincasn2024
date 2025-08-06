@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                    <h4 class="mb-sm-0">Usul Penyesuaian Hasil Optimalisai PPPK Tahap II</h4>
+                    <h4 class="mb-sm-0">Usul Penyesuaian Hasil Optimalisasi PPPK Tahap II</h4>
                     <div class="page-title-right">
                     </div>
                 </div>
@@ -124,11 +124,11 @@
             },
                 success: function(data) {
                     if (data.status == 'error') {
-                        alert(data.info);
+                        alert(data.message);
                     } else {
-                        alert(data.info);
+                        alert(data.message);
                         
-                        $('#output' + id).html(data.message);
+                        $('#output' + id).html(data.info);
                         
                         if ($("table:contains('Belum Diunggah')").length == 0) {
                             $('#reviewbutton').removeAttr('disabled');
