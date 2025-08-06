@@ -298,6 +298,7 @@
                                 </ul>
                             </div>
                         </li> -->
+                        <?php } ?>
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="#sidebarSkb" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarTables">
                                 <i class="ri-layout-grid-line"></i> <span data-key="t-tables">PPPK Tahap 2</span>
@@ -319,7 +320,6 @@
                                 </ul>
                             </div>
                         </li>
-                        <?php } ?>
                     </ul>
                 </div>
                 <!-- Sidebar -->
