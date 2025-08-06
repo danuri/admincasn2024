@@ -314,7 +314,7 @@
                                         <a href="<?= site_url('pppk/pesertal2in')?>" class="nav-link" data-key="t-basic-tables"><i class="bx bx-table"></i> Peserta L-2 In</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="<?= site_url('pppk/peserta')?>" class="nav-link" data-key="t-basic-tables"><i class="bx bx-table"></i> Usul</a>
+                                        <a href="<?= site_url('pppk/usuloptimalisasi')?>" class="nav-link" data-key="t-basic-tables"><i class="bx bx-table"></i> Usul</a>
                                     </li>
                                 </ul>
                             </div>

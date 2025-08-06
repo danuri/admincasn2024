@@ -90,6 +90,9 @@ $routes->group("pppk", ["filter" => "auth"], function ($routes) {
     $routes->get('pesertal2in', 'Pppk::pesertal2in');
     $routes->get('pesertal2out', 'Pppk::pesertal2out');
     $routes->get('usuloptimalisasi', 'Pppk::usuloptimalisasi');
+    $routes->post('uploadsk', 'Pppk::uploadsk');
+    $routes->post('uploaddok/(:any)', 'Pppk::uploaddok/$1');
+    $routes->get('submit', 'Pppk::submit');
 });
 
 $routes->group("pengaturan", ["filter" => "auth"], function ($routes) {
