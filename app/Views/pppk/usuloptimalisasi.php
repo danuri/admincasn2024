@@ -38,8 +38,8 @@
                         <td><?= $row->nopeserta?></td>
                         <td><?= $row->nama?></td>
                         <td><?= $row->jabatan?></td>
-                        <td><?= $row->satker_asal?></td>
-                        <td><?= $row->penempatan_satker?></td>
+                        <td><?= $row->lokasi_asal?></td>
+                        <td><?= $row->penempatan?></td>
                         <td id="output<?= $row->nopeserta?>"><?= ($row->surat_keterangan)?'<a href="https://ropeg.kemenag.go.id:9000/pengadaan/pppk/'.$row->surat_keterangan.'" target="_blank">Lihat</a>':'Belum Upload'; ?></td>
                         <td>
                             <button type="button" class="btn btn-soft-danger waves-effect waves-light btn-sm" onclick="$('#file<?= $row->nopeserta?>').click()"><i class="ri-file-upload-line"></i></button>

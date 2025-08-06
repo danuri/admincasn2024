@@ -27,7 +27,7 @@
                         <th>Nama</th>
                         <th>Jabatan</th>
                         <th>Status</th>
-                        <th>SATKER TUJUAN</th>
+                        <th>Satker Optimalisasi</th>
                       </tr>
                     </thead>
                     <tbody>
