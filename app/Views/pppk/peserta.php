@@ -28,6 +28,7 @@
                         <th>Jabatan</th>
                         <th>Status</th>
                         <th>DRH</th>
+                        <th>#</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -38,6 +39,16 @@
                         <td><?= $row->jabatan?></td>
                         <td><?= $row->status?></td>
                         <td><?= $row->drh?></td>
+                        <td>
+                          <div class="dropdown card-header-dropdown">
+                              <a class="text-reset dropdown-btn" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <span class="text-muted fs-16"><i class="mdi mdi-dots-vertical align-middle"></i></span>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-end">
+                                  <a class="dropdown-item" href="https://ropeg.kemenag.go.id:9000/sscasn/2024/eformasi/lamaran/LAMARAN_<?= $row->nik?>.pdf" target="_blank">Surat Lamaran</a>
+                              </div>
+                          </div>  
+                        </td>
                       </tr>
                       <?php } ?>
                     </tbody>
