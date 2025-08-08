@@ -95,6 +95,10 @@ $routes->group("pppk", ["filter" => "auth"], function ($routes) {
     $routes->get('submit', 'Pppk::submit');
 });
 
+$routes->group("paruhwaktu", ["filter" => "auth"], function ($routes) {
+    $routes->get('', 'Paruhwaktu::index');
+});
+
 $routes->group("pengaturan", ["filter" => "auth"], function ($routes) {
     $routes->get('formasi', 'Pengaturan\Formasi::index');
     $routes->post('formasi/saveporsi', 'Pengaturan\Formasi::saveporsi');
