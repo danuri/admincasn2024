@@ -41,7 +41,7 @@
                         <td><?= $row->pendidikan_nama_nonasn?></td>
                         <td><?= $row->unor_nama_nonasn.' | '.$row->unor_nama_atasan_nonasn?></td>
                         <td><?= $row->status_prioritas?></td>
-                        <td><?= ($row->is_tampungan)?'Ya':'Tidak';?></td>
+                        <td><?= ($row->is_tampungan_sscn)?'Ya':'Tidak';?></td>
                         <td><?= $row->instansi_sscn?></td>
                         <td></td>
                       </tr>
