@@ -27,6 +27,7 @@
                         <th>Nama</th>
                         <th>Pendidikan</th>
                         <th>Unor</th>
+                        <th>Status</th>
                         <th>Instansi SSCASN</th>
                         <th>Usulkan</th>
                       </tr>
@@ -37,7 +38,8 @@
                         <td><?= $row->nik?></td>
                         <td><?= $row->nama?></td>
                         <td><?= $row->pendidikan_nama_nonasn?></td>
-                        <td><?= $row->unor_nama_nonasn?></td>
+                        <td><?= $row->status_prioritas?></td>
+                        <td><?= $row->unor_nama_nonasn.' | '.$row->unor_nama_atasan_nonasn?></td>
                         <td><?= $row->instansi_sscn?></td>
                         <td></td>
                       </tr>

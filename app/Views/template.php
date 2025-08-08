@@ -207,7 +207,7 @@
                             </div>
                         </li> -->
                         <?php if(session()->get('is_skb') == '1') { ?>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link menu-link" href="#sidebarSkb" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarTables">
                                 <i class="ri-layout-grid-line"></i> <span data-key="t-tables">SKBT</span>
                             </a>
@@ -247,10 +247,10 @@
                             <a class="nav-link menu-link" href="<?= site_url('sanggah/nilai')?>">
                                 <i class="ri-mail-star-fill"></i> <span data-key="t-tables">Sanggah Nilai</span>
                             </a>
-                        </li>
+                        </li> -->
                         <?php } 
                             if((session()->get('is_skb') == '1') or (session()->get('is_admin') == '1')) { ?>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link menu-link" href="#sidebarSkb" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarTables">
                                 <i class="ri-layout-grid-line"></i> <span data-key="t-tables">Penetapan NIP</span>
                             </a>
@@ -275,14 +275,14 @@
                                     <?php } ?>
                                 </ul>
                             </div>
-                        </li>
+                        </li> -->
                         <?php }
                              if(session()->get('is_skb') == '1') { ?>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link menu-link" href="<?= site_url('skb/dokumen')?>">
                                 <i class="ri-file-text-line"></i> <span data-key="t-tables">Upload Dokumen</span>
                             </a>
-                        </li>
+                        </li> -->
                         <?php } ?>
                         
                         <?php if(session()->get('is_kanwil') == '1') { ?>
