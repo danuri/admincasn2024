@@ -28,6 +28,7 @@
                         <th>Pendidikan</th>
                         <th>Unor</th>
                         <th>Status</th>
+                        <th>Tampungan</th>
                         <th>Instansi SSCASN</th>
                         <th>Usulkan</th>
                       </tr>
@@ -40,6 +41,7 @@
                         <td><?= $row->pendidikan_nama_nonasn?></td>
                         <td><?= $row->unor_nama_nonasn.' | '.$row->unor_nama_atasan_nonasn?></td>
                         <td><?= $row->status_prioritas?></td>
+                        <td><?= ($row->is_tampungan)?'Ya':'Tidak';?></td>
                         <td><?= $row->instansi_sscn?></td>
                         <td></td>
                       </tr>
