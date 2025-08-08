@@ -27,6 +27,7 @@
                         <th>Nama</th>
                         <th>Pendidikan</th>
                         <th>Unor</th>
+                        <th>Instansi SSCASN</th>
                         <th>Usulkan</th>
                       </tr>
                     </thead>
@@ -37,6 +38,7 @@
                         <td><?= $row->nama?></td>
                         <td><?= $row->pendidikan_nama_nonasn?></td>
                         <td><?= $row->unor_nama_nonasn?></td>
+                        <td><?= $row->instansi_sscn?></td>
                         <td></td>
                       </tr>
                       <?php } ?>
