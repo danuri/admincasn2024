@@ -102,7 +102,17 @@
                     <h5>Submit Usulan !</h5>
                     <p class="text-muted">Harap diperhatikan, sebelum submit usulan pastikan dokumen persyaratan telah diunggah.</p>
                     <p class="text-muted">Usulan yang telah disubmit, tidak dapat diubah kembali.</p>
+                    <?php
+                    if($user->pppk_surat && $user->pppk_sptjm){
+                    ?>
                     <a href="<?= site_url('pppk/submit')?>" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin submit usulan?')">Submit</a>
+                    <?php
+                    }else{
+                      ?>
+                      <a href="#" class="btn btn-danger" onclick="return alert('Silahkan upload SPTJM dan Surat Usul?')">Submit</a>
+                    <?php
+                    }
+                    ?>
                 </div>
               </div>
             </div>
