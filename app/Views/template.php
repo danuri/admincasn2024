@@ -249,7 +249,7 @@
                             </a>
                         </li> -->
                         <?php } 
-                            if((session()->get('is_skb') == '1') or (session()->get('is_admin') == '1')) { ?>
+                            if((session()->get('is_admin') == '1')) { ?>
                         <!-- <li class="nav-item">
                             <a class="nav-link menu-link" href="#sidebarSkb" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarTables">
                                 <i class="ri-layout-grid-line"></i> <span data-key="t-tables">Penetapan NIP</span>
@@ -276,6 +276,18 @@
                                 </ul>
                             </div>
                         </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="#sidebarSkb" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarTables">
+                                <i class="ri-layout-grid-line"></i> <span data-key="t-tables">Admin</span>
+                            </a>
+                            <div class="collapse menu-dropdown" id="sidebarSkb">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="<?= site_url('admin/pppk/optimalisasi')?>" class="nav-link" data-key="t-basic-tables"><i class="bx bx-table"></i> PPPK Optimalisasi</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
                         <?php }
                              if(session()->get('is_skb') == '1') { ?>
                         <!-- <li class="nav-item">

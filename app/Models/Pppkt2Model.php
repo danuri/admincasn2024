@@ -43,4 +43,9 @@ class Pppkt2Model extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    function getSatker() {
+        $query = $this->db->query("SELECT kode_satker_asal,satker_asal, COUNT(nopeserta) AS jumlah FROM pppk_t2 WHERE surat_keterangan IS NOT NULL GROUP BY kode_satker_asal,satker_asal")->getResult();
+        return $query;
+    }
 }

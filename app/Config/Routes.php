@@ -97,6 +97,12 @@ $routes->group("pppk", ["filter" => "auth"], function ($routes) {
 
 $routes->group("paruhwaktu", ["filter" => "auth"], function ($routes) {
     $routes->get('', 'Paruhwaktu::index');
+    $routes->get('setusul/(:any)/(:num)', 'Paruhwaktu::setusul/$1/$2');
+});
+
+$routes->group("admin", ["filter" => "auth"], function ($routes) {
+    $routes->get('pppk/optimalisasi', 'Admin\Pppk::optimalisasi');
+    $routes->get('pppk/optimalisasidetail/(:any)', 'Admin\Pppk::optimalisasidetail/$1');
 });
 
 $routes->group("pengaturan", ["filter" => "auth"], function ($routes) {

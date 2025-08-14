@@ -16,4 +16,17 @@ class Paruhwaktu extends BaseController
 
         return view('paruhwaktu/index', $data);
     }
+
+    function setusul($id,$status) {
+        $model = new ParuhwaktuModel;
+
+        // update field is_usul
+        if($status == 1){
+            $model->update($id, ['is_usul' => 1]);
+            return $this->response->setJSON(['status'=>'success','message'=>'Peserta ditandai untuk diusulkan']);
+        }else{
+            $model->update($id, ['is_usul' => 0]);
+            return $this->response->setJSON(['status'=>'success','message'=>'Peserta ditandai tidak diusulkan']);
+        }
+    }
 }

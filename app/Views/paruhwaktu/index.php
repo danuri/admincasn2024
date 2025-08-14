@@ -43,7 +43,9 @@
                         <td><?= $row->status_prioritas?></td>
                         <td><?= ($row->is_tampungan_sscn)?'Ya':'Tidak';?></td>
                         <td><?= $row->instansi_sscn?></td>
-                        <td></td>
+                        <td>
+                          <input type="checkbox" class="form-check-input formcheck" id="<?= $row->nik;?>" <?= ($row->is_usul == 1)?'checked':'';?> value="1" onclick="usul(this)">
+                        </td>
                       </tr>
                       <?php } ?>
                     </tbody>
@@ -56,4 +58,21 @@
 
     </div>
 </div>
+<?= $this->endSection() ?>
+<?= $this->section('script') ?>
+<script>
+  function usul(check) {
+        if (check.checked) {
+            $.get('<?= site_url('paruhwaktu/setusul'); ?>/' + check.id + '/1', function(e) {
+                console.log(e);
+                alert('Peserta diusulkan');
+            });
+        } else {
+            $.get('<?= site_url('paruhwaktu/setusul'); ?>/' + check.id + '/0', function() {
+                alert('Peserta tidak diusulkan');
+            });
+        }
+        // cekVerifikasi();
+    }
+</script>
 <?= $this->endSection() ?>
