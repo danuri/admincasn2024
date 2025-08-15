@@ -14,6 +14,7 @@ $routes->get('auth/logout', 'Auth::logout');
 $routes->get('auth/callback', 'Auth::callback');
 
 $routes->get('pub/document/(:any)', 'Publish::document/$1');
+$routes->get('pub/paruhwaktu', 'Publish::paruhwaktu');
 
 $routes->get('/', 'Home::index',['filter' => 'auth']);
 $routes->get('generateformasi', 'Home::generateformasi',['filter' => 'auth']);

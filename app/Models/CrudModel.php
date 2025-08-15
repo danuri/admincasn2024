@@ -92,6 +92,15 @@ class CrudModel extends Model
         return $query;
       }
 
+      public function monitoringParuhwaktu()
+      {
+        $query = $this->db->query("SELECT `owner` as kodesatker,owner_satker,COUNT(nik) AS jumlah,
+                                  (SELECT COUNT(a.nik) FROM paruh_waktu a WHERE a.owner=kodesatker AND a.is_usul='1') usul,
+                                  (SELECT COUNT(b.nik) FROM paruh_waktu b WHERE b.owner=kodesatker AND b.is_usul='0') tidak
+                                  FROM paruh_waktu GROUP BY owner,owner_satker ORDER BY owner_satker")->getResult();
+        return $query;
+      }
+
       public function getPorsi()
       {
         $satker = session('idsatker');

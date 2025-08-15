@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\DokumenModel;
 use App\Models\UploadModel;
+use App\Models\CrudModel;
 
 class Publish extends BaseController
 {
@@ -15,5 +16,12 @@ class Publish extends BaseController
         $data['unggahan'] = $model->unggahan($id);
 
         return view('public/unggahan', $data);
+    }
+
+    function paruhwaktu() {
+        $model = new CrudModel;
+        $data['monitoring'] = $model->monitoringParuhwaktu();
+
+        return view('public/paruhwaktu', $data);
     }
 }
