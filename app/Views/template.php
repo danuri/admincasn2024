@@ -332,6 +332,11 @@
                                 </ul>
                             </div>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="<?= site_url('paruhwaktu')?>">
+                                <i class="ri-layout-grid-line"></i> <span data-key="t-tables">Paruh Waktu</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <!-- Sidebar -->
