@@ -41,6 +41,7 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
                             <div class="text-center mb-5">
+                                <img src="<?= base_url()?>assets/images/hutri.png" width="300px" alt="">
                                 <h1 class="mb-3 ff-secondary fw-semibold lh-base">Monitoring Progres Usul PPPK Paruh Waktu</h1>
                                 <p class="text-muted">A creative person has the ability to invent and develop original ideas, especially in the arts. Like so many creative people, he was never satisfied.</p>
                             </div>
