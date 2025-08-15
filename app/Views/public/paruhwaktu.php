@@ -5,7 +5,7 @@
     <head>
 
         <meta charset="utf-8" />
-        <title>MOnitoring Progres Paruh Waktu</title>
+        <title>Monitoring Progres Paruh Waktu</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesbrand" name="author" />
@@ -59,7 +59,7 @@
                                                 <th>Jumlah Peserta</th>
                                                 <th>Diusulkan</th>
                                                 <th>Tidak Diusulkan</th>
-                                                <th>Belum Diusulkan</th>
+                                                <th>Sisa</th>
                                             </tr>
                                         </thead>
                                         <tbody>
