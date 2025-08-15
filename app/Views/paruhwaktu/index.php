@@ -28,9 +28,9 @@
                         <th>Pendidikan</th>
                         <th>Unor</th>
                         <th>Status</th>
-                        <th>Tampungan</th>
                         <th>Instansi SSCASN</th>
-                        <th>Penempatan</th>
+                        <th>Diusulkan</th>
+                        <th>Keterangan</th>
                         <th>Usulkan</th>
                       </tr>
                     </thead>
@@ -42,9 +42,17 @@
                         <td><?= $row->pendidikan_nama_nonasn?></td>
                         <td><?= $row->unor_nama_nonasn.' | '.$row->unor_nama_atasan_nonasn?></td>
                         <td><?= $row->status_prioritas?></td>
-                        <td><?= ($row->is_tampungan_sscn)?'Ya':'Tidak';?></td>
                         <td><?= $row->instansi_sscn?></td>
-                        <td><?= $row->unit_penempatan_nama?></td>
+                        <td>
+                          <?php
+                          if($row->is_usul == '1'){
+                            echo '<span class="text-success">Ya</span>';
+                          }else if($row->is_usul == '0'){
+                            echo '<span class="text-danger">Tidak</span>';
+                          }
+                          ?>
+                        </td>
+                        <td><?= ($row->is_usul == 1)?$row->unit_penempatan_nama:alasan_tolak($row->alasan_tolak);?></td>
                         <td>
                           <!-- <input type="checkbox" class="form-check-input formcheck" id="<?= $row->nik;?>" <?= ($row->is_usul == 1)?'checked':'';?> value="1" onclick="usul(this)"> -->
                           <div class="btn-group btn-group-sm mt-2" role="group" aria-label="Basic example">
@@ -89,6 +97,8 @@
                 <select class="form-control" name="alasan_tidak_diusulkan" id="alasan_tidak_diusulkan" required>
                   <option value="1">Meninggal Dunia</option>
                   <option value="2">Tidak Aktif Bekerja</option>
+                  <option value="3">Tidak Ada Kebutuhan Organisasi</option>
+                  <option value="4">Tidak Tersedia Anggaran</option>
                 </select>
               </div>
             </div>

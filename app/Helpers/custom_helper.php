@@ -74,6 +74,15 @@ function harisesi($sesi)
   }
 }
 
+function alasan_tolak($alasan)
+{
+  if($alasan == 1){
+    return 'Meninggal Dunia';
+  }else if($alasan == 2){
+    return 'Tidak Aktif Bekerja';
+  }
+}
+
 function hari($day)
 {
 	// $day = date('N', strtotime($date));
