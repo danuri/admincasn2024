@@ -6,8 +6,8 @@ use CodeIgniter\Model;
 
 class UnorModel extends Model
 {
-    protected $table            = 'unor_siasn';
-    protected $primaryKey       = 'id';
+    protected $table            = 'sotk_siasn';
+    protected $primaryKey       = 'id_unor';
     protected $useAutoIncrement = true;
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
