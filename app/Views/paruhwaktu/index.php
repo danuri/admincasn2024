@@ -52,7 +52,15 @@
                           }
                           ?>
                         </td>
-                        <td><?= ($row->is_usul == 1)?$row->unit_penempatan_nama:alasan_tolak($row->alasan_tolak);?></td>
+                        <td>
+                          <?php
+                          if($row->is_usul == '1'){
+                            echo $row->unit_penempatan_nama.'<br>'.pendidikan($row->rincian_tk_pendidikan);
+                          }else if($row->is_usul == '0'){
+                            echo $row->alasan_tolak;
+                          }
+                          ?>
+                        </td>
                         <td>
                           <!-- <input type="checkbox" class="form-check-input formcheck" id="<?= $row->nik;?>" <?= ($row->is_usul == 1)?'checked':'';?> value="1" onclick="usul(this)"> -->
                           <div class="btn-group btn-group-sm mt-2" role="group" aria-label="Basic example">

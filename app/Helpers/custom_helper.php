@@ -83,6 +83,25 @@ function alasan_tolak($alasan)
   }
 }
 
+function pendidikan($jenjang)
+{
+  if($jenjang == 'd5ba481b59fd483d95d42fc0d311390b'){
+    return 'SD/SEDERAJAT';
+  }else if($jenjang == '4da8e613c6584db19a0774f8df4a3490'){
+    return 'SLTP/SMP SEDERAJAT';
+  }else if($jenjang == '8ae4828947fbda2a01481ad629e5545f'){
+    return 'SLTA/SMA SEDERAJAT';
+  }else if($jenjang == '0E7FA326159D8672E060640AF1083075'){
+    return 'D-III SEMUA JURUSAN';
+  }else if($jenjang == '0E7FA32614D38672E060640AF1083075'){
+    return 'S-1/D-IV Semua Jurusan';
+  }else if($jenjang == '0E7FA32616438672E060640AF1083075'){
+    return 'S-2 SEMUA JURUSAN (Khusus Dosen)';
+  }else if($jenjang == '39095cf0e4c147a4924da21ad7c0bdf6'){
+    return 'S-3 SEMUA JURUSAN (Khusus Dosen)';
+  }
+}
+
 function hari($day)
 {
 	// $day = date('N', strtotime($date));
