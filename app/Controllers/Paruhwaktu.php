@@ -7,6 +7,8 @@ use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\ParuhwaktuModel;
 use App\Models\UserModel;
 use Aws\S3\S3Client;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class Paruhwaktu extends BaseController
 {
@@ -181,5 +183,157 @@ class Paruhwaktu extends BaseController
       }else{
         return redirect()->back()->with('message', 'Dokumen gagal diunggah');
       }
+    }
+
+    public function export()
+    {
+      $kodesatker = session('kodesatker4');
+      $model = new ParuhwaktuModel;
+      $data = $model->where(['owner'=>$kodesatker])->findAll();
+
+      $spreadsheet = new Spreadsheet();
+      $sheet = $spreadsheet->getActiveSheet();
+    /*   
+    nik
+nama
+jenis_kelamin
+cepat_kode_sscn
+instansi_sscn
+jenis_pengadaan_id
+jabatan_siasn_id
+kode_jabatan_sscn
+jabatan_sscn
+kode_pendidikan_sscn
+pendidikan_sscn
+lokasi_formasi_sscn
+usia_saat_daftar_sscn
+tahap_sscn
+is_tampungan_sscn
+cepat_kode_nonasn
+instansi_non_asn
+unor_id_nonasn
+unor_nama_nonasn
+unor_nama_atasan_nonasn
+unor_exist
+pendidikan_nama_nonasn
+kode_jabatan_nonasn
+jabatan_nonasn
+status_aktif_nonasn
+updated_at
+jabatan_rincian_id
+jabatan_rincian_nama
+sub_jabatan_rincian_id
+sub_jabatan_rincian_nama
+rincian_pendidikan_id
+rincian_pendidikan_nama
+rincian_tk_pendidikan
+unit_penempatan_id
+unit_penempatan_nama
+is_terdata_nonasn
+status_prioritas
+is_usul
+alasan_tolak
+sync_siasn
+owner
+owner_satker
+
+*/
+
+      $sheet->setCellValue('A1', 'nik');
+      $sheet->setCellValue('B1', 'nama');
+      $sheet->setCellValue('C1', 'jenis_kelamin');
+      $sheet->setCellValue('D1', 'cepat_kode_sscn');
+      $sheet->setCellValue('E1', 'instansi_sscn');
+      $sheet->setCellValue('F1', 'jenis_pengadaan_id');
+      $sheet->setCellValue('G1', 'jabatan_siasn_id');
+      $sheet->setCellValue('H1', 'kode_jabatan_sscn');
+      $sheet->setCellValue('I1', 'jabatan_sscn');
+      $sheet->setCellValue('J1', 'kode_pendidikan_sscn');
+      $sheet->setCellValue('K1', 'pendidikan_sscn');
+      $sheet->setCellValue('L1', 'lokasi_formasi_sscn');
+      $sheet->setCellValue('M1', 'usia_saat_daftar_sscn');
+      $sheet->setCellValue('N1', 'tahap_sscn');
+      $sheet->setCellValue('O1', 'is_tampungan_sscn');
+      $sheet->setCellValue('P1', 'cepat_kode_nonasn');
+      $sheet->setCellValue('Q1', 'instansi_non_asn');
+      $sheet->setCellValue('R1', 'unor_id_nonasn');
+      $sheet->setCellValue('S1', 'unor_nama_nonasn');
+      $sheet->setCellValue('T1', 'unor_nama_atasan_nonasn');
+      $sheet->setCellValue('U1', 'unor_exist');
+      $sheet->setCellValue('V1', 'pendidikan_nama_nonasn');
+      $sheet->setCellValue('W1', 'kode_jabatan_nonasn');
+      $sheet->setCellValue('X1', 'jabatan_nonasn');
+      $sheet->setCellValue('Y1', 'status_aktif_nonasn');
+      $sheet->setCellValue('Z1', 'updated_at');
+      $sheet->setCellValue('AA1', 'jabatan_rincian_id');
+      $sheet->setCellValue('AB1', 'jabatan_rincian_nama');
+      $sheet->setCellValue('AC1', 'sub_jabatan_rincian_id');
+      $sheet->setCellValue('AD1', 'sub_jabatan_rincian_nama');
+      $sheet->setCellValue('AE1', 'rincian_pendidikan_id');
+      $sheet->setCellValue('AF1', 'rincian_pendidikan_nama');
+      $sheet->setCellValue('AG1', 'rincian_tk_pendidikan');
+      $sheet->setCellValue('AH1', 'unit_penempatan_id');
+      $sheet->setCellValue('AI1', 'unit_penempatan_nama');
+      $sheet->setCellValue('AJ1', 'is_terdata_nonasn');
+      $sheet->setCellValue('AK1', 'status_prioritas');
+      $sheet->setCellValue('AL1', 'is_usul');
+      $sheet->setCellValue('AM1', 'alasan_tolak');
+      $sheet->setCellValue('AN1', 'sync_siasn');
+
+      $i = 2;
+      foreach ($data as $row) {
+        $sheet->getCell('A'.$i)->setValueExplicit($row->nik,\PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+        $sheet->setCellValue('B'.$i, $row->nama);
+        $sheet->setCellValue('C'.$i, $row->jenis_kelamin);
+        $sheet->setCellValue('D'.$i, $row->cepat_kode_sscn);
+        $sheet->setCellValue('E'.$i, $row->instansi_sscn);
+        $sheet->setCellValue('F'.$i, $row->jenis_pengadaan_id);
+        $sheet->setCellValue('G'.$i, $row->jabatan_siasn_id);
+        $sheet->setCellValue('H'.$i, $row->kode_jabatan_sscn);
+        $sheet->setCellValue('I'.$i, $row->jabatan_sscn);
+        $sheet->setCellValue('J'.$i, $row->kode_pendidikan_sscn);
+        $sheet->setCellValue('K'.$i, $row->pendidikan_sscn);
+        $sheet->setCellValue('L'.$i, $row->lokasi_formasi_sscn);
+        $sheet->setCellValue('M'.$i, $row->usia_saat_daftar_sscn);
+        $sheet->setCellValue('N'.$i, $row->tahap_sscn);
+        $sheet->setCellValue('O'.$i, $row->is_tampungan_sscn);
+        $sheet->setCellValue('P'.$i, $row->cepat_kode_nonasn);
+        $sheet->setCellValue('Q'.$i, $row->instansi_non_asn);
+        $sheet->setCellValue('R'.$i, $row->unor_id_nonasn);
+        $sheet->setCellValue('S'.$i, $row->unor_nama_nonasn);
+        $sheet->setCellValue('T'.$i, $row->unor_nama_atasan_nonasn);
+        $sheet->setCellValue('U'.$i, $row->unor_exist);
+        $sheet->setCellValue('V'.$i, $row->pendidikan_nama_nonasn);
+        $sheet->setCellValue('W'.$i, $row->kode_jabatan_nonasn);
+        $sheet->setCellValue('X'.$i, $row->jabatan_nonasn);
+        $sheet->setCellValue('Y'.$i, $row->status_aktif_nonasn);
+        $sheet->setCellValue('Z'.$i, $row->updated_at);
+        $sheet->setCellValue('AA'.$i, $row->jabatan_rincian_id);
+        $sheet->setCellValue('AB'.$i, $row->jabatan_rincian_nama);
+        $sheet->setCellValue('AC'.$i, $row->sub_jabatan_rincian_id);
+        $sheet->setCellValue('AD'.$i, $row->sub_jabatan_rincian_nama);
+        $sheet->setCellValue('AE'.$i, $row->rincian_pendidikan_id);
+        $sheet->setCellValue('AF'.$i, $row->rincian_pendidikan_nama);
+        $sheet->setCellValue('AG'.$i, $row->rincian_tk_pendidikan);
+        $sheet->setCellValue('AH'.$i, $row->unit_penempatan_id);
+        $sheet->setCellValue('AI'.$i, $row->unit_penempatan_nama);
+        $sheet->setCellValue('AJ'.$i, $row->is_terdata_nonasn);
+        $sheet->setCellValue('AK'.$i, $row->status_prioritas);
+        $sheet->setCellValue('AL'.$i, $row->is_usul);
+        $sheet->setCellValue('AM'.$i, $row->alasan_tolak);
+        $sheet->setCellValue('AN'.$i, $row->sync_siasn);
+        $i++;
+      }
+
+      $tanggal = date('YmdHis');
+      $writer = new Xlsx($spreadsheet);
+      ob_clean();
+      ob_start();
+      header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+      header('Content-Disposition: attachment; filename="Data_Potensi_Paruhwaktu_'.$tanggal.'.xlsx"');
+      header('Cache-Control: max-age=0');
+      $writer->save('php://output');
+      ob_end_flush();
+      exit;
     }
 }
