@@ -36,14 +36,14 @@
             <!-- start hero section -->
             
 
-            <section class="section" id="process">
+            <section class="" id="process">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
                             <div class="text-center mb-5">
                                 <img src="<?= base_url()?>assets/images/hutri.png" width="300px" alt="">
                                 <h1 class="mb-3 ff-secondary fw-semibold lh-base">Monitoring Progres Usul PPPK Paruh Waktu</h1>
-                                <p class="text-muted">A creative person has the ability to invent and develop original ideas, especially in the arts. Like so many creative people, he was never satisfied.</p>
+                                <p class="text-muted">Bahwa sesungguhnya kemerdekaan itu ialah hak segala bangsa dan oleh sebab itu, maka penjajahan diatas dunia harus dihapuskan, karena tidak sesuai dengan perikemanusiaan dan perikeadilan.</p>
                                 <div class="row pt-3">
                                 <div class="col-4">
                                     <div class="text-center text-primary">
