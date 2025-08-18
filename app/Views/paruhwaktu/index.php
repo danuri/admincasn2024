@@ -76,6 +76,31 @@
                 </div>
               </div>
             </div>
+
+            <div class="card">
+              <div class="card-body">
+                <form action="<?= site_url('paruhwaktu/uploaddok')?>" method="POST" enctype="multipart/form-data">
+                    <div class="row mb-3">
+                        <div class="col-lg-3">
+                            <label for="websiteUrl" class="form-label">SPTJM</label>
+                        </div>
+                        <div class="col-lg-9">
+                            <div class="input-group">
+                                <input type="file" class="form-control" name="dokumen" id="dokumensptjm" aria-describedby="dokumensptjmAdd" aria-label="Upload">
+                                <?php
+                                if($user->paruhwaktu_sptjm){
+                                  echo '<a href="https://ropeg.kemenag.go.id:9000/pengadaan/pppk/'.$user->paruhwaktu_sptjm.'" class="btn btn-primary" id="dokumensptjmAdd" target="_blank">Lihat Surat</a>';
+                                }?>
+                                <button class="btn btn-outline-success" type="submit" id="dokumensptjmAdd">Upload</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>    
+              </div>
+              <div class="card-footer">
+                  <p><a href="<?= base_url('downloads/template_sptjm_paruhwaktu.pdf')?>" target="_blank">Download Template</a></p>
+              </div>
+            </div>
           </div>
         </div>
 

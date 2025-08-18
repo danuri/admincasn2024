@@ -5,6 +5,8 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\ParuhwaktuModel;
+use App\Models\UserModel;
+use Aws\S3\S3Client;
 
 class Paruhwaktu extends BaseController
 {
@@ -114,5 +116,68 @@ class Paruhwaktu extends BaseController
             }
         }
         */
+    }
+
+    function uploaddok() {
+        if (!$this->validate([
+			'dokumen' => [
+				'rules' => 'uploaded[dokumen]|ext_in[dokumen,pdf,PDF]|max_size[dokumen,2048]',
+				'errors' => [
+					'uploaded' => 'Harus Ada File yang diupload',
+					'mime_in' => 'File Extention Harus Berupa pdf',
+					'max_size' => 'Ukuran File Maksimal 2 MB'
+				]
+			]
+  		])) {
+  			// session()->setFlashdata('error', $this->validator->listErrors());
+  			// return redirect()->back()->withInput();
+        return $this->response->setJSON(['status'=>'error','message'=>$this->validator->getErrors()['dokumen']]);
+  		}
+
+      $model = new UserModel();
+
+      $file_name = $_FILES['dokumen']['name'];
+      $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+
+      $kodesatker = session('lokasi');
+
+      $file_name = 'paruhwaktu_sptjm'.'.'.$kodesatker.'.'.$ext;
+      $temp_file_location = $_FILES['dokumen']['tmp_name'];
+
+      $s3 = new S3Client([
+        'region'  => 'us-east-1',
+        'endpoint' => 'https://ropeg.kemenag.go.id:9000/',
+        'use_path_style_endpoint' => true,
+        'version' => 'latest',
+        'credentials' => [
+          'key'    => "PkzyP2GIEBe8z29xmahI",
+          'secret' => "voNVqTilX2iux6u7pWnaqJUFG1414v0KTaFYA0Uz",
+        ],
+        'http'    => [
+            'verify' => false
+        ]
+      ]);
+
+      $result = $s3->putObject([
+        'Bucket' => 'pengadaan',
+        'Key'    => 'pppk/'.$file_name,
+        'SourceFile' => $temp_file_location,
+        'ContentType' => 'application/pdf'
+      ]);
+
+      $url = $result->get('ObjectURL');
+
+
+      if($url){
+
+          $model
+              ->where(['kode_satker' => $kodesatker])
+              ->set(['paruhwaktu_sptjm' => $file_name])
+              ->update();
+
+        return redirect()->back()->with('message', 'Dokumen telah diunggah');
+      }else{
+        return redirect()->back()->with('message', 'Dokumen gagal diunggah');
+      }
     }
 }

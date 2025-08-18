@@ -100,6 +100,7 @@ $routes->group("pppk", ["filter" => "auth"], function ($routes) {
 $routes->group("paruhwaktu", ["filter" => "auth"], function ($routes) {
     $routes->get('', 'Paruhwaktu::index');
     $routes->post('setusul', 'Paruhwaktu::setusul');
+    $routes->post('uploaddok', 'Paruhwaktu::uploaddok');
 });
 
 $routes->group("admin", ["filter" => "auth"], function ($routes) {
