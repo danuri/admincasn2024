@@ -214,7 +214,7 @@
                 }
             },
         },
-        placeholder: 'Cari Unor',
+        placeholder: 'Cari dengan nama atau ID Unor',
         minimumInputLength: 5,
         });
 
