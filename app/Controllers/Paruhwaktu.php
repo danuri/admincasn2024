@@ -57,6 +57,7 @@ class Paruhwaktu extends BaseController
                 'rincian_tk_pendidikan' => $this->request->getVar('pendidikan_id'),
                 'unit_penempatan_id' => $this->request->getVar('unor'),
                 'unit_penempatan_nama' => $this->request->getVar('siasnname'),
+                'sync_siasn' => NULL,
             ]);
 
             return redirect()->back()->with('message', 'Peserta ditandai untuk diusulkan');
