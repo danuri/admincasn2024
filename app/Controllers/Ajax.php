@@ -20,7 +20,7 @@ class Ajax extends BaseController
       $model = new UnorModel;
       $search = $this->request->getVar('search');
 
-      $data = $model->like('unor_lengkap', $search, 'both')->findAll();
+      $data = $model->like('unor_lengkap', $search, 'both')->orWhere('id_unor',$search)->findAll();
       return $this->response->setJSON($data);
     }
 
