@@ -107,7 +107,7 @@ class Supervise extends BaseController
                   'alasan_tidak_diusulkan' => $row->alasan_tolak,
                   'jenis_pengadaan' => $jenis,
                   'pendidikan_id' => $row->rincian_tk_pendidikan,
-                  'unor_id' => $row->unit_pemempatan_id,
+                  'unor_id' => $row->unit_penempatan_id,
                   'user_id' => 'af241811-1ae5-4759-970e-4e22690b3397',
                   'jabatan_id' => '',
                   'data_ids' => $row->nik,
