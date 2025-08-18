@@ -97,7 +97,7 @@
                 </form>    
               </div>
               <div class="card-footer">
-                  <p><a href="<?= base_url('assets/template_sptjm_paruhwaktu.pdf')?>" target="_blank">Download Template</a></p>
+                  <p>Unggah surat usul dan SPTJM dalam 1 file. <a href="<?= base_url('assets/template_sptjm_paruhwaktu.pdf')?>" target="_blank">Download Template</a></p>
               </div>
             </div>
           </div>
