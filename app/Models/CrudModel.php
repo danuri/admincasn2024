@@ -101,6 +101,12 @@ class CrudModel extends Model
         return $query;
       }
 
+      public function jumlahMapping()
+      {
+        $query = $this->db->query("SELECT COUNT(nik) AS jumlah FROM paruh_waktu WHERE is_usul IN ('0','1')")->getRow();
+        return $query;
+      }
+
       public function getPorsi()
       {
         $satker = session('idsatker');

@@ -21,6 +21,8 @@ class Publish extends BaseController
     function paruhwaktu() {
         $model = new CrudModel;
         $data['monitoring'] = $model->monitoringParuhwaktu();
+        $data['sudah'] = $model->jumlahMapping()->jumlah;
+        $data['belum'] = (7110 - $data['sudah']);
 
         return view('public/paruhwaktu', $data);
     }

@@ -44,6 +44,26 @@
                                 <img src="<?= base_url()?>assets/images/hutri.png" width="300px" alt="">
                                 <h1 class="mb-3 ff-secondary fw-semibold lh-base">Monitoring Progres Usul PPPK Paruh Waktu</h1>
                                 <p class="text-muted">A creative person has the ability to invent and develop original ideas, especially in the arts. Like so many creative people, he was never satisfied.</p>
+                                <div class="row pt-3">
+                                <div class="col-4">
+                                    <div class="text-center text-primary">
+                                        <h4>7.110</h4>
+                                        <p>Jumlah Potensi</p>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="text-center text-success">
+                                        <h4><?= rupiah($sudah)?></h4>
+                                        <p>Sudah Mapping</p>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="text-center text-danger">
+                                        <h4><?= rupiah($belum)?></h4>
+                                        <p>Belum Mapping</p>
+                                    </div>
+                                </div>
+                            </div>
                             </div>
                         </div>
                         <!-- end col -->
