@@ -80,7 +80,7 @@ class Supervise extends BaseController
         // jenis : P
 
         $model = new ParuhwaktuModel;
-        $peserta = $model->where(['sync_siasn'=>null])->whereIn('is_usul',['0','1'])->findAll(1,0);
+        $peserta = $model->where(['sync_siasn'=>null])->whereIn('is_usul',['0','1'])->findAll(100,0);
 
         $client = service('curlrequest');
 
