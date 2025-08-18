@@ -64,7 +64,9 @@
                         <td>
                           <!-- <input type="checkbox" class="form-check-input formcheck" id="<?= $row->nik;?>" <?= ($row->is_usul == 1)?'checked':'';?> value="1" onclick="usul(this)"> -->
                           <div class="btn-group btn-group-sm mt-2" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-primary" onclick="setusul('<?= $row->nik;?>')">Edit</button>
+                            <?php if($row->sync_siasn != 1){?>
+                              <button type="button" class="btn btn-primary" onclick="setusul('<?= $row->nik;?>')">Edit</button>
+                            <?php }?>
                         </div>
                         </td>
                       </tr>
