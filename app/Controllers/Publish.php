@@ -13,7 +13,7 @@ class Publish extends BaseController
     {
         $model = new DokumenModel;
         $data['dokumen'] = $model->find($id);
-        $data['unggahan'] = $model->unggahan($id);
+        $data['unggahan'] = $model->unggahan($id,false);
 
         return view('public/unggahan', $data);
     }
