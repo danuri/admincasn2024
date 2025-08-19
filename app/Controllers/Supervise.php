@@ -89,7 +89,8 @@ class Supervise extends BaseController
 
         foreach($peserta as $row) {
 
-          if(in_array($row->rincian_tk_pendidikan, ['0E7FA32616438672E060640AF1083075','39095cf0e4c147a4924da21ad7c0bdf6'])) {
+          try {
+             if(in_array($row->rincian_tk_pendidikan, ['0E7FA32616438672E060640AF1083075','39095cf0e4c147a4924da21ad7c0bdf6'])) {
             $jenis = 'dosen';
           }else{
             $jenis = 'teknis';
@@ -123,6 +124,11 @@ class Supervise extends BaseController
           if(isset($response->respon_status) && $response->respon_status->status == 'SUCCESS') {
             $model->update($row->nik, ['sync_siasn' => '1']);
           }
+        } catch (\Exception $e) {
+            $model->update($row->nik, ['sync_siasn' => '2']);
+          }
+
+          
         }
 
         return $this->response->setJSON($response);
