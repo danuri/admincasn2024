@@ -24,6 +24,7 @@ class Paruhwaktu extends BaseController
     }
 
     function setusul() {
+        return redirect()->back()->with('message', 'Time Out');
         // validate
         $status = $this->request->getVar('status_usulan');
 
@@ -124,6 +125,8 @@ class Paruhwaktu extends BaseController
     }
 
     function uploaddok() {
+        return redirect()->back()->with('message', 'Time Out');
+
         if (!$this->validate([
 			'dokumen' => [
 				'rules' => 'uploaded[dokumen]|ext_in[dokumen,pdf,PDF]|max_size[dokumen,2048]',
@@ -136,7 +139,7 @@ class Paruhwaktu extends BaseController
   		])) {
   			// session()->setFlashdata('error', $this->validator->listErrors());
   			// return redirect()->back()->withInput();
-        return $this->response->setJSON(['status'=>'error','message'=>$this->validator->getErrors()['dokumen']]);
+            return redirect()->back()->with('message', $this->validator->getErrors()['dokumen']);
   		}
 
       $model = new UserModel();
