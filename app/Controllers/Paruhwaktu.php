@@ -24,7 +24,7 @@ class Paruhwaktu extends BaseController
     }
 
     function setusul() {
-        return redirect()->back()->with('message', 'Time Out');
+        // return redirect()->back()->with('message', 'Time Out');
         // validate
         $status = $this->request->getVar('status_usulan');
 
@@ -125,7 +125,7 @@ class Paruhwaktu extends BaseController
     }
 
     function uploaddok() {
-        return redirect()->back()->with('message', 'Time Out');
+        // return redirect()->back()->with('message', 'Time Out');
 
         if (!$this->validate([
 			'dokumen' => [
