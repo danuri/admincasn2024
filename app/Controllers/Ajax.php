@@ -35,7 +35,7 @@ class Ajax extends BaseController
 
         $no = $offset+1;
 
-        echo '<a href="'.site_url('https://ropeg.kemenag.go.id/admincasn/ajax/getmonitoring/100/'.$no).'">Next</a>';
+        echo '<a href="'.site_url('ajax/getmonitoring/100/'.$no).'">Next</a>';
     }
 
     function monitoringusulnip($no_peserta,$tahun,$jenis,$jenis_formasi_id,$limit,$offset) {
