@@ -32,6 +32,10 @@ class Ajax extends BaseController
         foreach($data as $row){
             $this->monitoringusulnip($row->nopeserta,2024,'02','0208',1,0);
         }
+
+        $no = $offset+1;
+
+        echo '<a href="'.site_url('https://ropeg.kemenag.go.id/admincasn/ajax/getmonitoring/100/'.$no).'">Next</a>';
     }
 
     function monitoringusulnip($no_peserta,$tahun,$jenis,$jenis_formasi_id,$limit,$offset) {
