@@ -30,13 +30,13 @@ class Ajax extends BaseController
         $data= $model->orderBy('nopeserta', 'asc')->findAll($limit,$offset);
 
         print_r($data);
-        // foreach($data as $row){
-        //     $this->monitoringusulnip($row->nopeserta,2024,'02','0208',1,0);
-        // }
+        foreach($data as $row){
+            $this->monitoringusulnip($row->nopeserta,2024,'02','0208',1,0);
+        }
 
-        // $no = $offset+1;
+        $no = $offset+$limit;
 
-        // echo '<a href="'.site_url('ajax/getmonitoring/100/'.$no).'">Next</a>';
+        echo '<a href="'.site_url('ajax/getmonitoring/100/'.$no).'">Next</a>';
     }
 
     function monitoringusulnip($no_peserta,$tahun,$jenis,$jenis_formasi_id,$limit,$offset) {
