@@ -27,7 +27,7 @@ class Ajax extends BaseController
 
     function getmonitoring($limit, $offset) {
         $model = new Pppkt2Model;
-        $data= $model->findAll($limit,$offset);
+        $data= $model->orderBy('nopeserta', 'asc')->findAll($limit,$offset);
 
         foreach($data as $row){
             $this->monitoringusulnip($row->nopeserta,2024,'02','0208',1,0);
