@@ -75,6 +75,11 @@ class Ajax extends BaseController
           $model->set('usul_nip', $nip);
           $model->where('nopeserta', $nopeserta);
           $model->update();
+
+          echo '<pre>'.$row->nopeserta.'</pre>';
+            echo '<pre>';
+            print_r($row);
+            echo '</pre>';
       }
   }
 }
