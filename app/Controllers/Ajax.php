@@ -76,7 +76,7 @@ class Ajax extends BaseController
           $model->where('nopeserta', $nopeserta);
           $model->update();
 
-          echo '<pre>'.$no_peserta.'</pre>';
+        //   echo '<pre>'.$no_peserta.'</pre>';
       }
   }
 }
