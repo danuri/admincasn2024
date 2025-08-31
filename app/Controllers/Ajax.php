@@ -29,7 +29,6 @@ class Ajax extends BaseController
         $model = new Pppkt2Model;
         $data= $model->orderBy('nopeserta', 'asc')->findAll($limit,$offset);
 
-        print_r($data);
         foreach($data as $row){
             $this->monitoringusulnip($row->nopeserta,2024,'02','0208',1,0);
         }
@@ -78,9 +77,6 @@ class Ajax extends BaseController
           $model->update();
 
           echo '<pre>'.$no_peserta.'</pre>';
-            echo '<pre>';
-            print_r($row);
-            echo '</pre>';
       }
   }
 }
