@@ -186,7 +186,8 @@ $routes->group("sktt", ["filter" => "auth"], function ($routes) {
 $routes->group("ajax", ["filter" => "auth"], function ($routes) {
     $routes->get('searchunor', 'Ajax::searchunor');
 });
-$routes->get('ajax/monitoringusulnip/(:num)/(:num)/(:num)/(:num)', 'Ajax::monitoringusulnip/$1/$2/$3/$4');
+$routes->get('ajax/monitoringusulnip/(:num)/(:num)/(:num)/(:num)/(:num)/(:num)', 'Ajax::monitoringusulnip/$1/$2/$3/$4/$5/$6');
+$routes->get('ajax/getmonitoring/(:num)/(:num)', 'Ajax::getmonitoring/$1/$2');
 
 // $routes->group("admin", ["filter" => "admin"], function ($routes) {
 
