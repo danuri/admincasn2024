@@ -47,6 +47,7 @@
                               </a>
                               <div class="dropdown-menu dropdown-menu-end">
                                   <a class="dropdown-item" href="https://ropeg.kemenag.go.id:9000/sscasn/2024/eformasi/lamaran/LAMARAN_<?= $row->nik?>.pdf" target="_blank">Surat Lamaran</a>
+                                  <?php if(!empty($row->usul_path_ttd_pertek)): ?><a class="dropdown-item" href="https://ropeg.kemenag.go.id/apimws/upload/download?fname=PERTEK_<?= $row->nopeserta.'_'.str_replace(' ',',',$row->nama)?>.pdf&path=<?= encrypt($row->usul_path_ttd_pertek)?>" target="_blank">Pertek</a><?php endif; ?>
                               </div>
                           </div>  
                         </td>
