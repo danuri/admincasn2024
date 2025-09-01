@@ -107,6 +107,12 @@ class CrudModel extends Model
         return $query;
       }
 
+      public function monitoringtahap2()
+      {
+        $query = $this->db->query("SELECT usul_status, COUNT(nopeserta) AS jumlah FROM pppk_t2 GROUP BY usul_status")->getResult();
+        return $query;
+      }
+
       public function getPorsi()
       {
         $satker = session('idsatker');

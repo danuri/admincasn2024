@@ -26,4 +26,11 @@ class Publish extends BaseController
 
         return view('public/paruhwaktu', $data);
     }
+
+    function monitoring() {
+        $model = new CrudModel;
+        $data['monitoring'] = $model->monitoringtahap2();
+
+        return view('public/monitoring', $data);
+    }
 }
