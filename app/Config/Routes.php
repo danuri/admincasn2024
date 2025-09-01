@@ -96,6 +96,7 @@ $routes->group("pppk", ["filter" => "auth"], function ($routes) {
     $routes->post('uploadsk', 'Pppk::uploadsk');
     $routes->post('uploaddok/(:any)', 'Pppk::uploaddok/$1');
     $routes->get('submit', 'Pppk::submit');
+    $routes->get('sinkron', 'Pppk::sinkron');
 });
 
 $routes->group("paruhwaktu", ["filter" => "auth"], function ($routes) {

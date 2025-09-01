@@ -9,6 +9,7 @@
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                     <h4 class="mb-sm-0">Peserta PPPK Tahap II</h4>
                     <div class="page-title-right">
+                      <a href="<?= site_url('pppk/sinkron') ?>" class="btn btn-primary">Sinkron</a>
                     </div>
                 </div>
             </div>
