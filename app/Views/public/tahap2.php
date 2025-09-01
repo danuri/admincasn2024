@@ -71,7 +71,7 @@
                                         <tbody>
                                             <?php foreach ($monitoring as $row) {?>
                                             <tr>
-                                                <td><?= $row->status_usul ?></td>
+                                                <td><?= $row->usul_status ?></td>
                                                 <td><?= $row->jumlah ?></td>
                                             </tr>
                                         <?php } ?>
