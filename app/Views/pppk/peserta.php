@@ -27,7 +27,7 @@
                         <th>Nama</th>
                         <th>Jabatan</th>
                         <th>Status</th>
-                        <th>DRH</th>
+                        <th>USUL NI</th>
                         <th>#</th>
                       </tr>
                     </thead>
@@ -38,7 +38,7 @@
                         <td><?= $row->nama?></td>
                         <td><?= $row->jabatan?></td>
                         <td><?= $row->status?></td>
-                        <td><?= $row->drh?></td>
+                        <td><?= $row->usul_status?></td>
                         <td>
                           <div class="dropdown card-header-dropdown">
                               <a class="text-reset dropdown-btn" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
