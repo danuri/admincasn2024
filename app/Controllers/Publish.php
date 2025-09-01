@@ -31,6 +31,6 @@ class Publish extends BaseController
         $model = new CrudModel;
         $data['monitoring'] = $model->monitoringtahap2();
 
-        return view('public/monitoring', $data);
+        return view('public/tahap2', $data);
     }
 }
