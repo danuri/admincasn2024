@@ -26,6 +26,8 @@ class Ajax extends BaseController
     }
 
     function getmonitoring($limit, $offset) {
+        $cache = service('cache');
+        $token = $cache->save('zxc','xxxx');
         $model = new Pppkt2Model;
         $data= $model->orderBy('nopeserta', 'asc')->findAll($limit,$offset);
 
