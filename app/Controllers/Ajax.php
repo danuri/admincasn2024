@@ -150,7 +150,7 @@ class Ajax extends BaseController
 
     foreach($data as $row){
         $res = $this->postOptimalisasi($row->lokasi_asal_id,$row->idpeserta);
-        echo '<pre>'.$row->nopeserta.' => '.$res.'</pre>';
+        echo '<pre>'.$row->nik.' - '.$row->idpeserta.' => '.$res.'</pre>';
     }
   }
 
