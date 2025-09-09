@@ -191,6 +191,7 @@ $routes->group("ajax", ["filter" => "auth"], function ($routes) {
 $routes->get('ajax/monitoringusulnip/(:num)/(:num)/(:num)/(:num)/(:num)/(:num)', 'Ajax::monitoringusulnip/$1/$2/$3/$4/$5/$6');
 $routes->get('ajax/getmonitoring/(:num)/(:num)', 'Ajax::getmonitoring/$1/$2');
 $routes->get('ajax/setidpeserta', 'Ajax::setidpeserta');
+$routes->get('ajax/postit', 'Ajax::postIt');
 
 // $routes->group("admin", ["filter" => "admin"], function ($routes) {
 
