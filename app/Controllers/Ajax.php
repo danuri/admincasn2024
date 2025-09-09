@@ -87,7 +87,7 @@ class Ajax extends BaseController
 
     $model = new Pppkt2Model;
     // loop data
-    for($i=0; $i < count($data); $i++){
+    for($i=0; $i <= count($data); $i++){
         $res = $this->cekNik($data[$i]);
         if(isset($res->result->id)){
             $model->set('idpeserta', $res->result->id);
@@ -108,12 +108,12 @@ class Ajax extends BaseController
     // }
   }
 
-  function cekNik() {
+  function cekNik($id) {
 
     $curl = curl_init();
 
     curl_setopt_array($curl, array(
-      CURLOPT_URL => 'https://admin-sscasn.bkn.go.id/permasalahan/cekNik?nik=24301230810047309&surat=8a03838c992742f5019928df0f720001&parameter=f147f3903f5111efa54d0050568fed0f',
+      CURLOPT_URL => 'https://admin-sscasn.bkn.go.id/permasalahan/cekNik?nik='.$id.'&surat=8a03838c992742f5019928df0f720001&parameter=f147f3903f5111efa54d0050568fed0f',
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_ENCODING => '',
       CURLOPT_MAXREDIRS => 10,
