@@ -18,6 +18,13 @@ class Publish extends BaseController
         return view('public/unggahan', $data);
     }
 
+    function optimalisasi() {
+        $model = new CrudModel;
+        $data['satker'] = $model->getResult('users',['pppk_sptjm !='=> NULL]);
+
+        return view('public/optimalisasi', $data);
+    }
+
     function paruhwaktu() {
         $model = new CrudModel;
         $data['monitoring'] = $model->monitoringParuhwaktu();
