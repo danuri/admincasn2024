@@ -5,7 +5,7 @@
     <head>
 
         <meta charset="utf-8" />
-        <title>Monitoring Progres Paruh Waktu</title>
+        <title>Optimalisasi</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesbrand" name="author" />
@@ -38,36 +38,6 @@
 
             <section class="" id="process">
                 <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-8">
-                            <div class="text-center mb-5">
-                                <img src="<?= base_url()?>assets/images/hutri.png" width="300px" alt="">
-                                <h1 class="mb-3 ff-secondary fw-semibold lh-base">Monitoring Progres Usul PPPK Paruh Waktu</h1>
-                                <p class="text-muted">Bahwa sesungguhnya kemerdekaan itu ialah hak segala bangsa dan oleh sebab itu, maka penjajahan diatas dunia harus dihapuskan, karena tidak sesuai dengan perikemanusiaan dan perikeadilan.</p>
-                                <div class="row pt-3">
-                                <div class="col-4">
-                                    <div class="text-center text-primary">
-                                        <h4>7.110</h4>
-                                        <p>Jumlah Potensi</p>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="text-center text-success">
-                                        <h4><?= rupiah($sudah)?></h4>
-                                        <p>Sudah Mapping</p>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="text-center text-danger">
-                                        <h4><?= rupiah($belum)?></h4>
-                                        <p>Belum Mapping</p>
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        <!-- end col -->
-                    </div>
                     <!--end row-->
                     <div class="row">
                         <div class="col-lg-12 col-md-6">
