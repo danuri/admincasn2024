@@ -54,7 +54,7 @@
                                             <?php foreach ($satker as $row) {?>
                                             <tr>
                                                 <td><?= $row->nama_satker ?></td>
-                                                <td><a href="<?= $row->pppk_sptjm ?>">Lihat</a></td>
+                                                <td><a href="https://ropeg.kemenag.go.id:9000/pengadaan/pppk/<?= $row->pppk_sptjm ?>">Lihat</a></td>
                                             </tr>
                                         <?php } ?>
                                         </tbody>
