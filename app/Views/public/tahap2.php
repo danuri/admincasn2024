@@ -59,7 +59,7 @@
                     <!--end row-->
                     <div class="row">
                         <div class="col-lg-12 col-md-6">
-                            <div class="card shadow-lg">
+                            <div class="card shadow-lg mb-3">
                                 <div class="card-body p-4">
                                     <table class="table">
                                         <thead>
@@ -73,6 +73,27 @@
                                             <tr>
                                                 <td><?= $row->usul_status ?></td>
                                                 <td><?= $row->jumlah ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div class="card shadow-lg">
+                                <div class="card-body p-4">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Satker</th>
+                                                <th>Sinkron</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach ($satker as $row) {?>
+                                            <tr>
+                                                <td><?= $row->nama_satker ?></td>
+                                                <td><a href="<?= site_url('pub/sinkron/'.$row->kode_satker)?>" target="_blank">Sinkron</a></td>
                                             </tr>
                                         <?php } ?>
                                         </tbody>
