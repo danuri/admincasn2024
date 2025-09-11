@@ -39,13 +39,14 @@ class Publish extends BaseController
         $model = new CrudModel;
         $data['monitoring'] = $model->monitoringtahap2();
         $data['satker'] = $model->getResult('users');
-        
+
         return view('public/tahap2', $data);
     }
 
     function sinkron($lokasi) {
       $model = new Pppkt2Model;
-      $data= $model->where(['kode_satker_asal'=>$lokasi])->findAll();
+    //   $data= $model->where(['kode_satker_asal'=>$lokasi])->findAll();
+      $data= $model->where(['usul_no_pertek !='=>NULL])->findAll();
 
         foreach($data as $row){
             $this->monitoringusulnip($row->nopeserta,2024,'02','0208',1,0);
