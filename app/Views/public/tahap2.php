@@ -93,7 +93,7 @@
                                             <?php foreach ($satker as $row) {?>
                                             <tr>
                                                 <td><?= $row->nama_satker ?></td>
-                                                <td><a href="<?= site_url('pub/sinkron/'.$row->kode_satker)?>" target="_blank">Sinkron</a></td>
+                                                <td><a href="<?= site_url('pub/sinkron/'.$row->kode_satker)?>">Sinkron</a></td>
                                             </tr>
                                         <?php } ?>
                                         </tbody>
