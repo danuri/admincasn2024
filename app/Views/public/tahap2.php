@@ -51,6 +51,11 @@
                                         <p>Jumlah Kelulusan</p>
                                     </div>
                                 </div>
+                                <div class="col-4">
+                                    <div class="text-center text-primary">
+                                        <a href="<?= site_url('pub/sinkron/1')?>">Sinkron</a>
+                                    </div>
+                                </div>
                             </div>
                             </div>
                         </div>
@@ -80,7 +85,7 @@
                                 </div>
                             </div>
                             
-                            <div class="card shadow-lg">
+                            <!-- <div class="card shadow-lg">
                                 <div class="card-body p-4">
                                     <table class="table">
                                         <thead>
@@ -99,7 +104,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
