@@ -48,12 +48,19 @@
             <div class="card">
                 <div class="card-body">
                     <form action="<?= site_url('surat/create')?>" method="POST" enctype="multipart/form-data">
-                        <div class="row mb-3">
-                            <div class="col-lg-3">
-                                <label for="websiteUrl" class="form-label">Jenis Surat</label>
-                                <select class="form-control" name="jenis_surat" id="jenis_surat" required>
-                                    <option value="d5ba481b59fd483d95d42fc0d311390b">Permohonan Perubahan Detail Alokasi PPPK Paruh Waktu</option>
-                                </select>
+                        <div class="row mb-4">
+                            <label for="nomor_usul" class="col-sm-3 col-form-label">NIK</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                <input type="number" class="form-control" name="nik" id="nik" required>
+                                <button class="btn btn-outline-success" type="button" id="cari">Cari</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <label for="nomor_usul" class="col-sm-3 col-form-label">Nama</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="nama" class="form-control" id="nama" readonly>
                             </div>
                         </div>
                     </form>
