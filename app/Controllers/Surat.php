@@ -123,6 +123,14 @@ class Surat extends BaseController
         return redirect()->back()->with('message', 'Surat telah dibuat');
       }else{
         return redirect()->back()->with('message', 'Surat gagal dibuat');
-      }
+    }
+}
+
+    function submit($id) {
+        $id = decrypt($id);
+        
+        $model = new SuratModel;
+        $update = $model->update($id,['status'=>1]);
+        return redirect()->back()->with('message', 'Surat usul berhasil dikiirm.');
     }
 }
