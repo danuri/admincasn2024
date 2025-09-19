@@ -40,7 +40,7 @@ class Ajax extends BaseController
       $model = new CrudModel;
       $search = $this->request->getVar('search');
 
-      $data = $model->query("SELECT * FROM siasn_jabatan WHERE pendidikan_id = '".$pendidikanid."'")->getResult();
+      $data = $model->query("SELECT * FROM siasn_jabatan WHERE pendidikan = '".$pendidikanid."'")->getResult();
       return $this->response->setJSON($data);
     }
 
