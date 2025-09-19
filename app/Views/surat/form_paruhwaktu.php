@@ -68,25 +68,25 @@
                         <div class="row mb-4">
                             <label for="xnama" class="col-sm-3 col-form-label">Nama</label>
                             <div class="col-sm-9">
-                                <input type="text" name="xnama" class="form-control" id="xnama" readonly>
+                                <input type="text" name="xnama" class="form-control" id="xnama" disabled>
                             </div>
                         </div>
                         <div class="row mb-4">
                             <label for="xjabatan" class="col-sm-3 col-form-label">Jabatan</label>
                             <div class="col-sm-9">
-                                <input type="text" name="xjabatan" class="form-control" id="xjabatan" readonly>
+                                <input type="text" name="xjabatan" class="form-control" id="xjabatan" disabled>
                             </div>
                         </div>
                         <div class="row mb-4">
                             <label for="xpendidikan" class="col-sm-3 col-form-label">Pendidikan</label>
                             <div class="col-sm-9">
-                                <input type="text" name="xpendidikan" class="form-control" id="xpendidikan" readonly>
+                                <input type="text" name="xpendidikan" class="form-control" id="xpendidikan" disabled>
                             </div>
                         </div>
                         <div class="row mb-4">
                             <label for="xpenempatan" class="col-sm-3 col-form-label">Penempatan</label>
                             <div class="col-sm-9">
-                                <textarea name="xpenempatan" id="xpenempatan" class="form-control" rows="3" readonly></textarea>
+                                <textarea name="xpenempatan" id="xpenempatan" class="form-control" rows="3" disabled></textarea>
                             </div>
                         </div>
                         <div class="row mb-4">
@@ -201,7 +201,7 @@
   function getJabatan(pendidikanId) {
   // AJAX request
   $.ajax({
-    url: '<?= site_url()?>/ajax/jabatan/' + pendidikanId,
+    url: '<?= site_url()?>ajax/jabatan/' + pendidikanId,
     type: 'GET',
     dataType: 'json',
     success: function (response) {
