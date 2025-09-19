@@ -25,49 +25,22 @@
                     <thead>
                       <tr>
                         <th>NIK</th>
+                        <th>No Peserta</th>
                         <th>Nama</th>
-                        <th>Pendidikan</th>
-                        <th>Unor</th>
-                        <th>Status</th>
-                        <th>Instansi SSCASN</th>
-                        <th>Diusulkan</th>
-                        <th>Keterangan</th>
-                        <th>Usulkan</th>
+                        <th>Penempatan</th>
+                        <th>Jabatan</th>
+                        <th>Status DRH</th>
                       </tr>
                     </thead>
                     <tbody>
                       <?php foreach ($peserta as $row) {?>
                       <tr>
                         <td><?= $row->nik?></td>
+                        <td><?= $row->no_peserta?></td>
                         <td><?= $row->nama?></td>
-                        <td><?= $row->pendidikan_nama_nonasn?></td>
-                        <td><?= $row->unor_nama_nonasn.' | '.$row->unor_nama_atasan_nonasn?></td>
-                        <td><?= $row->status_prioritas?></td>
-                        <td><?= $row->instansi_sscn?></td>
-                        <td>
-                          <?php
-                          if($row->is_usul == '1'){
-                            echo '<span class="text-success">Ya</span>';
-                          }else if($row->is_usul == '0'){
-                            echo '<span class="text-danger">Tidak</span>';
-                          }
-                          ?>
-                        </td>
-                        <td>
-                          <?php
-                          if($row->is_usul == '1'){
-                            echo $row->unit_penempatan_nama.'<br>'.pendidikan($row->rincian_tk_pendidikan);
-                          }else if($row->is_usul == '0'){
-                            echo $row->alasan_tolak;
-                          }
-                          ?>
-                        </td>
-                        <td>
-                          <!-- <input type="checkbox" class="form-check-input formcheck" id="<?= $row->nik;?>" <?= ($row->is_usul == 1)?'checked':'';?> value="1" onclick="usul(this)"> -->
-                          <div class="btn-group btn-group-sm mt-2" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-primary" onclick="setusul('<?= $row->nik;?>')">Edit</button>
-                        </div>
-                        </td>
+                        <td><?= $row->instansi_paruh_waktu?></td>
+                        <td><?= $row->jabatan_melamar?></td>
+                        <td><?= $row->status_drh?></td>
                       </tr>
                       <?php } ?>
                     </tbody>

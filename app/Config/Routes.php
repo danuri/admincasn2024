@@ -90,6 +90,12 @@ $routes->group("upload", ["filter" => "auth"], function ($routes) {
     $routes->post('save', 'Upload::save');
 });
 
+$routes->group("surat", ["filter" => "auth"], function ($routes) {
+    $routes->get('', 'Surat::index');
+    $routes->post('save', 'Surat::save');
+    $routes->get('input/(:any)', 'Surat::input/$1');
+});
+
 $routes->group("pppk", ["filter" => "auth"], function ($routes) {
     $routes->get('peserta', 'Pppk::peserta');
     $routes->get('pesertal2in', 'Pppk::pesertal2in');
