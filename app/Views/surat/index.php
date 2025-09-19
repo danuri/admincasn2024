@@ -21,7 +21,7 @@
             <div class="card">
               <div class="card-body">
                 <div class="table-responsive">
-                  <table class="table align-middle table-striped-columns mb-0 ">
+                  <table class="table align-middle table-striped-columns mb-0 datatable">
                     <thead>
                       <tr>
                         <th>Jenis</th>
@@ -39,8 +39,8 @@
                         <td><?= $row->no_surat?></td>
                         <td><?= $row->tanggal_surat?></td>
                         <td><?= $row->perihal?></td>
-                        <td><?= $row->lampiran?></td>
-                        <td><a href="<?= site_url('surat/input/'.$row->id)?>" class="btn btn-success btn-sm">Input</a></td>
+                        <td><a href="https://ropeg.kemenag.go.id:9000/pengadaan/pppk/<?= $row->lampiran?>" class="btn btn-primary btn-sm">Dokumen</a></td>
+                        <td><a href="<?= site_url('surat/input/'.encrypt($row->id))?>" class="btn btn-success btn-sm">Input</a></td>
                       </tr>
                       <?php } ?>
                     </tbody>
@@ -65,13 +65,13 @@
           <form class="" action="<?= site_url('surat/save');?>" method="post" id="mapform" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="">Jenis Surat</label>
-                <select class="form-control" name="jenis_surat" id="jenis_surat" required>
+                <select class="form-control" name="jenis" id="jenis" required>
                   <option value="d5ba481b59fd483d95d42fc0d311390b">Permohonan Perubahan Detail Alokasi PPPK Paruh Waktu</option>
                 </select>
               </div>
               <div class="form-group">
                 <label for="">Nomor Surat</label>
-                <input type="text" name="nomor_surat" id="nomor_surat" class="form-control" required>
+                <input type="text" name="no_surat" id="no_surat" class="form-control" required>
               </div>
               <div class="form-group">
                 <label for="">Perihal</label>

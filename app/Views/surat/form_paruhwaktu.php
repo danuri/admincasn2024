@@ -24,11 +24,8 @@
                   <table class="table align-middle table-striped-columns mb-0 datatable">
                     <thead>
                       <tr>
-                        <th>Jenis</th>
-                        <th>Nomor Surat</th>
-                        <th>Tanggal Surat</th>
-                        <th>Perihal</th>
-                        <th>Dokumen</th>
+                        <th>NIK</th>
+                        <th>Nama</th>
                         <th>Aksi</th>
                       </tr>
                     </thead>

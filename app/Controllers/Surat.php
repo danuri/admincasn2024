@@ -17,8 +17,9 @@ class Surat extends BaseController
     }
 
     function input($id) {
-        if ($id == 'd5ba481b59fd483d95d42fc0d311390b') {
-            $model = new SuratModel;
+        $model = new SuratModel;
+        $surat = $model->find($id);
+        if($surat->jenis_surat == 'd5ba481b59fd483d95d42fc0d311390b') {
             return view('surat/form_paruhwaktu');
         }
     }
