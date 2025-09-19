@@ -20,8 +20,6 @@ class Paruhwaktu extends BaseController
 
         $data['peserta'] = $model->where(['kode_satker'=>session('kodesatker4')])->findAll();
 
-        print_r($data['peserta']);
-
         return view('paruhwaktu/index', $data);
     }
 
