@@ -92,22 +92,22 @@
                         <div class="row mb-4">
                             <label for="pendidikan" class="col-sm-3 col-form-label">Penyesuaian Pendidikan</label>
                             <div class="col-sm-9">
-                                <select name="pendidikan" id="pendidikan" class="form-control">
+                                <select name="pendidikan" id="pendidikan" class="form-control" required>
                                     <option value="">Pilih Pendidikan</option>
                                     <option value="1005001">SD/SEDERAJAT</option>
                                     <option value="2005001">SLTP/SMP SEDERAJAT</option>
                                     <option value="3000006">SLTA/SMA SEDERAJAT</option>
                                     <option value="4480043">D-III SEMUA JURUSAN</option>
-                                    <option value="5210074">-1 SEMUA JURUSAN</option>
-                                    <option value="7400051">-2 SEMUA JURUSAN</option>
-                                    <option value="9500363">-3 SEMUA JURUSAN</option>
+                                    <option value="5210074">S-1 SEMUA JURUSAN</option>
+                                    <option value="7400051">S-2 SEMUA JURUSAN</option>
+                                    <option value="9500363">S-3 SEMUA JURUSAN</option>
                                 </select>
                             </div>
                         </div>
                         <div class="row mb-4">
                             <label for="jabatan" class="col-sm-3 col-form-label">Penyesuaian Jabatan</label>
                             <div class="col-sm-9">
-                                <select name="jabatan" id="jabatan" class="form-control">
+                                <select name="jabatan" id="jabatan" class="form-control" required>
                                     <option value="">Pilih Jabatan</option>
                                 </select>
                             </div>
@@ -115,8 +115,14 @@
                         <div class="row mb-4">
                             <label for="penempatan" class="col-sm-3 col-form-label">Penyesuaian Lokasi</label>
                             <div class="col-sm-9">
-                                <select class="form-select" id="searchunor" name="unor"></select>
+                                <select class="form-select" id="searchunor" name="unor" required></select>
                                 <input type="hidden" name="siasnname" id="siasnname">
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <label for="penempatan" class="col-sm-3 col-form-label"></label>
+                            <div class="col-sm-9">
+                                <input type="submit" name="submit" id="submit" class="btn btn-primary" value="Simpan">
                             </div>
                         </div>
                     </form>
