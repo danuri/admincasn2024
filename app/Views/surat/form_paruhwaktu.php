@@ -25,7 +25,7 @@
                                     <h6>Jenis Layanan</h6>
                                 </div>
                                 <div style="display: table-cell; padding-right: 0.5rem;">:</div>
-                                <div style="display: table-cell; padding-right: 0.5rem;"><?= $surat->jenis_surat?></div>
+                                <div style="display: table-cell; padding-right: 0.5rem;"><?= layanan($surat->jenis_surat)?></div>
                             </div>
                             <div style="display: table-row;">
                                 <div style="display: table-cell; padding-right: 0.5rem;">

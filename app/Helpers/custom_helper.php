@@ -462,6 +462,16 @@ function gets3url($file,$folder)
      return $presignedUrl;
    }
 
+   function layanan($id)
+   {
+     if($id == 'd5ba481b59fd483d95d42fc0d311390b'){
+       $result = 'Permohonan Perubahan Detail Alokasi PPPK Paruh Waktu';
+     }else if($id == 2){
+       $result = 'Pengangkatan CPNS';
+     }
+    
+   }
+
    function surat_status($status)
     {
     

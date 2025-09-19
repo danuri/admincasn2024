@@ -35,7 +35,7 @@
                     <tbody>
                       <?php foreach ($surat as $row) {?>
                       <tr>
-                        <td><?= $row->jenis_surat?></td>
+                        <td><?= layanan($row->jenis_surat)?></td>
                         <td><?= $row->no_surat?></td>
                         <td><?= $row->tanggal_surat?></td>
                         <td><?= $row->perihal?></td>
