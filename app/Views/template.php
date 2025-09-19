@@ -337,11 +337,11 @@
                                 <i class="ri-layout-grid-line"></i> <span data-key="t-tables">Paruh Waktu</span>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link menu-link" href="<?= site_url('surat')?>">
                                 <i class="ri-layout-grid-line"></i> <span data-key="t-tables">Surat</span>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
                 <!-- Sidebar -->
