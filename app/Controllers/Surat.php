@@ -22,10 +22,8 @@ class Surat extends BaseController
             return view('surat/form_paruhwaktu');
         }
     }
-    
-    function save() {
-        return redirect()->back()->with('message', 'Time Out');
 
+    function save() {
         if (!$this->validate([
 			'dokumen' => [
 				'rules' => 'uploaded[dokumen]|ext_in[dokumen,pdf,PDF]|max_size[dokumen,2048]',

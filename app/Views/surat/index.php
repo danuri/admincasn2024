@@ -87,7 +87,7 @@
               </div>
               <div class="form-group">
                 <label for="">Upload Surat</label>
-                <input type="file" name="lampiran" id="lampiran" class="form-control" required>
+                <input type="file" name="dokumen" id="dokumen" class="form-control" required>
               </div>
           </form>
         </div>
