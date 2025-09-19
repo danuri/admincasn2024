@@ -141,7 +141,7 @@
     }else{
       axios.get('<?= site_url()?>paruhwaktu/search/'+$nik)
       .then(function (response) {
-
+        console.log(response);
         if(response.data){
           $('#nama').val(response.data.nama_peserta);
           $('#jabatan').val(response.data.jabatan_melamar);
