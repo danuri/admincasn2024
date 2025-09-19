@@ -505,7 +505,8 @@ function gets3url($file,$folder)
      }else if($id == 2){
        $result = 'Pengangkatan CPNS';
      }
-    
+     
+     return $result;
    }
 
    function surat_status($status)
