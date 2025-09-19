@@ -141,12 +141,12 @@
     }else{
       axios.get('<?= site_url()?>paruhwaktu/search/'+$nik)
       .then(function (response) {
-        console.log(response);
+        console.log(response.data);
         if(response.data){
-          $('#nama').val(response.data.nama_peserta);
-          $('#jabatan').val(response.data.jabatan_melamar);
-          $('#pendidikan').val(response.data.pendidikan_jenjang);
-          $('#penempatan').val(response.data.instansi_paruh_waktu);
+          $('#xnama').val(response.data.nama_peserta);
+          $('#xjabatan').val(response.data.jabatan_melamar);
+          $('#xpendidikan').val(response.data.pendidikan_jenjang);
+          $('#xpenempatan').val(response.data.instansi_paruh_waktu);
         }else{
           alert(response.data.message);
         }
