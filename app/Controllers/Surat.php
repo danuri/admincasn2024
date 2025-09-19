@@ -18,15 +18,12 @@ class Surat extends BaseController
 
     function input($id) {
         if ($id == 'd5ba481b59fd483d95d42fc0d311390b') {
+            $model = new SuratModel;
             return view('surat/form_paruhwaktu');
         }
     }
-
-    function saveparuhwaktu() {
-        
-    }
-
-    function uploaddok() {
+    
+    function save() {
         return redirect()->back()->with('message', 'Time Out');
 
         if (!$this->validate([

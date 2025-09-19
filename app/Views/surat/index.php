@@ -79,7 +79,7 @@
               </div>
               <div class="form-group">
                 <label for="">Tanggal Surat</label>
-                <input type="text" name="tanggal_surat" id="tanggal_surat" class="form-control" required>
+                <input type="date" name="tanggal_surat" id="tanggal_surat" class="form-control" required>
               </div>
               <div class="form-group">
                 <label for="">Jabatan Penandatangan</label>
