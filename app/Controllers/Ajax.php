@@ -35,6 +35,15 @@ class Ajax extends BaseController
       return $this->response->setJSON($data);
     }
 
+    public function jabatan($pendidikanid)
+    {
+      $model = new CrudModel;
+      $search = $this->request->getVar('search');
+
+      $data = $model->query("SELECT * FROM siasn_jabatan WHERE pendidikan_id = '".$pendidikanid."'")->getResult();
+      return $this->response->setJSON($data);
+    }
+
     function getmonitoring($limit, $offset) {
         $model = new Pppkt2Model;
         $data= $model->orderBy('nopeserta', 'asc')->findAll($limit,$offset);

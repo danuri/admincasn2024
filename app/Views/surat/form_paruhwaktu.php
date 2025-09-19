@@ -191,7 +191,34 @@
             var data = $('#searchunor').select2('data');
             $('#siasnname').val(data[0].text);
         });
+
+        $('#pendidikan').on('change', function () {
+            const pendidikanId = $(this).val();
+            getJabatan(pendidikanId);
+        });
   });
+
+  function getJabatan(pendidikanId) {
+  // AJAX request
+  $.ajax({
+    url: '/ajax/jabatan/' + pendidikanId,
+    type: 'GET',
+    dataType: 'json',
+    success: function (response) {
+      // Clear existing options
+      $('#jabatan').empty();
+      $('#jabatan').append('<option value="">Pilih Jabatan</option>');
+
+      // Populate new options
+      $.each(response, function (index, jabatan) {
+        $('#jabatan').append('<option value="' + jabatan.kode_jabatan + '">' + jabatan.namaJabatan + '</option>');
+      });
+    },
+    error: function (xhr, status, error) {
+      console.error('Error fetching jabatan:', error);
+    }
+  });
+}
 
   
 
