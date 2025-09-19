@@ -86,7 +86,7 @@
                         <div class="row mb-4">
                             <label for="xpenempatan" class="col-sm-3 col-form-label">Penempatan</label>
                             <div class="col-sm-9">
-                                <input type="text" name="xpenempatan" class="form-control" id="xpenempatan" readonly>
+                                <textarea name="xpenempatan" id="xpenempatan" class="form-control" rows="3" readonly></textarea>
                             </div>
                         </div>
                         <div class="row mb-4">
@@ -146,7 +146,7 @@
           $('#xnama').val(response.data.nama_peserta);
           $('#xjabatan').val(response.data.jabatan_melamar);
           $('#xpendidikan').val(response.data.pendidikan_jenjang);
-          $('#xpenempatan').val(response.data.instansi_paruh_waktu);
+          $('#xpenempatan').html(response.data.instansi_paruh_waktu);
         }else{
           alert(response.data.message);
         }
@@ -156,7 +156,6 @@
   });
 
   $('#searchunor').select2({
-        dropdownParent: $('#mapping'),
         ajax: {
             url: '<?= site_url() ?>ajax/searchlokasi',
             data: function (params) {
