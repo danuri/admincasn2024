@@ -6,12 +6,12 @@ use CodeIgniter\Model;
 
 class SuratModel extends Model
 {
-    protected $table            = 'surats';
+    protected $table            = 'tr_surat';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $returnType       = 'array';
+    protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
-    protected $protectFields    = true;
+    protected $protectFields    = false;
     protected $allowedFields    = [];
 
     protected bool $allowEmptyInserts = false;
@@ -21,7 +21,7 @@ class SuratModel extends Model
     protected array $castHandlers = [];
 
     // Dates
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
