@@ -201,7 +201,7 @@
   function getJabatan(pendidikanId) {
   // AJAX request
   $.ajax({
-    url: '/ajax/jabatan/' + pendidikanId,
+    url: '<?= site_url()?>/ajax/jabatan/' + pendidikanId,
     type: 'GET',
     dataType: 'json',
     success: function (response) {
