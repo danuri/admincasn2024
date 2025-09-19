@@ -16,7 +16,58 @@
 
         <div class="row">
           <div class="col-xl-12">
-
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="row g-6">
+                        <div class="col-lg-6 col-md-12 col-sm-12">
+                            <div style="display: table-row;">
+                                <div style="display: table-cell; padding-right: 0.5rem;">
+                                    <h6>Jenis Layanan</h6>
+                                </div>
+                                <div style="display: table-cell; padding-right: 0.5rem;">:</div>
+                                <div style="display: table-cell; padding-right: 0.5rem;"><?= $surat->jenis_surat?></div>
+                            </div>
+                            <div style="display: table-row;">
+                                <div style="display: table-cell; padding-right: 0.5rem;">
+                                    <h6>Nomor Surat</h6>
+                                </div>
+                                <div style="display: table-cell; padding-right: 0.5rem;">:</div>
+                                <div style="display: table-cell; padding-right: 0.5rem;"><?= $surat->no_surat?></div>
+                            </div>
+                            <div style="display: table-row;">
+                                <div style="display: table-cell; padding-right: 0.5rem;">
+                                    <h6>Perihal</h6>
+                                </div>
+                                <div style="display: table-cell; padding-right: 0.5rem;">:</div>
+                                <div style="display: table-cell; padding-right: 0.5rem;"><?= $surat->perihal?></div>
+                            </div>
+                            <div style="display: table-row;">
+                                <div style="display: table-cell; padding-right: 0.5rem;">
+                                    <h6>Tanggal Surat</h6>
+                                </div>
+                                <div style="display: table-cell; padding-right: 0.5rem;">:</div>
+                                <div style="display: table-cell; padding-right: 0.5rem;"><?= $surat->tanggal_surat?></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-sm-12">
+                            <div style="display: table-row;">
+                                <div style="display: table-cell; padding-right: 0.5rem;">
+                                    <h6>Penanda Tangan</h6>
+                                </div>
+                                <div style="display: table-cell; padding-right: 0.5rem;">:</div>
+                                <div style="display: table-cell; padding-right: 0.5rem;"><?= $surat->penandatangan?></div>
+                            </div>
+                            <div style="display: table-row;">
+                                <div style="display: table-cell; padding-right: 0.5rem;">
+                                    <h6>Dokumen</h6>
+                                </div>
+                                <div style="display: table-cell; padding-right: 0.5rem;">:</div>
+                                <div style="display: table-cell; padding-right: 0.5rem;"><a href="https://ropeg.kemenag.go.id:9000/pengadaan/pppk/<?= $surat->lampiran?>" class="btn btn-primary btn-sm" target="_blank">Dokumen</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="card">
               <div class="card-body">
                 <div class="table-responsive">

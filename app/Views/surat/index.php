@@ -39,7 +39,7 @@
                         <td><?= $row->no_surat?></td>
                         <td><?= $row->tanggal_surat?></td>
                         <td><?= $row->perihal?></td>
-                        <td><a href="https://ropeg.kemenag.go.id:9000/pengadaan/pppk/<?= $row->lampiran?>" class="btn btn-primary btn-sm">Dokumen</a></td>
+                        <td><a href="https://ropeg.kemenag.go.id:9000/pengadaan/pppk/<?= $row->lampiran?>" class="btn btn-primary btn-sm" target="_blank">Dokumen</a></td>
                         <td><a href="<?= site_url('surat/input/'.encrypt($row->id))?>" class="btn btn-success btn-sm">Input</a></td>
                       </tr>
                       <?php } ?>
