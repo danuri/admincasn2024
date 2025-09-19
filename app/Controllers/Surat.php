@@ -113,7 +113,7 @@ class Surat extends BaseController
                 'penandatangan' => $this->request->getVar('penandatangan'),
                 'tanggal_surat' => $this->request->getVar('tanggal_surat'),
                 'kode_satker' => session('lokasi'),
-                'satker' => session('nama_satker'),
+                'satker' => session('satker4'),
                 'status' => 0,
                 'lampiran' => $file_name
         ];
