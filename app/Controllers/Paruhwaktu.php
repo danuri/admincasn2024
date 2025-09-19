@@ -7,6 +7,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\ParuhwaktuModel;
 use App\Models\SuratparuhwaktuModel;
 use App\Models\UserModel;
+use App\Models\SuratModel;
 use Aws\S3\S3Client;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -29,7 +30,9 @@ class Paruhwaktu extends BaseController
         $cek = $spm->where('nik',$nik)->first();
         
         if($cek){
-            $info = ['status'=>'error','message'=>'Peserta telah dilakukan maping sebelumnya oleh satker: '.$cek->satker.'. Silahkan Admin terkait untuk berkoordinasi jika diperlukan.'];
+            $sm = new SuratModel;
+            $surat = $sm->find($cek->surat_id);
+            $info = ['status'=>'error','message'=>'Peserta telah dilakukan maping sebelumnya oleh satker: '.$surat->satker.'. Silahkan Admin terkait untuk berkoordinasi jika diperlukan.'];
             return $this->response->setJSON($info);
         }else{
             $model = new ParuhwaktuModel;
