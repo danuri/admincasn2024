@@ -462,6 +462,18 @@ function gets3url($file,$folder)
      return $presignedUrl;
    }
 
+   function surat_status($status)
+    {
+    
+      if($status == 0){
+        $result = 'Draft';
+      }else if($status == 1){
+        $result = 'Dikirim';
+      }else if($status == 2){
+        $result = 'Disetujui';
+      }
+    }
+
    function siasn_usul_status($status)
  {
   

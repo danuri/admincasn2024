@@ -64,6 +64,13 @@
                                 <div style="display: table-cell; padding-right: 0.5rem;">:</div>
                                 <div style="display: table-cell; padding-right: 0.5rem;"><a href="https://ropeg.kemenag.go.id:9000/pengadaan/pppk/<?= $surat->lampiran?>" class="btn btn-primary btn-sm" target="_blank">Dokumen</a></div>
                             </div>
+                            <div style="display: table-row;">
+                                <div style="display: table-cell; padding-right: 0.5rem;">
+                                    <h6>Status</h6>
+                                </div>
+                                <div style="display: table-cell; padding-right: 0.5rem;">:</div>
+                                <div style="display: table-cell; padding-right: 0.5rem;"><?= surat_status($surat->status)?></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -91,7 +98,9 @@
                         <td><?= $row->jabatan?></td>
                         <td><?= $row->lokasi?></td>
                         <td>
+                            <?php if($surat->status == 0):?>
                           <a href="<?= site_url('surat/inputdelete/'.encrypt($row->id))?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                            <?php endif;?>
                         </td>
                       </tr>
                       <?php } ?>
@@ -100,7 +109,7 @@
                 </div>
               </div>
             </div>
-
+            <?php if($surat->status == 0):?>
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-title mb-0">Input Peserta</h5>
@@ -182,6 +191,13 @@
                 </div>
             </div>
 
+            <div class="card mb-3">
+                <div class="card-body">
+                    <a href="<?= site_url('surat/submit/'.encrypt($surat->id))?>" onclick="return confirm('Apakah Anda yakin ingin mengirim surat usulan ini?')">Kirim Surat Usulan</a>
+                </div>
+            </div>
+            <?php endif;?>
+
     </div>
 </div>
 
@@ -201,14 +217,14 @@
       axios.get('<?= site_url()?>paruhwaktu/search/'+$nik)
       .then(function (response) {
         console.log(response.data);
-        if(response.data){
-          $('#xnama').val(response.data.nama_peserta);
-          $('#nama').val(response.data.nama_peserta);
-          $('#xjabatan').val(response.data.jabatan_melamar);
-          $('#xpendidikan').val(response.data.pendidikan_jenjang);
-          $('#xpenempatan').html(response.data.instansi_paruh_waktu);
+        if(response.data.status == 'error'){
+            alert(response.data.message);
         }else{
-          alert(response.data.message);
+            $('#xnama').val(response.data.nama_peserta);
+            $('#nama').val(response.data.nama_peserta);
+            $('#xjabatan').val(response.data.jabatan_melamar);
+            $('#xpendidikan').val(response.data.pendidikan_jenjang);
+            $('#xpenempatan').html(response.data.instansi_paruh_waktu);
         }
       });
     }

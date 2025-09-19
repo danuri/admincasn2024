@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\ParuhwaktuModel;
+use App\Models\SuratparuhwaktuModel;
 use App\Models\UserModel;
 use Aws\S3\S3Client;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
@@ -24,10 +25,17 @@ class Paruhwaktu extends BaseController
     }
 
     function search($nik) {
-        $model = new ParuhwaktuModel;
-        $data = $model->where('nik',$nik)->first();
-
-        return $this->response->setJSON($data);
+        $spm = new SuratparuhwaktuModel;
+        $cek = $spm->where('nik',$nik)->first();
+        
+        if($cek){
+            $info = ['status'=>'error','message'=>'Peserta telah dilakukan maping sebelumnya oleh satker: '.$cek->satker.'. Silahkan Admin terkait untuk berkoordinasi jika diperlukan.'];
+            return $this->response->setJSON($info);
+        }else{
+            $model = new ParuhwaktuModel;
+            $data = $model->where('nik',$nik)->first();
+            return $this->response->setJSON($data);
+        }
     }
 
     function setusul() {
