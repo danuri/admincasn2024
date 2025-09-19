@@ -26,16 +26,32 @@
                       <tr>
                         <th>NIK</th>
                         <th>Nama</th>
+                        <th>Pendidikan</th>
+                        <th>Jabatan</th>
+                        <th>Lokasi</th>
                         <th>Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <?php foreach ($surat as $row) {?>
+                      <?php foreach ($paruhwaktu as $row) {?>
                       <tr>
-                        <td><?= $row->jenis?></td>
-                        <td><?= $row->no_surat?></td>
-                        <td><?= $row->tanggal_surat?></td>
-                        <td><?= $row->perihal?></td>
+                        <td><?= $row->nik?></td>
+                        <td><?= $row->nama?></td>
+                        <td><?= $row->pendidikan?></td>
+                        <td><?= $row->jabatan?></td>
+                        <td><?= $row->lokasi?></td>
+                        <td>
+                          <a href="<?= site_url('surat/delete/'.encrypt($row->id))?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                      </tr>
+                      <?php } ?>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
                         <td><?= $row->lampiran?></td>
                       </tr>
                       <?php } ?>
