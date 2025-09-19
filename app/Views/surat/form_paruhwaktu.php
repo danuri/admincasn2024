@@ -142,13 +142,11 @@
       axios.get('<?= site_url()?>paruhwaktu/search/'+$nik)
       .then(function (response) {
 
-        if(response.data.status){
-          $('#nama').val(response.data.data.NAMA_LENGKAP);
-          $('#jabatan').val(response.data.data.TAMPIL_JABATAN);
-          $('#pangkat').val(response.data.data.PANGKAT);
-          $('#golongan').val(response.data.data.GOL_RUANG);
-          $('#satker').val(response.data.data.SATKER_3);
-          $('#kode_satker').val(response.data.data.KODE_SATKER_3);
+        if(response.data){
+          $('#nama').val(response.data.nama_peserta);
+          $('#jabatan').val(response.data.jabatan_melamar);
+          $('#pendidikan').val(response.data.pendidikan_jenjang);
+          $('#penempatan').val(response.data.instansi_paruh_waktu);
         }else{
           alert(response.data.message);
         }
