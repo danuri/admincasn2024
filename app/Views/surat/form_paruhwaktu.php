@@ -94,8 +94,8 @@
                       <tr>
                         <td><?= $row->nik?></td>
                         <td><?= $row->nama?></td>
-                        <td><?= $row->pendidikan?></td>
-                        <td><?= $row->jabatan?></td>
+                        <td><?= jenjangpendidikan($row->pendidikan)?></td>
+                        <td><?= jabatan($row->jabatan)?></td>
                         <td><?= $row->lokasi?></td>
                         <td>
                             <?php if($surat->status == 0):?>

@@ -102,6 +102,42 @@ function pendidikan($jenjang)
   }
 }
 
+function jenjangpendidikan($jenjang)
+{
+  if($jenjang == '1005001'){
+    return 'SD/SEDERAJAT';
+  }else if($jenjang == '2005001'){
+    return 'SLTP/SMP SEDERAJAT';
+  }else if($jenjang == '3000006'){
+    return 'SLTA/SMA SEDERAJAT';
+  }else if($jenjang == '4480043'){
+    return 'D-III SEMUA JURUSAN';
+  }else if($jenjang == '5210074'){
+    return 'S-1/D-IV Semua Jurusan';
+  }else if($jenjang == '7400051'){
+    return 'S-2 SEMUA JURUSAN';
+  }else if($jenjang == '9500363'){
+    return 'S-3 SEMUA JURUSAN';
+  }
+}
+
+function jabatan($jenjang)
+{
+  if($jenjang == 'JP4291490'){
+    return 'PENGELOLA UMUM OPERASIONAL';
+  }else if($jenjang == 'JP4291364'){
+    return 'OPERATOR LAYANAN OPERASIONAL';
+  }else if($jenjang == 'JP4224779'){
+    return 'PENGELOLA LAYANAN OPERASIONAL';
+  }else if($jenjang == 'JP4291224'){
+    return 'PENATA LAYANAN OPERASIONAL';
+  }else if($jenjang == 'JF0000908'){
+    return 'Dosen Asisten Ahli';
+  }else if($jenjang == 'JF0000905'){
+    return 'Dosen Lektor';
+  }
+}
+
 function hari($day)
 {
 	// $day = date('N', strtotime($date));

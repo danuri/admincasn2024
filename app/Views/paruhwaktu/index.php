@@ -9,7 +9,7 @@
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                     <h4 class="mb-sm-0">Peserta PPPK Paruh Waktu</h4>
                     <div class="page-title-right">
-                      <a href="<?= base_url('paruhwaktu/export') ?>" class="btn btn-primary">Download</a>
+                      <!-- <a href="<?= base_url('paruhwaktu/export') ?>" class="btn btn-primary">Download</a> -->
                     </div>
                 </div>
             </div>
