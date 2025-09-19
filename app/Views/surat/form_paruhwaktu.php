@@ -52,16 +52,6 @@
             </div>
 
             <div class="card">
-                        <td><?= $row->lampiran?></td>
-                      </tr>
-                      <?php } ?>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-
-            <div class="card">
                 <div class="card-body">
                     <form action="<?= site_url('surat/create')?>" method="POST" enctype="multipart/form-data">
                         <div class="row mb-4">
