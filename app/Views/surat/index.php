@@ -21,7 +21,7 @@
             <div class="card">
               <div class="card-body">
                 <div class="table-responsive">
-                  <table class="table align-middle table-striped-columns mb-0 datatable">
+                  <table class="table align-middle table-striped-columns mb-0 ">
                     <thead>
                       <tr>
                         <th>Jenis</th>
