@@ -31,7 +31,7 @@ class Ajax extends BaseController
       $model = new CrudModel;
       $search = $this->request->getVar('search');
 
-      $data = $model->query("SELECT * FROM siasn_lokasi_formasi WHERE nama_lokasi LIKE '%".$search."%' OR id LIKE '%".$search."%' ORDER BY nama_lokasi ASC LIMIT 10")->getResult();
+      $data = $model->query("SELECT * FROM siasn_lokasi_formasi WHERE nama LIKE '%".$search."%' OR id LIKE '%".$search."%' ORDER BY nama ASC LIMIT 10")->getResult();
       return $this->response->setJSON($data);
     }
 
