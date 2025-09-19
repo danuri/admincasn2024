@@ -37,7 +37,7 @@
                       <tr>
                         <td><?= $row->nik?></td>
                         <td><?= $row->no_peserta?></td>
-                        <td><?= $row->nama?></td>
+                        <td><?= $row->nama_peserta?></td>
                         <td><?= $row->instansi_paruh_waktu?></td>
                         <td><?= $row->jabatan_melamar?></td>
                         <td><?= $row->status_drh?></td>
