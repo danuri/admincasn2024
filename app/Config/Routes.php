@@ -93,6 +93,7 @@ $routes->group("upload", ["filter" => "auth"], function ($routes) {
 $routes->group("surat", ["filter" => "auth"], function ($routes) {
     $routes->get('', 'Surat::index');
     $routes->post('save', 'Surat::save');
+    $routes->post('saveinput', 'Surat::saveinput');
     $routes->get('input/(:any)', 'Surat::input/$1');
 });
 
