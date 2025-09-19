@@ -40,7 +40,7 @@
                         <td><?= $row->jabatan?></td>
                         <td><?= $row->lokasi?></td>
                         <td>
-                          <a href="<?= site_url('surat/delete/'.encrypt($row->id))?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                          <a href="<?= site_url('surat/inputdelete/'.encrypt($row->id))?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
                         </td>
                       </tr>
                       <?php } ?>
@@ -63,12 +63,14 @@
                                 <input type="number" class="form-control" name="nik" id="nik" required>
                                 <button class="btn btn-outline-success" type="button" id="cari">Cari</button>
                                 </div>
+                                <input type="hidden" name="surat_id" id="surat_id" value="<?= $surat->id?>">
                             </div>
                         </div>
                         <div class="row mb-4">
                             <label for="xnama" class="col-sm-3 col-form-label">Nama</label>
                             <div class="col-sm-9">
                                 <input type="text" name="xnama" class="form-control" id="xnama" disabled>
+                                <input type="hidden" name="nama" id="nama">
                             </div>
                         </div>
                         <div class="row mb-4">
@@ -150,6 +152,7 @@
         console.log(response.data);
         if(response.data){
           $('#xnama').val(response.data.nama_peserta);
+          $('#nama').val(response.data.nama_peserta);
           $('#xjabatan').val(response.data.jabatan_melamar);
           $('#xpendidikan').val(response.data.pendidikan_jenjang);
           $('#xpenempatan').html(response.data.instansi_paruh_waktu);

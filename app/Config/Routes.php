@@ -95,6 +95,7 @@ $routes->group("surat", ["filter" => "auth"], function ($routes) {
     $routes->post('save', 'Surat::save');
     $routes->post('saveinput', 'Surat::saveinput');
     $routes->get('input/(:any)', 'Surat::input/$1');
+    $routes->get('inputdelete/(:any)', 'Surat::inputdelete/$1');
 });
 
 $routes->group("pppk", ["filter" => "auth"], function ($routes) {

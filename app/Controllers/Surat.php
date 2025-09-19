@@ -39,11 +39,19 @@ class Surat extends BaseController
             'nama' => $this->request->getVar('nama'),
             'pendidikan' => $this->request->getVar('pendidikan'),
             'jabatan' => $this->request->getVar('jabatan'),
-            'lokasi' => $this->request->getVar('lokasi'),
+            'lokasi_id' => $this->request->getVar('unor'),
+            'lokasi' => $this->request->getVar('siasnname'),
         ];
 
         $model->insert($data);
         return redirect()->back()->with('message', 'Data berhasil disimpan');
+    }
+
+    function inputdelete($id) {
+        $id = decrypt($id);
+        $model = new SuratparuhwaktuModel;
+        $model->delete($id);
+        return redirect()->back()->with('message', 'Data berhasil dihapus');
     }
 
     function save() {
