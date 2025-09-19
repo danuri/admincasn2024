@@ -23,6 +23,13 @@ class Paruhwaktu extends BaseController
         return view('paruhwaktu/index', $data);
     }
 
+    function search($nik) {
+        $model = new ParuhwaktuModel;
+        $data = $model->where('nik',$nik)->first();
+
+        return $this->response->setJSON($data);
+    }
+
     function setusul() {
         return redirect()->back()->with('message', 'Time Out');
         // validate

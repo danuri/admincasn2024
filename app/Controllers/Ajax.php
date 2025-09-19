@@ -8,6 +8,7 @@ use App\Models\PendidikanModel;
 use App\Models\UnorModel;
 use App\Models\PesertaModel;
 use App\Models\Pppkt2Model;
+use App\Models\CrudModel;
 
 class Ajax extends BaseController
 {
@@ -22,6 +23,15 @@ class Ajax extends BaseController
       $search = $this->request->getVar('search');
 
       $data = $model->like('unor_lengkap', $search, 'both')->orWhere('id_unor',$search)->findAll();
+      return $this->response->setJSON($data);
+    }
+
+    public function searchlokasi()
+    {
+      $model = new CrudModel;
+      $search = $this->request->getVar('search');
+
+      $data = $model->query("SELECT * FROM siasn_lokasi_formasi WHERE nama_lokasi LIKE '%".$search."%' OR id LIKE '%".$search."%' ORDER BY nama_lokasi ASC LIMIT 10")->getResult();
       return $this->response->setJSON($data);
     }
 

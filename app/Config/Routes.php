@@ -112,6 +112,7 @@ $routes->group("paruhwaktu", ["filter" => "auth"], function ($routes) {
     $routes->post('setusul', 'Paruhwaktu::setusul');
     $routes->post('uploaddok', 'Paruhwaktu::uploaddok');
     $routes->get('export', 'Paruhwaktu::export');
+    $routes->get('search/(:any)', 'Paruhwaktu::search/$1');
 });
 
 $routes->group("admin", ["filter" => "auth"], function ($routes) {
