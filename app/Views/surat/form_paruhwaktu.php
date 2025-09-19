@@ -193,7 +193,7 @@
 
             <div class="card mb-3">
                 <div class="card-body">
-                    <a href="<?= site_url('surat/submit/'.encrypt($surat->id))?>" onclick="return confirm('Apakah Anda yakin ingin mengirim surat usulan ini?')">Kirim Surat Usulan</a>
+                    <a href="<?= site_url('surat/submit/'.encrypt($surat->id))?>" class="btn btn-success" onclick="return confirm('Apakah Anda yakin ingin mengirim surat usulan ini?')">Kirim Surat Usulan</a>
                 </div>
             </div>
             <?php endif;?>
