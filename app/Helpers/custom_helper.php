@@ -519,6 +519,8 @@ function gets3url($file,$folder)
       }else if($status == 2){
         $result = 'Disetujui';
       }
+
+      return $result;
     }
 
    function siasn_usul_status($status)
