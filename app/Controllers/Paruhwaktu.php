@@ -37,7 +37,12 @@ class Paruhwaktu extends BaseController
         }else{
             $model = new ParuhwaktuModel;
             $data = $model->where('nik',$nik)->first();
-            return $this->response->setJSON($data);
+
+            if($data){
+                return $this->response->setJSON($data);
+            }else{
+                return $this->response->setJSON(['status'=>'error','message'=>'Data tidak ditemukan']);
+            }
         }
     }
 
