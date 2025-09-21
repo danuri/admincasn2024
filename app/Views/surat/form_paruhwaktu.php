@@ -182,6 +182,12 @@
                             </div>
                         </div>
                         <div class="row mb-4">
+                            <label for="penempatan" class="col-sm-3 col-form-label">Keterangan Perubahan</label>
+                            <div class="col-sm-9">
+                                <textarea name="keterangan" id="keterangan" class="form-control" rows="3" placeholder="Isi keterangan dengan perubahan, contoh: perubahan pendidikan, perubahan lokasi atau keduanya"></textarea>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
                             <label for="penempatan" class="col-sm-3 col-form-label"></label>
                             <div class="col-sm-9">
                                 <input type="submit" name="submit" id="submit" class="btn btn-primary" value="Simpan">

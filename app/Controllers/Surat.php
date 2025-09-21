@@ -41,6 +41,7 @@ class Surat extends BaseController
             'jabatan' => $this->request->getVar('jabatan'),
             'lokasi_id' => $this->request->getVar('unor'),
             'lokasi' => $this->request->getVar('siasnname'),
+            'keterangan' => $this->request->getVar('keterangan'),
         ];
 
         $model->insert($data);
