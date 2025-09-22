@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Models\ParuhwaktuModel;
+use App\Models\PekerjaanModel;
 
 class Supervise extends BaseController
 {
@@ -147,6 +148,35 @@ class Supervise extends BaseController
 
     function getid() {
       $model = new ParuhwaktuModel;
+        $peserta = $model->where(['is_sync'=>NULL])->findAll(100,0);
+        foreach($peserta as $row) {
+          $data = $this->getPekerjaan($row->pendaftaran_id);
+
+          if(isset($data->pendaftaran) && count($data->pendaftaran)>0) {
+            foreach($data->pendaftaran->rwPekerjaan as $dt) {
+              $pm = new PekerjaanModel();
+              $insert = $pm->insert([
+                'paruhwaktu_nik' => $row->nik,
+                'sscasn_id' => $data->pendaftaran->id,
+                'instansi_id' => $dt->instansiId,
+                'perusahaan' => $dt->perusahaan,
+                'jabatan' => $dt->jabatan,
+                'tgl_mulai' => date('Y-m-d', strtotime(str_replace('-','/',$dt->tglMulai))),
+                'tgl_selesai' => date('Y-m-d', strtotime(str_replace('-','/',$dt->tglSelesai))),
+                'gaji' => $dt->gaji,
+                'orang_id' => $dt->orangId,
+                'dok' => $dt->dok,
+                'nik' => $row->nik,
+              ]);
+            }
+            // $data = $data->pendaftaran[0]->id;
+            $update = $model->update($row->nik, ['is_sync' => 1]);
+          }
+        }
+    }
+
+    function getidx() {
+      $model = new ParuhwaktuModel;
         $peserta = $model->where(['pendaftaran_id'=>NULL,'sscasn_notfound'=>NULL])->findAll(500,0);
         foreach($peserta as $row) {
           $data = $this->getfilter($row->nik);
@@ -158,6 +188,45 @@ class Supervise extends BaseController
             $update = $model->update($row->nik, ['sscasn_notfound' => 1]);
           }
         }
+    }
+
+    function getPekerjaan($id) {
+      $curl = curl_init();
+
+      curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://api-sscasn.bkn.go.id/verif2024/api/verifikasi/detail/'.$id,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'GET',
+        CURLOPT_HTTPHEADER => array(
+          'Accept: application/json, text/plain, */*',
+          'Accept-Language: en-GB,en;q=0.9,en-US;q=0.8,id;q=0.7,ms;q=0.6,es;q=0.5,pt;q=0.4,vi;q=0.3',
+          'Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxOTg3MDMxNTIwMjQyMTEwMTAiLCJpYXQiOjE3NTg1MjMzODUsImV4cCI6MTc1ODUyNjk4NSwiaWQiOiIxNWM2ZmE0Mjk4NDhmMTE5YTcyMGRkYjc2ZDM0MjRlZiIsIm5hbWEiOiJBSE1BRCBaQUtZIiwidXNlcm5hbWUiOiIxOTg3MDMxNTIwMjQyMTEwMTAiLCJpbnN0YW5zaUlkIjoiQTVFQjAzRTIzQkZCRjZBMEUwNDA2NDBBMDQwMjUyQUQiLCJpbnN0YW5zaU5hbWEiOiJLZW1lbnRlcmlhbiBBZ2FtYSIsImplbmlzUGVuZ2FkYWFucyI6W3sicm9sZSI6IlNVUEVSVklTT1JfQ1BOUyIsIm5hbWEiOiJDUE5TIiwiaWQiOiIyIiwicGFyYW1ldGVySW5zdGFuc2lJZCI6ImYxNDc2MjFhM2Y1MTExZWZhNTRkMDA1MDU2OGZlZDBmIiwibG9rYXNpUHJvdklkcyI6bnVsbH0seyJyb2xlIjoiU1VQRVJWSVNPUl9QUFBLX0dVUlUiLCJuYW1hIjoiUFBQSyBHdXJ1IiwiaWQiOiIxIiwicGFyYW1ldGVySW5zdGFuc2lJZCI6bnVsbCwibG9rYXNpUHJvdklkcyI6bnVsbH0seyJyb2xlIjoiQURNSU5fUFBQS19HVVJVIiwibmFtYSI6IlBQUEsgR3VydSIsImlkIjoiMSIsInBhcmFtZXRlckluc3RhbnNpSWQiOm51bGwsImxva2FzaVByb3ZJZHMiOm51bGx9LHsicm9sZSI6IlNVUEVSVklTT1JfUFBQSyIsIm5hbWEiOiJQUFBLIFRla25pcyIsImlkIjoiMyIsInBhcmFtZXRlckluc3RhbnNpSWQiOiJmMTQ3ZjM5MDNmNTExMWVmYTU0ZDAwNTA1NjhmZWQwZiIsImxva2FzaVByb3ZJZHMiOm51bGx9LHsicm9sZSI6IkFETUlOX0NQTlMiLCJuYW1hIjoiQ1BOUyIsImlkIjoiMiIsInBhcmFtZXRlckluc3RhbnNpSWQiOiJmMTQ3NjIxYTNmNTExMWVmYTU0ZDAwNTA1NjhmZWQwZiIsImxva2FzaVByb3ZJZHMiOm51bGx9LHsicm9sZSI6IkFETUlOX1BQUEsiLCJuYW1hIjoiUFBQSyBUZWtuaXMiLCJpZCI6IjMiLCJwYXJhbWV0ZXJJbnN0YW5zaUlkIjoiZjE0N2YzOTAzZjUxMTFlZmE1NGQwMDUwNTY4ZmVkMGYiLCJsb2thc2lQcm92SWRzIjpudWxsfSx7InJvbGUiOiJBRE1JTl9QUFBLX05BS0VTIiwibmFtYSI6IlBQUEsgVGVuYWdhIEtlc2VoYXRhbiIsImlkIjoiNCIsInBhcmFtZXRlckluc3RhbnNpSWQiOiJmMTQ4NzUxZTNmNTExMWVmYTU0ZDAwNTA1NjhmZWQwZiIsImxva2FzaVByb3ZJZHMiOm51bGx9XSwiYXV0aG9yaXRpZXMiOlt7ImF1dGhvcml0eSI6IlJPTEVfU1VQRVJWSVNPUl9QUFBLIn0seyJhdXRob3JpdHkiOiJST0xFX0FETUlOX1BQUEtfR1VSVSJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9BRE1JTl9DUE5TIn0seyJhdXRob3JpdHkiOiJST0xFX1NVUEVSVklTT1JfQ1BOUyJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9BRE1JTl9QUFBLIn0seyJhdXRob3JpdHkiOiJST0xFX1NVUEVSVklTT1JfUFBQS19HVVJVIn0seyJhdXRob3JpdHkiOiJST0xFX0FETUlOX1BQUEtfTkFLRVMifV0sImlzQ3BucyI6dHJ1ZSwiaXNQcHBrIjp0cnVlLCJpc1BwcGtHdXJ1Ijp0cnVlLCJpc1BwcGtOYWtlcyI6dHJ1ZSwiaXNQcHBrRG9zZW4iOmZhbHNlLCJrYW5yZWdJZCI6IjAwIn0.TrsLLEQpHhDc37MWr3irhvw4JTRDopIom7cZrG1MeOB4lhEJzY6uzjGZns0ZHoq5QCaN6JGfZ-J6fKIC3UJzCg',
+          'Connection: keep-alive',
+          'Content-Type: application/json',
+          'Origin: https://verifikasi-sscasn.bkn.go.id',
+          'Referer: https://verifikasi-sscasn.bkn.go.id/',
+          'Sec-Fetch-Dest: empty',
+          'Sec-Fetch-Mode: cors',
+          'Sec-Fetch-Site: same-site',
+          'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36',
+          'sec-ch-ua: "Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"',
+          'sec-ch-ua-mobile: ?0',
+          'sec-ch-ua-platform: "Windows"',
+          'Cookie: 8031e2dda37b1552a45b6fe38d7ed11d=65565f4273ba46ec68d6679358167f93; BIGipServerpool_prod_sscasn2024_kube=3423101962.47873.0000'
+        ),
+      ));
+
+      $response = curl_exec($curl);
+
+      curl_close($curl);
+      $response = json_decode($response);
+      return $response;
+
     }
 
     function getfilter($nik) {
