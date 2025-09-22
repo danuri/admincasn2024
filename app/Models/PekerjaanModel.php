@@ -6,12 +6,12 @@ use CodeIgniter\Model;
 
 class PekerjaanModel extends Model
 {
-    protected $table            = 'pekerjaans';
+    protected $table            = 'pppk_rw_pekerjaan';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $returnType       = 'array';
+    protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
-    protected $protectFields    = true;
+    protected $protectFields    = false;
     protected $allowedFields    = [];
 
     protected bool $allowEmptyInserts = false;
