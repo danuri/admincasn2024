@@ -147,11 +147,16 @@ class Supervise extends BaseController
 
     function getid() {
       $model = new ParuhwaktuModel;
-        $peserta = $model->where(['pendaftaran_id'=>NULL])->findAll(500,0);
+        $peserta = $model->where(['pendaftaran_id'=>NULL,'sscasn_notfound'=>NULL])->findAll(500,0);
         foreach($peserta as $row) {
           $data = $this->getfilter($row->nik);
 
-          $update = $model->update($row->nik, ['pendaftaran_id' => $data]);
+          if(isset($data->content) && count($data->content)>0) {
+            $data = $data->content[0]->id;
+            $update = $model->update($row->nik, ['pendaftaran_id' => $data]);
+          }else{
+            $update = $model->update($row->nik, ['sscasn_notfound' => 1]);
+          }
         }
     }
 
@@ -192,7 +197,7 @@ class Supervise extends BaseController
     curl_close($curl);
 
     $response = json_decode($response);
-    return $response->content[0]->id;
+    return $response;
     // print_r($response);
     }
 
