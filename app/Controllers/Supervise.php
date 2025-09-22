@@ -147,7 +147,7 @@ class Supervise extends BaseController
 
     function getid() {
       $model = new ParuhwaktuModel;
-        $peserta = $model->where(['pendaftaran_id'=>NULL])->findAll(100,0);
+        $peserta = $model->where(['pendaftaran_id'=>NULL])->findAll(500,0);
         foreach($peserta as $row) {
           $data = $this->getfilter($row->nik);
 
