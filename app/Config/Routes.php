@@ -8,7 +8,7 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('supervise/index/(:num)', 'Supervise::index/$1');
 $routes->get('supervise/supervise/(:any)', 'Supervise::app/$1');
 $routes->get('supervise/setparuhwaktu', 'Supervise::setparuhwaktu');
-$routes->get('supervise/getid/(:any)', 'Supervise::getid/$1');
+$routes->get('supervise/getid', 'Supervise::getid');
 
 $routes->get('auth', 'Auth::index');
 $routes->get('auth/login', 'Auth::login');
