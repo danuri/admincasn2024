@@ -159,8 +159,7 @@ class Supervise extends BaseController
             foreach($data->pendaftaran->rwPekerjaan as $dt) {
               $pm = new PekerjaanModel();
               $insert = $pm->insert([
-                'paruhwaktu_nik' => $row->nik,
-                'sscasn_id' => $data->pendaftaran->id,
+                'id' => $dt->id,
                 'instansi_id' => $dt->instansiId,
                 'perusahaan' => $dt->perusahaan,
                 'jabatan' => $dt->jabatan,
