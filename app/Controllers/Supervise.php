@@ -181,9 +181,9 @@ class Supervise extends BaseController
 
     curl_close($curl);
 
-    // $response = json_decode($response);
-    // echo $response->content[0]->id;
-    print_r($response);
+    $response = json_decode($response);
+    echo $response->content[0]->id;
+    // print_r($response);
     }
 
 }
