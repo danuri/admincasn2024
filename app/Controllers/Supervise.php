@@ -153,7 +153,7 @@ class Supervise extends BaseController
           $data = $this->getPekerjaan($row->pendaftaran_id);
 
           // print_r($data); echo '<br>';
-          return $this->response->setJSON($data->pendaftaran->rwPekerjaan);
+          // return $this->response->setJSON($data->pendaftaran->rwPekerjaan);
 
           if(isset($data->pendaftaran->rwPekerjaan) && count($data->pendaftaran->rwPekerjaan)>0) {
             foreach($data->pendaftaran->rwPekerjaan as $dt) {
