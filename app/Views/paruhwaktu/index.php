@@ -40,7 +40,15 @@
                         <td><?= $row->nama_peserta?></td>
                         <td><?= $row->instansi_paruh_waktu?></td>
                         <td><?= $row->jabatan_melamar?></td>
-                        <td><?= $row->status_drh?></td>
+                        <td>
+                          <?php
+                            if($row->status_mengundurkan_diri == 'YA'){
+                              echo 'Mengundurkan Diri';
+                            }else{
+                              echo $row->status_drh;
+                            }
+                          ?>
+                        </td>
                       </tr>
                       <?php } ?>
                     </tbody>
