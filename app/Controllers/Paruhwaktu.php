@@ -20,7 +20,7 @@ class Paruhwaktu extends BaseController
         $umodel = new UserModel;
         $data['user'] = $umodel->where(['kode_satker'=>session('lokasi')])->first();
 
-        $data['peserta'] = $model->where(['kode_satker'=>session('kodesatker4')])->findAll();
+        $data['peserta'] = $model->where(['kode_lokasi'=>session('lokasi')])->findAll();
 
         return view('paruhwaktu/index', $data);
     }

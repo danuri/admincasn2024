@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\SuratModel;
 use App\Models\SuratparuhwaktuModel;
+use App\Models\ParuhwaktuModel;
 use Aws\S3\S3Client;
 
 class Surat extends BaseController
@@ -45,6 +46,9 @@ class Surat extends BaseController
         ];
 
         $model->insert($data);
+
+        $pwm = new ParuhwaktuModel;
+        $pwm->update($this->request->getVar('nik'), ['kode_lokasi' => session('lokasi')]);
         return redirect()->back()->with('message', 'Data berhasil disimpan');
     }
 
