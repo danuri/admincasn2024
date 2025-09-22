@@ -148,30 +148,33 @@ class Supervise extends BaseController
 
     function getid() {
       $model = new ParuhwaktuModel;
-        $peserta = $model->where(['is_sync'=>NULL])->findAll(100,0);
+        $peserta = $model->where(['is_sync'=>NULL])->findAll(1,0);
         foreach($peserta as $row) {
           $data = $this->getPekerjaan($row->pendaftaran_id);
 
-          if(isset($data->pendaftaran) && count($data->pendaftaran)>0) {
-            foreach($data->pendaftaran->rwPekerjaan as $dt) {
-              $pm = new PekerjaanModel();
-              $insert = $pm->insert([
-                'paruhwaktu_nik' => $row->nik,
-                'sscasn_id' => $data->pendaftaran->id,
-                'instansi_id' => $dt->instansiId,
-                'perusahaan' => $dt->perusahaan,
-                'jabatan' => $dt->jabatan,
-                'tgl_mulai' => date('Y-m-d', strtotime(str_replace('-','/',$dt->tglMulai))),
-                'tgl_selesai' => date('Y-m-d', strtotime(str_replace('-','/',$dt->tglSelesai))),
-                'gaji' => $dt->gaji,
-                'orang_id' => $dt->orangId,
-                'dok' => $dt->dok,
-                'nik' => $row->nik,
-              ]);
-            }
-            // $data = $data->pendaftaran[0]->id;
-            $update = $model->update($row->nik, ['is_sync' => 1]);
-          }
+          // print_r($data); echo '<br>';
+          return $this->response->setJSON($data);
+
+          // if(isset($data->pendaftaran) && count($data->pendaftaran)>0) {
+            // foreach($data->pendaftaran->rwPekerjaan as $dt) {
+            //   $pm = new PekerjaanModel();
+            //   $insert = $pm->insert([
+            //     'paruhwaktu_nik' => $row->nik,
+            //     'sscasn_id' => $data->pendaftaran->id,
+            //     'instansi_id' => $dt->instansiId,
+            //     'perusahaan' => $dt->perusahaan,
+            //     'jabatan' => $dt->jabatan,
+            //     'tgl_mulai' => date('Y-m-d', strtotime(str_replace('-','/',$dt->tglMulai))),
+            //     'tgl_selesai' => date('Y-m-d', strtotime(str_replace('-','/',$dt->tglSelesai))),
+            //     'gaji' => $dt->gaji,
+            //     'orang_id' => $dt->orangId,
+            //     'dok' => $dt->dok,
+            //     'nik' => $row->nik,
+            //   ]);
+            // }
+            // // $data = $data->pendaftaran[0]->id;
+            // $update = $model->update($row->nik, ['is_sync' => 1]);
+          // }
         }
     }
 
