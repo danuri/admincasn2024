@@ -175,6 +175,8 @@ class Supervise extends BaseController
             $update = $model->update($row->nik, ['is_sync' => 1]);
             echo 'SUKSES: '.$row->nik.'<br>';
             // return $this->response->setJSON($data->pendaftaran->rwPekerjaan);
+          }else{
+            echo 'Gagal: '.$row->nik.'<br>';
           }
         }
     }
