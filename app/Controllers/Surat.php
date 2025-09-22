@@ -134,4 +134,16 @@ class Surat extends BaseController
         $update = $model->update($id,['status'=>1]);
         return redirect()->back()->with('message', 'Surat usul berhasil dikiirm.');
     }
+
+    function delete($id) {
+        $id = decrypt($id);
+        
+        $model = new SuratModel;
+        $model->delete($id);
+
+        $model = new SuratparuhwaktuModel;
+        $model->where(['surat_id' => $id])->delete();
+
+        return redirect()->back()->with('message', 'Surat berhasil dihapus.');
+    }
 }

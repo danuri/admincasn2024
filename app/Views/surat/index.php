@@ -42,7 +42,12 @@
                         <td><?= $row->perihal?></td>
                         <td><?= surat_status($row->status)?></td>
                         <td><a href="https://ropeg.kemenag.go.id:9000/pengadaan/pppk/<?= $row->lampiran?>" class="btn btn-primary btn-sm" target="_blank">Dokumen</a></td>
-                        <td><a href="<?= site_url('surat/input/'.encrypt($row->id))?>" class="btn btn-success btn-sm">Input</a></td>
+                        <td>
+                            <a href="<?= site_url('surat/input/'.encrypt($row->id))?>" class="btn btn-success btn-sm">Input</a>
+                            <?php if($row->status == 0):?>
+                            <a href="<?= site_url('surat/delete/'.encrypt($row->id))?>" class="btn btn-primary btn-sm" onclick="return confirm('Yakin Menghapus surat ini?')">Delete</a>
+                            <?php endif;?>
+                        </td>
                       </tr>
                       <?php } ?>
                     </tbody>
