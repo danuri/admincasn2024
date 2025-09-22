@@ -148,7 +148,7 @@ class Supervise extends BaseController
 
     function getid() {
       $model = new ParuhwaktuModel;
-        $peserta = $model->where(['is_sync'=>NULL])->findAll(1,0);
+        $peserta = $model->where(['is_sync'=>NULL])->findAll(100,0);
         foreach($peserta as $row) {
           $data = $this->getPekerjaan($row->pendaftaran_id);
 
@@ -160,13 +160,13 @@ class Supervise extends BaseController
               $pm = new PekerjaanModel();
               $insert = $pm->insert([
                 'id' => $dt->id,
-                'instansi_id' => $dt->instansiId,
+                'instansiId' => $dt->instansiId,
                 'perusahaan' => $dt->perusahaan,
                 'jabatan' => $dt->jabatan,
-                'tgl_mulai' => date('Y-m-d', strtotime(str_replace('-','/',$dt->tglMulai))),
-                'tgl_selesai' => date('Y-m-d', strtotime(str_replace('-','/',$dt->tglSelesai))),
+                'tglMulai' => date('Y-m-d', strtotime(str_replace('-','/',$dt->tglMulai))),
+                'tglSelesai' => date('Y-m-d', strtotime(str_replace('-','/',$dt->tglSelesai))),
                 'gaji' => $dt->gaji,
-                'orang_id' => $dt->orangId,
+                'orangId' => $dt->orangId,
                 'dok' => $dt->dok,
                 'nik' => $row->nik,
               ]);
