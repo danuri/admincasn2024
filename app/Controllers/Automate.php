@@ -18,10 +18,13 @@ class Automate extends BaseController
         $data = $model->where(['is_sscasn'=>NULL])->findAll(100,0);
 
         foreach($data as $row) {
-            $this->saveparuhwaktu($row);
+            $set = $this->saveparuhwaktu($row);
 
-            $update = $model->update($row->id, ['is_sscasn' => '1']);
-            echo $row->nik;
+            if($set->status == 'success') {
+                $update = $model->update($row->id, ['is_sscasn' => '1']);
+            } else {
+                $update = $model->update($row->id, ['is_sscasn' => '2']);
+            }
         }
     }
 
@@ -90,8 +93,10 @@ class Automate extends BaseController
         $response = curl_exec($curl);
 
         curl_close($curl);
-        echo $response;
-        print_r($param);
+        // echo $response;
+        // print_r($param);
+        $response = json_decode($response);
+        return $response;
 
     }
 
