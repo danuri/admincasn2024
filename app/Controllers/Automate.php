@@ -93,10 +93,10 @@ class Automate extends BaseController
         $response = curl_exec($curl);
 
         curl_close($curl);
-        // echo $response;
-        // print_r($param);
-        $response = json_decode($response);
-        return $response;
+        echo $response;
+        // // print_r($param);
+        // $response = json_decode($response);
+        // return $response;
 
     }
 
