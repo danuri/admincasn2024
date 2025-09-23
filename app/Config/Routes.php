@@ -10,6 +10,9 @@ $routes->get('supervise/supervise/(:any)', 'Supervise::app/$1');
 $routes->get('supervise/setparuhwaktu', 'Supervise::setparuhwaktu');
 $routes->get('supervise/getid', 'Supervise::getid');
 
+
+$routes->get('automate', 'Automate::gas');
+
 $routes->get('auth', 'Auth::index');
 $routes->get('auth/login', 'Auth::login');
 $routes->get('auth/logout', 'Auth::logout');
