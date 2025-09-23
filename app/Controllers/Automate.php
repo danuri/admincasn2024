@@ -15,7 +15,7 @@ class Automate extends BaseController
 
     function gas() {
         $model = new SuratparuhwaktuModel;
-        $data = $model->where(['is_sscasn'=>NULL])->findAll(100,0);
+        $data = $model->where(['is_sscasn'=>NULL])->findAll(1,0);
 
         foreach($data as $row) {
             $set = $this->saveparuhwaktu($row);
@@ -93,9 +93,9 @@ class Automate extends BaseController
         $response = curl_exec($curl);
 
         curl_close($curl);
-        // echo $response;
-        $response = json_decode($response);
-        print_r($response);
+        echo $response;
+        print_r($param);
+        // $response = json_decode($response);
         // return $response;
 
     }
