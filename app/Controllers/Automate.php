@@ -15,12 +15,13 @@ class Automate extends BaseController
 
     function gas() {
         $model = new SuratparuhwaktuModel;
-        $data = $model->findAll(1,0);
+        $data = $model->where(['is_sscasn'=>NULL])->findAll(1,0);
 
         foreach($data as $row) {
             $this->saveparuhwaktu($row);
 
             $update = $model->update($row->id, ['is_sscasn' => '1']);
+            echo $row->nik;
         }
     }
 
