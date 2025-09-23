@@ -91,7 +91,7 @@ class Automate extends BaseController
 
         curl_close($curl);
         echo $response;
-        echo $$param;
+        echo $param;
 
     }
 
