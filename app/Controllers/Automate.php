@@ -36,7 +36,7 @@ class Automate extends BaseController
         $jblama = $cek->result->kode_jabatan;
         $pdlama = $cek->result->pendidikan;
         $lokasilama = $row->lokasi;
-        $pendaftarid = $cek->result->pendaftar_id;
+        $pendaftarid = $cek->result->pendaftarId;
         $keterangan = $row->keterangan;
         $surat = '8a0283409975c89c019975f0d295006c';
 
