@@ -43,6 +43,20 @@ class Automate extends BaseController
 
         $token = 'eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJBUWNPM0V3MVBmQV9MQ0FtY2J6YnRLUEhtcWhLS1dRbnZ1VDl0RUs3akc4In0.eyJleHAiOjE3NTg2NjIyMzAsImlhdCI6MTc1ODYxOTAzMCwiYXV0aF90aW1lIjoxNzU4NjE5MDMwLCJqdGkiOiI4OTA1YTMyZS03NzZhLTRiOTctYmQ4My1iYTdiZTVkMjliMzAiLCJpc3MiOiJodHRwczovL3Nzby1zaWFzbi5ia24uZ28uaWQvYXV0aC9yZWFsbXMvcHVibGljLXNpYXNuIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6IjdjYmQyYTJkLTlhNDAtNGQ2Zi05NWMwLWYxZWMyYmRkODc3MCIsInR5cCI6IkJlYXJlciIsImF6cCI6ImFkbWluLXNzY2FzbiIsInNlc3Npb25fc3RhdGUiOiJiZTljNmUwZC0yMWVhLTRkN2UtOGM4Mi00MjhmZDMxY2E3ODIiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJyb2xlOnNpYXNuLWluc3RhbnNpOnByb2ZpbGFzbjp2aWV3cHJvZmlsIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJvcGVuaWQgZW1haWwgcHJvZmlsZSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6IkFITUFEIFpBS1kiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiIxOTg3MDMxNTIwMjQyMTEwMTAiLCJnaXZlbl9uYW1lIjoiQUhNQUQiLCJmYW1pbHlfbmFtZSI6IlpBS1kiLCJlbWFpbCI6ImFobWFkN2FreUBnbWFpbC5jb20ifQ.Dj_9gS47tpRg_S2XNSsuueAHc9bUpS3QcyK1v9KZioEnuIvDXW0h9Od49Qkfql5HjnfYzo1A479K3jyZyuxoWgM10jquBulwvOB7yl99w7Nqc25JUKDFfDZ6i3uSRVkktbsgB-Y5U9JaDR2QxEnyRA97NUt2LTcPRHhsHA4uJUqrqonepsL26dR7fifqbeHQLw-JxBNmPT5Yt-9X5RK_Fg0OYSqjs5aHM1AzEuLMaQRkzHo4AP2MO9phKVlgRZXXWt7VQSsCSsBp5A-OnwPq68u4qRboN7lCD6u65vuKx5mTPlDVcRaMDjC-p3_R4FN4vUampmEBzewFidbkfxrhqw';
 
+        $param = [
+            'nik' => $nik,
+            'dtPendaftaran' => $dtpendaftaran,
+            'pendidikanBaru' => $pdbaru,
+            'jabatanBaru' => $jbbaru,
+            'lokasiBaru' => $lokasibaru,
+            'jabatanLama' => $jblama,
+            'pendidikanLama' => $pdlama,
+            'lokasiLama' => $lokasilama,
+            'pendaftarId' => $pendaftarid,
+            'keterangan' => $keterangan,
+            'surat' => $surat
+        ];
+        $data = http_build_query($param);
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -54,7 +68,7 @@ class Automate extends BaseController
         CURLOPT_FOLLOWLOCATION => true,
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => 'POST',
-        CURLOPT_POSTFIELDS =>'nik='.$nik.'&dtPendaftaran='.$dtpendaftaran.'&pendidikanBaru='.$pdbaru.'&jabatanBaru='.$jbbaru.'&lokasiBaru='.$lokasibaru.'&jabatanLama='.$jblama.'&pendidikanLama='.$pdlama.'&lokasiLama='.$lokasilama.'&pendaftarId='.$pendaftarid.'&keterangan='.$keterangan.'&surat='.$surat,
+        CURLOPT_POSTFIELDS => $data,
         CURLOPT_HTTPHEADER => array(
     'Accept: application/json, text/javascript, */*; q=0.01',
     'Accept-Language: en-GB,en;q=0.9,en-US;q=0.8,id;q=0.7,ms;q=0.6,es;q=0.5,pt;q=0.4,vi;q=0.3',
@@ -77,6 +91,7 @@ class Automate extends BaseController
 
         curl_close($curl);
         echo $response;
+        echo $$param;
 
     }
 
