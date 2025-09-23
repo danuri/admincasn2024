@@ -53,7 +53,7 @@ class Automate extends BaseController
             'pendidikanLama' => $pdlama,
             'lokasiLama' => $lokasilama,
             'pendaftarId' => $pendaftarid,
-            'keterangan' => $keterangan,
+            'keterangan' => ($keterangan)?$keterangan:'-',
             'surat' => $surat
         ];
         $data = http_build_query($param);
