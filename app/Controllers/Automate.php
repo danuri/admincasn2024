@@ -15,7 +15,7 @@ class Automate extends BaseController
 
     function gas() {
         $model = new SuratparuhwaktuModel;
-        $data = $model->where(['is_sscasn'=>NULL])->findAll(1,0);
+        $data = $model->where(['is_sscasn'=>NULL])->findAll(100,0);
 
         foreach($data as $row) {
             $set = $this->saveparuhwaktu($row);
