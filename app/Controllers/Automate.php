@@ -113,7 +113,9 @@ class Automate extends BaseController
 
         curl_close($curl);
         $response = json_decode($response);
-        return $response;
+        // return $response;
+        // response json
+        return $this->response->setJSON($response);
 
     }
 }
