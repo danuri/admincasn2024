@@ -54,7 +54,7 @@ class Automate extends BaseController
         CURLOPT_FOLLOWLOCATION => true,
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => 'POST',
-        CURLOPT_POSTFIELDS =>'nik='.$nik.'&dtPendaftaran='.$dtpendaftaran.'&pendidikanBaru='.$pdbaru.'&jabatanBaru='.$jbbaru.'&lokasiBaru='.$lokasibaru.'&jabatanLama='.$jblama.'&pendidikanLama='.$pdlama.'&lokasiLama='.$lokasilama.'&pendaftarId='.$pendaftarid.'&keterangan='.$keterangan.'&surat='.$surat.'',
+        CURLOPT_POSTFIELDS =>'nik='.$nik.'&dtPendaftaran='.$dtpendaftaran.'&pendidikanBaru='.$pdbaru.'&jabatanBaru='.$jbbaru.'&lokasiBaru='.$lokasibaru.'&jabatanLama='.$jblama.'&pendidikanLama='.$pdlama.'&lokasiLama='.$lokasilama.'&pendaftarId='.$pendaftarid.'&keterangan='.$keterangan.'&surat='.$surat,
         CURLOPT_HTTPHEADER => array(
     'Accept: application/json, text/javascript, */*; q=0.01',
     'Accept-Language: en-GB,en;q=0.9,en-US;q=0.8,id;q=0.7,ms;q=0.6,es;q=0.5,pt;q=0.4,vi;q=0.3',
