@@ -20,11 +20,11 @@ class Automate extends BaseController
         foreach($data as $row) {
             $set = $this->saveparuhwaktu($row);
 
-            if($set->status && $set->status == 'success') {
-                $update = $model->update($row->id, ['is_sscasn' => '1']);
-            } else {
-                $update = $model->update($row->id, ['is_sscasn' => '2']);
-            }
+            $update = $model->update($row->id, ['is_sscasn' => '1']);
+            // if($set->status && $set->status == 'success') {
+            // } else {
+            //     $update = $model->update($row->id, ['is_sscasn' => '2']);
+            // }
         }
     }
 
@@ -94,9 +94,9 @@ class Automate extends BaseController
 
         curl_close($curl);
         // echo $response;
-        // // print_r($param);
         $response = json_decode($response);
-        return $response;
+        print_r($response);
+        // return $response;
 
     }
 
