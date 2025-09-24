@@ -33,6 +33,10 @@ class Automate extends BaseController
         $nik = $row->nik;
         $cek = $this->checkNik($nik);
 
+        if(!$cek->result){
+            return (object)['status'=>'error','message'=>'NIK '.$nik.' tidak ditemukan di BKN'];
+        }
+
         $dtpendaftaran = $cek->result->id;
         $pdbaru = $row->pendidikan;
         $jbbaru = $row->jabatan;
