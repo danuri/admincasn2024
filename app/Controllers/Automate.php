@@ -42,7 +42,7 @@ class Automate extends BaseController
         $lokasilama = $cek->result->unor_id;
         $pendaftarid = $cek->result->pendaftarId;
         $keterangan = $row->keterangan;
-        $surat = '8a0283409975c89c019975f0d295006c';
+        $surat = '8a0085469979dff301997b16676f032b';
 
         $token = 'eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJBUWNPM0V3MVBmQV9MQ0FtY2J6YnRLUEhtcWhLS1dRbnZ1VDl0RUs3akc4In0.eyJleHAiOjE3NTg3NDk1OTMsImlhdCI6MTc1ODcwNjM5MywiYXV0aF90aW1lIjoxNzU4NzA2MzkzLCJqdGkiOiI1YWM1NTM3OC1lNzc0LTQ4OTgtYmNjOC01ZjkxYmJmZTNiNDkiLCJpc3MiOiJodHRwczovL3Nzby1zaWFzbi5ia24uZ28uaWQvYXV0aC9yZWFsbXMvcHVibGljLXNpYXNuIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6IjdjYmQyYTJkLTlhNDAtNGQ2Zi05NWMwLWYxZWMyYmRkODc3MCIsInR5cCI6IkJlYXJlciIsImF6cCI6ImFkbWluLXNzY2FzbiIsInNlc3Npb25fc3RhdGUiOiJlNzU3NzUyMy01MjRjLTQ4OTItYThmMC02YTMyNWJkNDRmMzIiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJyb2xlOnNpYXNuLWluc3RhbnNpOnByb2ZpbGFzbjp2aWV3cHJvZmlsIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJvcGVuaWQgZW1haWwgcHJvZmlsZSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6IkFITUFEIFpBS1kiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiIxOTg3MDMxNTIwMjQyMTEwMTAiLCJnaXZlbl9uYW1lIjoiQUhNQUQiLCJmYW1pbHlfbmFtZSI6IlpBS1kiLCJlbWFpbCI6ImFobWFkN2FreUBnbWFpbC5jb20ifQ.N6oIHwdp8kia7Oy1VjblE908tnbRyq5ypxua8lKJiUhrW-JhrwOHiRMK7M2VyX6gZdT5NJHE8NrMHWkh_TYz65jx_bm6JwY65EWOhsvthGMmGoJRh45Rs4N5Pu4HWNOnt5ja8olr36R8Ssl_8Jhajg82ctxpyavxy1hD0oh-j7two7tyQ1EPWvc9_SkZB-Oyt9BKTKYeF_iyj3S_FrLxV9nAhhxFEZEYqL1aaLhgh2I5hlemDXu5jI5D_xQnHjapx88TJGJnA9JZm5p-rjKV9QdpBiUlgT8U5UpDB7nocKHgvPrrcZMZoxTf_2cziAvzMLP3StAcjx8vtk7X79KrIg';
 
@@ -106,7 +106,7 @@ class Automate extends BaseController
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'https://admin-sscasn.bkn.go.id/permasalahan/cekNik?nik='.$nik.'&surat=8a0283409975c89c019975f0d295006c&parameter=a0227860824811f0bcca005056b4779b',
+        CURLOPT_URL => 'https://admin-sscasn.bkn.go.id/permasalahan/cekNik?nik='.$nik.'&surat=8a0085469979dff301997b16676f032b&parameter=a0227860824811f0bcca005056b4779b',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
