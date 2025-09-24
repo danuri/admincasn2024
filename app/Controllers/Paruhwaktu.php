@@ -8,9 +8,13 @@ use App\Models\ParuhwaktuModel;
 use App\Models\SuratparuhwaktuModel;
 use App\Models\UserModel;
 use App\Models\SuratModel;
+use App\Models\CrudModel;
 use Aws\S3\S3Client;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use CURLFile;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 class Paruhwaktu extends BaseController
 {
@@ -362,5 +366,139 @@ owner_satker
       $writer->save('php://output');
       ob_end_flush();
       exit;
+    }
+
+    public function cetak_sprp($nopeserta) {  
+        $data['nama_satker'] = session('lokasi_nama');
+        $model = new CrudModel;
+        $data['peserta'] = $model->getRow('peserta', ['nopeserta'=>$nopeserta]); 
+        
+        $timestamp = strtotime($data['peserta']->tanggal_lahir);
+        $formattedDate = date('d F Y', $timestamp);
+        $indonesianMonths = [
+            'January' => 'Januari',
+            'February' => 'Februari',
+            'March' => 'Maret',
+            'April' => 'April',
+            'May' => 'Mei',
+            'June' => 'Juni',
+            'July' => 'Juli',
+            'August' => 'Agustus',
+            'September' => 'September',
+            'October' => 'Oktober',
+            'November' => 'November',
+            'December' => 'Desember'
+        ];
+        $data['peserta']->tanggal_lahir = str_replace(array_keys($indonesianMonths), $indonesianMonths, $formattedDate);
+        if ($data['peserta']->penempatan_id != null) {
+            $penempatan = array_map('trim', explode('|', $data['peserta']->penempatan));
+            $length = count($penempatan);
+            $data['penempatan'] = $penempatan[$length - 1];
+            
+            if (str_contains(strtolower($data['peserta']->satker), 'kanwil')) {
+                if($length == 4){
+                    $data['penempatan'] = $penempatan[$length - 1].' '.$penempatan[$length - 2];
+                }
+                
+                if($length == 5){
+                    $data['penempatan'] = $penempatan[$length - 1].' '.$penempatan[$length - 2].' '.$penempatan[$length - 3];
+                }
+            }            
+        }
+
+        $dateRequest = date('Ymd');
+        if ($dateRequest < '20250222') {
+            $data['sysdate'] = '22 Februari 2025';
+            $dateRequest = '20250222';
+        } else {
+            $sysdate = date('d F Y');
+            $data['sysdate'] = str_replace(array_keys($indonesianMonths), $indonesianMonths, $sysdate);
+        }        
+
+        //dd($data);
+        $html = view('penetapan/sprp',$data);
+
+        $options = new Options();
+        $options->set('isHtml5ParserEnabled', true);
+        $options->set('isRemoteEnabled', true);        
+
+        $dompdf = new Dompdf($options);
+        $dompdf->loadHtml($html);
+
+        $dompdf->setPaper('A4', 'portrait');
+
+        $dompdf->render();
+
+        //$dompdf->stream('sprp.pdf', ['Attachment' => 0]); 
+        //return view('penetapan/sprp');
+
+        // Save PDF to a temporary file
+        $output = $dompdf->output();
+        $tempFilePath = tempnam(sys_get_temp_dir(), 'sprp_') . '.pdf';
+        file_put_contents($tempFilePath, $output);
+        $result = $this->sendtte($tempFilePath, $data['peserta'], $dateRequest);
+
+        if ($result['status'] == 'error') {
+            session()->setFlashdata('error', $result['response']);
+            return redirect()->to('penetapan/peserta');
+        } else {
+            if ($result['status'] != 'success') {
+                session()->setFlashdata('error', 'TTE Error');
+                return redirect()->to('penetapan/peserta');
+            }
+        }
+        $response = json_decode($result['response'], true);
+        
+        if (isset($response['message']['file_url'])) {
+            $doc_sprp = $response['message']['file_url'];
+            $pesertaModel = new PesertaModel();
+            $data = array (
+                'doc_sprp' => $doc_sprp
+            );
+            $where = array (
+                'nopeserta' => $nopeserta
+            );
+            $pesertaModel->set($data)->where($where)->update();
+            session()->setFlashdata('message', 'Dokumen SPRP Berhasil Dikirim');
+            return redirect()->to('penetapan/peserta');
+        } else {
+            session()->setFlashdata('error', 'File URL TTE tidak ada');
+            return redirect()->to('penetapan/peserta');
+        }
+    }
+
+    private function sendtte($filepath, $peserta, $dateRequest) {
+        $apiUrl = getenv('TTE_URL'); 
+        $gateKey = getenv('TTE_KEY');
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $apiUrl);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: multipart/form-data', 'gate-key: '.$gateKey));
+        
+        // Prepare file and parameters
+        $postFields = [
+            'nip' => '197706022005011005',
+            'title' => 'SPRP a.n '.$peserta->nama.' tgl '.$dateRequest,
+            'jenis' => 'SPRP',
+            'id_layanan' => '0',
+            'lampiran' => new CURLFile($filepath, 'application/pdf', 'sprp.pdf'),
+            'store_from' => 'admincasn'
+        ];
+        
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $postFields);
+        
+        // Execute cURL
+        $response = curl_exec($ch);
+        
+        // Check for errors
+        if (curl_errno($ch)) {
+            curl_close($ch);
+            $response = curl_error($ch);
+            return array('status' => 'error', 'response' => $response);
+        } else {
+            curl_close($ch);
+            return array('status' => 'success', 'response' => $response); 
+        }
     }
 }
