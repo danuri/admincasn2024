@@ -33,8 +33,8 @@ class Automate extends BaseController
         $nik = $row->nik;
         $cek = $this->checkNik($nik);
 
-        if(!$cek->result){
-            return (object)['status'=>'error','message'=>'NIK '.$nik.' tidak ditemukan di BKN'];
+        if(!$cek){
+            return $this->response->setJSON($cek);
         }
 
         $dtpendaftaran = $cek->result->id;
@@ -138,9 +138,9 @@ class Automate extends BaseController
 
         curl_close($curl);
         $response = json_decode($response);
-        return $response;
+        // return $response;
         // response json
-        // return $this->response->setJSON($response);
+        return $this->response->setJSON($response);
 
     }
 }
