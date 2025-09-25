@@ -35,7 +35,7 @@ class Automate extends BaseController
         foreach($data as $row) {
             $cek = $this->checkNik($row->nik);
 
-            $update = $model->update($row->id, ['pendidikan_lama'=>$cek->result->pendidikan, 'jabatan_lama'=>$cek->result->jabatan,'lokasi_lama'=>$cek->result->unor_id, 'is_sscasn' => '1']);
+            $update = $model->update($row->id, ['pendidikan_lama'=>$cek->result->pendidikan, 'jabatan_lama'=>$cek->result->kode_jabatan,'lokasi_lama'=>$cek->result->unor_id, 'is_sscasn' => '1']);
         
             // return $this->response->setJSON($cek);
         }
