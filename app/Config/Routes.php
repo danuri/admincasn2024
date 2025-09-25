@@ -13,6 +13,7 @@ $routes->get('supervise/getid', 'Supervise::getid');
 
 $routes->get('automate', 'Automate::gas');
 $routes->get('automate/cek/(:any)', 'Automate::checkNik/$1');
+$routes->get('automate/updatedatalama', 'Automate::updatedatalama');
 
 $routes->get('auth', 'Auth::index');
 $routes->get('auth/login', 'Auth::login');
