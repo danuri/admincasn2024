@@ -330,7 +330,7 @@ class Paruhwaktu extends BaseController
     }
 
     public function cetak_sprp($nik) { 
-        $nik = decrypt($nik); 
+        // $nik = decrypt($nik); 
         $data['nama_satker'] = session('lokasi_nama');
         $model = new ParuhwaktuModel;
         $data['peserta'] = $model->find($nik); 
