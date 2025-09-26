@@ -167,15 +167,7 @@
       data: {nik:nik, pendidikan:pendidikan},
       dataType: "json",
       success: function (response) {
-        if(response.status == 'success'){
-          // alert('Data berhasil dikirim ke TTE');
-          // close modal
-          // reload page
-          location.reload();
-          // $('#modalPreview').modal('hide');
-        }else{
-          alert('Data gagal dikirim ke TTE');
-        }
+        location.reload();
       }
     });
     // window.location.href = "<?= base_url('paruhwaktu/sprp/') ?>"+nik;
