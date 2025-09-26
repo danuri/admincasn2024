@@ -21,7 +21,7 @@
             <div class="card">
               <div class="card-body">
                 <div class="table-responsive">
-                  <table class="table align-middle table-striped-columns mb-0 datatable">
+                  <table class="table align-middle table-striped-columns mb-0">
                     <thead>
                       <tr>
                         <th>NIK</th>
@@ -51,20 +51,20 @@
                           ?>
                         </td>
                         <td>
-                          <div class="dropdown card-header-dropdown">
+                          <!-- <div class="dropdown card-header-dropdown"> -->
                             <?php if($row->status_drh == 'SUDAH'){ ?>
-                                <a class="text-reset dropdown-btn" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <!-- <a class="text-reset dropdown-btn" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="text-muted fs-16"><i class="mdi mdi-dots-vertical align-middle"></i></span>
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-end">
+                                <div class="dropdown-menu dropdown-menu-end"> -->
                                     <?php if($row->doc_sprp != null){ ?>
                                     <a class="dropdown-item" href="<?= $row->doc_sprp ?>" target="_blank">Download SPRP</a>
                                     <?php }else{ ?>
                                     <a class="dropdown-item" href="javascript:;" onclick="previewData('<?= $row->nik ?>')">Preview SPRP</a>
                                     <?php } ?>
-                                </div>
+                                <!-- </div> -->
                             <?php } ?>
-                            </div> 
+                            <!-- </div>  -->
                         </td>
                       </tr>
                       <?php } ?>
