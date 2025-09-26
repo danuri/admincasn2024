@@ -57,9 +57,10 @@
                                     <span class="text-muted fs-16"><i class="mdi mdi-dots-vertical align-middle"></i></span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end">
-                                    <a class="dropdown-item" href="javascript:;" onclick="previewData('<?= $row->nik ?>')">Preview SPRP</a>
                                     <?php if($row->doc_sprp != null){ ?>
-                                    <a class="dropdown-item" href="<?= base_url('paruhwaktu/download_sprp/'.encrypt($row->nik)) ?>">Download SPRP</a>
+                                    <a class="dropdown-item" href="<?= $row->doc_sprp ?>" target="_blank">Download SPRP</a>
+                                    <?php }else{ ?>
+                                    <a class="dropdown-item" href="javascript:;" onclick="previewData('<?= $row->nik ?>')">Preview SPRP</a>
                                     <?php } ?>
                                 </div>
                             <?php } ?>
