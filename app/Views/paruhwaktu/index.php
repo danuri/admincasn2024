@@ -146,12 +146,12 @@
           $('#previewTempatLahir').text(response.tempat_lahir);
           $('#previewTanggalLahir').text(response.tgl_lahir);
           $('#previewJabatan').text(response.jabatan_baru);
-          $('#previewPendidikan').text(response.pendidikan_baru);
+          $('#previewPendidikan').val(response.pendidikan_baru);
           $('#previewPenempatan').text(response.lokasi_baru);
           
           $('#modalPreview').modal('show');
         }else{
-          alert('Data tidak ditemukan');
+          alert('Data tidak ditemukan.');
         }
       }
     });
