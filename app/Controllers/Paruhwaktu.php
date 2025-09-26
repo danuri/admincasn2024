@@ -29,6 +29,13 @@ class Paruhwaktu extends BaseController
         return view('paruhwaktu/index', $data);
     }
 
+    function getpeserta() {
+        $nik = $this->request->getVar('nik');
+        $model = new ParuhwaktuModel;
+        $data = $model->where('nik', $nik)->first();
+        return $this->response->setJSON($data);
+    }
+
     function search($nik) {
         $spm = new SuratparuhwaktuModel;
         $cek = $spm->where('nik',$nik)->first();
@@ -224,52 +231,6 @@ class Paruhwaktu extends BaseController
 
       $spreadsheet = new Spreadsheet();
       $sheet = $spreadsheet->getActiveSheet();
-    /*   
-    nik
-nama
-jenis_kelamin
-cepat_kode_sscn
-instansi_sscn
-jenis_pengadaan_id
-jabatan_siasn_id
-kode_jabatan_sscn
-jabatan_sscn
-kode_pendidikan_sscn
-pendidikan_sscn
-lokasi_formasi_sscn
-usia_saat_daftar_sscn
-tahap_sscn
-is_tampungan_sscn
-cepat_kode_nonasn
-instansi_non_asn
-unor_id_nonasn
-unor_nama_nonasn
-unor_nama_atasan_nonasn
-unor_exist
-pendidikan_nama_nonasn
-kode_jabatan_nonasn
-jabatan_nonasn
-status_aktif_nonasn
-updated_at
-jabatan_rincian_id
-jabatan_rincian_nama
-sub_jabatan_rincian_id
-sub_jabatan_rincian_nama
-rincian_pendidikan_id
-rincian_pendidikan_nama
-rincian_tk_pendidikan
-unit_penempatan_id
-unit_penempatan_nama
-is_terdata_nonasn
-status_prioritas
-is_usul
-alasan_tolak
-sync_siasn
-owner
-owner_satker
-
-*/
-
       $sheet->setCellValue('A1', 'nik');
       $sheet->setCellValue('B1', 'nama');
       $sheet->setCellValue('C1', 'jenis_kelamin');
@@ -368,7 +329,8 @@ owner_satker
       exit;
     }
 
-    public function cetak_sprp($nik) {  
+    public function cetak_sprp($nik) { 
+        $nik = decrypt($nik); 
         $data['nama_satker'] = session('lokasi_nama');
         $model = new ParuhwaktuModel;
         $data['peserta'] = $model->find($nik); 

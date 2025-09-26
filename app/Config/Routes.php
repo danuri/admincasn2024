@@ -123,6 +123,8 @@ $routes->group("paruhwaktu", ["filter" => "auth"], function ($routes) {
     $routes->post('uploaddok', 'Paruhwaktu::uploaddok');
     $routes->get('export', 'Paruhwaktu::export');
     $routes->get('search/(:any)', 'Paruhwaktu::search/$1');
+    $routes->get('sprp/(:any)', 'Paruhwaktu::cetak_sprp/$1');
+    $routes->post('getpeserta', 'Paruhwaktu::getpeserta');
 });
 
 $routes->group("admin", ["filter" => "auth"], function ($routes) {
