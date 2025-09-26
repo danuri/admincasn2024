@@ -357,7 +357,7 @@ class Paruhwaktu extends BaseController
             $length = count($penempatan);
             $data['penempatan'] = $penempatan[$length - 1];
             
-            if (str_contains(strtolower($data['peserta']->satker), 'kanwil')) {
+            if (str_contains(strtolower($data['peserta']->lokasi_baru), 'kanwil')) {
                 if($length == 4){
                     $data['penempatan'] = $penempatan[$length - 1].' '.$penempatan[$length - 2];
                 }
