@@ -25,10 +25,10 @@
                     <thead>
                       <tr>
                         <th>NIK</th>
-                        <th>No Peserta</th>
                         <th>Nama</th>
                         <th>Penempatan</th>
                         <th>Jabatan</th>
+                        <th>Pendidikan</th>
                         <th>Status DRH</th>
                         <th>Aksi</th>
                       </tr>
@@ -37,10 +37,10 @@
                       <?php foreach ($peserta as $row) {?>
                       <tr>
                         <td><?= $row->nik?></td>
-                        <td><?= $row->no_peserta?></td>
                         <td><?= $row->nama_peserta?></td>
                         <td><?= $row->instansi_paruh_waktu?></td>
-                        <td><?= $row->jabatan_melamar?></td>
+                        <td><?= $row->jabatan_baru?></td>
+                        <td><?= $row->pendidikan_baru?></td>
                         <td>
                           <?php
                             if($row->status_mengundurkan_diri == 'YA'){
@@ -111,6 +111,10 @@
             <th>Pendidikan</th>
             <td id="previewPendidikan"></td>
           </tr>
+          <tr>
+            <th>Penempatan</th>
+            <td id="previewPenempatan"></td>
+          </tr>
         </table>
       </div>
       <div class="modal-footer">
@@ -138,6 +142,7 @@
           $('#previewTanggalLahir').text(response.tgl_lahir);
           $('#previewJabatan').text(response.jabatan_baru);
           $('#previewPendidikan').text(response.pendidikan_baru);
+          $('#previewPenempatan').text(response.lokasi_baru);
           
           $('#modalPreview').modal('show');
         }else{
