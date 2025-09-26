@@ -133,7 +133,7 @@
           $('#previewNamaPeserta').text(response.nama_peserta);
           $('#previewTempatLahir').text(response.tempat_lahir);
           $('#previewTanggalLahir').text(response.tgl_lahir);
-          $('#previewJabatanMelamar').text(response.jabatan_baru);
+          $('#previewJabatan').text(response.jabatan_baru);
           $('#previewPendidikan').text(response.pendidikan_baru);
           
           $('#modalPreview').modal('show');
