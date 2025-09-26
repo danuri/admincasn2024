@@ -423,7 +423,7 @@ class Paruhwaktu extends BaseController
             );
             $pesertaModel->set($data)->where($where)->update();
             session()->setFlashdata('message', 'Dokumen SPRP Berhasil Dikirim');
-            return redirect()->to('penetapan/peserta');
+            return redirect()->to('paruhwaktu');
         } else {
             session()->setFlashdata('error', 'File URL TTE tidak ada');
             return redirect()->to('paruhwaktu');
