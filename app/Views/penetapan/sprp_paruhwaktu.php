@@ -86,7 +86,7 @@
             </tr>
             <tr>
                 <td style="width: 170px;">Pendidikan/Jurusan</td>
-                <td>: <?php echo $peserta->pendidikan_baru; ?></td>
+                <td>: <?php echo $pendidikan; ?></td>
             </tr>
             <tr>
                 <td style="width: 170px;">Kebutuhan Jabatan</td>

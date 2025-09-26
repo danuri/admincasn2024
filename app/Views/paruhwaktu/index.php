@@ -109,7 +109,12 @@
           </tr>
           <tr>
             <th>Pendidikan</th>
-            <td id="previewPendidikan"></td>
+            <td>
+              <!-- input group -->
+              <input type="text" class="form-control" id="previewPendidikan">
+              <p>Jika ada perubahan pendidikan, silahkan disesuaikan.</p>
+              <p>Contoh Penulisan: S-1 PENDIDIKAN BAHASA INGGRIS, S-2 PENDIDIKAN BAHASA INDONESIA</p>
+            </td>
           </tr>
           <tr>
             <th>Penempatan</th>
@@ -154,7 +159,26 @@
 
   $('#btnConfirmPreview').on('click', function(){
     var nik = $('#previewNik').val();
-    window.location.href = "<?= base_url('paruhwaktu/sprp/') ?>"+nik;
+    var pendidikan = $('#previewPendidikan').val();
+    // post data
+    $.ajax({
+      type: "POST",
+      url: "<?= base_url('paruhwaktu/sprp') ?>",
+      data: {nik:nik, pendidikan:pendidikan},
+      dataType: "json",
+      success: function (response) {
+        if(response.status == 'success'){
+          // alert('Data berhasil dikirim ke TTE');
+          // close modal
+          // reload page
+          location.reload();
+          // $('#modalPreview').modal('hide');
+        }else{
+          alert('Data gagal dikirim ke TTE');
+        }
+      }
+    });
+    // window.location.href = "<?= base_url('paruhwaktu/sprp/') ?>"+nik;
   });
 </script>
 <?= $this->endSection() ?>

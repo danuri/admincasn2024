@@ -329,11 +329,15 @@ class Paruhwaktu extends BaseController
       exit;
     }
 
-    public function cetak_sprp($nik) { 
+    public function cetak_sprp() { 
         // $nik = decrypt($nik); 
+        $nik = $this->request->getVar('nik');
+        $pendidikan = $this->request->getVar('pendidikan');
+
         $data['nama_satker'] = session('lokasi_nama');
         $model = new ParuhwaktuModel;
-        $data['peserta'] = $model->find($nik); 
+        $data['peserta'] = $model->find($nik);
+        $data['pendidikan'] = $pendidikan;
         
         $timestamp = strtotime($data['peserta']->tgl_lahir);
         $formattedDate = date('d F Y', $timestamp);
