@@ -78,7 +78,7 @@
         <table class="info-table">
             <tr>
                 <td style="width: 170px;">Nama</td>
-                <td>: <?php echo $peserta->nama; ?></td>
+                <td>: <?php echo $peserta->nama_peserta; ?></td>
             </tr>
             <tr>
                 <td style="width: 170px;">Tempat/Tanggal Lahir</td>
@@ -94,7 +94,7 @@
             </tr>
         </table>
 
-        <p>Akan kami tempatkan pada unit kerja <?php echo $lokasi_baru; ?> sebagai <?php echo $peserta->jabatan_baru; ?> di lingkungan <?php echo $nama_satker; ?>.</p>
+        <p>Akan kami tempatkan pada unit kerja <?php echo $penempatan; ?> sebagai <?php echo $peserta->jabatan_baru; ?> di lingkungan <?php echo $nama_satker; ?>.</p>
 
         <p>Demikian surat pernyataan ini dibuat dengan sesungguhnya dan sebenar-benarnya untuk dapat dipergunakan sebagaimana mestinya.</p>
     </div>
