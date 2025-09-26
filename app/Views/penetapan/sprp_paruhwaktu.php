@@ -49,7 +49,7 @@
         </table>
         <div style="flex: 0; height: 2px; background-color: black;"></div>
         <h3 style="text-decoration: underline;">SURAT PERNYATAAN RENCANA PENEMPATAN</h3>
-        <p style="margin-top: -10px;"><strong>NOMOR: <?php echo $peserta->no_sprp; ?></strong></p>
+        <p style="margin-top: -10px;"><strong>NOMOR: SPRP.PW-<?= $peserta->no_sprp; ?>/B.II/KP.00.3/09/2025</strong></p>
     </div>
 
     <div class="content">
