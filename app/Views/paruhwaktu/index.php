@@ -148,7 +148,7 @@
 
   $('#btnConfirmPreview').on('click', function(){
     var nik = $('#previewNik').val();
-    window.location.href = "<?= base_url('paruhwaktu/sprp/') ?>"+btoa(nik);
+    window.location.href = "<?= base_url('paruhwaktu/sprp/') ?>"+nik;
   });
 </script>
 <?= $this->endSection() ?>
