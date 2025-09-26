@@ -82,19 +82,19 @@
             </tr>
             <tr>
                 <td style="width: 170px;">Tempat/Tanggal Lahir</td>
-                <td>: <?php echo $peserta->tempat_lahir; ?>/<?php echo $peserta->tanggal_lahir; ?></td>
+                <td>: <?php echo $peserta->tempat_lahir; ?>/<?php echo $peserta->tgl_lahir; ?></td>
             </tr>
             <tr>
                 <td style="width: 170px;">Pendidikan/Jurusan</td>
-                <td>: <?php echo $peserta->pendidikan; ?></td>
+                <td>: <?php echo $peserta->pendidikan_baru; ?></td>
             </tr>
             <tr>
                 <td style="width: 170px;">Kebutuhan Jabatan</td>
-                <td>: <?php echo $peserta->formasi; ?></td>
+                <td>: <?php echo $peserta->jabatan_baru; ?></td>
             </tr>
         </table>
 
-        <p>Akan kami tempatkan pada unit kerja <?php echo $penempatan; ?> sebagai <?php echo $peserta->formasi; ?> di lingkungan <?php echo $nama_satker; ?>.</p>
+        <p>Akan kami tempatkan pada unit kerja <?php echo $lokasi_baru; ?> sebagai <?php echo $peserta->jabatan_baru; ?> di lingkungan <?php echo $nama_satker; ?>.</p>
 
         <p>Demikian surat pernyataan ini dibuat dengan sesungguhnya dan sebenar-benarnya untuk dapat dipergunakan sebagaimana mestinya.</p>
     </div>

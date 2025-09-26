@@ -368,12 +368,12 @@ owner_satker
       exit;
     }
 
-    public function cetak_sprp($nopeserta) {  
+    public function cetak_sprp($nik) {  
         $data['nama_satker'] = session('lokasi_nama');
-        $model = new CrudModel;
-        $data['peserta'] = $model->getRow('peserta', ['nopeserta'=>$nopeserta]); 
+        $model = new ParuhwaktuModel;
+        $data['peserta'] = $model->find($nik); 
         
-        $timestamp = strtotime($data['peserta']->tanggal_lahir);
+        $timestamp = strtotime($data['peserta']->tgl_lahir);
         $formattedDate = date('d F Y', $timestamp);
         $indonesianMonths = [
             'January' => 'Januari',
@@ -390,8 +390,8 @@ owner_satker
             'December' => 'Desember'
         ];
         $data['peserta']->tanggal_lahir = str_replace(array_keys($indonesianMonths), $indonesianMonths, $formattedDate);
-        if ($data['peserta']->penempatan_id != null) {
-            $penempatan = array_map('trim', explode('|', $data['peserta']->penempatan));
+        if ($data['peserta']->lokasi_baru != null) {
+            $penempatan = array_map('trim', explode('|', $data['peserta']->lokasi_baru));
             $length = count($penempatan);
             $data['penempatan'] = $penempatan[$length - 1];
             
@@ -406,17 +406,18 @@ owner_satker
             }            
         }
 
-        $dateRequest = date('Ymd');
-        if ($dateRequest < '20250222') {
-            $data['sysdate'] = '22 Februari 2025';
-            $dateRequest = '20250222';
-        } else {
-            $sysdate = date('d F Y');
-            $data['sysdate'] = str_replace(array_keys($indonesianMonths), $indonesianMonths, $sysdate);
-        }        
+        // $dateRequest = date('Ymd');
+        // if ($dateRequest < '20250222') {
+        //     $data['sysdate'] = '22 Februari 2025';
+        //     $dateRequest = '20250222';
+        // } else {
+        //     $sysdate = date('d F Y');
+        //     $data['sysdate'] = str_replace(array_keys($indonesianMonths), $indonesianMonths, $sysdate);
+        // }        
+        $data['sysdate'] = '26 September 2025';
 
         //dd($data);
-        $html = view('penetapan/sprp',$data);
+        $html = view('penetapan/sprp_paruhwaktu',$data);
 
         $options = new Options();
         $options->set('isHtml5ParserEnabled', true);
@@ -436,38 +437,38 @@ owner_satker
         $output = $dompdf->output();
         $tempFilePath = tempnam(sys_get_temp_dir(), 'sprp_') . '.pdf';
         file_put_contents($tempFilePath, $output);
-        $result = $this->sendtte($tempFilePath, $data['peserta'], $dateRequest);
+        $result = $this->sendtte($tempFilePath, $data['peserta']);
 
         if ($result['status'] == 'error') {
             session()->setFlashdata('error', $result['response']);
-            return redirect()->to('penetapan/peserta');
+            return redirect()->to('paruhwaktu');
         } else {
             if ($result['status'] != 'success') {
                 session()->setFlashdata('error', 'TTE Error');
-                return redirect()->to('penetapan/peserta');
+                return redirect()->to('paruhwaktu');
             }
         }
         $response = json_decode($result['response'], true);
         
         if (isset($response['message']['file_url'])) {
             $doc_sprp = $response['message']['file_url'];
-            $pesertaModel = new PesertaModel();
+            $pesertaModel = new ParuhwaktuModel();
             $data = array (
                 'doc_sprp' => $doc_sprp
             );
             $where = array (
-                'nopeserta' => $nopeserta
+                'nik' => $nik
             );
             $pesertaModel->set($data)->where($where)->update();
             session()->setFlashdata('message', 'Dokumen SPRP Berhasil Dikirim');
             return redirect()->to('penetapan/peserta');
         } else {
             session()->setFlashdata('error', 'File URL TTE tidak ada');
-            return redirect()->to('penetapan/peserta');
+            return redirect()->to('paruhwaktu');
         }
     }
 
-    private function sendtte($filepath, $peserta, $dateRequest) {
+    private function sendtte($filepath, $peserta) {
         $apiUrl = getenv('TTE_URL'); 
         $gateKey = getenv('TTE_KEY');
         $ch = curl_init();
@@ -479,7 +480,7 @@ owner_satker
         // Prepare file and parameters
         $postFields = [
             'nip' => '197706022005011005',
-            'title' => 'SPRP a.n '.$peserta->nama.' tgl '.$dateRequest,
+            'title' => 'SPRP Paruh Waktu a.n '.$peserta->nama,
             'jenis' => 'SPRP',
             'id_layanan' => '0',
             'lampiran' => new CURLFile($filepath, 'application/pdf', 'sprp.pdf'),
