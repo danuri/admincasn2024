@@ -88,6 +88,7 @@
       </div>
       <div class="modal-body">
         <p>Pastikan Data sudah sesuai</p>
+        <input type="hidden" name="nik" id="previewNik">
         <table class="table table-bordered">
           <tr>
             <th>Nama Peserta</th>
@@ -131,6 +132,7 @@
       success: function (response) {
         if(response.no_peserta != null){
           $('#previewNamaPeserta').text(response.nama_peserta);
+          $('#previewNik').val(response.nik);
           $('#previewTempatLahir').text(response.tempat_lahir);
           $('#previewTanggalLahir').text(response.tgl_lahir);
           $('#previewJabatan').text(response.jabatan_baru);
@@ -144,10 +146,9 @@
     });
   }
 
-  function confirmPreview(nik){
-    $('#btnConfirmPreview').on('click', function(){
-      window.location.href = "<?= base_url('paruhwaktu/sprp/') ?>"+btoa(nik);
-    });
-  }
+  $('#btnConfirmPreview').on('click', function(){
+    var nik = $('#previewNik').val();
+    window.location.href = "<?= base_url('paruhwaktu/sprp/') ?>"+btoa(nik);
+  });
 </script>
 <?= $this->endSection() ?>
