@@ -58,9 +58,9 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end"> -->
                                     <?php if($row->doc_sprp != null){ ?>
-                                    <a class="dropdown-item" href="<?= $row->doc_sprp ?>" target="_blank">Download SPRP</a>
+                                    <a class="text-success" href="<?= $row->doc_sprp ?>" target="_blank">Download SPRP</a>
                                     <?php }else{ ?>
-                                    <a class="dropdown-item" href="javascript:;" onclick="previewData('<?= $row->nik ?>')">Preview SPRP</a>
+                                    <a class="text-primary" href="javascript:;" onclick="previewData('<?= $row->nik ?>')">Preview SPRP</a>
                                     <?php } ?>
                                 <!-- </div> -->
                             <?php } ?>
