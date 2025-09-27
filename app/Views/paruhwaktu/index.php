@@ -160,6 +160,11 @@
   $('#btnConfirmPreview').on('click', function(){
     var nik = $('#previewNik').val();
     var pendidikan = $('#previewPendidikan').val();
+    // disable button
+    $(this).prop('disabled', true);
+    // loading alert
+    Toastify({text: "Sedang mengirim...",duration: -1}).showToast();
+
     // post data
     $.ajax({
       type: "POST",
