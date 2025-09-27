@@ -38,7 +38,7 @@
                       <tr>
                         <td><?= $row->nik?></td>
                         <td><?= $row->nama_peserta?></td>
-                        <td><?= $row->instansi_paruh_waktu?></td>
+                        <td><?= $row->lokasi_baru?></td>
                         <td><?= $row->jabatan_baru?></td>
                         <td><?= $row->pendidikan_baru?></td>
                         <td>
