@@ -426,11 +426,15 @@ class Paruhwaktu extends BaseController
                 'nik' => $nik
             );
             $pesertaModel->set($data)->where($where)->update();
-            session()->setFlashdata('message', 'Dokumen SPRP Berhasil Dikirim');
-            return redirect()->to('paruhwaktu');
+            // session()->setFlashdata('message', 'Dokumen SPRP Berhasil Dikirim');
+            // return redirect()->to('paruhwaktu');
+
+            // return json
+            return $this->response->setJSON(['status'=>'success','message'=>'Dokumen SPRP Berhasil Dikirim','file_url'=>$doc_sprp]);
         } else {
-            session()->setFlashdata('error', 'File URL TTE tidak ada');
-            return redirect()->to('paruhwaktu');
+            // session()->setFlashdata('error', 'File URL TTE tidak ada');
+            // return redirect()->to('paruhwaktu');
+            return $this->response->setJSON(['status'=>'error','message'=>'Dokumen gagal dikirim']);
         }
     }
 
