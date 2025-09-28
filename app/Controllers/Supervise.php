@@ -68,17 +68,6 @@ class Supervise extends BaseController
 
   function setparuhwaktu() {
         // POST https://api-siasn.bkn.go.id/perencanaan/formasi_paruh_waktu/update_paruh_waktu
-        // status_usulan : 1
-        // alasan_tidak_diusulkan : 
-        // jenis_pengadaan :
-        // teknis :
-        // pendidikan_id : 0E7FA32614D38672E060640AF1083075
-        // unor_id : 46e51456-62ec-43c3-8bf9-9318b043afff
-        // user_id : af241811-1ae5-4759-970e-4e22690b3397
-        // jabatan_id :
-        // data_ids : 3674066501920004
-        // usul_sotk_id : d9f13001-ad65-412e-a129-d744b40acba8
-        // jenis : P
 
         $model = new ParuhwaktuModel;
         $peserta = $model->where(['nik'=>'1101020404910001'])->findAll(1,0);

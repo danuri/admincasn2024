@@ -7,6 +7,7 @@ use App\Models\DokumenModel;
 use App\Models\UploadModel;
 use App\Models\CrudModel;
 use App\Models\Pppkt2Model;
+use App\Models\ParuhwaktuModel;
 
 class Publish extends BaseController
 {
@@ -91,6 +92,56 @@ class Publish extends BaseController
           $model->set('usul_no_pertek', $nopertek);
           $model->set('usul_nip', $nip);
           $model->where('nopeserta', $nopeserta);
+          $model->update();
+
+        //   echo '<pre>'.$no_peserta.'</pre>';
+      }
+  }
+
+  function sinkronpw() {
+      $model = new ParuhwaktuModel;
+      $data= $model->where(['usul_no_pertek !='=>NULL])->findAll();
+
+        foreach($data as $row){
+            $this->monitoringusulpw($row->nopeserta,2025,'02','0210',1,0);
+        }
+
+      return redirect()->back()->with('message', 'Berhasil sinkron');
+    }
+
+    function monitoringusulpw($no_peserta,$tahun,$jenis,$jenis_formasi_id,$limit,$offset) {
+      $client = service('curlrequest');
+      $cache = service('cache');
+
+      $token = $cache->get('zxc');
+      $response = $client->request('GET', 'https://api-siasn.bkn.go.id/siasn-instansi/pengadaan/usulan/monitoring?no_peserta='.$no_peserta.'&jenis_pengadaan_id='.$jenis.'&jenis_formasi_id='.$jenis_formasi_id.'&periode='.$tahun.'&limit='.$limit.'&offset='.$offset, [
+          'headers' => [
+              'Authorization'     => 'Bearer '.$token,
+          ],
+          'verify' => false,
+          'debug' => true,
+      ]);
+
+      // return $this->response->setJSON( $response->getBody() );
+      $data = json_decode($response->getBody());
+
+      foreach ($data->data as $row) {
+          $nopeserta = $row->usulan_data->data->no_peserta;
+          $id = $row->id;
+          $status = siasn_usul_status($row->status_usulan);
+          $alasan = $row->alasan_tolak_tambahan;
+          $pathpertek = $row->path_ttd_pertek; 
+          $nopertek = $row->no_pertek;
+          $nip = $row->nip;
+
+          $model = new ParuhwaktuModel;
+          $model->set('usul_id', $id);
+          $model->set('usul_status', $status);
+          $model->set('usul_alasan_tolak', $alasan);
+          $model->set('usul_path_ttd_pertek', $pathpertek);
+          $model->set('usul_no_pertek', $nopertek);
+          $model->set('usul_nip', $nip);
+          $model->where('no_peserta', $nopeserta);
           $model->update();
 
         //   echo '<pre>'.$no_peserta.'</pre>';
