@@ -450,7 +450,7 @@ class Paruhwaktu extends BaseController
         // Prepare file and parameters
         $postFields = [
             'nip' => '197706022005011005',
-            'title' => 'SPRP Paruh Waktu a.n '.str_replace ("'","",urlencode($peserta->nama_peserta)),
+            'title' => 'SPRP Paruh Waktu a.n '.$peserta->no_peserta,
             'jenis' => 'SPRP',
             'id_layanan' => '0',
             'lampiran' => new CURLFile($filepath, 'application/pdf', 'sprp.pdf'),
