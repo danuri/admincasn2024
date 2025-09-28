@@ -30,6 +30,7 @@
                         <th>Jabatan</th>
                         <th>Pendidikan</th>
                         <th>Status DRH</th>
+                        <th>Status Usul NI</th>
                         <th>Aksi</th>
                       </tr>
                     </thead>
@@ -50,6 +51,7 @@
                             }
                           ?>
                         </td>
+                        <td><?= $row->usul_status?></td>
                         <td>
                           <!-- <div class="dropdown card-header-dropdown"> -->
                             <?php if($row->status_drh == 'SUDAH'){ ?>
