@@ -24,7 +24,7 @@
                   <table class="table table-bordered align-middle table-striped-columns mb-0 datatable">
                     <thead>
                       <tr>
-                        <th>NIK</th>
+                        <th>Nomor Peserta</th>
                         <th>Nama</th>
                         <th>Penempatan</th>
                         <th>Jabatan</th>
@@ -37,7 +37,7 @@
                     <tbody>
                       <?php foreach ($peserta as $row) {?>
                       <tr>
-                        <td><?= $row->nik?></td>
+                        <td><?= $row->no_peserta?></td>
                         <td><?= $row->nama_peserta?></td>
                         <td><?= $row->lokasi_baru?></td>
                         <td><?= $row->jabatan_baru?></td>
