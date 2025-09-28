@@ -103,7 +103,7 @@ class Publish extends BaseController
       $data= $model->where(['usul_no_pertek'=>NULL])->findAll();
 
         foreach($data as $row){
-            $this->monitoringusulpw($row->nopeserta,2025,'02','0210',1,0);
+            $this->monitoringusulpw($row->no_peserta,2025,'02','0210',1,0);
         }
 
       // return redirect()->back()->with('message', 'Berhasil sinkron');
