@@ -21,7 +21,7 @@
             <div class="card">
               <div class="card-body">
                 <div class="table-responsive">
-                  <table class="table table-bordered align-middle table-striped-columns mb-0">
+                  <table class="table table-bordered align-middle table-striped-columns mb-0 datatable">
                     <thead>
                       <tr>
                         <th>NIK</th>
@@ -29,8 +29,8 @@
                         <th>Penempatan</th>
                         <th>Jabatan</th>
                         <th>Pendidikan</th>
-                        <th>Status DRH</th>
-                        <th>Status Usul NI</th>
+                        <th>DRH</th>
+                        <th>Usul NI</th>
                         <th>Aksi</th>
                       </tr>
                     </thead>
