@@ -51,7 +51,13 @@
                             }
                           ?>
                         </td>
-                        <td><?= $row->usul_status?></td>
+                        <td>
+                          <?= $row->usul_status?>
+                          <?php if($row->usul_alasan_tolak){ ?>
+                            <br>
+                            <small>(<?= $row->usul_alasan_tolak ?>)</small>
+                          <?php } ?>
+                        </td>
                         <td>
                           <!-- <div class="dropdown card-header-dropdown"> -->
                             <?php if($row->status_drh == 'SUDAH'){ ?>
