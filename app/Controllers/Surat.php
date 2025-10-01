@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\SuratModel;
 use App\Models\SuratparuhwaktuModel;
+use App\Models\SuratlampiranModel;
 use App\Models\ParuhwaktuModel;
 use Aws\S3\S3Client;
 
@@ -28,7 +29,27 @@ class Surat extends BaseController
             $data['paruhwaktu'] = $pwm->where(['surat_id'=>$id])->findAll();
 
             return view('surat/form_paruhwaktu', $data);
+        }else {
+            $pwm = new SuratparuhwaktuModel;
+            $data['paruhwaktu'] = $pwm->where(['surat_id'=>$id])->findAll();
+
+            return view('surat/form_default', $data);
         }
+    }
+
+    function savedefault() {
+        $model = new SuratlampiranModel;
+        // insert data
+        $data = [
+            'surat_id' => $this->request->getVar('surat_id'),
+            'nik' => $this->request->getVar('nik'),
+            'nama' => $this->request->getVar('nama'),
+            'jabatan' => $this->request->getVar('jabatan'),
+            'keterangan' => $this->request->getVar('keterangan'),
+        ];
+
+        $model->insert($data);
+        return redirect()->back()->with('message', 'Data berhasil disimpan');
     }
 
     function saveinput() {

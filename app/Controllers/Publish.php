@@ -44,7 +44,7 @@ class Publish extends BaseController
         return view('public/tahap2', $data);
     }
 
-    function sinkron($lokasi) {
+    function sinkron() {
       $model = new Pppkt2Model;
     //   $data= $model->where(['kode_satker_asal'=>$lokasi])->findAll();
       $data= $model->where(['usul_no_pertek !='=>NULL])->findAll();

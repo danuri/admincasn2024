@@ -21,7 +21,7 @@ $routes->get('auth/logout', 'Auth::logout');
 $routes->get('auth/callback', 'Auth::callback');
 
 $routes->get('pub/document/(:any)', 'Publish::document/$1');
-$routes->get('pub/sinkron/(:any)', 'Publish::sinkron/$1');
+$routes->get('pub/sinkron', 'Publish::sinkron');
 $routes->get('pub/paruhwaktu', 'Publish::paruhwaktu');
 $routes->get('pub/monitoring', 'Publish::monitoring');
 $routes->get('pub/optimalisasi', 'Publish::optimalisasi');
@@ -101,6 +101,7 @@ $routes->group("surat", ["filter" => "auth"], function ($routes) {
     $routes->get('', 'Surat::index');
     $routes->post('save', 'Surat::save');
     $routes->post('saveinput', 'Surat::saveinput');
+    $routes->post('savedefault', 'Surat::savedefault');
     $routes->get('input/(:any)', 'Surat::input/$1');
     $routes->get('inputdelete/(:any)', 'Surat::inputdelete/$1');
     $routes->get('delete/(:any)', 'Surat::delete/$1');

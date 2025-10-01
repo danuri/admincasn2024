@@ -74,6 +74,7 @@
                 <label for="">Jenis Surat</label>
                 <select class="form-control" name="jenis" id="jenis" required>
                   <option value="d5ba481b59fd483d95d42fc0d311390b">Permohonan Perubahan Detail Alokasi PPPK Paruh Waktu</option>
+                  <option value="43">Perpanjangan Pengisian Daftar Riwayat Hidup (DRH) PPPK Paruh Waktu</option>
                 </select>
               </div>
               <div class="form-group">
