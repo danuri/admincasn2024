@@ -111,7 +111,7 @@
                     <h5 class="card-title mb-0">Input Peserta</h5>
                 </div>
                 <div class="card-body">
-                    <form action="<?= site_url('surat/savedefault')?>" method="POST" enctype="multipart/form-data">
+                    <!-- <form action="<?= site_url('surat/savedefault')?>" method="POST" enctype="multipart/form-data">
                         <div class="row mb-4">
                             <label for="nik" class="col-sm-3 col-form-label">NIK</label>
                             <div class="col-sm-9">
@@ -147,7 +147,7 @@
                                 <input type="submit" name="submit" id="submit" class="btn btn-primary" value="Simpan">
                             </div>
                         </div>
-                    </form>
+                    </form> -->
                 </div>
             </div>
 
