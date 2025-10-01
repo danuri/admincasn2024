@@ -171,4 +171,25 @@ class Surat extends BaseController
 
         return redirect()->back()->with('message', 'Surat berhasil dihapus.');
     }
+
+    function search($nik) {
+        $spm = new SuratparuhwaktuModel;
+        $cek = $spm->where('nik',$nik)->first();
+        
+        if($cek){
+            $sm = new SuratModel;
+            $surat = $sm->find($cek->surat_id);
+            $info = ['status'=>'error','message'=>'Peserta telah dilakukan maping sebelumnya oleh satker: '.$surat->satker.'. Silahkan Admin terkait untuk berkoordinasi jika diperlukan.'];
+            return $this->response->setJSON($info);
+        }else{
+            $model = new ParuhwaktuModel;
+            $data = $model->where('nik',$nik)->first();
+
+            if($data){
+                return $this->response->setJSON($data);
+            }else{
+                return $this->response->setJSON(['status'=>'error','message'=>'Data tidak ditemukan']);
+            }
+        }
+    }
 }

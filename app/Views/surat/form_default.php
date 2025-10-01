@@ -111,6 +111,7 @@
                     <h5 class="card-title mb-0">Input Peserta</h5>
                 </div>
                 <div class="card-body">
+                    <p>Tidak perlu mengisi peserta</p>
                     <!-- <form action="<?= site_url('surat/savedefault')?>" method="POST" enctype="multipart/form-data">
                         <div class="row mb-4">
                             <label for="nik" class="col-sm-3 col-form-label">NIK</label>
@@ -174,7 +175,7 @@
     if($nik == ''){
       alert('NIK tidak boleh kosong');
     }else{
-      axios.get('<?= site_url()?>paruhwaktu/search/'+$nik)
+      axios.get('<?= site_url()?>surat/search/'+$nik)
       .then(function (response) {
         console.log(response.data);
         if(response.data.status == 'error'){
