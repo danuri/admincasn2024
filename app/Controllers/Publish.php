@@ -94,6 +94,7 @@ class Publish extends BaseController
           $model->set('usul_alasan_tolak', $alasan);
           $model->set('usul_path_ttd_pertek', $pathpertek);
           $model->set('usul_no_pertek', $nopertek);
+          $model->set('usul_path_ttd_sk', $row->path_ttd_sk);
           $model->set('usul_nip', $nip);
           $model->where('nopeserta', $nopeserta);
           $model->update();
