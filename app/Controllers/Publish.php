@@ -51,6 +51,7 @@ class Publish extends BaseController
 
         foreach($data as $row){
             $this->monitoringusulnip($row->nopeserta,2024,'02','0208',1,0);
+            $update = $model->where(['nopeserta'=>$row->nopeserta])->set(['tag'=>1])->update();
         }
 
       return redirect()->back()->with('message', 'Berhasil sinkron');
