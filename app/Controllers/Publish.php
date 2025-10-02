@@ -47,7 +47,7 @@ class Publish extends BaseController
     function sinkron() {
       $model = new Pppkt2Model;
     //   $data= $model->where(['kode_satker_asal'=>$lokasi])->findAll();
-      $data= $model->where(['usul_nip !='=>NULL])->findAll();
+      $data= $model->where(['tag'=>NULL])->findAll();
 
         foreach($data as $row){
             $this->monitoringusulnip($row->nopeserta,2024,'02','0208',1,0);
