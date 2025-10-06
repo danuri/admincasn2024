@@ -47,11 +47,11 @@ class Publish extends BaseController
     function sinkron() {
       $model = new Pppkt2Model;
     //   $data= $model->where(['kode_satker_asal'=>$lokasi])->findAll();
-      $data= $model->where(['usul_nip'=>NULL])->findAll();
+      $data= $model->where(['tag'=>1])->findAll();
 
         foreach($data as $row){
             $this->monitoringusulnip($row->nopeserta,2024,'02','0208',1,0);
-            $update = $model->where(['nopeserta'=>$row->nopeserta])->set(['tag'=>1])->update();
+            $update = $model->where(['nopeserta'=>$row->nopeserta])->set(['tag'=>2])->update();
         }
 
       return redirect()->back()->with('message', 'Berhasil sinkron');
