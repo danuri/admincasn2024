@@ -84,7 +84,6 @@
           alert('Data ditandai sebagai bukan dosen');
         });
       }
-      cekVerifikasi();
     });
 </script>
 <?= $this->endSection() ?>
