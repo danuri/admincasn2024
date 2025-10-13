@@ -56,7 +56,7 @@
                         <td>
                           <!-- checkbox is dosen -->
                           <div class="form-check">
-                            <input type="checkbox" class="form-check-input formcheck" id="<?= $row->nopeserta;?>" <?= ($row->nopeserta == 1)?'checked':'';?> value="1">
+                            <input type="checkbox" class="form-check-input formcheck" id="<?= $row->nopeserta;?>" <?= ($row->is_dosen == 1)?'checked':'';?> value="1">
                           </div>
                         </td>
                       </tr>
