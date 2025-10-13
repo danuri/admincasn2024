@@ -30,6 +30,7 @@
                         <th>Status</th>
                         <th>USUL NI</th>
                         <th>#</th>
+                        <th>Dosen</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -52,6 +53,12 @@
                               </div>
                           </div>  
                         </td>
+                        <td>
+                          <!-- checkbox is dosen -->
+                          <div class="form-check">
+                            <input type="checkbox" class="form-check-input formcheck" id="<?= $row->nopeserta;?>" <?= ($row->nopeserta == 1)?'checked':'';?> value="1">
+                          </div>
+                        </td>
                       </tr>
                       <?php } ?>
                     </tbody>
@@ -64,4 +71,20 @@
 
     </div>
 </div>
+<?= $this->endSection() ?>
+<?= $this->section('script') ?>
+<script>
+  $('.formcheck').change(function(event) {
+    if(this.checked) {
+        $.get('<?= site_url('pppk/peserta/cekdosen');?>/'+this.id+'/1', function() {
+          alert('Data ditandai sebagai dosen');
+        });
+      }else{
+        $.get('<?= site_url('pppk/peserta/cekdosen');?>/'+this.id+'/0', function() {
+          alert('Data ditandai sebagai bukan dosen');
+        });
+      }
+      cekVerifikasi();
+    });
+</script>
 <?= $this->endSection() ?>

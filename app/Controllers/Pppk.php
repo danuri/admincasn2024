@@ -186,6 +186,13 @@ class Pppk extends BaseController
         return redirect()->back()->with('message', 'Usulan telah disampaikan');
     }
 
+    function cekdosen($id,$val) {
+        $model = new Pppkt2Model;
+
+        $update = $model->where(['nopeserta'=>$id])->set(['is_dosen'=>$val])->update();
+        return $this->response->setJSON(['status'=>'success','message'=>'Data telah diubah']);
+    }
+
     function sinkron() {
       $model = new Pppkt2Model;
       $data= $model->where(['kode_satker_asal'=>session('lokasi')])->findAll();
