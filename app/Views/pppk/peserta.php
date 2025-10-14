@@ -56,7 +56,7 @@
                         <td>
                           <!-- checkbox is dosen -->
                           <div class="form-check">
-                            <input type="checkbox" class="form-check-input formcheck" id="<?= $row->nopeserta;?>" <?= ($row->is_dosen == 1)?'checked':'';?> value="1">
+                            <input type="checkbox" class="form-check-input" id="<?= $row->nopeserta;?>" <?= ($row->is_dosen == 1)?'checked':'';?> value="1" onchange="updateStatus('<?= $row->nopeserta;?>',this.checked ? 1 : 0)">
                           </div>
                         </td>
                       </tr>
@@ -75,15 +75,22 @@
 <?= $this->section('script') ?>
 <script>
   $('.formcheck').change(function(event) {
-    if(this.checked) {
-        $.get('<?= site_url('pppk/peserta/cekdosen');?>/'+this.id+'/1', function() {
-          alert('Data ditandai sebagai dosen');
-        });
-      }else{
-        $.get('<?= site_url('pppk/peserta/cekdosen');?>/'+this.id+'/0', function() {
-          alert('Data ditandai sebagai bukan dosen');
-        });
-      }
+    // if(this.checked) {
+    //     $.get('<?= site_url('pppk/peserta/cekdosen');?>/'+this.id+'/1', function() {
+    //       alert('Data ditandai sebagai dosen');
+    //     });
+    //   }else{
+    //     $.get('<?= site_url('pppk/peserta/cekdosen');?>/'+this.id+'/0', function() {
+    //       alert('Data ditandai sebagai bukan dosen');
+    //     });
+    //   }
     });
+
+    function updateStatus(nopeserta,status){
+        $.get('<?= site_url('pppk/peserta/cekdosen');?>/'+nopeserta+'/'+status, function() {
+          alert('Status peserta telah diubah');
+          // location.reload();
+        });
+    }
 </script>
 <?= $this->endSection() ?>
