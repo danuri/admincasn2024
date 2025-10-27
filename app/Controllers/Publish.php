@@ -105,7 +105,7 @@ class Publish extends BaseController
 
   function sinkronpw() {
       $model = new ParuhwaktuModel;
-      $data= $model->where(['usul_no_pertek'=>NULL])->findAll();
+      $data= $model->findAll();
 
         foreach($data as $row){
             $this->monitoringusulpw($row->no_peserta,2025,'02','0210',1,0);
