@@ -30,7 +30,6 @@
                         <th>Status</th>
                         <th>USUL NI</th>
                         <th>#</th>
-                        <!-- <th>Dosen</th> -->
                       </tr>
                     </thead>
                     <tbody>
@@ -54,11 +53,6 @@
                           </div>  
                         </td>
                         <td>
-                          <!-- checkbox is dosen -->
-                          <!-- <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="<?= $row->nopeserta;?>" <?= ($row->is_dosen == 1)?'checked':'';?> value="1" onchange="updateStatus('<?= $row->nopeserta;?>',this.checked ? 1 : 0)">
-                          </div>
-                        </td> -->
                       </tr>
                       <?php } ?>
                     </tbody>
