@@ -35,6 +35,9 @@ $routes->get('pelamar', 'Pelamar::index',['filter' => 'auth']);
 $routes->get('pelamar/pppkteknis', 'Pelamar::pppkteknis',['filter' => 'auth']);
 $routes->get('formasi', 'Formasi::index',['filter' => 'auth']);
 
+$routes->get('pengaturan', 'Pengaturan::index',['filter' => 'auth']);
+$routes->post('pengaturan/save', 'Pengaturan::save',['filter' => 'auth']);
+
 $routes->group("api", function ($routes) {
     $routes->get('sanggah/(:any)/(:any)/(:num)', 'Api::sanggah/$1/$2/$3');
     $routes->get('whatsapp', 'Api::whatsapp');
