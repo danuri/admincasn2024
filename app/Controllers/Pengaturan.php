@@ -29,7 +29,7 @@ class Pengaturan extends BaseController
         $file = $this->request->getFile('filepond');
         if ($file && $file->isValid() && !$file->hasMoved()) {
             $newName = 'kop_surat_'.session('lokasi').'.'.$file->getExtension();
-            $file->move('./kop_surat/', $newName, true);
+            $file->move('./downloads/kop_surat/', $newName, true);
 
             $data['tte_kop_surat'] = $newName;
         }
