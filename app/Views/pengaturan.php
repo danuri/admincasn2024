@@ -70,6 +70,14 @@
                   <input type="text" class="form-control" name="ttejabatan" id="ttejabatan" placeholder="Enter Jabatan">
               </div>
           </div>
+          <div class="row mb-3">
+              <div class="col-lg-3">
+                  <label for="jabatan" class="form-label"></label>
+              </div>
+              <div class="col-lg-9">
+                  <input type="submit" name="submit" id="submit" class="btn btn-primary" value="Simpan Pengaturan">
+              </div>
+          </div>
       </form>
             </div>
             </div>
