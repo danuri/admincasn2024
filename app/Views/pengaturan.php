@@ -80,7 +80,7 @@
                   <label for="jabatan" class="form-label">Passphrase</label>
               </div>
               <div class="col-lg-9">
-                  <input type="password" class="form-control" name="tte_pass" id="tte_pass" placeholder="Enter Passphrase" value="<?= $user->tte_pass ?>">
+                  <input type="password" class="form-control" name="ttepass" id="ttepass" placeholder="Enter Passphrase" value="<?= $user->tte_pass ?>">
                   <p>Passphrase digunakan untuk mengamankan tanda tangan elektronik Anda secara otomatis. Hapus Passphrase jika sudah selesai menggunakan.</p>
               </div>
           </div>

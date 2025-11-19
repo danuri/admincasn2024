@@ -23,6 +23,7 @@ class Pengaturan extends BaseController
             'tte_nik' => $this->request->getPost('ttenik'),
             'tte_nama' => $this->request->getPost('ttenama'),
             'tte_jabatan' => $this->request->getPost('ttejabatan'),
+            'tte_pass' => setencrypt($this->request->getPost('ttepass')),
         ];
 
         // Upload kop surat
