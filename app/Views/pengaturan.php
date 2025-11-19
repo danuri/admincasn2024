@@ -30,7 +30,7 @@
                     <h5 class="card-title mb-0">Pengaturan Penandatangan</h5>
                 </div>
                 <div class="card-body">
-                <form action="<?= site_url('pengaturan/save') ?>" method="POST" id="settingform">
+                <form action="<?= site_url('pengaturan/save') ?>" method="POST" id="settingform" enctype="multipart/form-data">
           <div class="row mb-3">
               <div class="col-lg-3">
                   <label for="nik" class="form-label">PLT</label>
@@ -111,7 +111,7 @@
     FilePond.create(
         document.querySelector(".filepond-input"),
         {
-            labelIdle: `Drag & Drop your picture or <span class="filepond--label-action">Browse</span>`
+            labelIdle: `Paste, Drag & Drop your picture or <span class="filepond--label-action">Browse</span>`
         }
     );
 </script>
