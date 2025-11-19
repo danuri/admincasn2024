@@ -473,18 +473,47 @@ class Paruhwaktu extends BaseController
         }
     }
 
-    function settingsave() {
-        $model = new UserModel;
-        $user_id = session('user_id');
+    function draftkontrak()
+    {
+      $model = new ParuhwaktuModel();
+      $id = $this->request->getPost('nik');
+      $update = $model->update($id,[
+        'kontrak_no'=>$this->request->getPost('kontrak_no'),
+        'kontrak_upah'=>$this->request->getPost('kontrak_upah'),
+      ]);
+      $ybs = $model->find($id);
 
-        $model->update($user_id, [
-            'is_sdm' => $this->request->getVar('isplt'),
-            'tte_nik' => $this->request->getVar('ttenik'),
-            'tte_nip' => $this->request->getVar('ttenip'),
-            'tte_nama' => $this->request->getVar('ttenama'),
-            'tte_jabatan' => $this->request->getVar('ttejabatan'),
-        ]);
+      $model = new UserModel();
+      $user = $model->where('kode_satker', session('lokasi'))->first();
 
-        return redirect()->back()->with('message', 'Pengaturan Tanda Tangan Berhasil Disimpan');
+      $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('downloads/template-kontrak-pw.docx');
+
+      $predefinedMultilevel = array('listType' => \PhpOffice\PhpWord\Style\ListItem::TYPE_BULLET_EMPTY);
+
+      $templateProcessor->setValue('companyLogo', $user->kop_surat);
+      $templateProcessor->setValue('noKontrak', $ybs->kontrak_no);
+
+      $templateProcessor->setValue('namaJabatanTtd', $user->tte_nama);
+      $templateProcessor->setValue('JabatanTtd', $user->tte_jabatan);
+
+      $templateProcessor->setValue('namaYbs', $ybs->nama);
+      $templateProcessor->setValue('nipYbs', $ybs->usul_nip);
+    $templateProcessor->setValue('tempatLahirYbs', $ybs->tempat_lahir);
+    $templateProcessor->setValue('tanggalLahirYbs', local_date($ybs->tgl_lahir));
+    $templateProcessor->setValue('pendidikanYbs', $ybs->pendidikan_baru);
+    $templateProcessor->setValue('tahunPendidikanYbs', $ybs->jabatan_baru);
+    $templateProcessor->setValue('alamatYbs', $ybs->alamat_domisili);
+    $templateProcessor->setValue('unitKerjaYbs', $ybs->lokasi_baru);
+    
+    $templateProcessor->setValue('gajiYbs', rupiah($ybs->kontrak_upah));
+    $templateProcessor->setValue('terbilangYbs', penyebut($ybs->kontrak_upah));
+      
+
+    //   $templateProcessor->setValue('surat_tanggal', local_date($usul->rekomendasi_tanggal));
+
+      $filename = 'draft_kontrak_'.$id.'.docx';
+      $templateProcessor->saveAs('./downloads/draft/kontrak/'.$filename);
+
+      return redirect()->back()->with('message', 'Draft telah diupdate.');
     }
 }

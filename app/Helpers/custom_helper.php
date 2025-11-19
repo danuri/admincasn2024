@@ -34,33 +34,6 @@ if ( ! function_exists('ago'))
   }
 }
 
-if ( ! function_exists('get_option'))
-{
-	function get_option($name)
-	{
-		$db = \Config\Database::connect();
-
-    $builder = $db->table('options');
-    $builder->select('*');
-    $builder->where('option_name',$name);
-    $result = $builder->get();
-    $result = $result->getRow();
-
-		return $result->option_value;
-	}
-}
-
-if ( ! function_exists('update_option'))
-{
-	function update_option($name,$value)
-	{
-		$CI =& get_instance();
-    $CI->cms_model->update('options',array('option_value' => $value), array('option_name' => $name));
-
-		return true;
-	}
-}
-
 function harisesi($sesi)
 {
   if($sesi == 1){
@@ -273,6 +246,34 @@ function rupiah($angka){
 
 }
 
+function penyebut($nilai) {
+		$nilai = abs($nilai);
+		$huruf = array("", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan", "sepuluh", "sebelas");
+		$temp = "";
+		if ($nilai < 12) {
+			$temp = " ". $huruf[$nilai];
+		} else if ($nilai <20) {
+			$temp = penyebut($nilai - 10). " belas";
+		} else if ($nilai < 100) {
+			$temp = penyebut($nilai/10)." puluh". penyebut($nilai % 10);
+		} else if ($nilai < 200) {
+			$temp = " seratus" . penyebut($nilai - 100);
+		} else if ($nilai < 1000) {
+			$temp = penyebut($nilai/100) . " ratus" . penyebut($nilai % 100);
+		} else if ($nilai < 2000) {
+			$temp = " seribu" . penyebut($nilai - 1000);
+		} else if ($nilai < 1000000) {
+			$temp = penyebut($nilai/1000) . " ribu" . penyebut($nilai % 1000);
+		} else if ($nilai < 1000000000) {
+			$temp = penyebut($nilai/1000000) . " juta" . penyebut($nilai % 1000000);
+		} else if ($nilai < 1000000000000) {
+			$temp = penyebut($nilai/1000000000) . " milyar" . penyebut(fmod($nilai,1000000000));
+		} else if ($nilai < 1000000000000000) {
+			$temp = penyebut($nilai/1000000000000) . " trilyun" . penyebut(fmod($nilai,1000000000000));
+		}     
+		return trim($temp);
+	}
+
 function tingkat($jumlah)
 {
   $tingkat = '';
@@ -306,17 +307,6 @@ function pangkat($id)
 function shortdec($number='')
 {
   return number_format((float)$number, 2, '.', '');
-}
-
-function is_loggedin()
-{
-  $CI =& get_instance();
-  if($CI->session->userdata('nip'))
-  {
-    return true;
-  }
-
-  return false;
 }
 
 function targetik($year)

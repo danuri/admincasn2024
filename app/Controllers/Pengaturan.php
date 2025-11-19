@@ -22,9 +22,14 @@ class Pengaturan extends BaseController
             'tte_nip' => $this->request->getPost('ttenip'),
             'tte_nik' => $this->request->getPost('ttenik'),
             'tte_nama' => $this->request->getPost('ttenama'),
-            'tte_jabatan' => $this->request->getPost('ttejabatan'),
-            'tte_pass' => setencrypt($this->request->getPost('ttepass')),
+            'tte_jabatan' => $this->request->getPost('ttejabatan')
         ];
+
+        // if passphrase is set
+        $ttepass = $this->request->getPost('ttepass');
+        if(!empty($ttepass)) {
+            $data['tte_pass'] = setencrypt($ttepass);
+        }
 
         // Upload kop surat
         $file = $this->request->getFile('filepond');

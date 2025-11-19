@@ -136,10 +136,6 @@
         <input type="hidden" name="nik" id="kontrakNik">
         <table class="table table-bordered">
           <tr>
-            <th>No Kontrak</th>
-            <td id="kontrakNo"></td>
-          </tr>
-          <tr>
             <th>NIP</th>
             <td id="kontrakNip"></td>
           </tr>
@@ -168,14 +164,18 @@
             <td id="kontrakPenempatan"></td>
           </tr>
           <tr>
+            <th>No Kontrak</th>
+            <td><input type="text" name="kontrak_no" id="kontrakNo" class="form-control"></td>
+          </tr>
+          <tr>
             <th>Upah</th>
-            <td id="kontrakUpah"></td>
+            <td><input type="text" name="kontrak_upah" id="kontrakUpah" class="form-control"></td>
           </tr>
         </table>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="btnConfirmPreview">Simpan dan Kirim TTE</button>
+        <button type="button" class="btn btn-primary" id="btnConfirmKontrak">Simpan dan Kirim TTE</button>
       </div>
     </div>
   </div>
@@ -217,6 +217,7 @@
       dataType: "json",
       success: function (response) {
         if(response.no_peserta != null){
+          $('#kontrakNik').text(response.nik);
           $('#kontrakNo').text(response.kontrak_no);
           $('#kontrakNama').text(response.nama_peserta);
           $('#kontrakNip').val(response.usul_nip);
@@ -248,6 +249,36 @@
       type: "POST",
       url: "<?= base_url('paruhwaktu/sprp') ?>",
       data: {nik:nik, pendidikan:pendidikan},
+      dataType: "json",
+      success: function (response) {
+        if(response.status == 'success'){
+          alert('Data berhasil dikirim ke TTE');
+          // close modal
+          // reload page
+          location.reload();
+          // $('#modalPreview').modal('hide');
+        }else{
+          alert('Data gagal dikirim ke TTE');
+        }
+      }
+    });
+    // window.location.href = "<?= base_url('paruhwaktu/sprp/') ?>"+nik;
+  });
+
+  $('#btnConfirmKontrak').on('click', function(){
+    var nik = $('#kontrakNik').val();
+    var no = $('#kontrakNo').val();
+    var upah = $('#kontrakUpah').val();
+    // disable button
+    $(this).prop('disabled', true);
+    // loading alert
+    Toastify({text: "Sedang mengirim...",duration: -1}).showToast();
+
+    // post data
+    $.ajax({
+      type: "POST",
+      url: "<?= base_url('paruhwaktu/kontrak') ?>",
+      data: {nik:nik, kontrak_no:no, kontrak_upah:upah},
       dataType: "json",
       success: function (response) {
         if(response.status == 'success'){

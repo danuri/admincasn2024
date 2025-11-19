@@ -131,6 +131,7 @@ $routes->group("paruhwaktu", ["filter" => "auth"], function ($routes) {
     $routes->get('search/(:any)', 'Paruhwaktu::search/$1');
     $routes->post('sprp', 'Paruhwaktu::cetak_sprp');
     $routes->post('getpeserta', 'Paruhwaktu::getpeserta');
+    $routes->post('kontrak', 'Paruhwaktu::draftkontrak');
 });
 
 $routes->group("admin", ["filter" => "auth"], function ($routes) {
