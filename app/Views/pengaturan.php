@@ -32,8 +32,8 @@
               </div>
               <div class="col-lg-9">
                 <select name="isplt" id="isplt" class="form-select">
-                  <option value="0">Tidak</option>
-                  <option value="1">Ya</option>
+                  <option value="0" <?= $user->is_sdm == 0 ? 'selected' : '' ?>>Tidak</option>
+                  <option value="1" <?= $user->is_sdm == 1 ? 'selected' : '' ?>>Ya</option>
                 </select>
                 <p>Jika PLT, tidak perlu mengisi form di bawah.</p>
               </div>
@@ -43,7 +43,7 @@
                   <label for="nik" class="form-label">NIK</label>
               </div>
               <div class="col-lg-9">
-                  <input type="text" class="form-control" name="ttenik" id="ttenik" placeholder="Enter NIK">
+                  <input type="text" class="form-control" name="ttenik" id="ttenik" placeholder="Enter NIK" value="<?= $user->tte_nik ?>">
               </div>
           </div>
           <div class="row mb-3">
@@ -51,7 +51,7 @@
                   <label for="nip" class="form-label">NIP</label>
               </div>
               <div class="col-lg-9">
-                  <input type="url" class="form-control" name="ttenip" id="ttenip" placeholder="Enter NIP">
+                  <input type="url" class="form-control" name="ttenip" id="ttenip" placeholder="Enter NIP" value="<?= $user->tte_nip ?>">
               </div>
           </div>
           <div class="row mb-3">
@@ -59,7 +59,7 @@
                   <label for="nama" class="form-label">Nama</label>
               </div>
               <div class="col-lg-9">
-                  <input type="text" class="form-control" name="ttenama" id="ttenama" placeholder="Enter Nama">
+                  <input type="text" class="form-control" name="ttenama" id="ttenama" placeholder="Enter Nama" value="<?= $user->tte_nama ?>">
               </div>
           </div>
           <div class="row mb-3">
@@ -67,7 +67,7 @@
                   <label for="jabatan" class="form-label">Jabatan</label>
               </div>
               <div class="col-lg-9">
-                  <input type="text" class="form-control" name="ttejabatan" id="ttejabatan" placeholder="Enter Jabatan">
+                  <input type="text" class="form-control" name="ttejabatan" id="ttejabatan" placeholder="Enter Jabatan" value="<?= $user->tte_jabatan ?>">
               </div>
           </div>
           <div class="row mb-3">

@@ -7,17 +7,20 @@ class Pengaturan extends BaseController
 {
     public function index(): string
     {
-        return view('pengaturan');
+        $model = new UserModel();
+        $data['user'] = $model->where('kode_satker', session('lokasi'))->first();
+        return view('pengaturan', $data);
     }
 
     function save() {
         // Logic to save settings goes here
         $model = new UserModel();
         $data = [
-            'tte_nip' => $this->request->getPost('nip'),
-            'tte_nik' => $this->request->getPost('nik'),
-            'tte_nama' => $this->request->getPost('nama'),
-            'tte_jabatan' => $this->request->getPost('jabatan'),
+            'is_sdm' => $this->request->getPost('isplt'),
+            'tte_nip' => $this->request->getPost('ttenip'),
+            'tte_nik' => $this->request->getPost('ttenik'),
+            'tte_nama' => $this->request->getPost('ttenama'),
+            'tte_jabatan' => $this->request->getPost('ttejabatan'),
         ];
         $model->where('kode_satker', session('lokasi'))->set($data)->update();
         redirect()->back()->with('message', 'Pengaturan berhasil disimpan');
