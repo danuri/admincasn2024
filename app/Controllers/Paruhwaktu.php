@@ -472,4 +472,19 @@ class Paruhwaktu extends BaseController
             return array('status' => 'success', 'response' => $response); 
         }
     }
+
+    function settingsave() {
+        $model = new UserModel;
+        $user_id = session('user_id');
+
+        $model->update($user_id, [
+            'is_sdm' => $this->request->getVar('isplt'),
+            'tte_nik' => $this->request->getVar('ttenik'),
+            'tte_nip' => $this->request->getVar('ttenip'),
+            'tte_nama' => $this->request->getVar('ttenama'),
+            'tte_jabatan' => $this->request->getVar('ttejabatan'),
+        ]);
+
+        return redirect()->back()->with('message', 'Pengaturan Tanda Tangan Berhasil Disimpan');
+    }
 }

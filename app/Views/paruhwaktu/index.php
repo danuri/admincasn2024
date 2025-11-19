@@ -29,8 +29,8 @@
                         <th>Penempatan</th>
                         <th>Jabatan</th>
                         <th>Pendidikan</th>
-                        <th>DRH</th>
-                        <th>Usul NI</th>
+                        <th>SPRP</th>
+                        <th>Kontrak</th>
                         <th>Aksi</th>
                       </tr>
                     </thead>
@@ -43,36 +43,21 @@
                         <td><?= $row->jabatan_baru?></td>
                         <td><?= $row->pendidikan_baru?></td>
                         <td>
-                          <?php
-                            if($row->status_mengundurkan_diri == 'YA'){
-                              echo 'Mengundurkan Diri';
-                            }else{
-                              echo $row->status_drh;
-                            }
-                          ?>
-                        </td>
-                        <td>
-                          <?= $row->usul_status?>
-                          <?php if($row->usul_alasan_tolak){ ?>
-                            <br>
-                            <small>(<?= $row->usul_alasan_tolak ?>)</small>
-                          <?php } ?>
-                        </td>
-                        <td>
-                          <!-- <div class="dropdown card-header-dropdown"> -->
-                            <?php if($row->status_drh == 'SUDAH'){ ?>
-                                <!-- <a class="text-reset dropdown-btn" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="text-muted fs-16"><i class="mdi mdi-dots-vertical align-middle"></i></span>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end"> -->
-                                    <?php if($row->doc_sprp != null){ ?>
-                                    <a class="text-success" href="<?= $row->doc_sprp ?>" target="_blank">Download SPRP</a>
-                                    <?php }else{ ?>
-                                    <a class="text-primary" href="javascript:;" onclick="previewData('<?= $row->nik ?>')">Preview SPRP</a>
-                                    <?php } ?>
-                                <!-- </div> -->
+                          <?php if($row->doc_sprp != null){ ?>
+                            <a class="text-success" href="<?= $row->doc_sprp ?>" target="_blank">Download SPRP</a>
+                            <?php }else{ ?>
+                            <a class="text-primary" href="javascript:;" onclick="previewData('<?= $row->nik ?>')">Preview SPRP</a>
                             <?php } ?>
-                            <!-- </div>  -->
+                        </td>
+                        <td>
+                          <?php if($row->kontrak_file != null){ ?>
+                            <a class="text-success" href="<?= $row->kontrak_file ?>" target="_blank">Download Kontrak</a>
+                            <?php }else{ ?>
+                            <a class="text-primary" href="javascript:;" onclick="previewKontrak('<?= $row->nik ?>')">Preview SPRP</a>
+                            <?php } ?>
+                        </td>
+                        <td>
+                          
                         </td>
                       </tr>
                       <?php } ?>
@@ -137,11 +122,99 @@
     </div>
   </div>
 </div>
+
+<!-- Modal Setting TTE -->
+<div class="modal fade" id="modalSettingTTE" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Setting Penandatangan</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="<?= site_url('paruhwaktu/settingsave') ?>" method="POST" id="settingform">
+          <div class="row mb-3">
+              <div class="col-lg-3">
+                  <label for="nik" class="form-label">PLT</label>
+              </div>
+              <div class="col-lg-9">
+                <select name="isplt" id="isplt">
+                  <option value="0">Tidak</option>
+                  <option value="1">Ya</option>
+                </select>
+                <p>Jika PLT, tidak perlu mengisi form di bawah.</p>
+              </div>
+          </div>
+          <div class="row mb-3">
+              <div class="col-lg-3">
+                  <label for="nik" class="form-label">NIK</label>
+              </div>
+              <div class="col-lg-9">
+                  <input type="text" class="form-control" name="ttenik" id="ttenik" placeholder="Enter NIK">
+              </div>
+          </div>
+          <div class="row mb-3">
+              <div class="col-lg-3">
+                  <label for="nip" class="form-label">NIP</label>
+              </div>
+              <div class="col-lg-9">
+                  <input type="url" class="form-control" name="ttenip" id="ttenip" placeholder="Enter NIP">
+              </div>
+          </div>
+          <div class="row mb-3">
+              <div class="col-lg-3">
+                  <label for="nama" class="form-label">Nama</label>
+              </div>
+              <div class="col-lg-9">
+                  <input type="text" class="form-control" name="ttenama" id="ttenama" placeholder="Enter Nama">
+              </div>
+          </div>
+          <div class="row mb-3">
+              <div class="col-lg-3">
+                  <label for="jabatan" class="form-label">Jabatan</label>
+              </div>
+              <div class="col-lg-9">
+                  <input type="text" class="form-control" name="ttejabatan" id="ttejabatan" placeholder="Enter Jabatan">
+              </div>
+          </div>
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+        <button type="button" class="btn btn-primary" id="btnConfirmSetting" onclick="$('#settingform').submit()">Simpan</button>
+      </div>
+    </div>
+  </div>
+</div>
 <?= $this->endSection() ?>
 <?= $this->section('script') ?>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
   function previewData(nik){
+    $.ajax({
+      type: "POST",
+      url: "<?= base_url('paruhwaktu/getpeserta') ?>",
+      data: {nik:nik},
+      dataType: "json",
+      success: function (response) {
+        if(response.no_peserta != null){
+          $('#previewNamaPeserta').text(response.nama_peserta);
+          $('#previewNik').val(response.nik);
+          $('#previewTempatLahir').text(response.tempat_lahir);
+          $('#previewTanggalLahir').text(response.tgl_lahir);
+          $('#previewJabatan').text(response.jabatan_baru);
+          $('#previewPendidikan').val(response.pendidikan_baru);
+          $('#previewPenempatan').text(response.lokasi_baru);
+          
+          $('#modalPreview').modal('show');
+        }else{
+          alert('Data tidak ditemukan.');
+        }
+      }
+    });
+  }
+
+  function previewKontrak(nik){
     $.ajax({
       type: "POST",
       url: "<?= base_url('paruhwaktu/getpeserta') ?>",

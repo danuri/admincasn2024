@@ -19,6 +19,54 @@
 
                 </div>
             </div>
+            <div class="col-12">
+                <form action="<?= site_url('paruhwaktu/settingsave') ?>" method="POST" id="settingform">
+          <div class="row mb-3">
+              <div class="col-lg-3">
+                  <label for="nik" class="form-label">PLT</label>
+              </div>
+              <div class="col-lg-9">
+                <select name="isplt" id="isplt">
+                  <option value="0">Tidak</option>
+                  <option value="1">Ya</option>
+                </select>
+                <p>Jika PLT, tidak perlu mengisi form di bawah.</p>
+              </div>
+          </div>
+          <div class="row mb-3">
+              <div class="col-lg-3">
+                  <label for="nik" class="form-label">NIK</label>
+              </div>
+              <div class="col-lg-9">
+                  <input type="text" class="form-control" name="ttenik" id="ttenik" placeholder="Enter NIK">
+              </div>
+          </div>
+          <div class="row mb-3">
+              <div class="col-lg-3">
+                  <label for="nip" class="form-label">NIP</label>
+              </div>
+              <div class="col-lg-9">
+                  <input type="url" class="form-control" name="ttenip" id="ttenip" placeholder="Enter NIP">
+              </div>
+          </div>
+          <div class="row mb-3">
+              <div class="col-lg-3">
+                  <label for="nama" class="form-label">Nama</label>
+              </div>
+              <div class="col-lg-9">
+                  <input type="text" class="form-control" name="ttenama" id="ttenama" placeholder="Enter Nama">
+              </div>
+          </div>
+          <div class="row mb-3">
+              <div class="col-lg-3">
+                  <label for="jabatan" class="form-label">Jabatan</label>
+              </div>
+              <div class="col-lg-9">
+                  <input type="text" class="form-control" name="ttejabatan" id="ttejabatan" placeholder="Enter Jabatan">
+              </div>
+          </div>
+      </form>
+            </div>
         </div>
 
         

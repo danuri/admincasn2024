@@ -12,8 +12,8 @@ class UserModel extends Model
     protected $useAutoIncrement = true;
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
-    protected $protectFields    = true;
-    protected $allowedFields    = ['nip','nama','kode_satker','nama_satker','kode_lokasi','is_admin','created_by','pppk_surat','pppk_sptjm','pppk_submit','paruhwaktu_sptjm'];
+    protected $protectFields    = false;
+    protected $allowedFields    = [];
 
     // Dates
     protected $useTimestamps = true;
