@@ -53,7 +53,7 @@
                           <?php if($row->kontrak_file != null){ ?>
                             <a class="text-success" href="<?= $row->kontrak_file ?>" target="_blank">Download Kontrak</a>
                             <?php }else{ ?>
-                            <a class="text-primary" href="javascript:;" onclick="previewKontrak('<?= $row->nik ?>')">Preview Kontrak</a>
+                            <!-- <a class="text-primary" href="javascript:;" onclick="previewKontrak('<?= $row->nik ?>')">Preview Kontrak</a> -->
                             <?php } ?>
                         </td>
                         <td>
