@@ -496,7 +496,7 @@ class Paruhwaktu extends BaseController
       $templateProcessor->setValue('namaJabatanTtd', $user->tte_nama);
       $templateProcessor->setValue('JabatanTtd', $user->tte_jabatan);
 
-      $templateProcessor->setValue('namaYbs', $ybs->nama);
+      $templateProcessor->setValue('namaYbs', $ybs->nama_peserta);
       $templateProcessor->setValue('nipYbs', $ybs->usul_nip);
     $templateProcessor->setValue('tempatLahirYbs', $ybs->tempat_lahir);
     $templateProcessor->setValue('tanggalLahirYbs', local_date($ybs->tgl_lahir));
