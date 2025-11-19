@@ -31,7 +31,7 @@ class Pengaturan extends BaseController
             $newName = 'kop_surat_'.session('lokasi').'.'.$file->getExtension();
             $file->move('./downloads/kop_surat/', $newName, true);
 
-            $data['tte_kop_surat'] = $newName;
+            $data['kop_surat'] = $newName;
         }
 
         $model->where('kode_satker', session('lokasi'))->set($data)->update();
