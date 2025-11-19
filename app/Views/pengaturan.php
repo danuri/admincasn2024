@@ -20,13 +20,18 @@
                 </div>
             </div>
             <div class="col-12">
-                <form action="<?= site_url('paruhwaktu/settingsave') ?>" method="POST" id="settingform">
+                <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Input Peserta</h5>
+                </div>
+                <div class="card-body">
+                <form action="<?= site_url('pengaturan/save') ?>" method="POST" id="settingform">
           <div class="row mb-3">
               <div class="col-lg-3">
                   <label for="nik" class="form-label">PLT</label>
               </div>
               <div class="col-lg-9">
-                <select name="isplt" id="isplt">
+                <select name="isplt" id="isplt" class="form-select">
                   <option value="0">Tidak</option>
                   <option value="1">Ya</option>
                 </select>
@@ -66,6 +71,7 @@
               </div>
           </div>
       </form>
+            </div>
             </div>
         </div>
 
