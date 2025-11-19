@@ -1,5 +1,10 @@
 <?= $this->extend('template') ?>
 
+<?= $this->section('style') ?>
+<link rel="stylesheet" href="<?= base_url()?>assets/libs/filepond/filepond.min.css" type="text/css" />
+<link rel="stylesheet" href="<?= base_url()?>assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.css">
+<?= $this->endSection() ?>
+
 <?= $this->section('content') ?>
 <div class="page-content">
     <div class="container-fluid">
@@ -72,6 +77,14 @@
           </div>
           <div class="row mb-3">
               <div class="col-lg-3">
+                  <label for="jabatan" class="form-label">Kop Surat</label>
+              </div>
+              <div class="col-lg-9">
+                  <input type="file" class="filepond filepond-input" name="filepond" data-allow-reorder="true" data-max-file-size="3MB">
+              </div>
+          </div>
+          <div class="row mb-3">
+              <div class="col-lg-3">
                   <label for="jabatan" class="form-label"></label>
               </div>
               <div class="col-lg-9">
@@ -82,10 +95,33 @@
             </div>
             </div>
         </div>
-
-        
-
     </div>
     <!-- container-fluid -->
 </div>
+<?= $this->endSection() ?>
+<?= $this->section('script') ?>
+<script src="<?= base_url()?>assets/libs/filepond/filepond.min.js"></script>
+<script src="<?= base_url()?>assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.js"></script>
+
+<script>
+    FilePond.registerPlugin(
+        FilePondPluginImagePreview,
+        FilePondPluginImageExifOrientation,
+        FilePondPluginFileValidateSize,
+        FilePondPluginImageEdit
+    );
+
+    FilePond.create(
+        document.querySelector(".filepond-input"),
+        {
+            labelIdle: `Drag & Drop your picture or <span class="filepond--label-action">Browse</span>`,
+            imageCropAspectRatio: '1:1',
+            stylePanelLayout: 'compact circle',
+            styleLoadIndicatorPosition: 'center bottom',
+            styleProgressIndicatorPosition: 'right bottom',
+            styleButtonRemoveItemPosition: 'left bottom',
+            styleButtonProcessItemPosition: 'right bottom',
+        }
+    );
+</script>
 <?= $this->endSection() ?>

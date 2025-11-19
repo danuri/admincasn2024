@@ -23,7 +23,7 @@ class Pengaturan extends BaseController
             'tte_jabatan' => $this->request->getPost('ttejabatan'),
         ];
         $model->where('kode_satker', session('lokasi'))->set($data)->update();
-        redirect()->back()->with('message', 'Pengaturan berhasil disimpan');
+        return redirect()->back()->with('message', 'Pengaturan berhasil disimpan');
     }
 
 }
