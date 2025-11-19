@@ -13,6 +13,8 @@ class Pengaturan extends BaseController
     }
 
     function save() {
+        
+
         // Logic to save settings goes here
         $model = new UserModel();
         $data = [
@@ -22,6 +24,16 @@ class Pengaturan extends BaseController
             'tte_nama' => $this->request->getPost('ttenama'),
             'tte_jabatan' => $this->request->getPost('ttejabatan'),
         ];
+
+        // Upload kop surat
+        $file = $this->request->getFile('filepond');
+        if ($file && $file->isValid() && !$file->hasMoved()) {
+            $newName = 'kop_surat_'.session('lokasi').'.'.$file->getExtension();
+            $file->move('./kop_surat/', $newName, true);
+
+            $data['tte_kop_surat'] = $newName;
+        }
+
         $model->where('kode_satker', session('lokasi'))->set($data)->update();
         return redirect()->back()->with('message', 'Pengaturan berhasil disimpan');
     }
