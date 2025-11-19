@@ -81,6 +81,9 @@
               </div>
               <div class="col-lg-9">
                   <input type="file" class="filepond filepond-input" name="filepond">
+                  <?php if($user->kop_surat){ ?>
+                    <img src="<?= base_url('downloads/kop_surat/'.$user->kop_surat) ?>" alt="">
+                  <?php } ?>
               </div>
           </div>
           <div class="row mb-3">
