@@ -105,10 +105,7 @@
 
 <script>
     FilePond.registerPlugin(
-        FilePondPluginImagePreview,
-        FilePondPluginImageExifOrientation,
-        FilePondPluginFileValidateSize,
-        FilePondPluginImageEdit
+        FilePondPluginImagePreview
     );
 
     FilePond.create(
