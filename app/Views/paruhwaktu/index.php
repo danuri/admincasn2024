@@ -217,6 +217,8 @@
       dataType: "json",
       success: function (response) {
         if(response.no_peserta != null){
+          $('#kontrakNip').text(response.usul_nip);
+          $('#kontrakPendidikan').text(response.pendidikan_baru);
           $('#kontrakNik').text(response.nik);
           $('#kontrakNo').text(response.kontrak_no);
           $('#kontrakNama').text(response.nama_peserta);
