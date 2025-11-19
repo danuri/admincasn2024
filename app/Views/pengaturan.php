@@ -111,13 +111,7 @@
     FilePond.create(
         document.querySelector(".filepond-input"),
         {
-            labelIdle: `Drag & Drop your picture or <span class="filepond--label-action">Browse</span>`,
-            imageCropAspectRatio: '1:1',
-            stylePanelLayout: 'compact circle',
-            styleLoadIndicatorPosition: 'center bottom',
-            styleProgressIndicatorPosition: 'right bottom',
-            styleButtonRemoveItemPosition: 'left bottom',
-            styleButtonProcessItemPosition: 'right bottom',
+            labelIdle: `Drag & Drop your picture or <span class="filepond--label-action">Browse</span>`
         }
     );
 </script>
