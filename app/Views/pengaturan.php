@@ -51,7 +51,7 @@
                   <label for="nip" class="form-label">NIP</label>
               </div>
               <div class="col-lg-9">
-                  <input type="url" class="form-control" name="ttenip" id="ttenip" placeholder="Enter NIP" value="<?= $user->tte_nip ?>">
+                  <input type="text" class="form-control" name="ttenip" id="ttenip" placeholder="Enter NIP" value="<?= $user->tte_nip ?>">
               </div>
           </div>
           <div class="row mb-3">
