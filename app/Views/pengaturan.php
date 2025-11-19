@@ -104,15 +104,15 @@
 <script src="<?= base_url()?>assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.js"></script>
 
 <script>
-    // FilePond.registerPlugin(
-    //     FilePondPluginImagePreview
-    // );
+    FilePond.registerPlugin(
+        FilePondPluginImagePreview
+    );
 
-    // FilePond.create(
-    //     document.querySelector(".filepond-input"),
-    //     {
-    //         labelIdle: `Paste, Drag & Drop your picture or <span class="filepond--label-action">Browse</span>`
-    //     }
-    // );
+    FilePond.create(
+        document.querySelector(".filepond-input"),
+        {
+            labelIdle: `Paste, Drag & Drop your picture or <span class="filepond--label-action">Browse</span>`
+        }
+    );
 </script>
 <?= $this->endSection() ?>
