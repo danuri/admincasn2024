@@ -486,7 +486,7 @@ class Paruhwaktu extends BaseController
       $model = new UserModel();
       $user = $model->where('kode_satker', session('lokasi'))->first();
 
-      $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('downloads/template-kontrak-pw.docx');
+      $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('assets/template-kontrak-pw.docx');
 
       $predefinedMultilevel = array('listType' => \PhpOffice\PhpWord\Style\ListItem::TYPE_BULLET_EMPTY);
 
