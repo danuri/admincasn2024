@@ -77,6 +77,15 @@
           </div>
           <div class="row mb-3">
               <div class="col-lg-3">
+                  <label for="jabatan" class="form-label">Passphrase</label>
+              </div>
+              <div class="col-lg-9">
+                  <input type="password" class="form-control" name="tte_pass" id="tte_pass" placeholder="Enter Passphrase" value="<?= $user->tte_pass ?>">
+                  <p>Passphrase digunakan untuk mengamankan tanda tangan elektronik Anda secara otomatis. Hapus Passphrase jika sudah selesai menggunakan.</p>
+              </div>
+          </div>
+          <div class="row mb-3">
+              <div class="col-lg-3">
                   <label for="jabatan" class="form-label">Kop Surat</label>
               </div>
               <div class="col-lg-9">
@@ -107,15 +116,15 @@
 <script src="<?= base_url()?>assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.js"></script>
 
 <script>
-    FilePond.registerPlugin(
-        FilePondPluginImagePreview
-    );
+    // FilePond.registerPlugin(
+    //     FilePondPluginImagePreview
+    // );
 
-    FilePond.create(
-        document.querySelector(".filepond-input"),
-        {
-            labelIdle: `Paste, Drag & Drop your picture or <span class="filepond--label-action">Browse</span>`
-        }
-    );
+    // FilePond.create(
+    //     document.querySelector(".filepond-input"),
+    //     {
+    //         labelIdle: `Paste, Drag & Drop your picture or <span class="filepond--label-action">Browse</span>`
+    //     }
+    // );
 </script>
 <?= $this->endSection() ?>

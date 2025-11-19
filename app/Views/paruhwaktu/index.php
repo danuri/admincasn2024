@@ -53,7 +53,7 @@
                           <?php if($row->kontrak_file != null){ ?>
                             <a class="text-success" href="<?= $row->kontrak_file ?>" target="_blank">Download Kontrak</a>
                             <?php }else{ ?>
-                            <a class="text-primary" href="javascript:;" onclick="previewKontrak('<?= $row->nik ?>')">Preview SPRP</a>
+                            <a class="text-primary" href="javascript:;" onclick="previewKontrak('<?= $row->nik ?>')">Preview Kontrak</a>
                             <?php } ?>
                         </td>
                         <td>
@@ -123,69 +123,64 @@
   </div>
 </div>
 
-<!-- Modal Setting TTE -->
-<div class="modal fade" id="modalSettingTTE" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal Preview Data -->
+<div class="modal fade" id="kontrakPreview" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Setting Penandatangan</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Preview Data Peserta untuk SPRP</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="<?= site_url('paruhwaktu/settingsave') ?>" method="POST" id="settingform">
-          <div class="row mb-3">
-              <div class="col-lg-3">
-                  <label for="nik" class="form-label">PLT</label>
-              </div>
-              <div class="col-lg-9">
-                <select name="isplt" id="isplt">
-                  <option value="0">Tidak</option>
-                  <option value="1">Ya</option>
-                </select>
-                <p>Jika PLT, tidak perlu mengisi form di bawah.</p>
-              </div>
-          </div>
-          <div class="row mb-3">
-              <div class="col-lg-3">
-                  <label for="nik" class="form-label">NIK</label>
-              </div>
-              <div class="col-lg-9">
-                  <input type="text" class="form-control" name="ttenik" id="ttenik" placeholder="Enter NIK">
-              </div>
-          </div>
-          <div class="row mb-3">
-              <div class="col-lg-3">
-                  <label for="nip" class="form-label">NIP</label>
-              </div>
-              <div class="col-lg-9">
-                  <input type="url" class="form-control" name="ttenip" id="ttenip" placeholder="Enter NIP">
-              </div>
-          </div>
-          <div class="row mb-3">
-              <div class="col-lg-3">
-                  <label for="nama" class="form-label">Nama</label>
-              </div>
-              <div class="col-lg-9">
-                  <input type="text" class="form-control" name="ttenama" id="ttenama" placeholder="Enter Nama">
-              </div>
-          </div>
-          <div class="row mb-3">
-              <div class="col-lg-3">
-                  <label for="jabatan" class="form-label">Jabatan</label>
-              </div>
-              <div class="col-lg-9">
-                  <input type="text" class="form-control" name="ttejabatan" id="ttejabatan" placeholder="Enter Jabatan">
-              </div>
-          </div>
-      </form>
+        <p>Pastikan Data sudah sesuai</p>
+        <input type="hidden" name="nik" id="kontrakNik">
+        <table class="table table-bordered">
+          <tr>
+            <th>No Kontrak</th>
+            <td id="kontrakNo"></td>
+          </tr>
+          <tr>
+            <th>NIP</th>
+            <td id="kontrakNip"></td>
+          </tr>
+          <tr>
+            <th>Nama</th>
+            <td id="kontrakNama"></td>
+          </tr>
+          <tr>
+            <th>Tempat Lahir</th>
+            <td id="kontrakTempatLahir"></td>
+          </tr>
+          <tr>
+            <th>Tanggal Lahir</th>
+            <td id="kontrakTanggalLahir"></td>
+          </tr>
+          <tr>
+            <th>Jabatan</th>
+            <td id="kontrakJabatan"></td>
+          </tr>
+          <tr>
+            <th>Pendidikan</th>
+            <td id="kontrakPendidikan"></td>
+          </tr>
+          <tr>
+            <th>Penempatan</th>
+            <td id="kontrakPenempatan"></td>
+          </tr>
+          <tr>
+            <th>Upah</th>
+            <td id="kontrakUpah"></td>
+          </tr>
+        </table>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-        <button type="button" class="btn btn-primary" id="btnConfirmSetting" onclick="$('#settingform').submit()">Simpan</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="btnConfirmPreview">Simpan dan Kirim TTE</button>
       </div>
     </div>
   </div>
 </div>
+
 <?= $this->endSection() ?>
 <?= $this->section('script') ?>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -222,15 +217,17 @@
       dataType: "json",
       success: function (response) {
         if(response.no_peserta != null){
-          $('#previewNamaPeserta').text(response.nama_peserta);
-          $('#previewNik').val(response.nik);
-          $('#previewTempatLahir').text(response.tempat_lahir);
-          $('#previewTanggalLahir').text(response.tgl_lahir);
-          $('#previewJabatan').text(response.jabatan_baru);
-          $('#previewPendidikan').val(response.pendidikan_baru);
-          $('#previewPenempatan').text(response.lokasi_baru);
+          $('#kontrakNo').text(response.kontrak_no);
+          $('#kontrakNama').text(response.nama_peserta);
+          $('#kontrakNip').val(response.usul_nip);
+          $('#kontrakTempatLahir').text(response.tempat_lahir);
+          $('#kontrakTanggalLahir').text(response.tgl_lahir);
+          $('#kontrakJabatan').text(response.jabatan_baru);
+          $('#kontrakPendidikan').val(response.pendidikan_baru);
+          $('#kontrakPenempatan').text(response.lokasi_baru);
+          $('#kontrakUpah').text(response.kontrak_upah);
           
-          $('#modalPreview').modal('show');
+          $('#kontrakPreview').modal('show');
         }else{
           alert('Data tidak ditemukan.');
         }
