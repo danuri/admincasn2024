@@ -219,7 +219,7 @@
         if(response.no_peserta != null){
           $('#kontrakNip').text(response.usul_nip);
           $('#kontrakPendidikan').text(response.pendidikan_baru);
-          $('#kontrakNik').text(response.nik);
+          $('#kontrakNik').val(response.nik);
           $('#kontrakNo').text(response.kontrak_no);
           $('#kontrakNama').text(response.nama_peserta);
           $('#kontrakNip').val(response.usul_nip);
