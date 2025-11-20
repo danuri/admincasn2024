@@ -512,7 +512,7 @@ class Paruhwaktu extends BaseController
     //   $templateProcessor->setValue('surat_tanggal', local_date($usul->rekomendasi_tanggal));
 
       $filename = 'draft_kontrak_'.$id.'.docx';
-      $templateProcessor->saveAs('downloads/draft/'.$filename);
+      $templateProcessor->saveAs('download/draft/'.$filename);
 
       return redirect()->back()->with('message', 'Draft telah diupdate.');
     }
