@@ -493,11 +493,11 @@ class Paruhwaktu extends BaseController
       $templateProcessor->setValue('companyLogo', $user->kop_surat);
       $templateProcessor->setValue('noKontrak', $ybs->kontrak_no);
 
-      $templateProcessor->setValue('namaJabatanTtd', $user->tte_nama);
-      $templateProcessor->setValue('JabatanTtd', $user->tte_jabatan);
+    $templateProcessor->setValue('namaJabatanTtd', $user->tte_nama);
+    $templateProcessor->setValue('JabatanTtd', $user->tte_jabatan);
 
-      $templateProcessor->setValue('namaYbs', $ybs->nama_peserta);
-      $templateProcessor->setValue('nipYbs', $ybs->usul_nip);
+    $templateProcessor->setValue('namaYbs', $ybs->nama_peserta);
+    $templateProcessor->setValue('nipYbs', $ybs->usul_nip);
     $templateProcessor->setValue('tempatLahirYbs', $ybs->tempat_lahir);
     $templateProcessor->setValue('tanggalLahirYbs', local_date($ybs->tgl_lahir));
     $templateProcessor->setValue('pendidikanYbs', $ybs->pendidikan_baru);
@@ -512,7 +512,7 @@ class Paruhwaktu extends BaseController
     //   $templateProcessor->setValue('surat_tanggal', local_date($usul->rekomendasi_tanggal));
 
       $filename = 'draft_kontrak_'.$id.'.docx';
-      $templateProcessor->saveAs('download/draft/'.$filename);
+      $templateProcessor->saveAs('draft/'.$filename);
 
       return redirect()->back()->with('message', 'Draft telah diupdate.');
     }
