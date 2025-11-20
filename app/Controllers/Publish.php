@@ -147,7 +147,7 @@ class Publish extends BaseController
           $model->set('usul_no_pertek', $nopertek);
           $model->set('usul_nip', $nip);
           $model->set('usul_pendidikan', $row->usulan_data->data->pendidikan_pertama_nama);
-          $model->set('usul_unor', $row->usulan_data->data->unor_nama);
+          @$model->set('usul_unor', $row->usulan_data->data->unor_nama);
           $model->set('usul_pendidikan_tahun', $row->usulan_data->data->tahun_lulus);
           $model->set('usul_jabatan', $row->usulan_data->data->jabatan_fungsional_umum_nama);
           $model->where('no_peserta', $nopeserta);
