@@ -220,7 +220,7 @@
           $('#kontrakNip').text(response.usul_nip);
           $('#kontrakPendidikan').text(response.pendidikan_baru);
           $('#kontrakNik').val(response.nik);
-          $('#kontrakNo').text(response.kontrak_no);
+          $('#kontrakNo').val(response.kontrak_no);
           $('#kontrakNama').text(response.nama_peserta);
           $('#kontrakNip').val(response.usul_nip);
           $('#kontrakTempatLahir').text(response.tempat_lahir);
@@ -228,7 +228,7 @@
           $('#kontrakJabatan').text(response.jabatan_baru);
           $('#kontrakPendidikan').val(response.pendidikan_baru);
           $('#kontrakPenempatan').text(response.lokasi_baru);
-          $('#kontrakUpah').text(response.kontrak_upah);
+          $('#kontrakUpah').val(response.kontrak_upah);
           
           $('#kontrakPreview').modal('show');
         }else{
