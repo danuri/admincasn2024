@@ -501,10 +501,10 @@ class Paruhwaktu extends BaseController
     $templateProcessor->setValue('jabatanYbs', $ybs->jabatan_baru);
     $templateProcessor->setValue('tempatLahirYbs', $ybs->tempat_lahir);
     $templateProcessor->setValue('tanggalLahirYbs', local_date($ybs->tgl_lahir));
-    $templateProcessor->setValue('pendidikanYbs', $ybs->pendidikan_baru);
-    $templateProcessor->setValue('tahunPendidikanYbs', $ybs->jabatan_baru);
+    $templateProcessor->setValue('pendidikanYbs', $ybs->usul_pendidikan);
+    $templateProcessor->setValue('tahunPendidikanYbs', $ybs->usul_pendidikan_tahun);
     $templateProcessor->setValue('alamatYbs', $ybs->alamat_domisili);
-    $templateProcessor->setValue('unitKerjaYbs', $ybs->lokasi_baru);
+    $templateProcessor->setValue('unitKerjaYbs', $ybs->usul_unor);
     
     $templateProcessor->setValue('gajiYbs', rupiah($ybs->kontrak_upah));
     $templateProcessor->setValue('terbilangYbs', penyebut($ybs->kontrak_upah));

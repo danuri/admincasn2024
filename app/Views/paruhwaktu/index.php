@@ -225,8 +225,8 @@
           $('#kontrakNip').val(response.usul_nip);
           $('#kontrakTempatLahir').text(response.tempat_lahir);
           $('#kontrakTanggalLahir').text(response.tgl_lahir);
-          $('#kontrakJabatan').text(response.jabatan_baru);
-          $('#kontrakPendidikan').val(response.pendidikan_baru);
+          $('#kontrakJabatan').text(response.usul_jabatan);
+          $('#kontrakPendidikan').val(response.usul_pendidikan);
           $('#kontrakPenempatan').text(response.lokasi_baru);
           $('#kontrakUpah').val(response.kontrak_upah);
           
