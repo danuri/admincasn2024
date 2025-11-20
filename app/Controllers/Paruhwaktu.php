@@ -490,7 +490,7 @@ class Paruhwaktu extends BaseController
 
       $predefinedMultilevel = array('listType' => \PhpOffice\PhpWord\Style\ListItem::TYPE_BULLET_EMPTY);
 
-      $templateProcessor->setValue('companyLogo', $user->kop_surat);
+    //   $templateProcessor->setValue('companyLogo', $user->kop_surat);
       $templateProcessor->setValue('noKontrak', $ybs->kontrak_no);
 
     $templateProcessor->setValue('namaJabatanTtd', $user->tte_nama);
