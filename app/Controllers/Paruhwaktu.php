@@ -538,8 +538,10 @@ class Paruhwaktu extends BaseController
         return $this->response->setJSON(['status'=>'error','message'=>'Gagal menyimpan PDF. Hubungi Administrator.']);
     }
 
+    $this->sendttekontrak($pdfPath, $ybs);
+
     //   return redirect()->back()->with('message', 'Draft telah diupdate.');
-        return $this->response->setJSON(['status'=>'success','message'=>'Dokumen telah diTTE.','file'=>'draft/'.$filename]);
+        // return $this->response->setJSON(['status'=>'success','message'=>'Dokumen telah diTTE.','file'=>'draft/'.$filename]);
   }
 
     function convertDoctoPDF($id)
@@ -581,4 +583,40 @@ class Paruhwaktu extends BaseController
         return ['status' => false, 'message' => 'Conversion failed: ' . $error, 'response' => $response];
     }
   }
+
+  private function sendttekontrak($filepath, $peserta) {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, site_url('paruhwaktu/tte/signstore'));
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: multipart/form-data'));
+        
+        // Prepare file and parameters
+        $umodel = new UserModel;
+        $user = $umodel->where(['kode_satker'=>session('lokasi')])->first();
+        $postFields = [
+            'nik' => $user->tte_nik,
+            'title' => 'Kontrak Paruh Waktu a.n '.$peserta->nik,
+            'jenis' => 'Kontrak',
+            'passphrase' => setdecrypt($user->tte_pass),
+            'id_layanan' => '0',
+            'lampiran' => new CURLFile($filepath, 'application/pdf', 'sprp.pdf'),
+            'store_from' => 'admincasn'
+        ];
+        
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $postFields);
+        
+        // Execute cURL
+        $response = curl_exec($ch);
+        
+        // Check for errors
+        if (curl_errno($ch)) {
+            curl_close($ch);
+            $response = curl_error($ch);
+            return array('status' => 'error', 'response' => $response);
+        } else {
+            curl_close($ch);
+            return array('status' => 'success', 'response' => $response); 
+        }
+    }
 }
