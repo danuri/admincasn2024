@@ -9,7 +9,7 @@
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                     <h4 class="mb-sm-0">Peserta PPPK Paruh Waktu</h4>
                     <div class="page-title-right">
-                      <!-- <a href="<?= base_url('paruhwaktu/export') ?>" class="btn btn-primary">Download</a> -->
+                      <a href="<?= base_url('pengaturan') ?>" class="btn btn-primary">Pengaturan TTE</a>
                     </div>
                 </div>
             </div>
@@ -51,10 +51,9 @@
                         </td>
                         <td>
                           <?php if($row->kontrak_file != null){ ?>
-                            <a class="text-success" href="<?= $row->kontrak_file ?>" target="_blank">Download Kontrak</a>
-                            <?php }else{ ?>
-                            <!-- <a class="text-primary" href="javascript:;" onclick="previewKontrak('<?= $row->nik ?>')">Preview Kontrak</a> -->
+                            <a class="text-success" href="<?= $row->kontrak_file ?>" target="_blank">Download Kontrak</a><br>
                             <?php } ?>
+                            <a class="text-primary" href="javascript:;" onclick="previewKontrak('<?= $row->nik ?>')">Buat Kontrak</a>
                         </td>
                         <td>
                           
@@ -253,12 +252,9 @@
       data: {nik:nik, pendidikan:pendidikan},
       dataType: "json",
       success: function (response) {
-        if(response.status == 'success'){
+        if(response.file_url){
           alert('Data berhasil dikirim ke TTE');
-          // close modal
-          // reload page
           location.reload();
-          // $('#modalPreview').modal('hide');
         }else{
           alert('Data gagal dikirim ke TTE');
         }

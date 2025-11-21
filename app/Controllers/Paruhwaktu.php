@@ -485,6 +485,10 @@ class Paruhwaktu extends BaseController
 
       $model = new UserModel();
       $user = $model->where('kode_satker', session('lokasi'))->first();
+      
+      if($user->is_sdm == 1){
+          $user = $model->where('kode_satker', '30130000')->first();
+      }
 
       $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('assets/template-kontrak-pw.docx');
 
@@ -598,6 +602,10 @@ class Paruhwaktu extends BaseController
         // Prepare file and parameters
         $umodel = new UserModel;
         $user = $umodel->where(['kode_satker'=>session('lokasi')])->first();
+        if($user->is_sdm == 1){
+          $user = $umodel->where('kode_satker', '30130000')->first();
+        }
+
         $postFields = [
             'nik' => $user->tte_nik,
             'title' => 'Kontrak Paruh Waktu a.n '.$peserta->nik,
