@@ -600,7 +600,7 @@ class Paruhwaktu extends BaseController
             'jenis' => 'Kontrak',
             'passphrase' => setdecrypt($user->tte_pass),
             'id_layanan' => '0',
-            'lampiran' => new CURLFile($filepath, 'application/pdf', 'sprp.pdf'),
+            'lampiran' => new CURLFile($filepath, 'application/pdf', 'kontrak.pdf'),
             'store_from' => 'admincasn'
         ];
         
@@ -611,11 +611,11 @@ class Paruhwaktu extends BaseController
         
         // Check for errors
         if (curl_errno($ch)) {
-            curl_close($ch);
+            // curl_close($ch);
             $response = curl_error($ch);
             return array('status' => 'error', 'response' => $response);
         } else {
-            curl_close($ch);
+            // curl_close($ch);
             return array('status' => 'success', 'response' => $response); 
         }
     }
