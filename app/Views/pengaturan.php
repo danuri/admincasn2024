@@ -1,8 +1,7 @@
 <?= $this->extend('template') ?>
 
 <?= $this->section('style') ?>
-<link rel="stylesheet" href="<?= base_url()?>assets/libs/filepond/filepond.min.css" type="text/css" />
-<link rel="stylesheet" href="<?= base_url()?>assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.css">
+<link rel="stylesheet" href="<?= base_url()?>assets/libs/dropzone/dropzone.css" type="text/css" />
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
@@ -112,19 +111,15 @@
 </div>
 <?= $this->endSection() ?>
 <?= $this->section('script') ?>
-<script src="<?= base_url()?>assets/libs/filepond/filepond.min.js"></script>
-<script src="<?= base_url()?>assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.js"></script>
+<script src="<?= base_url()?>assets/libs/dropzone/dropzone-min.js"></script>
 
 <script>
-    // FilePond.registerPlugin(
-    //     FilePondPluginImagePreview
-    // );
-
-    // FilePond.create(
-    //     document.querySelector(".filepond-input"),
-    //     {
-    //         labelIdle: `Paste, Drag & Drop your picture or <span class="filepond--label-action">Browse</span>`
-    //     }
-    // );
+    Dropzone.options.myGreatDropzone = { // camelized version of the `id`
+    paramName: "file", // The name that will be used to transfer the file
+    maxFilesize: 2, // MB
+    accept: function(file, done) {
+      done();
+    }
+  };
 </script>
 <?= $this->endSection() ?>
