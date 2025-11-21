@@ -538,10 +538,10 @@ class Paruhwaktu extends BaseController
         return $this->response->setJSON(['status'=>'error','message'=>'Gagal menyimpan PDF. Hubungi Administrator.']);
     }
 
-    $this->sendttekontrak($pdfPath, $ybs);
+    $response = $this->sendttekontrak($pdfPath, $ybs);
 
     //   return redirect()->back()->with('message', 'Draft telah diupdate.');
-        // return $this->response->setJSON(['status'=>'success','message'=>'Dokumen telah diTTE.','file'=>'draft/'.$filename]);
+        return $this->response->setJSON(['status'=>'success','message'=>'Dokumen telah diTTE.','response'=>$response]);
   }
 
     function convertDoctoPDF($id)
