@@ -56,18 +56,15 @@ class Tte extends BaseController
       // print_r($body);
       if($body->data){
         // $verify = $crud->getRow('tr_pengelola',['role'=>2]);
-
-        $show = $this->getsignshow($body->data->id);
-
+        
         // if isset passphrase for bypass
         $passphrase = $this->request->getVar('passphrase');
         if($passphrase){
-          $show = $this->dsbp($nik,$body->data->id,$passphrase);
-
-          return $this->response->setJSON(['status'=>'success','message'=>$show]);
-        }else{
-          return $this->response->setJSON(['status'=>'success','message'=>$show]);
+            $this->dsbp($nik,$body->data->id,$passphrase);
         }
+        
+        $show = $this->getsignshow($body->data->id);
+        return $this->response->setJSON(['status'=>'success','message'=>$show]);
       }else{
         return $this->response->setJSON(['status'=>'error','message'=>$body->data]);
       }
