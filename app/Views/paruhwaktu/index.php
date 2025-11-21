@@ -252,12 +252,12 @@
       data: {nik:nik, pendidikan:pendidikan},
       dataType: "json",
       success: function (response) {
-        // if(response.file_url){
-        //   alert('Data berhasil dikirim ke TTE');
-        // }else{
-        //   alert('Data gagal dikirim ke TTE');
-        // }
-        location.reload();
+        if(response.status == 'success'){
+          alert('Data berhasil dikirim ke TTE');
+        }else{
+          location.reload();
+          alert('Data gagal dikirim ke TTE');
+        }
       }
     });
     // window.location.href = "<?= base_url('paruhwaktu/sprp/') ?>"+nik;
@@ -279,12 +279,12 @@
       data: {nik:nik, kontrak_no:no, kontrak_upah:upah},
       dataType: "json",
       success: function (response) {
-        if(response.status == 'success'){
+        if(response.file_url){
           alert('Data berhasil dikirim ke TTE');
           // close modal
           // reload page
           console.log(response);
-          // location.reload();
+          location.reload();
           // $('#modalPreview').modal('hide');
         }else{
           console.log(response);
