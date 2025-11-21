@@ -64,7 +64,7 @@ class Tte extends BaseController
         }
         
         $show = $this->getsignshow($body->data->id);
-        return $this->response->setJSON(['status'=>'success','message'=>$show]);
+        return $this->response->setJSON($show);
       }else{
         return $this->response->setJSON(['status'=>'error','message'=>$body->data]);
       }
