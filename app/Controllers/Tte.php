@@ -62,9 +62,8 @@ class Tte extends BaseController
         // if isset passphrase for bypass
         $passphrase = $this->request->getVar('passphrase');
         if($passphrase){
-          $this->dsbp($nik,$body->data->id,$passphrase);
+          $show = $this->dsbp($nik,$body->data->id,$passphrase);
 
-          $show = $this->getsignshow($body->data->id);
           return $this->response->setJSON(['status'=>'success','message'=>$show]);
         }else{
           return $this->response->setJSON(['status'=>'success','message'=>$show]);
