@@ -88,7 +88,18 @@
                   <label for="jabatan" class="form-label">Kop Surat</label>
               </div>
               <div class="col-lg-9">
-                  <input type="file" class="dropzone" name="filepond">
+                <div class="dropzone">
+                                        <div class="fallback">
+                                            <input name="file" type="file" multiple="multiple">
+                                        </div>
+                                        <div class="dz-message needsclick">
+                                            <div class="mb-3">
+                                                <i class="display-4 text-muted ri-upload-cloud-2-fill"></i>
+                                            </div>
+
+                                            <h4>Drop files here or click to upload.</h4>
+                                        </div>
+                                    </div>
                   <?php if($user->kop_surat){ ?>
                     <img src="<?= base_url('downloads/kop_surat/'.$user->kop_surat) ?>" width="100%" alt="">
                   <?php } ?>
