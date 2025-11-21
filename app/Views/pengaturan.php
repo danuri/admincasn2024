@@ -123,7 +123,8 @@
     FilePond.create(
         document.querySelector(".filepond-input"),
         {
-            labelIdle: `Paste, Drag & Drop your picture or <span class="filepond--label-action">Browse</span>`
+            labelIdle: `Paste, Drag & Drop your picture or <span class="filepond--label-action">Browse</span>`,
+            storeAsFile: true,
         }
     );
 </script>
