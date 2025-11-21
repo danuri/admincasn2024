@@ -29,7 +29,7 @@
                     <h5 class="card-title mb-0">Pengaturan Penandatangan</h5>
                 </div>
                 <div class="card-body">
-                <form action="<?= site_url('pengaturan/save') ?>" method="POST" id="settingform" enctype="multipart/form-data">
+                <form action="<?= site_url('pengaturan/save') ?>" method="POST" class="dropzone" id="settingform" enctype="multipart/form-data">
           <div class="row mb-3">
               <div class="col-lg-3">
                   <label for="nik" class="form-label">PLT</label>
@@ -92,6 +92,7 @@
                   <?php if($user->kop_surat){ ?>
                     <img src="<?= base_url('downloads/kop_surat/'.$user->kop_surat) ?>" width="100%" alt="">
                   <?php } ?>
+                  <div class="previews"></div>
               </div>
           </div>
           <div class="row mb-3">
@@ -115,7 +116,7 @@
 
 <script>
     Dropzone.options.myGreatDropzone = { // camelized version of the `id`
-    paramName: "file", // The name that will be used to transfer the file
+    paramName: "filepond", // The name that will be used to transfer the file
     maxFilesize: 2, // MB
     accept: function(file, done) {
       done();
