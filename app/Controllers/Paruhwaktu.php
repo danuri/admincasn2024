@@ -543,7 +543,7 @@ class Paruhwaktu extends BaseController
     //   return redirect()->back()->with('message', 'Draft telah diupdate.');
     $response = json_decode($response['response'], true);
 
-    $pmodel->update($id,['tte_file' => $response['message']['file_url']]);
+    $pmodel->update($id,['tte_file' => $response['file_url']]);
 
     return $this->response->setJSON($response);
   }
