@@ -515,9 +515,70 @@ class Paruhwaktu extends BaseController
 
     //   $templateProcessor->setValue('surat_tanggal', local_date($usul->rekomendasi_tanggal));
 
-      $filename = 'draft_kontrak_'.$id.'.docx';
-      $templateProcessor->saveAs('draft/'.$filename);
+    $filename = 'draft_kontrak_'.$id.'.docx';
+    $templateProcessor->saveAs('draft/'.$filename);
 
-      return redirect()->back()->with('message', 'Draft telah diupdate.');
+    $pdfPath = 'draft/draft_kontrak_' . $id . '.pdf';
+    $fname = 'draft_kontrak_' . $id;
+
+      // Convert DOCX to PDF
+    $convRes = $this->convertDoctoPDF('draft/'.$filename);
+
+    // print_r($convRes);
+    if (!$convRes['status']) {
+    //   return redirect()->back()->with('error', 'Gagal konversi PDF. Hubungi Administrator.');
+        return $this->response->setJSON(['status'=>'error','message'=>'Gagal konversi PDF. Hubungi Administrator.']);
     }
+
+    // Save the PDF file
+    $cek = file_put_contents($pdfPath, $convRes['response']);
+    
+    if (!file_exists($pdfPath)) {
+        // return redirect()->back()->with('error', 'Gagal menyimpan PDF. Hubungi Administrator.');
+        return $this->response->setJSON(['status'=>'error','message'=>'Gagal menyimpan PDF. Hubungi Administrator.']);
+    }
+
+    //   return redirect()->back()->with('message', 'Draft telah diupdate.');
+        return $this->response->setJSON(['status'=>'success','message'=>'Dokumen telah diTTE.','file'=>'draft/'.$filename]);
+  }
+
+    function convertDoctoPDF($id)
+  {
+    $url        = 'https://ropegdev.kemenag.go.id/convert-doc2pdf/upload/file';
+    $userapi    = 'RopegAdmin';
+    $pwdapi     = 'B1R0kePeG4w4ai4n$1Khl4sB3r4MaL';
+
+    $curl = curl_init();
+    $postData = file_get_contents($id);
+
+    curl_setopt_array($curl, array(
+      CURLOPT_URL => $url,
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_ENCODING => '',
+      CURLOPT_MAXREDIRS => 10,
+      CURLOPT_TIMEOUT => 0,
+      CURLOPT_FOLLOWLOCATION => true,
+      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+      CURLOPT_CUSTOMREQUEST => 'POST',
+      CURLOPT_POSTFIELDS => $postData,
+      CURLOPT_USERPWD => $userapi . ':' . $pwdapi,
+      CURLOPT_SSL_VERIFYPEER => 0,
+      CURLOPT_HTTPHEADER => array(
+        'Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        'Cookie: cookiesession1=678B28EE4BF97D93467CF88E7A5F7C67'
+      ),
+    ));
+
+    $response = curl_exec($curl);
+    $httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+    $error    = curl_error($curl);
+
+    curl_close($curl);
+    // echo $response;
+    if ($httpCode == 200 && !empty($response)) {
+        return ['status' => true, 'message' => 'Conversion successful', 'response' => $response];
+    } else {
+        return ['status' => false, 'message' => 'Conversion failed: ' . $error, 'response' => $response];
+    }
+  }
 }

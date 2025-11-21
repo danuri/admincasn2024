@@ -287,9 +287,11 @@
           alert('Data berhasil dikirim ke TTE');
           // close modal
           // reload page
-          location.reload();
+          console.log(response);
+          // location.reload();
           // $('#modalPreview').modal('hide');
         }else{
+          console.log(response);
           alert('Data gagal dikirim ke TTE');
         }
       }
