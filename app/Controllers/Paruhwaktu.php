@@ -541,7 +541,7 @@ class Paruhwaktu extends BaseController
     $response = $this->sendttekontrak($pdfPath, $ybs);
 
     //   return redirect()->back()->with('message', 'Draft telah diupdate.');
-        return $this->response->setJSON(['status'=>'success','message'=>'Dokumen telah diTTE.','response'=>$response]);
+        return $this->response->setJSON($response);
   }
 
     function convertDoctoPDF($id)
