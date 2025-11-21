@@ -11,6 +11,8 @@ $routes->get('supervise/setparuhwaktu', 'Supervise::setparuhwaktu');
 $routes->get('supervise/getid', 'Supervise::getid');
 
 
+$routes->post('tte/signstore', 'Tte::signstore');
+
 $routes->get('automate', 'Automate::gas');
 $routes->get('automate/cek/(:any)', 'Automate::checkNik/$1');
 $routes->get('automate/updatedatalama', 'Automate::updatedatalama');

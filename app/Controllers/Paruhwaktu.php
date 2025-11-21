@@ -586,7 +586,7 @@ class Paruhwaktu extends BaseController
 
   private function sendttekontrak($filepath, $peserta) {
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, site_url('paruhwaktu/tte/signstore'));
+        curl_setopt($ch, CURLOPT_URL, site_url('tte/signstore'));
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: multipart/form-data'));
