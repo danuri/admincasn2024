@@ -1,7 +1,8 @@
 <?= $this->extend('template') ?>
 
 <?= $this->section('style') ?>
-<link rel="stylesheet" href="<?= base_url()?>assets/libs/dropzone/dropzone.css" type="text/css" />
+<link rel="stylesheet" href="<?= base_url()?>assets/libs/filepond/filepond.min.css" type="text/css" />
+<link rel="stylesheet" href="<?= base_url()?>assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.css">
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
@@ -88,22 +89,10 @@
                   <label for="jabatan" class="form-label">Kop Surat</label>
               </div>
               <div class="col-lg-9">
-                <div class="dropzone">
-                                        <div class="fallback">
-                                            <input name="file" type="file" multiple="multiple">
-                                        </div>
-                                        <div class="dz-message needsclick">
-                                            <div class="mb-3">
-                                                <i class="display-4 text-muted ri-upload-cloud-2-fill"></i>
-                                            </div>
-
-                                            <h4>Drop files here or click to upload.</h4>
-                                        </div>
-                                    </div>
+                  <input type="file" class="filepond filepond-input" name="filepond">
                   <?php if($user->kop_surat){ ?>
                     <img src="<?= base_url('downloads/kop_surat/'.$user->kop_surat) ?>" width="100%" alt="">
                   <?php } ?>
-                  <div class="previews"></div>
               </div>
           </div>
           <div class="row mb-3">
@@ -123,15 +112,19 @@
 </div>
 <?= $this->endSection() ?>
 <?= $this->section('script') ?>
-<script src="<?= base_url()?>assets/libs/dropzone/dropzone-min.js"></script>
+<script src="<?= base_url()?>assets/libs/filepond/filepond.min.js"></script>
+<script src="<?= base_url()?>assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.js"></script>
 
 <script>
-    Dropzone.options.myGreatDropzone = { // camelized version of the `id`
-    paramName: "filepond", // The name that will be used to transfer the file
-    maxFilesize: 2, // MB
-    accept: function(file, done) {
-      done();
-    }
-  };
+    FilePond.registerPlugin(
+        FilePondPluginImagePreview
+    );
+
+    FilePond.create(
+        document.querySelector(".filepond-input"),
+        {
+            labelIdle: `Paste, Drag & Drop your picture or <span class="filepond--label-action">Browse</span>`
+        }
+    );
 </script>
 <?= $this->endSection() ?>
