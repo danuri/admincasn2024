@@ -510,7 +510,7 @@ class Paruhwaktu extends BaseController
     $templateProcessor->setValue('terbilangYbs', penyebut($ybs->kontrak_upah));
 
     // $templateProcessor->setImageValue('companyLogo', 'downloads/kop_surat/'.$user->kop_surat);
-    $templateProcessor->setImageValue('companyLogo', array('path' => 'downloads/kop_surat/'.$user->kop_surat, 'width' => 600, 'height' => 80, 'ratio' => false));
+    $templateProcessor->setImageValue('companyLogo', array('path' => 'downloads/kop_surat/'.$user->kop_surat, 'width' => 600, 'height' => 100, 'ratio' => false));
       
 
     //   $templateProcessor->setValue('surat_tanggal', local_date($usul->rekomendasi_tanggal));
