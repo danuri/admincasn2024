@@ -29,7 +29,7 @@
                     <h5 class="card-title mb-0">Pengaturan Penandatangan</h5>
                 </div>
                 <div class="card-body">
-                <form action="<?= site_url('pengaturan/save') ?>" method="POST" class="dropzone" id="settingform" enctype="multipart/form-data">
+                <form action="<?= site_url('pengaturan/save') ?>" method="POST" id="settingform" enctype="multipart/form-data">
           <div class="row mb-3">
               <div class="col-lg-3">
                   <label for="nik" class="form-label">PLT</label>
@@ -88,7 +88,7 @@
                   <label for="jabatan" class="form-label">Kop Surat</label>
               </div>
               <div class="col-lg-9">
-                  <input type="file" class="filepond filepond-input" name="filepond">
+                  <input type="file" class="dropzone" name="filepond">
                   <?php if($user->kop_surat){ ?>
                     <img src="<?= base_url('downloads/kop_surat/'.$user->kop_surat) ?>" width="100%" alt="">
                   <?php } ?>
