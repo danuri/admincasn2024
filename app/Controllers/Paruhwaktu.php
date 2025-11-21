@@ -613,14 +613,16 @@ class Paruhwaktu extends BaseController
         if (curl_errno($ch)) {
             // curl_close($ch);
             $response = curl_error($ch);
-            return array('status' => 'error', 'response' => $response);
+            return array('status' => 'error', 'message' => $response);
         } else {
             // curl_close($ch);
             // $model = new ParuhwaktuModel();
             // $update = $model->update($peserta->nik,[
             //     'kontrak_file'=>$response,
             // ]);
-            return array($response); 
+            return $this->response->setJSON(['status' => 'success', 'message' =>$response]);
         }
+
+        // return json
     }
 }
