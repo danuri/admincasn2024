@@ -246,33 +246,35 @@ function rupiah($angka){
 
 }
 
-function penyebut($nilai) {
-		$nilai = abs($nilai);
-		$huruf = array("", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan", "sepuluh", "sebelas");
-		$temp = "";
-		if ($nilai < 12) {
-			$temp = " ". $huruf[$nilai];
-		} else if ($nilai <20) {
-			$temp = penyebut($nilai - 10). " belas";
-		} else if ($nilai < 100) {
-			$temp = penyebut($nilai/10)." puluh". penyebut($nilai % 10);
-		} else if ($nilai < 200) {
-			$temp = " seratus" . penyebut($nilai - 100);
-		} else if ($nilai < 1000) {
-			$temp = penyebut($nilai/100) . " ratus" . penyebut($nilai % 100);
-		} else if ($nilai < 2000) {
-			$temp = " seribu" . penyebut($nilai - 1000);
-		} else if ($nilai < 1000000) {
-			$temp = penyebut($nilai/1000) . " ribu" . penyebut($nilai % 1000);
-		} else if ($nilai < 1000000000) {
-			$temp = penyebut($nilai/1000000) . " juta" . penyebut($nilai % 1000000);
-		} else if ($nilai < 1000000000000) {
-			$temp = penyebut($nilai/1000000000) . " milyar" . penyebut(fmod($nilai,1000000000));
-		} else if ($nilai < 1000000000000000) {
-			$temp = penyebut($nilai/1000000000000) . " trilyun" . penyebut(fmod($nilai,1000000000000));
-		}     
-		return trim($temp);
-	}
+function terbilang($angka)
+{
+    $angka = abs($angka);
+    $baca = array("", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan", "sepuluh", "sebelas");
+
+    if ($angka < 12) {
+        return $baca[$angka];
+    } elseif ($angka < 20) {
+        return terbilang($angka - 10) . " belas";
+    } elseif ($angka < 100) {
+        return terbilang(intval($angka / 10)) . " puluh " . terbilang($angka % 10);
+    } elseif ($angka < 200) {
+        return "seratus " . terbilang($angka - 100);
+    } elseif ($angka < 1000) {
+        return terbilang(intval($angka / 100)) . " ratus " . terbilang($angka % 100);
+    } elseif ($angka < 2000) {
+        return "seribu " . terbilang($angka - 1000);
+    } elseif ($angka < 1000000) {
+        return terbilang(intval($angka / 1000)) . " ribu " . terbilang($angka % 1000);
+    } elseif ($angka < 1000000000) {
+        return terbilang(intval($angka / 1000000)) . " juta " . terbilang($angka % 1000000);
+    } elseif ($angka < 1000000000000) {
+        return terbilang(intval($angka / 1000000000)) . " milyar " . terbilang($angka % 1000000000);
+    } elseif ($angka < 1000000000000000) {
+        return terbilang(intval($angka / 1000000000000)) . " triliun " . terbilang($angka % 1000000000000);
+    } else {
+        return "Angka terlalu besar!";
+    }
+}
 
 function tingkat($jumlah)
 {

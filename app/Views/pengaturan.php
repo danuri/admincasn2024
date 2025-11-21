@@ -90,6 +90,7 @@
               </div>
               <div class="col-lg-9">
                   <input type="file" class="filepond filepond-input" name="filepond">
+                  <p>Unggah file kop surat dalam format gambar. Dengan ratio 6:1 (lebar:tinggi).</p>
                   <?php if($user->kop_surat){ ?>
                     <img src="<?= base_url('downloads/kop_surat/'.$user->kop_surat) ?>" width="100%" alt="">
                   <?php } ?>
