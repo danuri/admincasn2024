@@ -620,7 +620,7 @@ class Paruhwaktu extends BaseController
             // $update = $model->update($peserta->nik,[
             //     'kontrak_file'=>$response,
             // ]);
-            return array('status' => 'success', 'response' => $response); 
+            return array($response); 
         }
     }
 }
