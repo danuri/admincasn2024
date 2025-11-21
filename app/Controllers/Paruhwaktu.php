@@ -620,9 +620,7 @@ class Paruhwaktu extends BaseController
             // $update = $model->update($peserta->nik,[
             //     'kontrak_file'=>$response,
             // ]);
-            return $this->response->setJSON(['status' => 'success', 'message' =>$response]);
+            return json_encode(['status' => 'success', 'message' => 'Dokumen Kontrak Berhasil Dikirim','file_url'=>$response]);
         }
-
-        // return json
     }
 }
