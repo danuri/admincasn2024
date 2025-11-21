@@ -616,10 +616,10 @@ class Paruhwaktu extends BaseController
             return array('status' => 'error', 'response' => $response);
         } else {
             // curl_close($ch);
-            $model = new ParuhwaktuModel();
-            $update = $model->update($peserta->nik,[
-                'kontrak_file'=>$response->messsage->file_url,
-            ]);
+            // $model = new ParuhwaktuModel();
+            // $update = $model->update($peserta->nik,[
+            //     'kontrak_file'=>$response,
+            // ]);
             return array('status' => 'success', 'response' => $response); 
         }
     }
