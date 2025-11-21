@@ -475,13 +475,13 @@ class Paruhwaktu extends BaseController
 
     function draftkontrak()
     {
-      $model = new ParuhwaktuModel();
+      $pmodel = new ParuhwaktuModel();
       $id = $this->request->getPost('nik');
-      $update = $model->update($id,[
+      $update = $pmodel->update($id,[
         'kontrak_no'=>$this->request->getPost('kontrak_no'),
         'kontrak_upah'=>$this->request->getPost('kontrak_upah'),
       ]);
-      $ybs = $model->find($id);
+      $ybs = $pmodel->find($id);
 
       $model = new UserModel();
       $user = $model->where('kode_satker', session('lokasi'))->first();
@@ -541,7 +541,11 @@ class Paruhwaktu extends BaseController
     $response = $this->sendttekontrak($pdfPath, $ybs);
 
     //   return redirect()->back()->with('message', 'Draft telah diupdate.');
-        return $this->response->setJSON($response);
+    $response = json_decode($response['response'], true);
+
+    $pmodel->update($id,['tte_file' => $response['message']['file_url']]);
+
+    return $this->response->setJSON($response);
   }
 
     function convertDoctoPDF($id)
@@ -613,14 +617,14 @@ class Paruhwaktu extends BaseController
         if (curl_errno($ch)) {
             // curl_close($ch);
             $response = curl_error($ch);
-            return array('status' => 'error', 'message' => $response);
+            return array('status' => 'error', 'response' => $response);
         } else {
             // curl_close($ch);
             // $model = new ParuhwaktuModel();
             // $update = $model->update($peserta->nik,[
             //     'kontrak_file'=>$response,
             // ]);
-            return json_encode(['status' => 'success', 'message' => 'Dokumen Kontrak Berhasil Dikirim','file_url'=>$response]);
+            return ['status' => 'success', 'response' => $response];
         }
     }
 }
