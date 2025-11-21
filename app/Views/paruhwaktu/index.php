@@ -252,12 +252,12 @@
       data: {nik:nik, pendidikan:pendidikan},
       dataType: "json",
       success: function (response) {
-        if(response.file_url){
-          alert('Data berhasil dikirim ke TTE');
-          location.reload();
-        }else{
-          alert('Data gagal dikirim ke TTE');
-        }
+        // if(response.file_url){
+        //   alert('Data berhasil dikirim ke TTE');
+        // }else{
+        //   alert('Data gagal dikirim ke TTE');
+        // }
+        location.reload();
       }
     });
     // window.location.href = "<?= base_url('paruhwaktu/sprp/') ?>"+nik;
