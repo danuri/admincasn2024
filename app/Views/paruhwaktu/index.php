@@ -10,6 +10,7 @@
                     <h4 class="mb-sm-0">Peserta PPPK Paruh Waktu</h4>
                     <div class="page-title-right">
                       <a href="<?= base_url('pengaturan') ?>" class="btn btn-primary">Pengaturan TTE</a>
+                      <a href="<?= base_url('paruhwaktu/exportpw') ?>" class="btn btn-primary">Download Data</a>
                     </div>
                 </div>
             </div>

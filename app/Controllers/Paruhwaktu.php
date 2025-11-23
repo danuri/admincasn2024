@@ -329,6 +329,59 @@ class Paruhwaktu extends BaseController
       exit;
     }
 
+    public function exportpw()
+    {
+      $model = new ParuhwaktuModel;
+      $data = $model->where(['kode_lokasi'=>session('lokasi')])->findAll();
+
+      $spreadsheet = new Spreadsheet();
+      $sheet = $spreadsheet->getActiveSheet();
+      $sheet->setCellValue('A1', 'nomor_peserta');
+      $sheet->setCellValue('B1', 'nik');
+      $sheet->setCellValue('C1', 'nama');
+      $sheet->setCellValue('D1', 'tempat_lahir');
+      $sheet->setCellValue('E1', 'tgl_lahir');
+      $sheet->setCellValue('F1', 'jenis_kelamin');
+      $sheet->setCellValue('G1', 'agama');
+      $sheet->setCellValue('H1', 'alamat_domisili');
+      $sheet->setCellValue('I1', 'jabatan');
+      $sheet->setCellValue('J1', 'pendidikan');
+      $sheet->setCellValue('K1', 'pendidikan_tahun');
+      $sheet->setCellValue('L1', 'unit_organisasi');
+      $sheet->setCellValue('M1', 'no_pertek');
+      $sheet->setCellValue('N1', 'nip');
+
+      $i = 2;
+      foreach ($data as $row) {
+        $sheet->setCellValue('A'.$i, $row->no_peserta);
+        $sheet->getCell('B'.$i)->setValueExplicit($row->nik,\PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+        $sheet->setCellValue('C'.$i, $row->nama_peserta);
+        $sheet->setCellValue('D'.$i, $row->tempat_lahir);
+        $sheet->setCellValue('E'.$i, $row->tgl_lahir);
+        $sheet->setCellValue('F'.$i, $row->jenis_kelamin);
+        $sheet->setCellValue('G'.$i, $row->agama);
+        $sheet->setCellValue('H'.$i, $row->alamat_domisili);
+        $sheet->setCellValue('I'.$i, $row->usul_jabatan);
+        $sheet->setCellValue('J'.$i, $row->usul_pendidikan);
+        $sheet->setCellValue('K'.$i, $row->usul_pendidikan_tahun);
+        $sheet->setCellValue('L'.$i, $row->usul_unor);
+        $sheet->setCellValue('M'.$i, $row->usul_no_pertek);
+        $sheet->setCellValue('N'.$i, $row->usul_nip);
+        $i++;
+      }
+
+      $tanggal = date('YmdHis');
+      $writer = new Xlsx($spreadsheet);
+      ob_clean();
+      ob_start();
+      header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+      header('Content-Disposition: attachment; filename="Data_Paruhwaktu_'.$tanggal.'.xlsx"');
+      header('Cache-Control: max-age=0');
+      $writer->save('php://output');
+      ob_end_flush();
+      exit;
+    }
+
     public function cetak_sprp() { 
         // $nik = decrypt($nik); 
         $nik = $this->request->getVar('nik');
