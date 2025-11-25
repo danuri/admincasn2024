@@ -87,9 +87,9 @@ class Publish extends BaseController
 
           $model = new Pppkt2Model;
           $model->set('usul_id', $id);
-          $model->set('usul_unor_id', $row->usulan_data->data->unor_id);
-          $model->set('usul_unor_nama', $row->usulan_data->data->unor_nama);
-          $model->set('usul_unor_induk_nama', $row->usulan_data->data->unor_induk_nama);
+          @$model->set('usul_unor_id', $row->usulan_data->data->unor_id);
+          @$model->set('usul_unor_nama', $row->usulan_data->data->unor_nama);
+          @$model->set('usul_unor_induk_nama', $row->usulan_data->data->unor_induk_nama);
           $model->set('usul_status', $status);
           $model->set('usul_alasan_tolak', $alasan);
           $model->set('usul_path_ttd_pertek', $pathpertek);
