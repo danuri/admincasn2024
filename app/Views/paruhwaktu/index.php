@@ -169,7 +169,7 @@
           </tr>
           <tr>
             <th>Upah</th>
-            <td><input type="text" name="kontrak_upah" id="kontrakUpah" class="form-control"></td>
+            <td><input type="number" name="kontrak_upah" id="kontrakUpah" class="form-control"></td>
           </tr>
         </table>
       </div>
