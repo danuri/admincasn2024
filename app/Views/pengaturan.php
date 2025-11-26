@@ -40,7 +40,7 @@
                   <option value="0" <?= $user->is_sdm == 0 ? 'selected' : '' ?>>Tidak</option>
                   <option value="1" <?= $user->is_sdm == 1 ? 'selected' : '' ?>>Ya</option>
                 </select>
-                <p>Jika PLT, tidak perlu mengisi form di bawah.</p>
+                <p>Jika PLT, tidak perlu mengisi form di bawah. Kontrak akan ditandatangani oleh Kepala Biro SDM.</p>
               </div>
           </div>
           <div class="row mb-3">
