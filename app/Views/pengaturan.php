@@ -33,14 +33,14 @@
                 <form action="<?= site_url('pengaturan/save') ?>" method="POST" id="settingform" enctype="multipart/form-data">
           <div class="row mb-3">
               <div class="col-lg-3">
-                  <label for="nik" class="form-label">PLT</label>
+                  <label for="nik" class="form-label">Penandatangan KaBiro SDM</label>
               </div>
               <div class="col-lg-9">
                 <select name="isplt" id="isplt" class="form-select">
                   <option value="0" <?= $user->is_sdm == 0 ? 'selected' : '' ?>>Tidak</option>
                   <option value="1" <?= $user->is_sdm == 1 ? 'selected' : '' ?>>Ya</option>
                 </select>
-                <p>Jika PLT, tidak perlu mengisi form di bawah. Kontrak akan ditandatangani oleh Kepala Biro SDM.</p>
+                <p>Jika Ya, tidak perlu mengisi form di bawah. Kontrak akan ditandatangani oleh Kepala Biro SDM.</p>
               </div>
           </div>
           <div class="row mb-3">
