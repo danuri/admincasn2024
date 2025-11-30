@@ -146,7 +146,8 @@ class Publish extends BaseController
           $model->set('usul_path_ttd_pertek', $pathpertek);
           $model->set('usul_no_pertek', $nopertek);
           $model->set('usul_nip', $nip);
-          $model->set('usul_pendidikan', ($row->usulan_data->data->pendidikan_ijazah_nama)? $row->usulan_data->data->pendidikan_ijazah_nama : $row->usulan_data->data->pendidikan_pertama_nama);
+          $model->set('usul_pendidikan', $row->usulan_data->data->pendidikan_pertama_nama);
+          @$model->set('usul_pendidikan_ijazah', $row->usulan_data->data->pendidikan_ijazah_nama);
           @$model->set('unor_id', $row->usulan_data->data->unor_id);
           @$model->set('unor_induk', $row->usulan_data->data->unor_induk);
           @$model->set('unor_induk_nama', $row->usulan_data->data->unor_induk_nama);
