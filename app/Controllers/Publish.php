@@ -146,14 +146,14 @@ class Publish extends BaseController
           $model->set('usul_path_ttd_pertek', $pathpertek);
           $model->set('usul_no_pertek', $nopertek);
           $model->set('usul_nip', $nip);
-          $model->set('usul_pendidikan', $row->usulan_data->data->pendidikan_ijazah_nama);
+          $model->set('usul_pendidikan', ($row->usulan_data->data->pendidikan_ijazah_nama)? $row->usulan_data->data->pendidikan_ijazah_nama : $row->usulan_data->data->pendidikan_pertama_nama);
           @$model->set('unor_id', $row->usulan_data->data->unor_id);
           @$model->set('unor_induk', $row->usulan_data->data->unor_induk);
           @$model->set('unor_induk_nama', $row->usulan_data->data->unor_induk_nama);
           @$model->set('unor_nama', $row->usulan_data->data->unor_nama);
           $model->set('usul_pendidikan_tahun', $row->usulan_data->data->tahun_lulus);
-          $model->set('usul_jabatan_id', $row->usulan_data->data->jabatan_fungsional_umum_id);
-          $model->set('usul_jabatan', $row->usulan_data->data->jabatan_fungsional_umum_nama);
+          $model->set('usul_jabatan_id', ($row->usulan_data->data->jenis_jabatan_id == 4) ? $row->usulan_data->data->jabatan_fungsional_umum_id : $row->usulan_data->data->jabatan_fungsional_id);
+          $model->set('usul_jabatan', ($row->usulan_data->data->jenis_jabatan_id == 4) ? $row->usulan_data->data->jabatan_fungsional_umum_nama : $row->usulan_data->data->jabatan_fungsional_nama);
           $model->set('tmt_cpns', $row->usulan_data->data->tmt_cpns);
           $model->set('usul_sk_nomor', $row->no_sk);
           $model->set('usul_sk_file', $row->path_ttd_sk);
