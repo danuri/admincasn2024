@@ -364,7 +364,7 @@ class Paruhwaktu extends BaseController
         $sheet->setCellValue('I'.$i, $row->usul_jabatan);
         $sheet->setCellValue('J'.$i, $row->usul_pendidikan);
         $sheet->setCellValue('K'.$i, $row->usul_pendidikan_tahun);
-        $sheet->setCellValue('L'.$i, $row->usul_unor);
+        $sheet->setCellValue('L'.$i, $row->unor_nama);
         $sheet->setCellValue('M'.$i, $row->usul_no_pertek);
         $sheet->getCell('N'.$i)->setValueExplicit($row->usul_nip,\PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
         $i++;
