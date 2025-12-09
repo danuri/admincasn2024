@@ -168,6 +168,6 @@ class Publish extends BaseController
   function setcache() {
     $cache = service('cache');
 
-    $token = $cache->set('zxc', 'xxx');
+    $token = $cache->save('zxc', 'xxx');
   }
 }
