@@ -164,4 +164,10 @@ class Publish extends BaseController
         //   echo '<pre>'.$no_peserta.'</pre>';
       }
   }
+
+  function setcache() {
+    $cache = service('cache');
+
+    $token = $cache->set('zxc', 'xxx');
+  }
 }

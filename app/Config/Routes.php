@@ -28,6 +28,7 @@ $routes->get('pub/paruhwaktu', 'Publish::paruhwaktu');
 $routes->get('pub/monitoring', 'Publish::monitoring');
 $routes->get('pub/optimalisasi', 'Publish::optimalisasi');
 $routes->get('pub/sinkronpw', 'Publish::sinkronpw');
+$routes->get('pub/setcache', 'Publish::setcache');
 
 $routes->get('/', 'Home::index',['filter' => 'auth']);
 $routes->get('generateformasi', 'Home::generateformasi',['filter' => 'auth']);
