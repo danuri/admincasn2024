@@ -26,7 +26,7 @@ class Paruhwaktu extends BaseController
 
         $data['peserta'] = $model->where(['kode_lokasi'=>session('lokasi')])->findAll();
 
-        return view('paruhwaktu/index', $data);
+        return view('paruhwaktu/penetapan', $data);
     }
 
     function getpeserta() {
